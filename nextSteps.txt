@@ -1,4 +1,5 @@
 1  FullScreen (@see @UbuntuwinLocker@)
+1.1 append my script with constans (FILE_APPEND = 1 for PHP.*) 
 2. Menu
 3. FileDialogs
 4. ContextMenu
