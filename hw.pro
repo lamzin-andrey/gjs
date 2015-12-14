@@ -19,7 +19,9 @@ SOURCES += main.cpp\
     ui/cwebview.cpp \
     ui/cwindow.cpp \
     slots/cphpinterface.cpp \
-    logic/cmetadata.cpp
+    logic/cmetadata.cpp \
+    lib/xml/cxml.cpp \
+    lib/xml/cxmltag.cpp
 
 HEADERS  += \
     lib/utilsstd.h \
@@ -28,6 +30,8 @@ HEADERS  += \
     ui/cwebview.h \
     ui/cwindow.h \
     slots/cphpinterface.h \
-    logic/cmetadata.h
+    logic/cmetadata.h \
+    lib/xml/cxml.h \
+    lib/xml/cxmltag.h
 
 FORMS    +=
