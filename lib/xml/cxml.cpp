@@ -75,7 +75,7 @@ bool CXml::setXmlText(QString xml) {
         }
         if (inTagDefine && tagLeftIsOpen) {
             if (!quoteIsOpen && !currentNameIsComplete && ch != '<' && ch != '>') {
-                if (_isNotPipe(ch)) {
+                if (isNotPipe(ch)) {
                     currentTagName += ch;
                 } else {
                     currentNameIsComplete = true;
@@ -141,12 +141,7 @@ bool CXml::setXmlText(QString xml) {
 //TODO need test  и надо что-то придумать с   < > внутри тегов (например пишет человек про математику)
 /** _trim(xml); удалить все \s символы после <  и перед > */
 QString CXml::_trim(QString s) {
-    //<\s+ g          => <
     s = s.replace(QRegExp("<\\s*"), "<");
-    //s = s.replace(new QRegExp("<\\s*\\/\\s*"), '</');
-    //<\s*\/\s*, g => </
-    //<\/(\w+)\s+> => </$1>
-    //s = s.replace(new QRegExp("<\\/(\\w+)\\s+>"), '</$1>');
     s = s.replace(QRegExp("\\s*>"), ">");
     return s;
 }
@@ -195,7 +190,7 @@ QString CXml::_closeCurrentTag(QString currentTagName, QString openTagName, QStr
     return result.join(def);
 }
 
-bool CXml::_isNotPipe(QChar ch) {
+bool CXml::isNotPipe(QChar ch) {
     if (ch == ' ' || ch == '\n' || ch == '\r' || ch == '\t') {
         return false;
     }

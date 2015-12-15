@@ -10,15 +10,17 @@
 #include "cxmltag.h"
 #include "../utils.h"
 
+class CXmlTag;
+
 class CXml
 {
 public:
     CXml(QString file = "");
     bool setXmlText(QString xml);
+    bool isNotPipe(QChar ch);
+
     QList<CXmlTag*> childs;
-
     bool success;
-
     QStringList log;
 
 private:
@@ -28,7 +30,7 @@ private:
     QString _getCloseTagName(QString xml, int pos);
     QString _getOpenTagName(QString currentTagName, QString def);
     QString _closeCurrentTag(QString currentTagName, QString openTagName, QString def);
-    bool _isNotPipe(QChar ch);
+
 };
 
 #endif // CXML_H

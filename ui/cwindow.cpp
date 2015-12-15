@@ -31,6 +31,8 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     this->setWindowFlags(flags);
     lib.parentMBoxWidget = this;
     this->setWindowTitle(metadata.title);
+
+
     loading = false;
     lastUrl = "";
     wv = new CWebView();
