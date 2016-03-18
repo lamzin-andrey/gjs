@@ -10,7 +10,7 @@ class CMetadata
 {
 public:
     CMetadata(QString file = "");
-    QString title;
+    QString sTitle;
     /** window buttons */
     bool min = true;
     bool max = true;

@@ -59,7 +59,6 @@ CMetadata::CMetadata(QString file)
 }
 
 void CMetadata::_setWinButtons(QStringList aMeta) {
-    title = "";
     for (int i = 0; i < aMeta.length(); i++) {
         QString s = aMeta[i];
         QString mark = "windowButtons";
@@ -111,6 +110,7 @@ void CMetadata::_setTitle(QStringList aTitle) {
     int end = s.indexOf("</title", st);
     if (st < end && end) {
         s = s.mid(st + 1, end - st - 1);
-        title = s.trimmed();
+        sTitle = s.trimmed();
     }
+    sTitle = s.trimmed();
 }

@@ -30,7 +30,7 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     }
     this->setWindowFlags(flags);
     lib.parentMBoxWidget = this;
-    this->setWindowTitle(metadata.title);
+    setWindowTitle(metadata.sTitle);
 
 
     loading = false;
@@ -41,7 +41,7 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     wv->page()->settings()->setAttribute(QWebSettings::PluginsEnabled,false);
     this->setCentralWidget(wv);
     this->addObject(this, "Qt");
-    php = new CPhpInterface(this);
+    php = new CPhpInterface(this, wv);
     this->addObject(php, "PHP");
     workdir = appDir;
     getURL("file://" + appDir + "/index.html", false);
