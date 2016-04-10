@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     slots/cphpinterface.cpp \
     logic/cmetadata.cpp \
     lib/xml/cxml.cpp \
-    lib/xml/cxmltag.cpp
+    lib/xml/cxmltag.cpp \
+    logic/process/cprocess.cpp
 
 HEADERS  += \
     lib/utilsstd.h \
@@ -32,6 +33,7 @@ HEADERS  += \
     slots/cphpinterface.h \
     logic/cmetadata.h \
     lib/xml/cxml.h \
-    lib/xml/cxmltag.h
+    lib/xml/cxmltag.h \
+    logic/process/cprocess.h
 
 FORMS    +=

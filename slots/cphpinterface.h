@@ -10,6 +10,7 @@
 #include <string>
 
 #include "../lib/utils.h"
+#include "../logic/process/cprocess.h"
 #include "../ui/cwebview.h"
 
 class CPhpInterface : public QWidget
@@ -28,6 +29,8 @@ private:
     QStringList execArgs;
     QString parseCommand(QString command);
 
+    //CProcess usage
+    CProcess * _cproc;
     
 signals:
     
@@ -37,6 +40,14 @@ public slots:
     void exec(QString command, QString onOutput, QString onError);
     void onOutput();
     void onErrorOutput();
+
+    //CProcess usage
+    void execCProcess(QString command, QString onFinish, QString onOutput, QString onError);
+    void onCProcessOutput(QString onOutputEvaluateJavaScript, unsigned int resId);
+    void onCProcessErrorOutput(QString onErrorOutputEvaluateJavaScript, unsigned int resId);
+    void onCProcessEmptyArguments();
+    void onCProcessEmptyOutput(bool isErrorOutput);
+    void onCProcessFinish(QString evaluateJavaScript, unsigned int resId);
 };
 
 #endif // CPHPINTERFACE_H

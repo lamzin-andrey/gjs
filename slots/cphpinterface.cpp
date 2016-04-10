@@ -5,6 +5,11 @@ CPhpInterface::CPhpInterface(QWidget *parent, CWebView *webView) :
 {
     procIsInit = false;
     this->webView = webView;
+
+
+
+
+
 }
 
 int CPhpInterface::file_put_contents(QString path, QString data, int flag) {
@@ -15,6 +20,61 @@ int CPhpInterface::file_put_contents(QString path, QString data, int flag) {
 QString CPhpInterface::file_get_contents(QString path) {
     return lib.readtextfile(path);
 }
+
+void CPhpInterface::execCProcess(QString command, QString onFinish, QString onOutput, QString onError) {
+    if (!procIsInit) {
+        _cproc = new CProcess(1, onOutput, onError, onFinish, this);
+        connect(_cproc, SIGNAL(onOutputSg(QString, unsigned int)),
+                  this, SLOT(onCProcessOutput(QString , unsigned int )));
+        connect(_cproc,
+                SIGNAL(
+                    onErrorSg(QString, unsigned int)),
+                this, SLOT(
+                    onCProcessErrorOutput(QString, unsigned int))
+               );
+        connect(_cproc, SIGNAL(onEmptyArgumentsSg()),
+                this, SLOT(onCProcessEmptyArguments()));
+
+        connect(_cproc, SIGNAL(onEmptyOutputSg(bool)),
+                this, SLOT(onCProcessEmptyOutput(bool)) );
+
+        connect(_cproc, SIGNAL(onFinishSg(QString, unsigned int)),
+                this, SLOT(onCProcessFinish(QString, unsigned int)) );
+    }
+    _cproc->exec(command);
+}
+
+void CPhpInterface::onCProcessOutput(QString evaluateJavaScript, unsigned int resId) {
+    //lib.qMessageBox("CPhp", "onCProcessOutput!");
+        this->webView->page()
+                ->currentFrame()
+                ->evaluateJavaScript(evaluateJavaScript);
+}
+
+void CPhpInterface::onCProcessErrorOutput(QString onErrorOutputEvaluateJavaScript, unsigned int resId) {
+    //lib.qMessageBox("CPhp", "onCProcessERROutput!");
+    this->webView->page()
+                ->currentFrame()
+                ->evaluateJavaScript(onErrorOutputEvaluateJavaScript);
+}
+
+void CPhpInterface::onCProcessEmptyArguments() {
+    this->webView->page()->currentFrame()->evaluateJavaScript("alert('OnEmptyArgs')");
+}
+
+void CPhpInterface::onCProcessEmptyOutput(bool isErrorOutput) {
+    QString s = "alert('OnEmptyOut')";
+    if (isErrorOutput) {
+        s = "alert('OnEmptyErrOut')";
+    }
+    this->webView->page()->currentFrame()->evaluateJavaScript(s);
+}
+void CPhpInterface::onCProcessFinish(QString evaluateJavaScript, unsigned int resId) {
+    //lib.qMessageBox("CPhp", "onCProcessFinish(" + evaluateJavaScript + ")");
+    this->webView->page()->currentFrame()->evaluateJavaScript(evaluateJavaScript);
+}
+
+//=========================deprecated===================================
 
 void CPhpInterface::exec(QString command, QString onOutput, QString onError) {
     this->jsOnOutput = onOutput;
