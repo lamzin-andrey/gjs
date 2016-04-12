@@ -39,6 +39,10 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     wv->page()->settings()->setAttribute(QWebSettings::JavascriptEnabled,true);
     wv->page()->settings()->setAttribute(QWebSettings::AutoLoadImages,   false);
     wv->page()->settings()->setAttribute(QWebSettings::PluginsEnabled,false);
+
+    QString js = lib.readtextfile(QApplication::applicationDirPath() + "/default/tools/js/j.js");
+    this->js(js);
+
     this->setCentralWidget(wv);
     this->addObject(this, "Qt");
     php = new CPhpInterface(this, wv);
@@ -93,6 +97,7 @@ void CWindow::onLoad(bool success)
 {
     if (success)
     {
+        //TODO если не поможет после создания, добавить тут
         loading = false;
         QString s = wv->page()->currentFrame()->toHtml();
         QString path = QApplication::applicationDirPath();

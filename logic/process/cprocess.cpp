@@ -84,5 +84,5 @@ void CProcess::onFinish() {
     //lib.qMessageBox("CProcess", "onFin");
     QString o = _output.join('_;__PIPE___;');
     QString e = _errors.join('_;__PIPE___;');
-    emit(onFinishSg(_onFinish + "('" +  o  + "', '" + e + "');", _resId));
+    emit(onFinishSg("QtBrige.onFinish('" + _onFinish + "', '" +  o  + "', '" + e + "');", _resId));
 }
