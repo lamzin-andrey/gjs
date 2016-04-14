@@ -20,6 +20,12 @@ gjs /home/user/soft/js/gjs/myFirstAp
 
 вызов Qt.appDir() вернет /home/user/soft/js/gjs/myFirstAp
 
+Qt.setLineDelimeter(String delimeter);
+String = Qt.getLineDelimeter(String);
+
+Позволяют заменить последовательность символов, использующихся для разделения строк.
+
+
 <h5>PHP</h5>
 <h6>Файлы</h6>
 PHP.file_put_contents(String path, String data, int flag = 0);
@@ -27,8 +33,18 @@ PHP.file_put_contents(String path, String data, int flag = 0);
 Вы можете использовать константу FILE_APPEND для добавления данных в существующий файл.
 
 Пример кода:
-PHP.file_put_contents(Qt.appDir() + '/output/file.txt', 'Hello, filesystem!'); //перезапишет файл
+Number PHP.file_put_contents(Qt.appDir() + '/output/file.txt', 'Hello, filesystem!'); //перезапишет файл
 PHP.file_put_contents(Qt.appDir() + '/output/file.txt', '\nЭто снова я!', FILE_APPEND); //Добавит строку в файл
+
+
+Boolean PHP.file_exists(String path);
+Boolean PHP.is_dir(String path);
+
+<h6>Файловая система</h6>
+Array PHP.scandir(String path);
+
+
+
 <h5>Атрибуты</h5>
 <table>
 	<tr>

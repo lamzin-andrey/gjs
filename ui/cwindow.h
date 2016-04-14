@@ -11,6 +11,8 @@
 #include "../logic/cmetadata.h"
 
 
+class CMetadata;
+
 class CWindow : public QMainWindow
 {
     Q_OBJECT
@@ -42,6 +44,9 @@ public:
     void onLoad(bool success);
  public slots:
     QString appDir();
+    QString getLineDelimeter();
+    void setLineDelimeter(QString  pipe);
+
  signals:
     void loadComplete();
     void errorConnect(QString msg);

@@ -6,6 +6,14 @@ function onCFinish(output, errors) {
 	if (errors.length) {
 		onCErr(errors);
 	}
+	var a = PHP.scandir('/home/andrey');
+	if (a instanceof Array) {
+		for (var i = 0; i < a.length; i++) {
+			onCOut(a[i]);
+		}
+	} else {
+		alert('No Atray');
+	}
 }
 function onCOut(s) {
 	document.getElementById('cout').innerHTML =  document.getElementById('cout').innerHTML + '<div style="color:blue">' + s + '</div>';

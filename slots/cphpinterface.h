@@ -5,6 +5,10 @@
 #include <QProcess>
 #include <QString>
 #include <QByteArray>
+#include <QFile>
+#include <QDirIterator>
+#include <QFile>
+#include <QFileInfo>
 #include <QRegExp>
 #include <QList>
 #include <QWebFrame>
@@ -34,10 +38,13 @@ private:
 signals:
     
 public slots:
+    //file
     QString file_get_contents(QString path);
     int file_put_contents(QString path, QString data, int flag = 0);
+    bool file_exists(QString path);
+    bool is_dir(QString path);
 
-    //CProcess usage
+    //exec
     void execCProcess(QString command, QString onFinish, QString onOutput = "", QString onError = "");
     void exec(QString command, QString onFinish, QString onOutput = "", QString onError = "");
     void onCProcessOutput(QString onOutputEvaluateJavaScript, unsigned int resId);
@@ -45,6 +52,9 @@ public slots:
     void onCProcessEmptyArguments();
     void onCProcessEmptyOutput(bool isErrorOutput);
     void onCProcessFinish(QString evaluateJavaScript, unsigned int resId);
+
+    //file system
+    QString _scandir(QString path);
 };
 
 #endif // CPHPINTERFACE_H

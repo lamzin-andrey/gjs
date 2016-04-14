@@ -22,6 +22,8 @@ public:
     bool noFrame = false;
     bool fullScreen = false;
 
+    static QString PIPE;
+
     //TODO главное меню окна
 
 private:

@@ -1,5 +1,7 @@
 #include "cmetadata.h"
 
+QString CMetadata::PIPE = "_;__PIPE__;_";
+
 CMetadata::CMetadata(QString file)
 {
     file = file + "/index.html";

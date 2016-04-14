@@ -40,13 +40,16 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     wv->page()->settings()->setAttribute(QWebSettings::AutoLoadImages,   false);
     wv->page()->settings()->setAttribute(QWebSettings::PluginsEnabled,false);
 
-    QString js = lib.readtextfile(QApplication::applicationDirPath() + "/default/tools/js/j.js");
-    this->js(js);
+
 
     this->setCentralWidget(wv);
     this->addObject(this, "Qt");
     php = new CPhpInterface(this, wv);
     this->addObject(php, "PHP");
+
+    QString js = lib.readtextfile(QApplication::applicationDirPath() + "/default/tools/js/j.js");
+    this->js(js);
+
     workdir = appDir;
     getURL("file://" + appDir + "/index.html", false);
 
@@ -150,4 +153,12 @@ void CWindow::fixSize()
 //========================PUBLIC JS SLOTS=================================
 QString CWindow::appDir() {
     return workdir;
+}
+
+QString CWindow::getLineDelimeter() {
+    return CMetadata::PIPE;
+}
+
+void CWindow::setLineDelimeter(QString  pipe) {
+    CMetadata::PIPE = pipe;
 }

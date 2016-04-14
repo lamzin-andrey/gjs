@@ -8,6 +8,7 @@
 #include <QRegExp>
 
 #include "../../lib/utils.h"
+#include "../cmetadata.h"
 
 class CProcess : public QWidget
 {

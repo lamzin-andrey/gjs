@@ -13,6 +13,26 @@ int CPhpInterface::file_put_contents(QString path, QString data, int flag) {
     return lib.writetextfile(path, data, append);
 }
 
+bool CPhpInterface::file_exists(QString path) {
+    return QFile::exists(path);
+}
+
+bool CPhpInterface::is_dir(QString path) {
+    QFileInfo info;
+    info.setFile(path);
+    return info.isDir();
+}
+
+QString CPhpInterface::_scandir(QString path) {
+    QDirIterator it(path, QDirIterator::NoIteratorFlags);
+    QStringList ls;
+    while (it.hasNext()) {
+        ls.append(it.next() );
+    }
+    return ls.join(CMetadata::PIPE);
+}
+
+
 QString CPhpInterface::file_get_contents(QString path) {
     return lib.readtextfile(path);
 }
