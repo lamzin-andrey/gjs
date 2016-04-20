@@ -19,6 +19,10 @@ CMetadata::CMetadata(QString file)
 
     QStringList aMeta;
 
+    windowWidth = -1;
+    windowHeight = -1;
+    fixedSize = false;
+
     for (int i = 0; i < arr.length(); i++) {
         s = arr[i];
         if (s.indexOf("<head") != -1) {
@@ -101,10 +105,26 @@ void CMetadata::_setWinButtons(QStringList aMeta) {
             if (s.indexOf("fullScreen") != -1) {
                 fullScreen = true;
             }
+
+            if (s.indexOf("fixed") != -1) {
+                fixedSize = true;
+            }
+
+            int widthPos = s.indexOf("width=");
+            if (widthPos != -1) {
+                windowWidth = _parseNumAttr(widthPos, s);
+            }
+
+            int heightPos = s.indexOf("height=");
+            if (heightPos != -1) {
+                windowHeight = _parseNumAttr(heightPos, s);
+            }
+
             break;
         }
     }
 }
+
 void CMetadata::_setTitle(QStringList aTitle) {
     QString s = aTitle.join('\n');
     int st = s.indexOf("<title");
@@ -115,4 +135,21 @@ void CMetadata::_setTitle(QStringList aTitle) {
         sTitle = s.trimmed();
     }
     sTitle = s.trimmed();
+}
+
+
+int CMetadata::_parseNumAttr(int pos, QString s) {
+    int start = s.indexOf('"', pos);
+    if (start != -1) {
+        int end  = s.indexOf('"', start + 1);
+        if (end != -1) {
+            QString v = s.mid(start + 1, end - start - 1);
+            bool ok = false;
+            int n = v.toInt(&ok);
+            if (ok) {
+                return n;
+            }
+        }
+    }
+    return -1;
 }

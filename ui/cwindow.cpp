@@ -2,6 +2,7 @@
 
 CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindow(parent)
 {
+    this->metadata = metadata;
     Qt::WindowFlags flags = 0;
     if (metadata.max && metadata.min && metadata.close && !metadata.question) {
         ;
@@ -30,7 +31,20 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     }
     this->setWindowFlags(flags);
     lib.parentMBoxWidget = this;
+    //setWindowTitle(metadata.sTitle + ", w = " + QString::number(metadata.windowWidth)  + ", h = " + QString::number(metadata.windowHeight));
     setWindowTitle(metadata.sTitle);
+
+    resized = false;
+    if (metadata.windowWidth != -1 || metadata.windowHeight != -1) {
+        timer = new QTimer();
+        timer->setInterval(1);
+        connect(
+                    timer, SIGNAL(timeout()),
+                    this, SLOT(onTimer()) );
+        timer->start();
+    } else {
+        this->show();
+    }
 
 
     loading = false;
@@ -161,4 +175,45 @@ QString CWindow::getLineDelimeter() {
 
 void CWindow::setLineDelimeter(QString  pipe) {
     CMetadata::PIPE = pipe;
+}
+
+
+void CWindow::onTimer(QPrivateSignal s) {
+    if (resized == false) {
+        resized = true;
+        QRect rect = this->geometry();
+        //QPoint pos = this->pos();
+
+        int x = 0;
+        int y = 0;
+        int w = 600;
+        int h = 400;
+
+
+
+        if (metadata.windowWidth != -1 && metadata.windowWidth > 0) {
+            w = metadata.windowWidth;
+        }
+        if (metadata.windowHeight != -1 && metadata.windowHeight > 0) {
+            h = metadata.windowHeight;
+
+        }
+        x = round((QApplication::desktop()->screenGeometry().width() - w) / 2);
+        y = round((QApplication::desktop()->screenGeometry().height() - h) / 2);
+        /*QScreen *scr = new QScreen();
+        qDebug() << scr.availableSize().width();*/
+
+        rect.setX(x);
+        rect.setY(y);
+        rect.setWidth(w);
+        rect.setHeight(h);
+        this->setGeometry(rect);
+        if (metadata.fixedSize && metadata.windowWidth != -1 && metadata.windowWidth > 0) {
+            this->setMaximumWidth(w);
+        }
+        if (metadata.fixedSize && metadata.windowHeight != -1 && metadata.windowHeight > 0) {
+            this->setMaximumHeight(h);
+        }
+        this->show();
+    }
 }

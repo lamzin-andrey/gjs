@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     //TODO class for анализ ваших всяких вещей, типа какие иконки у окна показывать
     CMetadata data(path);
     CWindow w(path, data);
-    w.show();
+    //w.show();
     
     return a.exec();
 }

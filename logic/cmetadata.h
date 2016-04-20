@@ -22,6 +22,11 @@ public:
     bool noFrame = false;
     bool fullScreen = false;
 
+    /** win size */
+    int windowHeight;
+    int windowWidth;
+    bool fixedSize;
+
     static QString PIPE;
 
     //TODO главное меню окна
@@ -34,6 +39,7 @@ private:
 
     void _setTitle(QStringList aTitle);
     void _setWinButtons(QStringList aMeta);
+    int _parseNumAttr(int pos, QString s);
 
 };
 

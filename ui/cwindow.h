@@ -6,6 +6,9 @@
 #include <QHBoxLayout>
 #include "cwebview.h"
 #include <QtWebKitWidgets/QWebFrame>
+#include <QTimer>
+#include <QScreen>
+#include <QDesktopWidget>
 #include "../lib/utils.h"
 #include "../slots/cphpinterface.h"
 #include "../logic/cmetadata.h"
@@ -37,15 +40,19 @@ public:
     unsigned int counttry;
     Utils lib;
     bool writeresult;
-    QString workdir;   //folder runned app
+    QString workdir;    //folder runned app
     CPhpInterface *php; //Widget реализующий php like интерфейс для работы с файлами (возможно в будущем не только)
     CMetadata metadata;
+
+    QTimer *timer;      //переменные изменения размера окна
+    bool resized;
  private slots:
     void onLoad(bool success);
  public slots:
     QString appDir();
     QString getLineDelimeter();
     void setLineDelimeter(QString  pipe);
+    void onTimer(QPrivateSignal);
 
  signals:
     void loadComplete();
