@@ -51,8 +51,8 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     lastUrl = "";
     wv = new CWebView();
     wv->page()->settings()->setAttribute(QWebSettings::JavascriptEnabled,true);
-    wv->page()->settings()->setAttribute(QWebSettings::AutoLoadImages,   false);
-    wv->page()->settings()->setAttribute(QWebSettings::PluginsEnabled,false);
+    wv->page()->settings()->setAttribute(QWebSettings::AutoLoadImages,   true);
+    wv->page()->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
 
 
 
