@@ -165,6 +165,26 @@ void CWindow::fixSize()
 }
 //========================================================================
 //========================PUBLIC JS SLOTS=================================
+void CWindow::moveTo(int x, int y) {
+    QRect r = this->geometry();
+    int w = r.width();
+    int h = r.height();
+    r.setX(x);
+    r.setY(y);
+    r.setWidth(w);
+    r.setHeight(h);
+    this->setGeometry(r);
+}
+void CWindow::resizeTo(int x, int y) {
+    QRect r = this->geometry();
+    r.setWidth(x);
+    r.setHeight(y);
+    this->setGeometry(r);
+}
+void CWindow::quit() {
+    QApplication::quit();
+}
+
 QString CWindow::appDir() {
     return workdir;
 }

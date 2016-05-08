@@ -53,6 +53,9 @@ public:
     QString getLineDelimeter();
     void setLineDelimeter(QString  pipe);
     void onTimer(QPrivateSignal);
+    void quit();
+    void moveTo(int x, int y);
+    void resizeTo(int x, int y);
 
  signals:
     void loadComplete();
