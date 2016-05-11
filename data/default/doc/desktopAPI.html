@@ -23,7 +23,7 @@ gjs /home/user/soft/js/gjs/myFirstAp
 Qt.setLineDelimeter(String delimeter);
 String = Qt.getLineDelimeter(String);
 
-Позволяют заменить последовательность символов, использующихся для разделения строк.
+Позволяют соответствено получить и заменить последовательность символов, использующихся для разделения строк.
 
 
 Qt.quit();
@@ -35,7 +35,11 @@ Qt.moveTo(Number x, Number y);
 Qt.resizeTo(Number w, Number h);
  Изменяет размер окна приложения
 
-Позволяют заменить последовательность символов, использующихся для разделения строк.
+Qt.exec(String cmd, Function onFinish, Function onStdOut = null, Function onStdErr = null);
+
+Позволяют запустить внешнюю программу и мониторить процесс, onFinish принимает два аргумента, stdin  и stdout, вызывается по окончании работы приложения.
+onStdOut и stdOut вызываются непосредственно при выводе запущенной программы.
+
 
 
 <h5>PHP</h5>
