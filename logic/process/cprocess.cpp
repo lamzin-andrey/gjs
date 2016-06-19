@@ -54,7 +54,10 @@ void CProcess::onOutput() {
         *ba = _proc->readAllStandardOutput();
 
         QString s = QString::fromUtf8(ba->data()).replace('\n', "\\n");
+        s = s.replace('\'', "\\'");
+        s = s.replace('"', "\\\"");
         //lib.qMessageBox("CProcess", "onO - b emit onOutputSg(" + _onOutput + "('" + s + "');" + ")");
+
         if (_onOutput.length()) {
             emit(onOutputSg(_onOutput + "('" + s + "');", _resId));
         }
@@ -71,7 +74,9 @@ void CProcess::onErrorOutput() {
         }
         QByteArray *ba = new QByteArray();
         *ba = _proc->readAllStandardError();
-        QString s = QString(ba->data()).replace('\n', "\\n");;
+        QString s = QString(ba->data()).replace('\n', "\\n");
+        s = s.replace('\'', "\\'");
+        s = s.replace('"', "\\\"");
         //this->webView->page()->currentFrame()->evaluateJavaScript(jsOnErrorOutput + "('" +  s + "');");
         //lib.qMessageBox("CProcess", "onEO - b emit onOutputSg(" + _onOutput + "('" + s + "');" + ")");
         if (_onError.length()) {
