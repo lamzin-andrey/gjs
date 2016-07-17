@@ -10,3 +10,4 @@ file_get_contents|PHP.|(String path)|
 file_exists|PHP.|(String path)|
 is_dir|PHP.|(String path)|
 scandir|PHP.|(String path)|
+filesize|PHP.|(String path)|

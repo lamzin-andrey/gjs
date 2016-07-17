@@ -23,6 +23,26 @@ bool CPhpInterface::is_dir(QString path) {
     return info.isDir();
 }
 
+qint64  CPhpInterface::filesize(QString path) {
+    Utils lib;
+    if (this->is_dir(path)) {
+        QString folders = this->_scandir(path);
+        QStringList ls = folders.split(CMetadata::PIPE);
+        qint64 sz = 0;
+        for (int i = 0; i < ls.size(); i++) {
+            QString currPath = ls[i];
+            QString shortname = ls[i].replace(path + "/", "");
+            if (shortname != "." && shortname != "..") {
+                sz += this->filesize(currPath);
+            }
+        }
+        return sz;
+    }
+    QFileInfo info;
+    info.setFile(path);
+    return info.size();
+}
+
 QString CPhpInterface::_scandir(QString path) {
     QDirIterator it(path, QDirIterator::NoIteratorFlags);
     QStringList ls;
