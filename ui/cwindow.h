@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QtGui>
+#include <QFileDialog>
+#include <QUrl>
 #include <QHBoxLayout>
 #include "cwebview.h"
 #include <QtWebKitWidgets/QWebFrame>
@@ -56,6 +58,9 @@ public:
     void quit();
     void moveTo(int x, int y);
     void resizeTo(int x, int y);
+    QString openFileDialog(QString caption, QString dir, QString filter);
+    QString saveFileDialog(QString caption, QString dir, QString filter);
+    QString openDirectoryDialog(QString caption, QString dir);
 
  signals:
     void loadComplete();

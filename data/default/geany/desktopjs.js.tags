@@ -11,3 +11,10 @@ file_exists|PHP.|(String path)|
 is_dir|PHP.|(String path)|
 scandir|PHP.|(String path)|
 filesize|PHP.|(String path)|
+openFileDialog|String Qt.|(String caption, String dir, String filter)|
+String openDirectoryDialog|String  Qt.|(String caption, String dir, String filter)|
+String saveFileDialog|String  Qt.|(String caption, String dir, String filter)|
+
+
+
+

@@ -165,6 +165,17 @@ void CWindow::fixSize()
 }
 //========================================================================
 //========================PUBLIC JS SLOTS=================================
+QString CWindow::openFileDialog(QString caption, QString dir, QString filter) {
+    return QFileDialog::getOpenFileName(this, caption, dir, filter);
+}
+QString CWindow::saveFileDialog(QString caption, QString dir, QString filter) {
+    return QFileDialog::getSaveFileName(this, caption, dir, filter);
+}
+
+QString CWindow::openDirectoryDialog(QString caption, QString dir) {
+    return  QFileDialog::getExistingDirectory(this, caption, dir);
+}
+
 void CWindow::moveTo(int x, int y) {
     QRect r = this->geometry();
     int w = r.width();
