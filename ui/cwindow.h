@@ -17,7 +17,7 @@
 #include "../slots/cphpinterface.h"
 #include "../logic/cmetadata.h"
 #include "caction.h"
-
+#include "../lib/xml/cxml.h"
 
 class CMetadata;
 
@@ -49,11 +49,14 @@ public:
     QString workdir;    //folder runned app
     CPhpInterface *php; //Widget реализующий php like интерфейс для работы с файлами (возможно в будущем не только)
     CMetadata metadata;
+    CXml* cXml;
 
     QTimer *timer;      //переменные изменения размера окна
     bool resized;
 
+    //главное меню окна
     void _setMainMenu();
+    void _setMenuItems(QMenu* menu, QList<CXml*> items);
  private slots:
     void onLoad(bool success);
     void onMainMenuAction(QString title, QString action);

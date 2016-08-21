@@ -65,6 +65,7 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     this->js(js);
 
     workdir = appDir;
+    cXml = new CXml(appDir + "/index.html");
     this->_setMainMenu();
     getURL("file://" + appDir + "/index.html", false);
 
@@ -253,7 +254,32 @@ void CWindow::onTimer(QPrivateSignal s) {
  *
 */
 void CWindow::_setMainMenu() {
-    return;
+    bool hasMainMenu = false;
+    QList<CXml*> list = cXml->getElementsByTagName("html");
+    if (list.length() > 0) {
+        list = list[0]->getElementsByTagName("head");
+        if (list.length() > 0) {
+            list = list[0]->getElementsByTagName("menubar");
+            if (list.length() > 0) {
+                list = list[0]->getElementsByTagName("menu");
+                if (list.length() > 0) {
+                    hasMainMenu = true;
+                }
+            }
+        }
+    }
+    if (!hasMainMenu) {
+        return;
+    }
+    //return;
+    menubar = new QMenuBar(this);
+    this->setMenuBar(menubar);
+    for (int i = 0; i < list.length(); i++) {
+        QMenu* tempMainMenu =  menubar->addMenu(list[i]->getAttribute("title"));
+        this->_setMenuItems(tempMainMenu, list[i]->childs);
+    }
+    return; //TODO remove me and bottom
+
     menubar = new QMenuBar(this);
     this->setMenuBar(menubar);
 
@@ -273,6 +299,8 @@ void CWindow::_setMainMenu() {
         }
         if (i == 3) {
             temp.clear();
+            //tempMainMenu->addSeparator()
+            //tempMainMenu->addMenu()
         }
         for (int j = 0; j < temp.length(); j++) {
             QAction* act = tempMainMenu->addAction(temp[j]);
@@ -286,5 +314,26 @@ void CWindow::_setMainMenu() {
 }
 
 void CWindow::onMainMenuAction(QString title, QString action) {
-    lib.qMessageBox(title, action);
+    action = action.replace("(", "");
+    action = action.replace(")", "");
+    this->js(action + "()");
+}
+
+void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items)  {
+    for (int i = 0; i < items.length(); i++) {
+        if (items[i]->tagName.toUpper() == "ITEM") {
+            QAction* act = menu->addAction(items[i]->innerXML);
+            QString jsAction = items[i]->getAttribute("onselect");
+            CAction* cact = new CAction(items[i]->innerXML, jsAction );
+            connect(act, SIGNAL(triggered()), cact, SLOT(triggered()));
+            connect(cact, SIGNAL(triggeredExt(QString, QString)), this, SLOT(onMainMenuAction(QString, QString)));
+        }
+        if (items[i]->tagName.toUpper() == "SEPARATOR") {
+            menu->addSeparator();
+        }
+        if (items[i]->tagName.toUpper() == "MENU") {
+            QMenu* nextMenu = menu->addMenu(items[i]->getAttribute("title"));
+            _setMenuItems(nextMenu, items[i]->childs);
+        }
+    }
 }

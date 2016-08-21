@@ -5,6 +5,12 @@ http://habrahabr.ru/post/272389/
 1  FullScreen (@see @UbuntuwinLocker@)
 1.1 append my script with constans (FILE_APPEND = 1 for PHP.*) 
 2. Menu`
+	CXml методы все как у js
+	Принцип:
+	 Парсит текст, выкупает внешние открывающие и закрывавющие теги, все что между ними помещает в innerHTML,
+	  все найденные теги помещает в children
+	 Если parentNode пуст, в качестве имени тега ставит C_XML_2016_08_21_DOC_ROOT
+	 
 3. FileDialogs
 4. ContextMenu
 5. Tray App
