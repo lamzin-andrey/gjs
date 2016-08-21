@@ -65,6 +65,7 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     this->js(js);
 
     workdir = appDir;
+    this->_setMainMenu();
     getURL("file://" + appDir + "/index.html", false);
 
 }
@@ -247,4 +248,43 @@ void CWindow::onTimer(QPrivateSignal s) {
         }
         this->show();
     }
+}
+/**
+ *
+*/
+void CWindow::_setMainMenu() {
+    return;
+    menubar = new QMenuBar(this);
+    this->setMenuBar(menubar);
+
+    QStringList mainList, actionList1, actionList2;
+    mainList << "File" << "Edit" << "Build";
+    actionList1 << "Open" << "Save" << "SaveAs";
+    actionList2 << "Undo" << "Redo" << "CopyFromBuffer";
+
+    for (int i = 0; i < 3; i++) {
+        QMenu* tempMainMenu =  menubar->addMenu(mainList[i]);
+        QStringList temp;
+        if (i == 0) {
+            temp = actionList1;
+        }
+        if (i == 1) {
+            temp = actionList2;
+        }
+        if (i == 3) {
+            temp.clear();
+        }
+        for (int j = 0; j < temp.length(); j++) {
+            QAction* act = tempMainMenu->addAction(temp[j]);
+            QString tempJsAction = "on" + temp[j];
+            CAction* cact = new CAction(temp[j], tempJsAction);
+            connect(act, SIGNAL(triggered()), cact, SLOT(triggered()));
+            connect(cact, SIGNAL(triggeredExt(QString, QString)), this, SLOT(onMainMenuAction(QString, QString)));
+        }
+    }
+
+}
+
+void CWindow::onMainMenuAction(QString title, QString action) {
+    lib.qMessageBox(title, action);
 }

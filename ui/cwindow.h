@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QtGui>
+#include <QMenuBar>
+#include <QMenu>
 #include <QFileDialog>
 #include <QUrl>
 #include <QHBoxLayout>
@@ -14,6 +16,7 @@
 #include "../lib/utils.h"
 #include "../slots/cphpinterface.h"
 #include "../logic/cmetadata.h"
+#include "caction.h"
 
 
 class CMetadata;
@@ -36,6 +39,7 @@ public:
 
     QString html;
  private:
+    QMenuBar *menubar;
     CWebView * wv;
     bool loading;
     QString lastUrl;
@@ -48,8 +52,12 @@ public:
 
     QTimer *timer;      //переменные изменения размера окна
     bool resized;
+
+    void _setMainMenu();
  private slots:
     void onLoad(bool success);
+    void onMainMenuAction(QString title, QString action);
+
  public slots:
     QString appDir();
     QString getLineDelimeter();

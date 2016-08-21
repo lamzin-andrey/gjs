@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     logic/cmetadata.cpp \
     lib/xml/cxml.cpp \
     lib/xml/cxmltag.cpp \
-    logic/process/cprocess.cpp
+    logic/process/cprocess.cpp \
+    ui/caction.cpp
 
 HEADERS  += \
     lib/utilsstd.h \
@@ -34,6 +35,7 @@ HEADERS  += \
     logic/cmetadata.h \
     lib/xml/cxml.h \
     lib/xml/cxmltag.h \
-    logic/process/cprocess.h
+    logic/process/cprocess.h \
+    ui/caction.h
 
 FORMS    +=
