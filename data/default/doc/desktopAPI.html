@@ -72,6 +72,12 @@ Number PHP.filesize(String path);
 Array PHP.scandir(String path);
 
 
+<h5>OS</h5>
+Os.ShellExecute(String operation, String pathToFile, String arguments, String directory, Boolean showCmdLine);
+Аналог winAPI функции 
+ в OS Linux значение operation не играет никакой роли, так как функция может использоваться только для запуска исполняемых файлов
+ в OS Windows @see значения аргументов аналогичной winAPI функции
+
 </body>
 
 </html>

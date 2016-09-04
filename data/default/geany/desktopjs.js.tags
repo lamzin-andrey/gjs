@@ -14,7 +14,7 @@ filesize|PHP.|(String path)|
 openFileDialog|String Qt.|(String caption, String dir, String filter)|
 String openDirectoryDialog|String  Qt.|(String caption, String dir, String filter)|
 String saveFileDialog|String  Qt.|(String caption, String dir, String filter)|
-
+Number ShellExecute OS.|(String operation, String pathToFile, String arguments, String directory, Boolean showCmdLine);
 
 
 

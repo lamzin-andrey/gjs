@@ -16,7 +16,7 @@ class CProcess : public QWidget
 public:
     explicit CProcess(unsigned int resId, QString onOutput, QString onError, QString onFinish, QWidget *parent = 0);
     
-    void exec(QString command);
+    void exec(QString command, QString workDir = "");
 
 private:
     Utils lib;

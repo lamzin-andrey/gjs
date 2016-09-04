@@ -8,7 +8,7 @@ CProcess::CProcess(unsigned int resId, QString onOutput, QString onError, QStrin
     this->_procIsInit = false;
 }
 
-void CProcess::exec(QString command) {
+void CProcess::exec(QString command, QString workDir) {
     QString execPath = _parseCommand(command);
     if (execPath.trimmed() == "") {
         //this->webView->page()->currentFrame()->evaluateJavaScript("alert('OnEmptyARg')");
@@ -20,6 +20,10 @@ void CProcess::exec(QString command) {
     } else {
         _proc = new QProcess;
         _proc->setReadChannel(QProcess::StandardOutput);
+        if (workDir.length()) {
+            _proc->setWorkingDirectory(workDir);
+        }
+
         //proc->setReadChannel(QProcess::StandardError);
         _proc->setEnvironment(QProcess::systemEnvironment());
         connect( _proc, SIGNAL(readyReadStandardOutput()), this, SLOT(onOutput()) );

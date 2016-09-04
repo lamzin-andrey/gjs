@@ -15,6 +15,7 @@
 #include <QDesktopWidget>
 #include "../lib/utils.h"
 #include "../slots/cphpinterface.h"
+#include "../slots/os.h"
 #include "../logic/cmetadata.h"
 #include "caction.h"
 #include "../lib/xml/cxml.h"
@@ -48,6 +49,7 @@ public:
     bool writeresult;
     QString workdir;    //folder runned app
     CPhpInterface *php; //Widget реализующий php like интерфейс для работы с файлами (возможно в будущем не только)
+    OS *os; //Widget реализующий специфичные для OS API функции, такие как ShellExecute
     CMetadata metadata;
     CXml* cXml;
 

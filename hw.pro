@@ -23,7 +23,9 @@ SOURCES += main.cpp\
     lib/xml/cxml.cpp \
     logic/process/cprocess.cpp \
     ui/caction.cpp \
-    lib/xml/cxmlattribbutes.cpp
+    lib/xml/cxmlattribbutes.cpp \
+    slots/oslinux.cpp \
+    slots/os.cpp
 
 HEADERS  += \
     lib/utilsstd.h \
@@ -36,6 +38,8 @@ HEADERS  += \
     lib/xml/cxml.h \
     logic/process/cprocess.h \
     ui/caction.h \
-    lib/xml/cxmlattribbutes.h
+    lib/xml/cxmlattribbutes.h \
+    slots/oslinux.h \
+    slots/os.h
 
 FORMS    +=

@@ -59,7 +59,10 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     this->setCentralWidget(wv);
     this->addObject(this, "Qt");
     php = new CPhpInterface(this, wv);
+    os  = new OS(this, wv);
+
     this->addObject(php, "PHP");
+    this->addObject(os, "OS");
 
     QString js = lib.readtextfile(QApplication::applicationDirPath() + "/default/tools/js/j.js");
     this->js(js);
