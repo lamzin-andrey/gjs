@@ -26,7 +26,7 @@ class OSLinux : public QObject
     Q_OBJECT
 public:
     explicit OSLinux(QObject *parent = 0, CWebView *webView = 0);
-    
+    QString getLocalFileStartUrl();
 signals:
     
 public slots:

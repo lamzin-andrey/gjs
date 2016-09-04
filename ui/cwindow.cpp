@@ -70,7 +70,7 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     workdir = appDir;
     cXml = new CXml(appDir + "/index.html");
     this->_setMainMenu();
-    getURL("file://" + appDir + "/index.html", false);
+    getURL(os->getLocalFileStartUrl() + "/" + appDir + "/index.html", false);
 
 }
 

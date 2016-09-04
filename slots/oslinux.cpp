@@ -24,3 +24,9 @@ void OSLinux::onCProcessFinish(QString evaluateJavaScript, unsigned int resId) {
     //lib.qMessageBox("CPhp", "onCProcessFinish(" + evaluateJavaScript + ")");
     this->webView->page()->currentFrame()->evaluateJavaScript(evaluateJavaScript);
 }
+
+
+QString OSLinux:: getLocalFileStartUrl() {
+    return "file://localhost";
+}
+
