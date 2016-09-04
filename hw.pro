@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     ui/caction.cpp \
     lib/xml/cxmlattribbutes.cpp \
     slots/oslinux.cpp \
-    slots/os.cpp
+    slots/os.cpp \
+    slots/oswindows.cpp
 
 HEADERS  += \
     lib/utilsstd.h \
@@ -40,6 +41,7 @@ HEADERS  += \
     ui/caction.h \
     lib/xml/cxmlattribbutes.h \
     slots/oslinux.h \
-    slots/os.h
+    slots/os.h \
+    slots/oswindows.h
 
 FORMS    +=
