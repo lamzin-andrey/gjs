@@ -18,6 +18,7 @@ signals:
     
 public slots:
   int ShellExecuteQ(QString operation, QString path, QString params, QString directory, bool showCmdLine = false);
+  QString getTempFolderPath();
 private:
   CWebView *webView;
 };

@@ -24,3 +24,11 @@ QString OSWindows:: getLocalFileStartUrl() {
     return "file://localhost";
 }
 
+QString OSWindows:: getTempFolderPath() {
+    int sz = 255;
+    char* buf[sz];
+    GetEnvironmentVariableA((LPSTR)"TEMP", (LPSTR)buf, sz);
+    string s((char*)buf);
+    QString qs = QString::fromStdString(s);
+    return qs;
+}
