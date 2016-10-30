@@ -7,6 +7,7 @@ OSWindows::OSWindows(QObject *parent, CWebView *webView) :
 }
 
 
+
 int OSWindows::ShellExecuteQ(QString operation, QString path, QString params, QString directory, bool showCmdLine) {
     string sOperation = operation.toStdString();
     string sPath = path.toStdString();
@@ -14,10 +15,10 @@ int OSWindows::ShellExecuteQ(QString operation, QString path, QString params, QS
     string sDirectory = directory.toStdString();
     int show = showCmdLine ? 1 : 0;
     Utils lib;
-    lib.qMessageBox("", "run");
-    ShellExecute(0, (LPCWSTR)sOperation.c_str(), (LPCWSTR)sPath.c_str(), (LPCWSTR)sParams.c_str(), (LPCWSTR)sDirectory.c_str(), show);
+    ShellExecuteA(0, (LPCSTR)sOperation.c_str(), (LPCSTR)sPath.c_str(), (LPCSTR)sParams.c_str(), (LPCSTR)sDirectory.c_str(), show);
     return 0;
 }
+
 
 
 QString OSWindows:: getLocalFileStartUrl() {

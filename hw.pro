@@ -25,8 +25,7 @@ SOURCES += main.cpp\
     ui/caction.cpp \
     lib/xml/cxmlattribbutes.cpp \
     slots/oslinux.cpp \
-    slots/os.cpp \
-    slots/oswindows.cpp
+    slots/os.cpp
 
 HEADERS  += \
     lib/utilsstd.h \
@@ -41,7 +40,8 @@ HEADERS  += \
     ui/caction.h \
     lib/xml/cxmlattribbutes.h \
     slots/oslinux.h \
-    slots/os.h \
-    slots/oswindows.h
+    slots/os.h
 
-FORMS    +=
+win32 {
+        RC_FILE += my.rc
+}
