@@ -9,6 +9,7 @@
 #include <QUrl>
 #include <QHBoxLayout>
 #include "cwebview.h"
+#include "cwebpage.h"
 #include <QtWebKitWidgets/QWebFrame>
 #include <QTimer>
 #include <QScreen>

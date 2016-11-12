@@ -54,7 +54,7 @@ QString CPhpInterface::_scandir(QString path) {
 
 
 QString CPhpInterface::file_get_contents(QString path) {
-    return lib.readtextfile(path);
+    return lib.readtextfile(path, true);
 }
 void CPhpInterface::exec(QString command, QString onFinish, QString onOutput, QString onError) {
     this->execCProcess(command, onFinish, onOutput, onError);
