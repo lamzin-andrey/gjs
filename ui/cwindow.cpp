@@ -55,6 +55,9 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     wv->page()->settings()->setAttribute(QWebSettings::JavascriptEnabled,true);
     wv->page()->settings()->setAttribute(QWebSettings::AutoLoadImages,   true);
     wv->page()->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
+    wv->page()->settings()->setAttribute(QWebSettings::JavascriptCanCloseWindows, true);
+    wv->page()->settings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
+    wv->page()->settings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
 
 
 
