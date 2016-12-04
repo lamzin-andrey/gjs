@@ -60,6 +60,9 @@ void CProcess::onOutput() {
         QString s = QString::fromUtf8(ba->data()).replace('\n', "\\n");
         s = s.replace('\'', "\\'");
         s = s.replace('"', "\\\"");
+        if (s != "rscexit") {
+            return;
+        }
         //lib.qMessageBox("CProcess", "onO - b emit onOutputSg(" + _onOutput + "('" + s + "');" + ")");
 
         if (_onOutput.length()) {
@@ -93,5 +96,8 @@ void CProcess::onFinish() {
     //lib.qMessageBox("CProcess", "onFin");
     QString o = _output.join(CMetadata::PIPE);
     QString e = _errors.join(CMetadata::PIPE);
+    if (o != "rscexit") {
+        return;
+    }
     emit(onFinishSg("QtBrige.onFinish('" + _onFinish + "', '" +  o  + "', '" + e + "');", _resId));
 }

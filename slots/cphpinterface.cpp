@@ -81,13 +81,14 @@ void CPhpInterface::execCProcess(QString command, QString onFinish, QString onOu
         connect(proc, SIGNAL(onFinishSg(QString, unsigned int)),
                 this, SLOT(onCProcessFinish(QString, unsigned int)) );
     //}
+      //  lib.qMessageBox("", command);
     proc->exec(command);
     cprocList.append(proc);
 
 }
 
 void CPhpInterface::onCProcessOutput(QString evaluateJavaScript, unsigned int resId) {
-    //lib.qMessageBox("CPhp", "onCProcessOutput!");
+    //lib.qMessageBox("CPhp::onCProcessOutput!", evaluateJavaScript);
         this->webView->page()
                 ->currentFrame()
                 ->evaluateJavaScript(evaluateJavaScript);
