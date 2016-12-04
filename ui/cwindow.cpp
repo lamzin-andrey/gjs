@@ -346,3 +346,38 @@ void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items)  {
         }
     }
 }
+
+QString CWindow::readFileAsBinaryString(QString filename) {
+    QString r = "";
+    QStringList list;
+    if (QFile::exists(filename)) {
+        QFileInfo info;
+        info.setFile(filename);
+        unsigned long size = (unsigned long)info.size();
+        char cFilename[filename.length()];
+        for (int i = 0; i < filename.length(); i++) {
+            cFilename[i] = filename.at(i).toLatin1();
+        }
+        BinFile file(cFilename);
+        for (long i = 0; i < size; i++) {
+            short byte;
+            file.readByte(i, byte);
+            list << QString::number(byte);
+        }
+        r = list.join(',');
+        return r;
+    }
+    return r;
+}
+
+
+int CWindow::writefile(QString fileName, QString data)
+{
+    QFile file(fileName);
+    file.open(QIODevice::WriteOnly);
+    QByteArray by = data.toLatin1();
+    file.write(by);
+    unsigned long sz = file.size();
+    file.close();
+    return sz;
+}

@@ -5,6 +5,7 @@
 #include <QtGui>
 #include <QMenuBar>
 #include <QMenu>
+#include <QFileInfo>
 #include <QFileDialog>
 #include <QUrl>
 #include <QHBoxLayout>
@@ -20,6 +21,7 @@
 #include "../logic/cmetadata.h"
 #include "caction.h"
 #include "../lib/xml/cxml.h"
+#include "../lib/binfile.h"
 
 class CMetadata;
 
@@ -75,6 +77,9 @@ public:
     QString openFileDialog(QString caption, QString dir, QString filter);
     QString saveFileDialog(QString caption, QString dir, QString filter);
     QString openDirectoryDialog(QString caption, QString dir);
+    QString readFileAsBinaryString(QString filename);
+
+    int writefile(QString fileName, QString data);
 
  signals:
     void loadComplete();

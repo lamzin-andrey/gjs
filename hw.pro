@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     lib/xml/cxmlattribbutes.cpp \
     slots/oslinux.cpp \
     slots/os.cpp \
-    ui/cwebpage.cpp
+    ui/cwebpage.cpp \
+    lib/binfile.cpp
 
 HEADERS  += \
     lib/utilsstd.h \
@@ -42,7 +43,8 @@ HEADERS  += \
     lib/xml/cxmlattribbutes.h \
     slots/oslinux.h \
     slots/os.h \
-    ui/cwebpage.h
+    ui/cwebpage.h \
+    lib/binfile.h
 
 win32 {
         RC_FILE += my.rc
