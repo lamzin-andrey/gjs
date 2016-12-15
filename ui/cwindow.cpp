@@ -353,6 +353,17 @@ QString CWindow::readFileAsBinaryString(QString filename) {
     if (QFile::exists(filename)) {
         QFileInfo info;
         info.setFile(filename);
+
+        /*QFile file(filename);
+        file.open(QIODevice::ReadOnly);
+        QByteArray ba = file.readAll();
+        file.close();
+        QStringList list;
+        for (unsigned int i = 0; i < ba.length(); i++) {
+            list << QString::number(ba.at(i));
+        }
+        r = list.join(',');*/
+
         unsigned long size = (unsigned long)info.size();
         char cFilename[filename.length()];
         for (int i = 0; i < filename.length(); i++) {
@@ -373,11 +384,125 @@ QString CWindow::readFileAsBinaryString(QString filename) {
 
 int CWindow::writefile(QString fileName, QString data)
 {
-    QFile file(fileName);
-    file.open(QIODevice::WriteOnly);
-    QByteArray by = data.toLatin1();
-    file.write(by);
-    unsigned long sz = file.size();
-    file.close();
+    if (data.indexOf("/QDJS_BINARY") == -1 && data.indexOf("/QDJS_BIN_FILE") == -1) {
+        QFile file(fileName);
+        file.open(QIODevice::WriteOnly);
+        QByteArray by = data.toLatin1();
+        file.write(by);
+        unsigned long sz = file.size();
+        file.close();
+        return sz;
+    }
+
+    //тут разбить строки по тегу QDJS_BINARY /QDJS_BINARY
+    QStringList list = data.split("/QDJS_BINARY");
+    QStringList list2;
+    for (int i = 0; i < list.length(); i++) {
+        QString buf = list[i];
+        if (buf.indexOf("QDJS_BINARY") != -1) {
+            QStringList aBuf = buf.split("QDJS_BINARY");
+            QStringList aBuf2 = this->_splitByBinFileTag(aBuf[0]);
+            for (int j = 0; j < aBuf2.length(); j++) {
+                list2 << aBuf2[j];
+            }
+            list2 << ("QDJS_BINARY" + aBuf[1]);
+        } else {
+            QStringList aBuf2 = this->_splitByBinFileTag(buf);
+            for (int j = 0; j < aBuf2.length(); j++) {
+                list2 << aBuf2[j];
+            }
+        }
+    }
+
+    char cFilename[fileName.length()];
+    for (int i = 0; i < fileName.length(); i++) {
+        cFilename[i] = fileName.at(i).toLatin1();
+    }
+    unsigned long sz = 0;
+    Utils lib;
+    for (int i = 0; i < list2.length(); i++) {
+        QString buf = list2[i];
+        if (buf.indexOf("QDJS_BINARY") != -1) {
+            buf = buf.replace("QDJS_BINARY", "");
+            QStringList bytes = buf.split(",");
+
+            QFileInfo info;
+            info.setFile(fileName);
+            unsigned long size = (unsigned long)info.size();
+
+            //BinFile bFile(cFilename);
+            QByteArray ba;
+
+            for (long j = 0; j < bytes.length(); j++) {
+                bool ok;
+                short byte = bytes[j].toShort(&ok);
+                //char ch = (char)byte;
+                ba.append(byte);
+                /*bFile.writeByte(size - 1, byte);
+                size++;*/
+            }
+
+            QFile file(fileName);
+            if (i == 0) {
+                file.open(QIODevice::WriteOnly);
+            } else {
+                file.open(QIODevice::Append);
+            }
+            file.write(ba);
+            sz = file.size();
+            file.close();
+
+        } else if (buf.indexOf("QDJS_BIN_FILE") != -1) {
+            buf = buf.replace("QDJS_BIN_FILE", "");
+            if (QFile::exists(buf)) {
+                //lib.qMessageBox("Will read", buf);
+                QFile rFile(buf);
+                rFile.open(QIODevice::ReadOnly);
+                QByteArray ba = rFile.readAll();
+                rFile.close();
+
+                QFile file(fileName);
+                if (i == 0) {
+                    file.open(QIODevice::WriteOnly);
+                } else {
+                    file.open(QIODevice::Append);
+                }
+                file.write(ba);
+                sz = file.size();
+                file.close();
+            }
+        }
+        else {
+            QFile file(fileName);
+            if (i == 0) {
+                file.open(QIODevice::WriteOnly);
+            } else {
+                file.open(QIODevice::Append);
+            }
+            QByteArray by = buf.toLatin1();
+            file.write(by);
+            sz = file.size();
+            file.close();
+        }
+    }
     return sz;
 }
+
+QStringList CWindow :: _splitByBinFileTag(QString data) {
+    //тут разбить строки по тегу QDJS_BIN_FILE /QDJS_BIN_FILE
+    QString tag = "QDJS_BIN_FILE";
+    QStringList list = data.split("/" + tag);
+    QStringList list2;
+    for (int i = 0; i < list.length(); i++) {
+        QString buf = list[i];
+        if (buf.indexOf(tag) != -1) {
+            QStringList aBuf = buf.split(tag);
+            list2 << aBuf[0];
+            list2 << (tag + aBuf[1]);
+        } else {
+            list2 << buf;
+        }
+    }
+    return list2;
+}
+

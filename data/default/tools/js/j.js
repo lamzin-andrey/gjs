@@ -22,5 +22,9 @@ PHP.scandir = function(path) {
 	}
 	return b;
 }
+PHP.getimagesize = function(path) {
+	var a = PHP._getimagesize(path).split(',');
+	return a;
+}
 
 window.FILE_APPEND = 1;

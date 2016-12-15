@@ -62,6 +62,7 @@ public:
     //главное меню окна
     void _setMainMenu();
     void _setMenuItems(QMenu* menu, QList<CXml*> items);
+    QStringList _splitByBinFileTag(QString data);
  private slots:
     void onLoad(bool success);
     void onMainMenuAction(QString title, QString action);

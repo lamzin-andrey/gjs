@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <QFile>
 #include <QDirIterator>
-#include <QFile>
+#include <QImage>
 #include <QFileInfo>
 #include <QRegExp>
 #include <QList>
@@ -56,6 +56,9 @@ public slots:
 
     //file system
     QString _scandir(QString path);
+
+    //images
+    QString _getimagesize(QString path);
 };
 
 #endif // CPHPINTERFACE_H

@@ -1,3 +1,23 @@
+По mrcs добавлены костыли для работы с бинарными файлами.
+
+Qt.writefile
+QDJS_BIN_FILE - вставляет бинарный файл, путь к которому вставлен между тегами 
+
+example
+QDJS_BIN_FILEC:\div\der/fobt.z/QDJS_BIN_FILE
+end example
+ как есть 
+ Вряд-ли где-то пригодится кроме pdf
+ 
+ 
+QDJS_BINARY
+
+между этими тегами можно помещать коды символов
+QDJS_BINARY260,175,100/QDJS_BINARY
+Вряд-ли где-то пригодится кроме pdf, но ммало ли
+
+
+
 Вдохновили:
 http://habrahabr.ru/post/272389/
 

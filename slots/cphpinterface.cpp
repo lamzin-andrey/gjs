@@ -117,3 +117,11 @@ void CPhpInterface::onCProcessFinish(QString evaluateJavaScript, unsigned int re
     this->webView->page()->currentFrame()->evaluateJavaScript(evaluateJavaScript);
 }
 
+QString CPhpInterface::_getimagesize(QString path) {
+    if (!this->file_exists(path)) {
+        return "";
+    }
+    QImage * image = new QImage(path);
+    QString r = QString::number( image->width() ) + "," + QString::number( image->height() );
+    return r;
+}
