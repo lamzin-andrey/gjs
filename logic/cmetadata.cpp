@@ -2,8 +2,9 @@
 
 QString CMetadata::PIPE = "_;__PIPE__;_";
 
-CMetadata::CMetadata(QString file)
+CMetadata::CMetadata(QString file, int argc, char** argv)
 {
+    this->_initArgv(argc, argv);
     file = file + "/index.html";
     QString s = lib.readtextfile(file, true);
     QStringList arr = s.split('\n');
@@ -152,4 +153,16 @@ int CMetadata::_parseNumAttr(int pos, QString s) {
         }
     }
     return -1;
+}
+
+void CMetadata::_initArgv(int argc, char** argv) {
+    if (argc > 2) {
+        for (int i = 2; i < argc; i++) {
+            this->args.push_back(QString(argv[i]));
+        }
+    }
+}
+
+QStringList CMetadata::getArgs() {
+    return this->args;
 }

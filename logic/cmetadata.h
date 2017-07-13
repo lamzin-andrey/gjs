@@ -9,7 +9,7 @@
 class CMetadata
 {
 public:
-    CMetadata(QString file = "");
+    CMetadata(QString file = "", int argc = 0, char** argv = 0);
     QString sTitle;
     /** window buttons */
     bool min = true;
@@ -29,6 +29,8 @@ public:
 
     static QString PIPE;
 
+    QStringList getArgs();
+
     //TODO главное меню окна
 
 private:
@@ -36,10 +38,12 @@ private:
     QString _sMenu;
     QString _getHead();
     Utils lib;
+    QStringList args;
 
     void _setTitle(QStringList aTitle);
     void _setWinButtons(QStringList aMeta);
     int _parseNumAttr(int pos, QString s);
+    void _initArgv(int argc, char** argv);
 
 };
 

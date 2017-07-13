@@ -74,6 +74,7 @@ public:
     QString openFileDialog(QString caption, QString dir, QString filter);
     QString saveFileDialog(QString caption, QString dir, QString filter);
     QString openDirectoryDialog(QString caption, QString dir);
+    QStringList getArgs();
 
  signals:
     void loadComplete();

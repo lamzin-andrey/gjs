@@ -340,3 +340,7 @@ void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items)  {
         }
     }
 }
+
+QStringList CWindow::getArgs() {
+    return this->metadata.getArgs();
+}
