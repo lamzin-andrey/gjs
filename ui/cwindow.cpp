@@ -28,6 +28,8 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     }
     if (metadata.fullScreen) {
         //TODO посмотреть, как делал в локере flags = flags | Qt::Window;
+        //flags = flags | QWindowState::WindowFullScreen;
+        QTimer::singleShot(1000, this, SLOT(showFullScreen()));
     }
     this->setWindowFlags(flags);
     lib.parentMBoxWidget = this;
