@@ -71,10 +71,14 @@ public:
     void quit();
     void moveTo(int x, int y);
     void resizeTo(int x, int y);
+    void maximize();
+    void minimize();
     QString openFileDialog(QString caption, QString dir, QString filter);
     QString saveFileDialog(QString caption, QString dir, QString filter);
     QString openDirectoryDialog(QString caption, QString dir);
     QStringList getArgs();
+    void hideMainMenu();
+    void showMainMenu();
 
  signals:
     void loadComplete();

@@ -225,8 +225,7 @@ void CWindow::onTimer(QPrivateSignal s) {
         int x = 0;
         int y = 0;
         int w = 600;
-        int h = 400;
-
+        int h = 400;;
 
 
         if (metadata.windowWidth != -1 && metadata.windowWidth > 0) {
@@ -345,4 +344,41 @@ void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items)  {
 
 QStringList CWindow::getArgs() {
     return this->metadata.getArgs();
+}
+
+void CWindow::hideMainMenu() {
+    if(this->menubar) {
+        menubar->hide();
+    }
+}
+
+void CWindow::showMainMenu() {
+    if(this->menubar) {
+        menubar->show();
+    }
+}
+void CWindow::maximize() {
+
+    QRect rect = this->geometry();
+    int x = 0;
+    int y = 0;
+    int w = 600;
+    int h = 400;
+
+
+    w = QApplication::desktop()->screenGeometry().width();
+    h = QApplication::desktop()->screenGeometry().height();
+
+    rect.setX(x);
+    rect.setY(y);
+    rect.setWidth(w);
+    rect.setHeight(h);
+    this->setGeometry(rect);
+    this->setWindowState(Qt::WindowMaximized);
+    this->showMaximized();
+
+}
+void CWindow::minimize() {
+    this->setWindowState(Qt::WindowMinimized);
+    this->showMinimized();
 }
