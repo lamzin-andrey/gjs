@@ -23,6 +23,8 @@
 #include "../lib/xml/cxml.h"
 #include "../lib/binfile.h"
 
+#include "../logic/dssparser/DssParser.h"
+
 class CMetadata;
 
 class CWindow : public QMainWindow
@@ -79,6 +81,7 @@ public:
     QString saveFileDialog(QString caption, QString dir, QString filter);
     QString openDirectoryDialog(QString caption, QString dir);
     QString readFileAsBinaryString(QString filename);
+    QString getDssFileData(QString filename);
 
     int writefile(QString fileName, QString data);
 

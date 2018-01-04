@@ -348,27 +348,37 @@ void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items)  {
 }
 
 QString CWindow::readFileAsBinaryString(QString filename) {
+    //lib.qMessageBox("readFileAsBinarySt", filename);
     QString r = "";
     QStringList list;
     if (QFile::exists(filename)) {
         QFileInfo info;
         info.setFile(filename);
 
-        /*QFile file(filename);
-        file.open(QIODevice::ReadOnly);
-        QByteArray ba = file.readAll();
-        file.close();
-        QStringList list;
-        for (unsigned int i = 0; i < ba.length(); i++) {
-            list << QString::number(ba.at(i));
+        int sz = 255;
+        char* buf[sz];
+        for (int i = 0; i < sz; i++) {
+            buf[i] = 0;
         }
-        r = list.join(',');*/
+        GetEnvironmentVariableA((LPSTR)"TEMP", (LPSTR)buf, sz);
+        string s((char*)buf);
+        QString tempFolder = QString::fromStdString(s);
+
+        QString tempFile = tempFolder + "\\temp.bin";
+        QFile::remove(tempFile);
+        QFile::copy(filename, tempFile);
+        if (!QFile::exists(tempFile)) {
+            lib.qMessageBox("Error", "Unable print a file", "error");
+            return "";
+        }
+        filename = tempFile;
 
         unsigned long size = (unsigned long)info.size();
         char cFilename[filename.length()];
         for (int i = 0; i < filename.length(); i++) {
             cFilename[i] = filename.at(i).toLatin1();
         }
+        cFilename[filename.length()] = 0;
         BinFile file(cFilename);
         for (long i = 0; i < size; i++) {
             short byte;
@@ -455,7 +465,6 @@ int CWindow::writefile(QString fileName, QString data)
         } else if (buf.indexOf("QDJS_BIN_FILE") != -1) {
             buf = buf.replace("QDJS_BIN_FILE", "");
             if (QFile::exists(buf)) {
-                //lib.qMessageBox("Will read", buf);
                 QFile rFile(buf);
                 rFile.open(QIODevice::ReadOnly);
                 QByteArray ba = rFile.readAll();
@@ -488,7 +497,7 @@ int CWindow::writefile(QString fileName, QString data)
     return sz;
 }
 
-QStringList CWindow :: _splitByBinFileTag(QString data) {
+QStringList CWindow::_splitByBinFileTag(QString data) {
     //тут разбить строки по тегу QDJS_BIN_FILE /QDJS_BIN_FILE
     QString tag = "QDJS_BIN_FILE";
     QStringList list = data.split("/" + tag);
@@ -506,3 +515,31 @@ QStringList CWindow :: _splitByBinFileTag(QString data) {
     return list2;
 }
 
+QString CWindow::getDssFileData(QString filename) {
+    if (QFile::exists(filename)) {
+
+        int sz = 255;
+        char* buf[sz];
+        for (int i = 0; i < sz; i++) {
+            buf[i] = 0;
+        }
+        GetEnvironmentVariableA((LPSTR)"TEMP", (LPSTR)buf, sz);
+        string s((char*)buf);
+        QString tempFolder = QString::fromStdString(s);
+
+        QString tempFile = tempFolder + "\\temp.dss";
+        QFile::remove(tempFile);
+        QFile::copy(filename, tempFile);
+        if (!QFile::exists(tempFile)) {
+            lib.qMessageBox("Error", "Unable print a file", "error");
+            return "";
+        }
+        filename = tempFile;
+
+        DssParser* dp = new DssParser();
+
+        dp->parseData(filename.toStdString());
+        return dp->sResult.replace(QRegExp(",$"), "");
+    }
+    return "notfound";
+}

@@ -27,7 +27,10 @@ SOURCES += main.cpp\
     slots/oslinux.cpp \
     slots/os.cpp \
     ui/cwebpage.cpp \
-    lib/binfile.cpp
+    lib/binfile.cpp \
+    logic/dssparser/php.cpp \
+    logic/dssparser/DssParser.cpp \
+    logic/dssparser/DssLine.cpp
 
 HEADERS  += \
     lib/utilsstd.h \
@@ -44,7 +47,10 @@ HEADERS  += \
     slots/oslinux.h \
     slots/os.h \
     ui/cwebpage.h \
-    lib/binfile.h
+    lib/binfile.h \
+    logic/dssparser/php.h \
+    logic/dssparser/DssParser.h \
+    logic/dssparser/DssLine.h
 
 win32 {
         RC_FILE += my.rc
