@@ -79,6 +79,7 @@ public:
     QStringList getArgs();
     void hideMainMenu();
     void showMainMenu();
+    void setTitle(QString s);
 
  signals:
     void loadComplete();

@@ -382,3 +382,7 @@ void CWindow::minimize() {
     this->setWindowState(Qt::WindowMinimized);
     this->showMinimized();
 }
+
+void CWindow::setTitle(QString s) {
+    this->setWindowTitle(s);
+}
