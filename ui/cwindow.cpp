@@ -278,8 +278,10 @@ void CWindow::_setMainMenu() {
     //return;
     menubar = new QMenuBar(this);
     this->setMenuBar(menubar);
+    this->_initLocale();
     for (int i = 0; i < list.length(); i++) {
-        QMenu* tempMainMenu =  menubar->addMenu(list[i]->getAttribute("title"));
+        QString menuTitle = this->_transliteApp(list[i]->getAttribute("title"));
+        QMenu* tempMainMenu =  menubar->addMenu(menuTitle);
         this->_setMenuItems(tempMainMenu, list[i]->childs);
     }
     return; //TODO remove me and bottom
@@ -326,7 +328,7 @@ void CWindow::onMainMenuAction(QString title, QString action) {
 void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items)  {
     for (int i = 0; i < items.length(); i++) {
         if (items[i]->tagName.toUpper() == "ITEM") {
-            QAction* act = menu->addAction(items[i]->innerXML);
+            QAction* act = menu->addAction(this->_transliteApp( items[i]->innerXML));
             QString jsAction = items[i]->getAttribute("onselect");
             CAction* cact = new CAction(items[i]->innerXML, jsAction );
             connect(act, SIGNAL(triggered()), cact, SLOT(triggered()));
@@ -336,7 +338,7 @@ void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items)  {
             menu->addSeparator();
         }
         if (items[i]->tagName.toUpper() == "MENU") {
-            QMenu* nextMenu = menu->addMenu(items[i]->getAttribute("title"));
+            QMenu* nextMenu = menu->addMenu(this->_transliteApp(items[i]->getAttribute("title")));
             _setMenuItems(nextMenu, items[i]->childs);
         }
     }
@@ -385,4 +387,27 @@ void CWindow::minimize() {
 
 void CWindow::setTitle(QString s) {
     this->setWindowTitle(s);
+}
+void CWindow::_initLocale() {
+    QList<CXml*> list = cXml->getElementsByTagName("html");
+    if (list.length() > 0) {
+        QString local = list[0]->getAttribute("lang");
+        if (local.length()) {
+            Utils lib;
+            QString s = lib.readtextfile(workdir + "/js/" + local + ".json", true);
+            if (s.length()) {
+                _localeJSON = new CJSON(s);
+                return;
+            }
+        }
+    }
+    _localeJSON = new CJSON("");//TODO
+}
+
+QString CWindow::_transliteApp(QString key) {
+    QString v =_localeJSON->get(key);
+    if (!v.length()) {
+        v = key;
+    }
+    return v;
 }

@@ -24,3 +24,24 @@ PHP.scandir = function(path) {
 }
 
 window.FILE_APPEND = 1;
+
+/** @class localize */
+window.addEventListener('load', __jqtCreateLocalizator, false);
+function __jqtCreateLocalizator()
+{
+	var locale = document.getElementsByTagName('html')[0].getAttribute('lang'),
+		filePath = Qt.appDir() + '/js/ru.json', loc;
+	if (PHP.file_exists(filePath)) {
+		try {
+			loc = JSON.parse( PHP.file_get_contents(filePath) );
+			//TODO здесь будет локализация
+		} catch(e) {;}
+		if (!loc) {
+			alert('Unable parse JSON data');
+			return;
+		}
+		//Локализуем все value в input[type=button] и весь label.innerHTML
+	} else {
+		alert(filePath);
+	}
+}

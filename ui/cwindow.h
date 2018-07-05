@@ -19,6 +19,8 @@
 #include "../logic/cmetadata.h"
 #include "caction.h"
 #include "../lib/xml/cxml.h"
+#include "../lib/json/cjson.h"
+
 
 class CMetadata;
 
@@ -59,6 +61,9 @@ public:
     //главное меню окна
     void _setMainMenu();
     void _setMenuItems(QMenu* menu, QList<CXml*> items);
+    QString _transliteApp(QString key);
+    CJSON* _localeJSON;
+    void _initLocale();
  private slots:
     void onLoad(bool success);
     void onMainMenuAction(QString title, QString action);
