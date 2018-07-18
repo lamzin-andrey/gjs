@@ -411,3 +411,9 @@ QString CWindow::_transliteApp(QString key) {
     }
     return v;
 }
+int CWindow::getLastKeyCode(){
+    return this->wv->lastKeyCode;
+}
+QString CWindow::getLastKeyChar() {
+    return this->wv->lastKeyText;
+}

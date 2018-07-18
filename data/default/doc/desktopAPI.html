@@ -66,9 +66,16 @@ String Qt.openFileDialog(String caption, String dir, String filter);
 String Qt.saveFileDialog(String caption, String dir, String filter);
 Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
 
-String openDirectoryDialog(String caption, String dir);
+String Qt.openDirectoryDialog(String caption, String dir);
 Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
 
+String Qt.getLastKeyCode();
+Возвращает код последней нажатой клавиши. Хак WebView в qt5.2.1 для linux amd64, 
+	в котором невозможно определить код нажатой клавиши при русскоязычной раскладке.
+
+String Qt.getLastKeyChar();
+Возвращает символ последней нажатой клавиши. Хак WebView в qt5.2.1 для linux amd64, 
+	в котором невозможно определить код нажатой клавиши при русскоязычной раскладке.
 
 <h5>PHP</h5>
 <h6>Файлы</h6>

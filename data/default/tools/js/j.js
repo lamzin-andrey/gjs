@@ -1,3 +1,4 @@
+//location this file relative djs.exe: "default/tools/js/j.js"
 window.QtBrige = {
 	/**
 	 * {String} callback
@@ -37,11 +38,11 @@ function __jqtCreateLocalizator()
 			//TODO здесь будет локализация
 		} catch(e) {;}
 		if (!loc) {
-			alert('Unable parse JSON data');
+			//alert('Unable parse JSON data');
 			return;
 		}
 		//Локализуем все value в input[type=button] и весь label.innerHTML
 	} else {
-		alert(filePath);
+		//alert(filePath);
 	}
 }
