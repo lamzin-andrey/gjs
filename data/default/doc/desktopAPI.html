@@ -98,6 +98,14 @@ Number PHP.filesize(String path);
 <h6>Файловая система</h6>
 Array PHP.scandir(String path);
 
+<h6>Запуск программ</h6>
+
+Number PHP.exec(String cmd, String onFinish, String onStdout, String onStdError);
+
+Вернет идентификатор процесса в ОС
+Number innerId число которое вернуло PHP.exec
+String PHP.getSysId(Number innerId);
+
 
 <h5>OS</h5>
 Os.ShellExecute(String operation, String pathToFile, String arguments, String directory, Boolean showCmdLine);
