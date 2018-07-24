@@ -18,6 +18,14 @@ public:
     
     void exec(QString command, QString workDir = "");
 
+    //пытался на основе QProcess::state определить, не завершился ли он, безуспешно...
+    bool isRun();
+
+    //return inner id process
+    unsigned int id();
+    //return system id process
+    unsigned int systemId();
+
 private:
     Utils lib;
     QProcess *_proc;
@@ -26,6 +34,7 @@ private:
     QStringList _output;
     QStringList _errors;
     unsigned int _resId;
+    unsigned int _sysId;
     QString _onOutput;
     QString _onError;
     QString _onFinish;

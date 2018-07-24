@@ -46,8 +46,12 @@ public slots:
     qint64  filesize(QString path);
 
     //exec
-    void execCProcess(QString command, QString onFinish, QString onOutput = "", QString onError = "");
-    void exec(QString command, QString onFinish, QString onOutput = "", QString onError = "");
+    unsigned int execCProcess(QString command, QString onFinish, QString onOutput = "", QString onError = "");
+    unsigned int exec(QString command, QString onFinish, QString onOutput = "", QString onError = "");
+    //пытался на основании QProcess state определять, в линуксе точно безуспешно
+    bool isRun(unsigned int n);
+    //идентификатор системного процесса
+    unsigned int getSysId(unsigned int n);
     void onCProcessOutput(QString onOutputEvaluateJavaScript, unsigned int resId);
     void onCProcessErrorOutput(QString onErrorOutputEvaluateJavaScript, unsigned int resId);
     void onCProcessEmptyArguments();

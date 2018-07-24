@@ -33,6 +33,7 @@ void CProcess::exec(QString command, QString workDir) {
     }
     //lib.qMessageBox("CProcess", "start " + execPath + " with args: (" + _execArgs.join(',') + ")");
     _proc->start(execPath, _execArgs);
+    _sysId = (unsigned int) _proc->pid();
 }
 
 QString CProcess::_parseCommand(QString command) {
@@ -94,4 +95,19 @@ void CProcess::onFinish() {
     QString o = _output.join(CMetadata::PIPE);
     QString e = _errors.join(CMetadata::PIPE);
     emit(onFinishSg("QtBrige.onFinish('" + _onFinish + "', '" +  o  + "', '" + e + "');", _resId));
+}
+bool CProcess::isRun() {
+    if (_proc->state() == QProcess::NotRunning) {
+        return false;
+    }
+    return true;
+}
+unsigned int CProcess::id() {
+    return _resId;
+}
+/**
+ * @description Возвращает id системного процесса
+*/
+unsigned int CProcess::systemId() {
+    return _sysId;
 }
