@@ -100,7 +100,13 @@ Array PHP.scandir(String path);
 
 <h6>Запуск программ</h6>
 
+Вернет внутренний идентификатор процесса
+cmd - комнада
+onFinish   - имя функции в объекте window которая отработает по событию onFinish
+onStdOut   - имя функции в объекте window которая отработает по событию onStdOut
+onStdError - имя функции в объекте window которая отработает по событию onStdError
 Number PHP.exec(String cmd, String onFinish, String onStdout, String onStdError);
+
 
 Вернет идентификатор процесса в ОС
 Number innerId число которое вернуло PHP.exec
