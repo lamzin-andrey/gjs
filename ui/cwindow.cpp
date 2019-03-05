@@ -247,9 +247,11 @@ void CWindow::onTimer(QPrivateSignal s) {
         this->setGeometry(rect);
         if (metadata.fixedSize && metadata.windowWidth != -1 && metadata.windowWidth > 0) {
             this->setMaximumWidth(w);
+            this->setMinimumWidth(w);
         }
         if (metadata.fixedSize && metadata.windowHeight != -1 && metadata.windowHeight > 0) {
             this->setMaximumHeight(h);
+            this->setMinimumHeight(h);
         }
         this->show();
     }
