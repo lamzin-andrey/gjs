@@ -1,3 +1,9 @@
+function onMax() {
+	Qt.maximize();
+}
+function onMin() {
+	Qt.minimize();
+}
 function onCFinish(output, errors) {
 	output += "\nComplete";
 	if (output.length) {
@@ -24,4 +30,18 @@ function onCErr(s) {
 function executeCCommand() {
 	var s = document.getElementById('cepath').value;
 	PHP.execCProcess(s, 'onCFinish', 'onCOut', 'onCErr');
+}
+
+function hide() {
+	try {
+		Qt.hide();
+		setTimeout(function(){
+			Qt.show();
+		}, 5000);
+	} catch (e) {
+		alert(e);
+	}
+}
+window.onload = function() {
+	initDoImage();
 }
