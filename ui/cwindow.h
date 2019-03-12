@@ -13,6 +13,9 @@
 #include <QTimer>
 #include <QScreen>
 #include <QDesktopWidget>
+#include <QImage>
+#include <QByteArray>
+#include <QTextStream>
 #include "../lib/utils.h"
 #include "../slots/cphpinterface.h"
 #include "../slots/os.h"
@@ -64,6 +67,7 @@ public:
     QString _transliteApp(QString key);
     CJSON* _localeJSON;
     void _initLocale();
+    void _saveImageFromByteArray(QByteArray ba, QString path, QString ext, int quality);
  private slots:
     void onLoad(bool success);
     void onMainMenuAction(QString title, QString action);
@@ -87,6 +91,8 @@ public:
     void hideMainMenu();
     void showMainMenu();
     void setTitle(QString s);
+    void savePng(QString path, QString base64Data, int quality);
+    void saveJpeg(QString path, QString base64Data, int quality);
 
  signals:
     void loadComplete();

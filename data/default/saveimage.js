@@ -2,12 +2,10 @@ function e(i) {return document.getElementById(i);}
 
 
 function doLog(s) {
-	e('doCout').innerHTML += (e('doCout').innerHTML + '<div style="color:blue">' + s + '</div>');
+	e('doCout').innerHTML = (e('doCout').innerHTML + '<div style="color:blue">' + s + '</div>');
 }
 
 function initDoImage() {
-	doLog('start');
-	//e('doPreview').
 	e('doLoadImage').addEventListener('change', doOnSelectImage, true);
 	e('doLoadImage').addEventListener('load', doOnLoadFile, true);
 }
@@ -23,9 +21,22 @@ function doOnSelectImage() {
 
 function doOnLoadFile(evt) {
 	doLog('OnLoadFile handler');
-	var s = doFileReader.result;
+	window.s = doFileReader.result;
 	e('doPreview').src = s;
-	doLog(s);
+	doLog('ready image data');
+}
+
+function doTestCanvas() {
+	var ctx = e('doCanvas').getContext('2d');
+	ctx.fillStyle = '#AA0000';
+	ctx.fillRect(0, 0, 100, 100);
+	window.s = e('doCanvas').toDataURL('image/jpeg');
+	doLog('ready canvas data');
+}
+function testSaveImageFromDataUrl() {
+	doLog(window.s);
+	var path = Qt.saveFileDialog('Save as..', '/home/andrey', '*.png, *.jpg');
+	Qt.savePng(path, window.s, 100);
 }
 /*
  * QT C++ code

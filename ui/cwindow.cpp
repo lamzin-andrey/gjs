@@ -419,3 +419,16 @@ int CWindow::getLastKeyCode(){
 QString CWindow::getLastKeyChar() {
     return this->wv->lastKeyText;
 }
+void CWindow::savePng(QString path, QString sBase64data, int quality) {
+    QByteArray base64Data = sBase64data.replace("data:image/png;base64,", "").toLatin1();
+    this->_saveImageFromByteArray(QByteArray::fromBase64(base64Data), path, "PNG", quality);
+}
+void CWindow::saveJpeg(QString path, QString sBase64data, int quality) {
+    QByteArray base64Data = sBase64data.replace("data:image/jpeg;base64,", "").toLatin1();
+    this->_saveImageFromByteArray(QByteArray::fromBase64(base64Data), path, "JPEG", quality);
+}
+void CWindow::_saveImageFromByteArray(QByteArray ba, QString path, QString ext, int quality) {
+    QImage image;
+    image.loadFromData(ba, ext.toStdString().c_str());
+    image.save(path, ext.toStdString().c_str(), quality);
+}

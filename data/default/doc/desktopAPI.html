@@ -27,33 +27,13 @@ String = Qt.getLineDelimeter(String);
 
 
 Qt.quit();
+
 Закрывает окно приложения
 
 Qt.moveTo(Number x, Number y);
  Перемещает окно приложения
 Qt.resizeTo(Number w, Number h);
  Изменяет размер окна приложения
- 
-Qt.hide();
- Скрывает окно приложния
- 
-Qt.maximize();
- Разворачивает окно приложния на весь экран
- 
-Qt.showFullScreen();
- Разворачивает окно приложния на весь экран
-
-Qt.minmize();
- Сворачивает окно приложения
- 
-Qt.hideMainMenu
- Скрыть главное меню приложения
-
-Qt.setTitle(String title)
- Изменить заголовок главного окна
-
-Qt.showMainMenu
- Показать главное меню приложения
 
 Qt.exec(String cmd, Function onFinish, Function onStdOut = null, Function onStdErr = null);
 
@@ -66,16 +46,37 @@ String Qt.openFileDialog(String caption, String dir, String filter);
 String Qt.saveFileDialog(String caption, String dir, String filter);
 Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
 
-String Qt.openDirectoryDialog(String caption, String dir);
+String openDirectoryDialog(String caption, String dir);
 Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
 
-String Qt.getLastKeyCode();
-Возвращает код последней нажатой клавиши. Хак WebView в qt5.2.1 для linux amd64, 
-	в котором невозможно определить код нажатой клавиши при русскоязычной раскладке.
 
-String Qt.getLastKeyChar();
-Возвращает символ последней нажатой клавиши. Хак WebView в qt5.2.1 для linux amd64, 
-	в котором невозможно определить код нажатой клавиши при русскоязычной раскладке.
+Qt.savePng(String path, String base64String, Number iQuality);
+base64String - строка полученная вызовом например canvas.toDataURL()
+iQuality from 1 to 9
+
+Qt.saveJpeg(String path, String base64String, Number iQuality);
+base64String - строка полученная вызовом например canvas.toDataURL()
+iQuality from 1 to 100
+
+Number Qt.getLastKeyCode()
+Оказалось, что в Qt 5.2.0 на 64-разрядной системе невозможно считать код последней нажатой клавиши посредством js
+
+String Qt.getLastKeyChar()
+Оказалось, что в Qt 5.2.0 на 64-разрядной системе невозможно символ последней нажатой клавиши посредством js
+
+Array Qt.getArgs()
+Аргументы командной строки
+
+Qt.hideMainMenu();
+
+Qt.showMainMenu();
+
+Qt.setTitle(String s)
+
+Qt.minimize()
+
+Qt.maximize()
+
 
 <h5>PHP</h5>
 <h6>Файлы</h6>
@@ -98,26 +99,6 @@ Number PHP.filesize(String path);
 <h6>Файловая система</h6>
 Array PHP.scandir(String path);
 
-<h6>Запуск программ</h6>
-
-Вернет внутренний идентификатор процесса
-cmd - комнада
-onFinish   - имя функции в объекте window которая отработает по событию onFinish
-onStdOut   - имя функции в объекте window которая отработает по событию onStdOut
-onStdError - имя функции в объекте window которая отработает по событию onStdError
-Number PHP.exec(String cmd, String onFinish, String onStdout, String onStdError);
-
-
-Вернет идентификатор процесса в ОС
-Number innerId число которое вернуло PHP.exec
-String PHP.getSysId(Number innerId);
-
-
-<h5>OS</h5>
-Os.ShellExecute(String operation, String pathToFile, String arguments, String directory, Boolean showCmdLine);
-Аналог winAPI функции 
- в OS Linux значение operation не играет никакой роли, так как функция может использоваться только для запуска исполняемых файлов
- в OS Windows @see значения аргументов аналогичной winAPI функции
 
 </body>
 

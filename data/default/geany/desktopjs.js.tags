@@ -4,7 +4,6 @@ getLineDelimeter(|Qt.|()|
 moveTo(|Qt.|(Number x, Number y)|
 resizeTo(|Qt.|(Number x, Number y)|
 quit(|Qt.|()|
-aetTitle(|Qt.|()|
 exec|PHP.|(String cmd, String onFinallyExecuteFunctionName, String onStdoutFunctionName, String onStderrFunctionName)|
 file_put_contents|PHP.|(String path, String data, int flag = 0)|
 file_get_contents|PHP.|(String path)|
@@ -13,9 +12,20 @@ is_dir|PHP.|(String path)|
 scandir|PHP.|(String path)|
 filesize|PHP.|(String path)|
 openFileDialog|String Qt.|(String caption, String dir, String filter)|
-String openDirectoryDialog|String  Qt.|(String caption, String dir, String filter)|
-String saveFileDialog|String  Qt.|(String caption, String dir, String filter)|
-Number ShellExecute OS.|(String operation, String pathToFile, String arguments, String directory, Boolean showCmdLine);
+openDirectoryDialog|String  Qt.|(String caption, String dir, String filter)|
+saveFileDialog|String  Qt.|(String caption, String dir, String filter)|
+savePng|Qt.|(String path, String base64Str,  Number iQuality)|
+saveJpeg|Qt.|(String path, String base64Str,  Number iQuality)|
+minimize|Qt.|()|
+maximize|Qt.|()|
+hideMainMenu|Qt.|()|
+showMainMenu|Qt.|()|
+getArgs|Array Qt.|()|
+getLastKeyCode|Number Qt.|()|
+getLastKeyChar|String Qt.|()|
+setTitle|Qt.|(String s)|
+
+
 
 
 

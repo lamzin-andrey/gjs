@@ -42,6 +42,6 @@ function hide() {
 		alert(e);
 	}
 }
-window.onload = function() {
+window.addEventListener('load',function(evt) {
 	initDoImage();
-}
+}, true);
