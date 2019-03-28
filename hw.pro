@@ -16,6 +16,7 @@ SOURCES += main.cpp\
     lib/utilsstd.cpp \
     lib/utils.cpp \
     lib/inifile.cpp \
+    lib/binfile.cpp \
     ui/cwebview.cpp \
     ui/cwindow.cpp \
     slots/cphpinterface.cpp \
@@ -32,6 +33,7 @@ HEADERS  += \
     lib/utilsstd.h \
     lib/utils.h \
     lib/inifile.h \
+    lib/binfile.h \
     ui/cwebview.h \
     ui/cwindow.h \
     slots/cphpinterface.h \

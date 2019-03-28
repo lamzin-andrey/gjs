@@ -432,3 +432,47 @@ void CWindow::_saveImageFromByteArray(QByteArray ba, QString path, QString ext, 
     image.loadFromData(ba, ext.toStdString().c_str());
     image.save(path, ext.toStdString().c_str(), quality);
 }
+QString CWindow::readFileAsBinaryString(QString filename) {
+    //lib.qMessageBox("readFileAsBinarySt", filename);
+    QString r = "";
+    QStringList list;
+    if (QFile::exists(filename)) {
+        QFileInfo info;
+        info.setFile(filename);
+
+        int sz = 255;
+        char* buf[sz];
+        for (int i = 0; i < sz; i++) {
+            buf[i] = 0;
+        }
+        /*GetEnvironmentVariableA((LPSTR)"TEMP", (LPSTR)buf, sz);
+        string s((char*)buf);
+        QString tempFolder = QString::fromStdString(s);*/
+        QString tempFolder = OS::getTempDir();//TODO
+
+        QString tempFile = tempFolder + "/temp.bin";
+        QFile::remove(tempFile);
+        QFile::copy(filename, tempFile);
+        if (!QFile::exists(tempFile)) {
+            lib.qMessageBox("Error", "Unable print a file", "error");
+            return "";
+        }
+        filename = tempFile;
+
+        unsigned long size = (unsigned long)info.size();
+        char cFilename[filename.length()];
+        for (int i = 0; i < filename.length(); i++) {
+            cFilename[i] = filename.at(i).toLatin1();
+        }
+        cFilename[filename.length()] = 0;
+        BinFile file(cFilename);
+        for (long i = 0; i < size; i++) {
+            short byte;
+            file.readByte(i, byte);
+            list << QString::number(byte);
+        }
+        r = list.join(',');
+        return r;
+    }
+    return r;
+}

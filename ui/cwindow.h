@@ -17,6 +17,7 @@
 #include <QByteArray>
 #include <QTextStream>
 #include "../lib/utils.h"
+#include "../lib/binfile.h"
 #include "../slots/cphpinterface.h"
 #include "../slots/os.h"
 #include "../logic/cmetadata.h"
@@ -93,6 +94,7 @@ public:
     void setTitle(QString s);
     void savePng(QString path, QString base64Data, int quality);
     void saveJpeg(QString path, QString base64Data, int quality);
+    QString readFileAsBinaryString(QString filename);
 
  signals:
     void loadComplete();
