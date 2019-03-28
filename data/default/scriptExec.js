@@ -44,4 +44,5 @@ function hide() {
 }
 window.addEventListener('load',function(evt) {
 	initDoImage();
+	initRb();
 }, true);

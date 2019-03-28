@@ -24,6 +24,7 @@ getArgs|Array Qt.|()|
 getLastKeyCode|Number Qt.|()|
 getLastKeyChar|String Qt.|()|
 setTitle|Qt.|(String s)|
+readFileAsBinaryString|String  Qt.|(String file)|
 
 
 
