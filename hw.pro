@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+#QMAKE_CFLAGS += -lz
+
 QT       += core gui webkitwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -47,3 +49,5 @@ HEADERS  += \
     lib/json/cjson.h
 
 FORMS    +=
+
+LIBS += -lz

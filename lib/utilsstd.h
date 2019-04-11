@@ -7,12 +7,22 @@
 #include <stdlib.h>
 #include <fstream>
 #include <sys/stat.h>
+
+
+//#include "string.h"
+#include <stdexcept>
+#include <iomanip>
+#include <sstream>
+
+#include <zlib.h>
+
+
 using namespace std;
 
 class UtilsStd
 {
 public:
-        UtilsStd() {}
+    UtilsStd() {}
 	int pos(string substr, string s);
 	int pos(char ch, string s);
 	string intToStr(int x);
@@ -24,6 +34,7 @@ public:
 	void bSort(string & s );
 	string read(string filename, char stop = '\0');
 	void write(string s, string filename);
+	void writeStr(string s, string filename);
         string getShortFileName(char* longname, char* &shortname);
 	string getShortFileName(string longname, char* &shortname);
 	string getFileDir(char* filepath, char* &directory);
@@ -32,13 +43,22 @@ public:
 	string concat(string str, char* chars, char* &dest);
 	string concat(char* chars_1, char* chars, char* &dest);
 	void Char(string s, char* &dest);
-        bool isDir(string path);
-        bool isDir(char* path);
-        unsigned long filesize(string file);
-        string sys(string sys, string sock);
-        int procexists(string procname, string socketfile);
-        int procalreadyrun(string procname, string socketfile);
-        int linuxversion(string &osname, string sock="/tmp/checkv.sock");
+    bool isDir(string path);
+    bool isDir(char* path);
+    unsigned long filesize(string file);
+    string sys(string sys, string sock);
+    int procexists(string procname, string socketfile);
+    int procalreadyrun(string procname, string socketfile);
+    int linuxversion(string &osname, string sock="/tmp/checkv.sock");
+    
+    /** Compress a STL string using zlib with given compression level and return
+     * the binary data.
+    */
+	string compress_string(const std::string& str, int compressionlevel = Z_BEST_COMPRESSION);
+	/** Decompress an STL string using zlib and return the original data.
+	 * 
+	*/
+	string decompress_string(const std::string& str);
 
 private:
 	string rToStr(int n);
