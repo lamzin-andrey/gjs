@@ -107,6 +107,16 @@ Number PHP.filesize(String path);
 <h6>Файловая система</h6>
 Array PHP.scandir(String path);
 
+<h6>Выполнение внешних программ</h6>
+
+Number PHP.exec(String cmd, Function onFinish, Function onStdOut = null, Function onStdErr = null);
+Аналогично Qt.exec, но возвращает внутренний (не системный) id процесса
+
+Number PHP.getSysId(Number procId);
+Можно получить системный идентификатор процесса.
+Аргумент 
+Number procId
+это значение, которое вернула PHP.exec.
 
 </body>
 
