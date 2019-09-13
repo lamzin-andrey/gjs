@@ -94,7 +94,8 @@ public:
     void setTitle(QString s);
     void savePng(QString path, QString base64Data, int quality);
     void saveJpeg(QString path, QString base64Data, int quality);
-    QString readFileAsBinaryString(QString filename);
+    QString readFileAsBinaryString(QString filename, long offset = 0, long limit = -1);
+    void copyFile(QString src, QString dest, long srcOffset = 0, long srcLimit = -1);
 
  signals:
     void loadComplete();

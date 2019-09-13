@@ -8,6 +8,7 @@ BinFile::BinFile(char* filename )
 void BinFile::writeByte(long pos, char byte)
 {
     ofstream bin(this->filename, ios_base::in|ios_base::binary);
+    //bin.open(this->filename, ios_base::in|ios_base::binary);
     bin.seekp(pos,ios_base::beg);
     bin.put(byte);
     bin.close();

@@ -432,7 +432,7 @@ void CWindow::_saveImageFromByteArray(QByteArray ba, QString path, QString ext, 
     image.loadFromData(ba, ext.toStdString().c_str());
     image.save(path, ext.toStdString().c_str(), quality);
 }
-QString CWindow::readFileAsBinaryString(QString filename) {
+QString CWindow::readFileAsBinaryString(QString filename, long offset, long limit ) {
     //lib.qMessageBox("readFileAsBinarySt", filename);
     QString r = "";
     QStringList list;
@@ -459,14 +459,17 @@ QString CWindow::readFileAsBinaryString(QString filename) {
         }
         filename = tempFile;
 
-        unsigned long size = (unsigned long)info.size();
+        long size = (long)info.size();
+        if (limit != -1 && limit < size) {
+            size = limit;
+        }
         char cFilename[filename.length()];
         for (int i = 0; i < filename.length(); i++) {
             cFilename[i] = filename.at(i).toLatin1();
         }
         cFilename[filename.length()] = 0;
         BinFile file(cFilename);
-        for (long i = 0; i < size; i++) {
+        for (long i = offset; i < size; i++) {
             short byte;
             file.readByte(i, byte);
             list << QString::number(byte);
@@ -475,4 +478,46 @@ QString CWindow::readFileAsBinaryString(QString filename) {
         return r;
     }
     return r;
+}
+
+//Что то не работает ) С праздником, сегодня ДП! (13 09 2019)
+void CWindow::copyFile(QString src, QString dest, long srcOffset, long srcLimit ) {
+    QString filename = src;
+    if (QFile::exists(filename)) {
+
+        QFileInfo info;
+        info.setFile(filename);
+
+
+        long size = (long)info.size();
+        if (srcLimit != -1 && srcLimit < size) {
+            size = srcLimit;
+        }
+
+        char cFilename[filename.length()];
+        for (int i = 0; i < filename.length(); i++) {
+            cFilename[i] = filename.at(i).toLatin1();
+        }
+        cFilename[filename.length()] = 0;
+
+        char cTempFilename[dest.length()];
+        for (int i = 0; i < dest.length(); i++) {
+            cTempFilename[i] = dest.at(i).toLatin1();
+        }
+        cTempFilename[dest.length()] = 0;
+
+        BinFile file(cFilename);
+        BinFile outfile(cTempFilename);
+
+        lib.qMessageBox("Dest 1", dest, "error");
+        lib.qMessageBox("In 1", src, "error");
+
+
+        for (long i = srcOffset; i < size; i++) {
+            short byte;
+            file.readByte(i, byte);
+            outfile.writeByte(i, (char)byte);
+        }
+        lib.qMessageBox("Dest 2", "Exit", "error");
+    }
 }
