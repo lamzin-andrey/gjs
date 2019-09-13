@@ -82,8 +82,11 @@ Qt.minimize()
 Qt.maximize()
 Максимизирует окно
 
-String Qt.readFileAsBinaryString(String file);
+String Qt.readFileAsBinaryString(String file, Number indexA = 0, Number indexB = -1);
 Считывает все байты из файла в строку, каждый байт представлен десятеричным положительным числом от 0 до 255
+Number indexA = 0 - смещение
+Number indexB = -1 - позиция, до которой копируется.Если  -1, то копируется до конца файла
+
 
 
 <h5>PHP</h5>
