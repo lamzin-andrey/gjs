@@ -44,6 +44,7 @@ public slots:
     bool file_exists(QString path);
     bool is_dir(QString path);
     qint64  filesize(QString path);
+    bool unlink(QString path);
 
     //exec
     unsigned int execCProcess(QString command, QString onFinish, QString onOutput = "", QString onError = "");

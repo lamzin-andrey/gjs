@@ -1,13 +1,14 @@
 appDir|Qt.|()|
 setLineDelimeter(|Qt.|(String delimiter)|
 getLineDelimeter(|Qt.|()|
-moveTo(|Qt.|(Number x, Number y)|
+moveTo|Qt.|(Number x, Number y)|
 resizeTo(|Qt.|(Number x, Number y)|
 quit(|Qt.|()|
 exec|PHP.|(String cmd, String onFinallyExecuteFunctionName, String onStdoutFunctionName, String onStderrFunctionName)|
 file_put_contents|PHP.|(String path, String data, int flag = 0)|
 file_get_contents|PHP.|(String path)|
 file_exists|PHP.|(String path)|
+unlink|PHP.|(String path)|
 is_dir|PHP.|(String path)|
 scandir|PHP.|(String path)|
 filesize|PHP.|(String path)|
