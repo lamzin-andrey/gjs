@@ -509,15 +509,21 @@ void CWindow::copyFile(QString src, QString dest, long srcOffset, long srcLimit 
         BinFile file(cFilename);
         BinFile outfile(cTempFilename);
 
-        lib.qMessageBox("Dest 1", dest, "error");
-        lib.qMessageBox("In 1", src, "error");
+        //lib.qMessageBox("Dest 1", dest, "error");
+        //lib.qMessageBox("In 1", src, "error");
 
 
-        for (long i = srcOffset; i < size; i++) {
+        QString bs = "";
+        for (long i = 0; i < size - srcOffset; i++) {
+            bs += ".";
+        }
+        lib.writetextfile(dest, bs);
+
+        for (long i = srcOffset, j = 0; i < size; i++, j++) {
             short byte;
             file.readByte(i, byte);
-            outfile.writeByte(i, (char)byte);
+            outfile.writeByte(j, (char)byte);
         }
-        lib.qMessageBox("Dest 2", "Exit", "error");
+        //lib.qMessageBox("Dest 2", "Exit", "error");
     }
 }
