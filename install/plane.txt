@@ -10,3 +10,11 @@
  
 Setup будет сделан из скриптов xamppinstaller, но иметь ввиду прежде всего архивы из qdjs.
  
+$HOME/.qdjs/amarket/amarket-installer/amarket-installer.sh
+Пусть создает ссылку на $HOME/.qdjs/amarket/amarket-installer/amarket-installer.sh 
+ в wisker
+  и пишет, что для установки приложений из amarket 
+  вы всегда можете зайти в Игры и запустить его оттуда
+  
+Надо это дело создать, как и сам $HOME/.qdjs/amarket/amarket-installer/amarket.sh
+
