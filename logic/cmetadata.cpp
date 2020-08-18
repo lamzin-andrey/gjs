@@ -4,6 +4,22 @@ QString CMetadata::PIPE = "_;__PIPE__;_";
 
 CMetadata::CMetadata(QString file, int argc, char** argv)
 {
+    /** window buttons */
+    _min = true;
+    max = true;
+    close = true;
+    question = false;
+
+    /** win style*/
+    onlyTop = false;
+    noFrame = false;
+    fullScreen = false;
+
+    /** win size */
+    int windowHeight;
+    int windowWidth;
+    bool fixedSize;
+
     this->_initArgv(argc, argv);
     file = file + "/index.html";
     QString s = lib.readtextfile(file, true);
@@ -90,7 +106,7 @@ void CMetadata::_setWinButtons(QStringList aMeta) {
                     }
                 }
                 if (qq == 2 && mask.length() == 4) {
-                    min      = (mask[0] == '1');
+                    _min      = (mask[0] == '1');
                     max      = (mask[1] == '1');
                     close    = (mask[2] == '1');
                     question = (mask[3] == '1');
@@ -127,7 +143,8 @@ void CMetadata::_setWinButtons(QStringList aMeta) {
 }
 
 void CMetadata::_setTitle(QStringList aTitle) {
-    QString s = aTitle.join('\n');
+    QString newline = "\n";
+    QString s = aTitle.join(newline);
     int st = s.indexOf("<title");
     st = s.indexOf(">", st);
     int end = s.indexOf("</title", st);

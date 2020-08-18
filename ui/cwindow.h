@@ -9,7 +9,7 @@
 #include <QUrl>
 #include <QHBoxLayout>
 #include "cwebview.h"
-#include <QtWebKitWidgets/QWebFrame>
+#include <QWebFrame>
 #include <QTimer>
 #include <QScreen>
 #include <QDesktopWidget>
@@ -77,7 +77,7 @@ public:
     QString appDir();
     QString getLineDelimeter();
     void setLineDelimeter(QString  pipe);
-    void onTimer(QPrivateSignal);
+    void onTimer();
     void quit();
     void moveTo(int x, int y);
     void resizeTo(int x, int y);

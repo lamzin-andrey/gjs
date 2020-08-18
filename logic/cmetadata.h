@@ -12,15 +12,15 @@ public:
     CMetadata(QString file = "", int argc = 0, char** argv = 0);
     QString sTitle;
     /** window buttons */
-    bool min = true;
-    bool max = true;
-    bool close = true;
-    bool question = false;
+    bool _min;
+    bool max;
+    bool close;
+    bool question;
 
     /** win style*/
-    bool onlyTop = false;
-    bool noFrame = false;
-    bool fullScreen = false;
+    bool onlyTop;
+    bool noFrame;
+    bool fullScreen;
 
     /** win size */
     int windowHeight;

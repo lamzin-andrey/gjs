@@ -1,7 +1,7 @@
 #ifndef CWEBVIEW_H
 #define CWEBVIEW_H
 
-#include <QtWebKitWidgets/QWebView>
+#include <QWebView>
 #include <QContextMenuEvent>
 
 class CWebView : public QWebView

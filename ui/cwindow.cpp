@@ -4,13 +4,13 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
 {
     this->metadata = metadata;
     Qt::WindowFlags flags = 0;
-    if (metadata.max && metadata.min && metadata.close && !metadata.question) {
+    if (metadata.max && metadata._min && metadata.close && !metadata.question) {
         ;
     } else {
         if (metadata.max) {
             flags = flags | Qt::WindowMaximizeButtonHint;
         }
-        if (metadata.min) {
+        if (metadata._min) {
             flags = flags | Qt::WindowMinimizeButtonHint;
         }
         if (metadata.close) {
@@ -216,7 +216,7 @@ void CWindow::setLineDelimeter(QString  pipe) {
 }
 
 
-void CWindow::onTimer(QPrivateSignal s) {
+void CWindow::onTimer(/*QPrivateSignal s*/) {
     if (resized == false) {
         resized = true;
         QRect rect = this->geometry();
@@ -474,7 +474,7 @@ QString CWindow::readFileAsBinaryString(QString filename, long offset, long limi
             file.readByte(i, byte);
             list << QString::number(byte);
         }
-        r = list.join(',');
+        r = list.join(",");
         return r;
     }
     return r;
