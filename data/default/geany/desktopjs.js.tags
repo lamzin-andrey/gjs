@@ -29,7 +29,7 @@ getLastKeyChar|String Qt.|()|
 setTitle|Qt.|(String s)|
 readFileAsBinaryString|String  Qt.|(String file, Number indexA = 0, Number indexB = -1)|
 copyFile|String  Qt.|(String file, String dest, Number indexA = 0, Number indexB = -1)|
-
+setWindowIconImage|Qt.|(String pathToPng24x24)|
 
 
 

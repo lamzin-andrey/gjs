@@ -12,6 +12,7 @@
 #include <QtWebKitWidgets/QWebFrame>
 #include <QTimer>
 #include <QScreen>
+#include <QIcon>
 #include <QDesktopWidget>
 #include <QImage>
 #include <QByteArray>
@@ -96,6 +97,7 @@ public:
     void saveJpeg(QString path, QString base64Data, int quality);
     QString readFileAsBinaryString(QString filename, long offset = 0, long limit = -1);
     void copyFile(QString src, QString dest, long srcOffset = 0, long srcLimit = -1);
+    void setWindowIconImage(QString s);
 
  signals:
     void loadComplete();

@@ -527,3 +527,10 @@ void CWindow::copyFile(QString src, QString dest, long srcOffset, long srcLimit 
         //lib.qMessageBox("Dest 2", "Exit", "error");
     }
 }
+
+
+void CWindow::setWindowIconImage(QString s)
+{
+    QIcon ic(s);
+    setWindowIcon(ic);
+}
