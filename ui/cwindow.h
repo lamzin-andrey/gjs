@@ -85,6 +85,7 @@ public:
     void maximize();
     void minimize();
     QString openFileDialog(QString caption, QString dir, QString filter);
+    QStringList openFilesDialog(QString caption, QString dir, QString filter);
     QString saveFileDialog(QString caption, QString dir, QString filter);
     QString openDirectoryDialog(QString caption, QString dir);
     int getLastKeyCode();

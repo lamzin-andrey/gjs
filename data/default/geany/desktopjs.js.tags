@@ -15,6 +15,7 @@ is_dir|PHP.|(String path)|
 scandir|PHP.|(String path)|
 filesize|PHP.|(String path)|
 openFileDialog|String Qt.|(String caption, String dir, String filter)|
+openFilesDialog|Array Qt.|(String caption, String dir, String filter)|
 openDirectoryDialog|String  Qt.|(String caption, String dir, String filter)|
 saveFileDialog|String  Qt.|(String caption, String dir, String filter)|
 savePng|Qt.|(String path, String base64Str,  Number iQuality)|

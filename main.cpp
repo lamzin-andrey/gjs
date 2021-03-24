@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 {
 
     if (argc > 1 && string(argv[1]) == "--version") {
-        cout << "3.1.0\n";
+        cout << "3.1.1\n";
         return 0;
     }
 

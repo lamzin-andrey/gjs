@@ -175,6 +175,9 @@ void CWindow::fixSize()
 QString CWindow::openFileDialog(QString caption, QString dir, QString filter) {
     return QFileDialog::getOpenFileName(this, caption, dir, filter);
 }
+QStringList CWindow::openFilesDialog(QString caption, QString dir, QString filter) {
+    return QFileDialog::getOpenFileNames(this, caption, dir, filter);
+}
 QString CWindow::saveFileDialog(QString caption, QString dir, QString filter) {
     return QFileDialog::getSaveFileName(this, caption, dir, filter);
 }

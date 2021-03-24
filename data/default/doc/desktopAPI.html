@@ -43,6 +43,9 @@ onStdOut и onStdErr вызываются непосредственно при 
 String Qt.openFileDialog(String caption, String dir, String filter);
 Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
 
+StringList Qt.openFilesDialog(String caption, String dir, String filter);
+Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
+
 String Qt.saveFileDialog(String caption, String dir, String filter);
 Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
 
@@ -98,6 +101,8 @@ String Qt.copyFile(String file, String dest, Number indexA = 0, Number indexB = 
 Считывает все байты из файла в строку, каждый байт представлен десятеричным положительным числом от 0 до 255
 Копирует байты файла из file в dest от индекса indexA до индекса indexB
 
+String Qt.setWindowIconImage(String pathToPng24x24);
+Устанавливает иконку uлавного окна.
 
 <h5>PHP</h5>
 <h6>Файлы</h6>
