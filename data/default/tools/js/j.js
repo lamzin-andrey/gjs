@@ -1,4 +1,4 @@
-// v 1.0.0
+//1.0.0
 //location this file relative djs.exe: "default/tools/js/j.js"
 window.QtBrige = {
 	/**
