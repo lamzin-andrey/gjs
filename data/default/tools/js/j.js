@@ -25,7 +25,7 @@ PHP.scandir = function(path) {
 	return b;
 }
 
-window.FILE_APPEND = 8;
+window.FILE_APPEND = 1;
 
 /** @class localize */
 window.addEventListener('load', __jqtCreateLocalizator, false);
