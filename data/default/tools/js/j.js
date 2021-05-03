@@ -1,4 +1,4 @@
-//1.0.0
+//1.0.1
 //location this file relative djs.exe: "default/tools/js/j.js"
 window.QtBrige = {
 	/**
@@ -146,7 +146,8 @@ function __jqtSetXdgOpenForLinks() {
 			ctx = ls[i];
 			ls[i].addEventListener('click', function(evt){
 				evt.preventDefault();
-				PHP.exec('xdg-open ' + lnk, Null, Null, Null);
+				var link = this.getAttribute('href');
+				PHP.exec('xdg-open ' + link, Null, Null, Null);
 				return false;
 			}, false);
 		}
