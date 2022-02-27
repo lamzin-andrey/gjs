@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Js functions</title>
+	<meta charset="utf-8"/>
+</head>
+
+<body>
+	<h4>Функции, доступные в JavaScript для взаимодействия с ОС</h4>
+
+<h5>Объекты</h5>
+На данный момент существуют объекты <b>PHP</b> <b>Qt</b>.
+
+<h5>Qt</h5>
+String Qt.appDir();
+Возвращает директорию, в которой лежит файл index.html приложения.
+
+Например, если ваш файл index.html лежит в /home/user/soft/js/gjs/myFirstApp  и вы запускаете ваше приложение  на выполнение командой
+gjs /home/user/soft/js/gjs/myFirstAp
+
+вызов Qt.appDir() вернет /home/user/soft/js/gjs/myFirstAp
+
+Qt.setLineDelimeter(String delimeter);
+String = Qt.getLineDelimeter(String);
+
+Позволяют соответствено получить и заменить последовательность символов, использующихся для разделения строк.
+
+
+Qt.quit();
+
+Закрывает окно приложения
+
+Qt.moveTo(Number x, Number y);
+ Перемещает окно приложения
+Qt.resizeTo(Number w, Number h);
+ Изменяет размер окна приложения
+
+Qt.exec(String cmd, Function onFinish, Function onStdOut = null, Function onStdErr = null);
+
+Позволяют запустить внешнюю программу и мониторить процесс, onFinish принимает два аргумента, stdin  и stdout, вызывается по окончании работы приложения.
+onStdOut и onStdErr вызываются непосредственно при выводе запущенной программы.
+
+String Qt.openFileDialog(String caption, String dir, String filter);
+Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
+
+String Qt.saveFileDialog(String caption, String dir, String filter);
+Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
+
+String openDirectoryDialog(String caption, String dir);
+Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
+
+
+<h5>PHP</h5>
+<h6>Файлы</h6>
+PHP.file_put_contents(String path, String data, int flag = 0);
+Записывает строку data в файл path. 
+Вы можете использовать константу FILE_APPEND для добавления данных в существующий файл.
+
+Пример кода:
+Number PHP.file_put_contents(Qt.appDir() + '/output/file.txt', 'Hello, filesystem!'); //перезапишет файл
+PHP.file_put_contents(Qt.appDir() + '/output/file.txt', '\nЭто снова я!', FILE_APPEND); //Добавит строку в файл
+
+
+Boolean PHP.file_exists(String path);
+Boolean PHP.is_dir(String path);
+
+Number PHP.filesize(String path);
+В отличии от нативной функции PHP filesize для каталогов в linux возвращает реальный размер каталога. (Прочее описание соответствует)
+
+
+<h6>Файловая система</h6>
+Array PHP.scandir(String path);
+
+
+<h5>OS</h5>
+Os.ShellExecute(String operation, String pathToFile, String arguments, String directory, Boolean showCmdLine);
+Аналог winAPI функции 
+ в OS Linux значение operation не играет никакой роли, так как функция может использоваться только для запуска исполняемых файлов
+ в OS Windows @see значения аргументов аналогичной winAPI функции
+
+</body>
+
+</html>

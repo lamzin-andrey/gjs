@@ -587,7 +587,8 @@ QString Utils :: readtextfile(QString fileName, bool silent){
      if (!fileName.isEmpty()) {
         QFile file(fileName);
         if (file.open(QFile::ReadOnly | QFile::Text))
-            return file.readAll();
+
+            return QString::fromUtf8(file.readAll());
     }
     QString error = "File " + fileName + " not found";
     if (!silent) this->qMessageBox("Error", error, "error");
@@ -596,7 +597,7 @@ QString Utils :: readtextfile(QString fileName, bool silent){
 //--------------------------------------------------------------------------------------------
 int Utils :: writetextfile(QString fileName, QString data, bool append)
 {
-	QFile file(fileName);
+    QFile file(fileName);
     if (append) {
         file.open(QIODevice::Append);
     } else {
@@ -607,7 +608,36 @@ int Utils :: writetextfile(QString fileName, QString data, bool append)
     unsigned long sz = file.size();
     file.close();
     return sz;
+
 }
+
+int Utils :: write(QString qFilename, QString qData, bool append)
+{
+    string s = qData.toStdString();
+    string filename = qFilename.toStdString();
+    unsigned int i;
+    char* path = new char [filename.length()+1];
+    for ( i = 0; i <= filename.length(); i++)
+             path[i]= filename[i];
+             path[i] = '\0';
+
+            // cout << "path = "<< path <<'\n';
+
+    char* Report = new char [s.length() + 1];
+    for ( i = 0; i <= s.length(); i++)
+            Report[i]= s[i];
+            Report[i] = '\0';
+
+            //cout << "s = "<< Report <<'\n';
+  //Вывод в файл
+    ofstream t;
+    t.open(filename.c_str()/*, ios:: out*/);
+    t << s;
+    //t.write(Report, s.length() + 1);
+    t.close();
+    return 10;
+}
+
 //----------------------------------------------------------------------------------
 void Utils :: log(QString text)
 {

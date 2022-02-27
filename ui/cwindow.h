@@ -5,23 +5,29 @@
 #include <QtGui>
 #include <QMenuBar>
 #include <QMenu>
-#include <QFileInfo>
 #include <QFileDialog>
 #include <QUrl>
 #include <QHBoxLayout>
 #include "cwebview.h"
 #include "cwebpage.h"
-#include <QtWebKitWidgets/QWebFrame>
+#include <QtWebKit/QWebFrame>
 #include <QTimer>
 #include <QScreen>
+#include <QIcon>
 #include <QDesktopWidget>
+#include <QImage>
+#include <QByteArray>
+#include <QTextStream>
 #include "../lib/utils.h"
+#include "../lib/binfile.h"
 #include "../slots/cphpinterface.h"
 #include "../slots/os.h"
 #include "../logic/cmetadata.h"
 #include "caction.h"
 #include "../lib/xml/cxml.h"
 #include "../lib/binfile.h"
+#include "../lib/json/cjson.h"
+
 
 class CMetadata;
 
@@ -62,7 +68,10 @@ public:
     //главное меню окна
     void _setMainMenu();
     void _setMenuItems(QMenu* menu, QList<CXml*> items);
-    QStringList _splitByBinFileTag(QString data);
+    QString _transliteApp(QString key);
+    CJSON* _localeJSON;
+    void _initLocale();
+    void _saveImageFromByteArray(QByteArray ba, QString path, QString ext, int quality);
  private slots:
     void onLoad(bool success);
     void onMainMenuAction(QString title, QString action);
@@ -71,16 +80,27 @@ public:
     QString appDir();
     QString getLineDelimeter();
     void setLineDelimeter(QString  pipe);
-    void onTimer(QPrivateSignal);
+    void onTimer();
     void quit();
     void moveTo(int x, int y);
     void resizeTo(int x, int y);
+    void maximize();
+    void minimize();
     QString openFileDialog(QString caption, QString dir, QString filter);
+    QStringList openFilesDialog(QString caption, QString dir, QString filter);
     QString saveFileDialog(QString caption, QString dir, QString filter);
     QString openDirectoryDialog(QString caption, QString dir);
-    QString readFileAsBinaryString(QString filename);
-
-    int writefile(QString fileName, QString data);
+    int getLastKeyCode();
+    QString getLastKeyChar();
+    QStringList getArgs();
+    void hideMainMenu();
+    void showMainMenu();
+    void setTitle(QString s);
+    void savePng(QString path, QString base64Data, int quality);
+    void saveJpeg(QString path, QString base64Data, int quality);
+    QString readFileAsBinaryString(QString filename, long offset = 0, long limit = -1);
+    void copyFile(QString src, QString dest, long srcOffset = 0, long srcLimit = -1);
+    void setWindowIconImage(QString s);
 
  signals:
     void loadComplete();

@@ -28,6 +28,8 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     }
     if (metadata.fullScreen) {
         //TODO посмотреть, как делал в локере flags = flags | Qt::Window;
+        //flags = flags | QWindowState::WindowFullScreen;
+        QTimer::singleShot(1000, this, SLOT(showFullScreen()));
     }
     this->setWindowFlags(flags);
     lib.parentMBoxWidget = this;
@@ -50,15 +52,9 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     loading = false;
     lastUrl = "";
     wv = new CWebView();
-    CWebPage *page = new CWebPage(wv);
-    wv->setPage(page);
     wv->page()->settings()->setAttribute(QWebSettings::JavascriptEnabled,true);
     wv->page()->settings()->setAttribute(QWebSettings::AutoLoadImages,   true);
     wv->page()->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
-
-    /*wv->page()->settings()->setAttribute(QWebSettings::JavascriptCanCloseWindows, true);
-    wv->page()->settings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
-    wv->page()->settings()->setAttribute(QWebSettings::LocalStorageEnabled, true);*/
 
 
 
@@ -76,7 +72,22 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
     workdir = appDir;
     cXml = new CXml(appDir + "/index.html");
     this->_setMainMenu();
-    getURL(os->getLocalFileStartUrl() + "/" + appDir + "/index.html", false);
+    //getURL(os->getLocalFileStartUrl() + "/" + appDir + "/index.html", false);
+
+    QString placeholder = "F:/dev-11-2014/qt/v3v9xp/release/default";
+    QString realPath = appDir.replace("\\", "/");
+
+    /*QString fileContent = lib.readtextfile(appDir + "/index.tpl.html");
+    fileContent = fileContent.replace(placeholder, realPath);
+    lib.write(appDir + "/index.html", fileContent);
+
+    fileContent = lib.readtextfile(appDir + "/js/personalform.tpl.js");
+    fileContent = fileContent.replace(placeholder, realPath);
+    lib.write(appDir + "/js/personalform.js", fileContent);*/
+
+    getURL(appDir + "\\index.html", false);
+
+    //getURL("F:\\dev-11-2014\\qt\\v3v9xp\\release\\default\\index.html", false);
 
 }
 
@@ -179,6 +190,9 @@ void CWindow::fixSize()
 QString CWindow::openFileDialog(QString caption, QString dir, QString filter) {
     return QFileDialog::getOpenFileName(this, caption, dir, filter);
 }
+QStringList CWindow::openFilesDialog(QString caption, QString dir, QString filter) {
+    return QFileDialog::getOpenFileNames(this, caption, dir, filter);
+}
 QString CWindow::saveFileDialog(QString caption, QString dir, QString filter) {
     return QFileDialog::getSaveFileName(this, caption, dir, filter);
 }
@@ -220,7 +234,7 @@ void CWindow::setLineDelimeter(QString  pipe) {
 }
 
 
-void CWindow::onTimer(QPrivateSignal s) {
+void CWindow::onTimer() {
     if (resized == false) {
         resized = true;
         QRect rect = this->geometry();
@@ -229,8 +243,7 @@ void CWindow::onTimer(QPrivateSignal s) {
         int x = 0;
         int y = 0;
         int w = 600;
-        int h = 400;
-
+        int h = 400;;
 
 
         if (metadata.windowWidth != -1 && metadata.windowWidth > 0) {
@@ -252,9 +265,11 @@ void CWindow::onTimer(QPrivateSignal s) {
         this->setGeometry(rect);
         if (metadata.fixedSize && metadata.windowWidth != -1 && metadata.windowWidth > 0) {
             this->setMaximumWidth(w);
+            this->setMinimumWidth(w);
         }
         if (metadata.fixedSize && metadata.windowHeight != -1 && metadata.windowHeight > 0) {
             this->setMaximumHeight(h);
+            this->setMinimumHeight(h);
         }
         this->show();
     }
@@ -283,8 +298,10 @@ void CWindow::_setMainMenu() {
     //return;
     menubar = new QMenuBar(this);
     this->setMenuBar(menubar);
+    this->_initLocale();
     for (int i = 0; i < list.length(); i++) {
-        QMenu* tempMainMenu =  menubar->addMenu(list[i]->getAttribute("title"));
+        QString menuTitle = this->_transliteApp(list[i]->getAttribute("title"));
+        QMenu* tempMainMenu =  menubar->addMenu(menuTitle);
         this->_setMenuItems(tempMainMenu, list[i]->childs);
     }
     return; //TODO remove me and bottom
@@ -331,7 +348,7 @@ void CWindow::onMainMenuAction(QString title, QString action) {
 void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items)  {
     for (int i = 0; i < items.length(); i++) {
         if (items[i]->tagName.toUpper() == "ITEM") {
-            QAction* act = menu->addAction(items[i]->innerXML);
+            QAction* act = menu->addAction(this->_transliteApp( items[i]->innerXML));
             QString jsAction = items[i]->getAttribute("onselect");
             CAction* cact = new CAction(items[i]->innerXML, jsAction );
             connect(act, SIGNAL(triggered()), cact, SLOT(triggered()));
@@ -341,13 +358,100 @@ void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items)  {
             menu->addSeparator();
         }
         if (items[i]->tagName.toUpper() == "MENU") {
-            QMenu* nextMenu = menu->addMenu(items[i]->getAttribute("title"));
+            QMenu* nextMenu = menu->addMenu(this->_transliteApp(items[i]->getAttribute("title")));
             _setMenuItems(nextMenu, items[i]->childs);
         }
     }
 }
 
-QString CWindow::readFileAsBinaryString(QString filename) {
+QStringList CWindow::getArgs() {
+    return this->metadata.getArgs();
+}
+
+void CWindow::hideMainMenu() {
+    if(this->menubar) {
+        menubar->hide();
+    }
+}
+
+void CWindow::showMainMenu() {
+    if(this->menubar) {
+        menubar->show();
+    }
+}
+void CWindow::maximize() {
+
+    QRect rect = this->geometry();
+    int x = 0;
+    int y = 0;
+    int w = 600;
+    int h = 400;
+
+
+    w = QApplication::desktop()->screenGeometry().width();
+    h = QApplication::desktop()->screenGeometry().height();
+
+    rect.setX(x);
+    rect.setY(y);
+    rect.setWidth(w);
+    rect.setHeight(h);
+    this->setGeometry(rect);
+    this->setWindowState(Qt::WindowMaximized);
+    this->showMaximized();
+
+}
+void CWindow::minimize() {
+    this->setWindowState(Qt::WindowMinimized);
+    this->showMinimized();
+}
+
+void CWindow::setTitle(QString s) {
+    this->setWindowTitle(s);
+}
+void CWindow::_initLocale() {
+    QList<CXml*> list = cXml->getElementsByTagName("html");
+    if (list.length() > 0) {
+        QString local = list[0]->getAttribute("lang");
+        if (local.length()) {
+            Utils lib;
+            QString s = lib.readtextfile(workdir + "/js/" + local + ".json", true);
+            if (s.length()) {
+                _localeJSON = new CJSON(s);
+                return;
+            }
+        }
+    }
+    _localeJSON = new CJSON("");//TODO
+}
+
+QString CWindow::_transliteApp(QString key) {
+    QString v =_localeJSON->get(key);
+    if (!v.length()) {
+        v = key;
+    }
+    return v;
+}
+int CWindow::getLastKeyCode(){
+    return this->wv->lastKeyCode;
+}
+QString CWindow::getLastKeyChar() {
+    return this->wv->lastKeyText;
+}
+void CWindow::savePng(QString path, QString sBase64data, int quality) {
+    QByteArray base64Data = sBase64data.replace("data:image/png;base64,", "").toLatin1();
+    this->_saveImageFromByteArray(QByteArray::fromBase64(base64Data), path, "PNG", quality);
+}
+void CWindow::saveJpeg(QString path, QString sBase64data, int quality) {
+    QByteArray base64Data = sBase64data.replace("data:image/jpeg;base64,", "").toLatin1();
+    this->_saveImageFromByteArray(QByteArray::fromBase64(base64Data), path, "JPEG", quality);
+}
+void CWindow::_saveImageFromByteArray(QByteArray ba, QString path, QString ext, int quality) {
+    QImage image;
+    image.loadFromData(ba, ext.toStdString().c_str());
+    image.save(path, ext.toStdString().c_str(), quality);
+}
+QString CWindow::readFileAsBinaryString(QString filename, long offset, long limit ) {
+    //lib.qMessageBox("readFileAsBinarySt", filename);
     QString r = "";
     QStringList list;
     if (QFile::exists(filename)) {
@@ -367,142 +471,79 @@ QString CWindow::readFileAsBinaryString(QString filename) {
         unsigned long size = (unsigned long)info.size();
         char cFilename[filename.length()];
         for (int i = 0; i < filename.length(); i++) {
-            cFilename[i] = filename.at(i).toLatin1();
+            cFilename[i] = filename.at(i).toAscii();
         }
+        cFilename[filename.length()] = '\0';
         BinFile file(cFilename);
+        bool notFound = true;
         for (long i = 0; i < size; i++) {
             short byte;
             file.readByte(i, byte);
+            if (byte != -2) {
+                notFound = false;
+            }
             list << QString::number(byte);
         }
-        r = list.join(',');
+        r = list.join(",");
+        if (notFound) {
+            lib.qMessageBox("", "BinFile not found file " + filename);
+        }
         return r;
     }
     return r;
 }
 
+//Что то не работает ) С праздником, сегодня ДП! (13 09 2019)
+void CWindow::copyFile(QString src, QString dest, long srcOffset, long srcLimit ) {
+    QString filename = src;
+    if (QFile::exists(filename)) {
 
-int CWindow::writefile(QString fileName, QString data)
+        QFileInfo info;
+        info.setFile(filename);
+
+
+        long size = (long)info.size();
+        if (srcLimit != -1 && srcLimit < size) {
+            size = srcLimit;
+        }
+
+        char cFilename[filename.length()];
+        for (int i = 0; i < filename.length(); i++) {
+            cFilename[i] = filename.at(i).toLatin1();
+        }
+        cFilename[filename.length()] = 0;
+
+        char cTempFilename[dest.length()];
+        for (int i = 0; i < dest.length(); i++) {
+            cTempFilename[i] = dest.at(i).toLatin1();
+        }
+        cTempFilename[dest.length()] = 0;
+
+        BinFile file(cFilename);
+        BinFile outfile(cTempFilename);
+
+        //lib.qMessageBox("Dest 1", dest, "error");
+        //lib.qMessageBox("In 1", src, "error");
+
+
+        QString bs = "";
+        for (long i = 0; i < size - srcOffset; i++) {
+            bs += ".";
+        }
+        lib.writetextfile(dest, bs);
+
+        for (long i = srcOffset, j = 0; i < size; i++, j++) {
+            short byte;
+            file.readByte(i, byte);
+            outfile.writeByte(j, (char)byte);
+        }
+        //lib.qMessageBox("Dest 2", "Exit", "error");
+    }
+}
+
+
+void CWindow::setWindowIconImage(QString s)
 {
-    if (data.indexOf("/QDJS_BINARY") == -1 && data.indexOf("/QDJS_BIN_FILE") == -1) {
-        QFile file(fileName);
-        file.open(QIODevice::WriteOnly);
-        QByteArray by = data.toLatin1();
-        file.write(by);
-        unsigned long sz = file.size();
-        file.close();
-        return sz;
-    }
-
-    //тут разбить строки по тегу QDJS_BINARY /QDJS_BINARY
-    QStringList list = data.split("/QDJS_BINARY");
-    QStringList list2;
-    for (int i = 0; i < list.length(); i++) {
-        QString buf = list[i];
-        if (buf.indexOf("QDJS_BINARY") != -1) {
-            QStringList aBuf = buf.split("QDJS_BINARY");
-            QStringList aBuf2 = this->_splitByBinFileTag(aBuf[0]);
-            for (int j = 0; j < aBuf2.length(); j++) {
-                list2 << aBuf2[j];
-            }
-            list2 << ("QDJS_BINARY" + aBuf[1]);
-        } else {
-            QStringList aBuf2 = this->_splitByBinFileTag(buf);
-            for (int j = 0; j < aBuf2.length(); j++) {
-                list2 << aBuf2[j];
-            }
-        }
-    }
-
-    char cFilename[fileName.length()];
-    for (int i = 0; i < fileName.length(); i++) {
-        cFilename[i] = fileName.at(i).toLatin1();
-    }
-    unsigned long sz = 0;
-    Utils lib;
-    for (int i = 0; i < list2.length(); i++) {
-        QString buf = list2[i];
-        if (buf.indexOf("QDJS_BINARY") != -1) {
-            buf = buf.replace("QDJS_BINARY", "");
-            QStringList bytes = buf.split(",");
-
-            QFileInfo info;
-            info.setFile(fileName);
-            unsigned long size = (unsigned long)info.size();
-
-            //BinFile bFile(cFilename);
-            QByteArray ba;
-
-            for (long j = 0; j < bytes.length(); j++) {
-                bool ok;
-                short byte = bytes[j].toShort(&ok);
-                //char ch = (char)byte;
-                ba.append(byte);
-                /*bFile.writeByte(size - 1, byte);
-                size++;*/
-            }
-
-            QFile file(fileName);
-            if (i == 0) {
-                file.open(QIODevice::WriteOnly);
-            } else {
-                file.open(QIODevice::Append);
-            }
-            file.write(ba);
-            sz = file.size();
-            file.close();
-
-        } else if (buf.indexOf("QDJS_BIN_FILE") != -1) {
-            buf = buf.replace("QDJS_BIN_FILE", "");
-            if (QFile::exists(buf)) {
-                //lib.qMessageBox("Will read", buf);
-                QFile rFile(buf);
-                rFile.open(QIODevice::ReadOnly);
-                QByteArray ba = rFile.readAll();
-                rFile.close();
-
-                QFile file(fileName);
-                if (i == 0) {
-                    file.open(QIODevice::WriteOnly);
-                } else {
-                    file.open(QIODevice::Append);
-                }
-                file.write(ba);
-                sz = file.size();
-                file.close();
-            }
-        }
-        else {
-            QFile file(fileName);
-            if (i == 0) {
-                file.open(QIODevice::WriteOnly);
-            } else {
-                file.open(QIODevice::Append);
-            }
-            QByteArray by = buf.toLatin1();
-            file.write(by);
-            sz = file.size();
-            file.close();
-        }
-    }
-    return sz;
+    QIcon ic(s);
+    setWindowIcon(ic);
 }
-
-QStringList CWindow :: _splitByBinFileTag(QString data) {
-    //тут разбить строки по тегу QDJS_BIN_FILE /QDJS_BIN_FILE
-    QString tag = "QDJS_BIN_FILE";
-    QStringList list = data.split("/" + tag);
-    QStringList list2;
-    for (int i = 0; i < list.length(); i++) {
-        QString buf = list[i];
-        if (buf.indexOf(tag) != -1) {
-            QStringList aBuf = buf.split(tag);
-            list2 << aBuf[0];
-            list2 << (tag + aBuf[1]);
-        } else {
-            list2 << buf;
-        }
-    }
-    return list2;
-}
-

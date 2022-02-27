@@ -1,18 +1,12 @@
-#-------------------------------------------------
-#
+# -------------------------------------------------
 # Project created by QtCreator 2015-12-11T16:38:57
-#
-#-------------------------------------------------
-
-QT       += core gui webkitwidgets
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
-TARGET = hw
-TEMPLATE = app
-
-
-SOURCES += main.cpp\
+# -------------------------------------------------
+QT += webkit \
+    sql \
+    network
+OBJECTS_DIR = build
+MOC_DIR = build
+SOURCES += main.cpp \
     lib/utilsstd.cpp \
     lib/utils.cpp \
     lib/inifile.cpp \
@@ -27,16 +21,17 @@ SOURCES += main.cpp\
     slots/oslinux.cpp \
     slots/os.cpp \
     ui/cwebpage.cpp \
-    lib/binfile.cpp
-
-HEADERS  += \
-    lib/utilsstd.h \
+    lib/binfile.cpp \
+    logic/dssparser/php.cpp \
+    logic/dssparser/DssParser.cpp \
+    logic/dssparser/DssLine.cpp \
+    lib/json/cjson.cpp
+HEADERS += lib/utilsstd.h \
     lib/utils.h \
     lib/inifile.h \
     ui/cwebview.h \
     ui/cwindow.h \
     slots/cphpinterface.h \
-    logic/cmetadata.h \
     lib/xml/cxml.h \
     logic/process/cprocess.h \
     ui/caction.h \
@@ -44,8 +39,10 @@ HEADERS  += \
     slots/oslinux.h \
     slots/os.h \
     ui/cwebpage.h \
-    lib/binfile.h
-
-win32 {
-        RC_FILE += my.rc
-}
+    logic/cmetadata.h \
+    lib/binfile.h \
+    logic/dssparser/DssParser.h \
+    logic/dssparser/DssLine.h \
+    logic/dssparser/php.h \
+    lib/json/cjson.h
+RC_FILE = my.rc

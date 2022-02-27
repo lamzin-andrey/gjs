@@ -49,6 +49,7 @@ public:
 	void getScreenSize(QMainWindow * wnd, int &w, int &h);
     QString readtextfile(QString fileName, bool silent = false);
     int writetextfile(QString fileName, QString data, bool append = false);
+    int  write(QString qFilename, QString qData, bool append = false);
     int hexStrToDec(QString hexPair);
     int hexChar2Int(QChar ch);
      void log(QString text);

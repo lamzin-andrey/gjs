@@ -39,6 +39,11 @@ void BinFile::writeInt(long pos, vector<int>data)
 void BinFile::readByte(long pos, short &byte)
 {
     ifstream b(this->filename, ios_base::binary);
+    //b.open(this->filename, ios_base::binary);
+    if (!b.is_open()) {
+        byte = -2;
+        return;
+    }
     b.seekg(pos, ios_base::beg);
     byte = b.get();
     //cout << n << "\r\n";

@@ -9,18 +9,18 @@
 class CMetadata
 {
 public:
-    CMetadata(QString file = "");
+    CMetadata(QString file = "", int argc = 0, char** argv = 0);
     QString sTitle;
     /** window buttons */
-    bool min = true;
-    bool max = true;
-    bool close = true;
-    bool question = false;
+    bool min;
+    bool max;
+    bool close;
+    bool question;
 
     /** win style*/
-    bool onlyTop = false;
-    bool noFrame = false;
-    bool fullScreen = false;
+    bool onlyTop;
+    bool noFrame;
+    bool fullScreen;
 
     /** win size */
     int windowHeight;
@@ -29,6 +29,8 @@ public:
 
     static QString PIPE;
 
+    QStringList getArgs();
+
     //TODO главное меню окна
 
 private:
@@ -36,10 +38,12 @@ private:
     QString _sMenu;
     QString _getHead();
     Utils lib;
+    QStringList args;
 
     void _setTitle(QStringList aTitle);
     void _setWinButtons(QStringList aMeta);
     int _parseNumAttr(int pos, QString s);
+    void _initArgv(int argc, char** argv);
 
 };
 
