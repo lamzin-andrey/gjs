@@ -1,32 +1,4 @@
 <p>Здесь описаны специфичные для gjs элементы html которые вы можете использовать в вашем приложении.</p>
-
-<h4>menubar</h4>
-<p>Тег должен располагаеться внутри head. </p>
-<p>Позволяет задать пункты главного меню окна программы</p>
-<p>Пример:</p>
-
-<pre>
-	&lt;head&gt;
-		&lt;!-- ... --&gt;
-	&lt;menubar&gt;
-		&lt;menu title="File"&gt;
-			&lt;item onselect="onOpen"&gt;Open&lt;/item&gt;
-			&lt;separator&gt;&lt;/separator&gt;
-			&lt;item onselect="onSave()"&gt;Save&lt;/item&gt;
-		&lt;/menu&gt;
-		&lt;menu title="Edit"&gt;
-			&lt;item onselect="onUndo"&gt;Undo&lt;/item&gt;
-			&lt;item onselect="onRedo"&gt;Redo&lt;/item&gt;
-			&lt;menu title="Submenu"&gt;
-				&lt;item onselect="onSubOne"&gt;One&lt;/item&gt;
-				&lt;item onselect="onSubSecond"&gt;Two&lt;/item&gt;
-			&lt;/menu&gt;
-		&lt;/menu&gt;
-	&lt;/menubar&gt;
-	&lt;/head&gt;
-</pre>
-<p>Атрибут onselect должен содержать имя функции объекта window, которая вызовется при выборе пункта меню. Задавать полагается имя функции без скобок. Т. е. вариант с onselected="onSave()" работать будет, но в виде исключения. </p>
-
 <h4>meta[name=windowButtons]</h4>
 <p>Используйте мета-тег с атрибутом name windowButtons для управления кнопками окна вашего приложения.
 Атрибут content тега содержит строковое представление битовой маски, нули и единицы, которые управляют видимостью кнопок вашего окна.</p>

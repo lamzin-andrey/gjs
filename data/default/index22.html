@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+	<title>QT5 WEB VIEW DESKTOP API Documentation</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="windowButtons" content="1110" width="1020" height="600">
+	<script src="/home/andrey/hdata/programs/my/cpp/qt/gjs/data/default/doc/j/vendor/micron.js"></script>
+	<script src="/home/andrey/hdata/programs/my/cpp/qt/gjs/data/default/doc/j/main.js"></script>
+	<link href="/home/andrey/hdata/programs/my/cpp/qt/gjs/data/default/doc/s/layout.css" type="text/css" rel="stylesheet"></link>
+	<link href="/home/andrey/hdata/programs/my/cpp/qt/gjs/data/default/doc/s/table.css" type="text/css" rel="stylesheet"></link>
+	<link href="/home/andrey/hdata/programs/my/cpp/qt/gjs/data/default/doc/s/sidebar.css" type="text/css" rel="stylesheet"></link>
+	<link href="/home/andrey/hdata/programs/my/cpp/qt/gjs/data/default/doc/s/content.css" type="text/css" rel="stylesheet"></link>
+	<link href="/home/andrey/hdata/programs/my/cpp/qt/gjs/data/default/doc/s/htmlcode.css" type="text/css" rel="stylesheet"></link>
+	<link href="/home/andrey/hdata/programs/my/cpp/qt/gjs/data/default/doc/s/jscode.css" type="text/css" rel="stylesheet"></link>
+</head>
+<body>
+<table cellpadding="0" cellspacing="0" class="layout">
+<tr>
+	<td class="sidebar" width="300">
+	<div>
+		<input type="text" id="iFilter" placeholder="Search...">
+	</div>
+	<ul class="sections">
+		<li><a href="#about">About</a></li>
+		<li><a href="#htmlfeat">Html features</a></li>
+		<ul class="subsections">
+			<li><a href="#windowButtons">windowButtons</a></li>
+			<li><a href="#windowStyle">Стиль окна приложения</a></li>
+		</ul>
+		<li><a href="#mainmenu">Главное меню окна</a></li>
+		<li>Desktop API</li>
+	</ul>
+	</td>
+	<td class="content">
+	<div id="contentArea">
+		<h4 id="about">О программе</h4>
+		<p>Qt5 WebView позволяет быстро создавать windows и linux xubuntu десктоп-приложения.</p>
+		<p>Особенно легко это будет web-разработчикам, знакомыми с базовыми функциями языков javascript и PHP.</p>
+		<p>Qt5 WebView предоставляет javascript API позволяющее запускать программы операционных систем Windows и Linux Xubuntu и взаимодействовать с файловой системой.</p>
+		<p>Это позволяет создать вам ваше десктоп-приложение так же легко, как если бы вы создавали web сайт.</p>
+		<h4 id="htmlfeat">HTML features</h4>
+		<p>Здесь описаны специфичные для Qt5 WebView элементы html которые вы можете использовать в вашем приложении.</p>
+		<h5 id="windowButtons">meta[name=windowButtons]</h5>
+		<p>Используйте мета-тег с атрибутом name windowButtons для управления кнопками окна вашего приложения.
+		Атрибут content тега содержит строковое представление битовой маски, нули и единицы, которые управляют видимостью кнопок вашего окна.</p>
+		<p>Пример тега:</p>
+		<p class="codebg">
+			<span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1110"</span> 
+			<span class="tag">&gt;</span>
+		</p>
+		<p>Смысл цифр в content (перечислены справа налево, нумеруются с нуля)</p>
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<th>Номер бита</th>
+				<th>0</th>
+				<th>1</th>
+			</tr>
+			<tr>
+				<td>0</td>
+				<td>Не показывать кнопку контекстной справки</td>
+				<td>Показывать кнопку контекстной справки</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Не показывать кнопку закрытия окна</td>
+				<td>Показывать кнопку закрытия окна</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Не показывать кнопку максимизации окна</td>
+				<td>Показывать кнопку максимизации окна</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Не показывать кнопку минимизации окна</td>
+				<td>Показывать кнопку минимизации окна</td>
+			</tr>
+		</table>
+		<p>Значение по умолчанию: 1110</p>
+
+		<h5 id="windowStyle">Атрибуты стиля окна</h5>
+		<p>Задаются также в метатеге windowButtons</p>
+		<table class="contentTable" cellpadding="0" cellspacing="0">
+			<tr>
+				<th>Атрибут</th>
+				<th>Значение</th>
+			</tr>
+			<tr>
+				<td>onlyTop</td>
+				<td>Показывать окно на переднем плане</td>
+			</tr>
+			<tr>
+				<td >noFrame</td>
+				<td>Показывать окно без рамки</td>
+			</tr>
+			<tr>
+				<td>fulScreen</td>
+				<td>Показывать окно без рамки и развернутым на весь экран</td>
+			</tr>
+			<tr>
+				<td>width</td>
+				<td>Ширина окна приложения, например width="100", двойные кавычки обязательны</td>
+			</tr>
+			<tr>
+				<td>height</td>
+				<td>Высота окна приложения, например height="100", двойные кавычки обязательны</td>
+			</tr>
+			<tr>
+				<td>fixed</td>
+				<td>Если заданы width или height и fixed окно становится неизменяемого размера</td>
+			</tr>
+		</table>
+		<p>Пример окна 800 на 600 пискелей, не позволяющего пользователю изменять размер</p>
+		<p class="codebg">
+			<span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1110"</span> 
+				<span class="tagattrn">width</span>=<span class="tagattrv">"800"</span>
+				<span class="tagattrn">height</span>=<span class="tagattrv">"600"</span>
+				<span class="tagattrn">fixed</span>
+			<span class="tag">&gt;</span>
+		</p>
+		<h4 id="mainmenu">Главное меню окна программы</h4>
+		<p>Чтобы добавить в ваше окно приложения главное меню программы, 
+		вам надо добавить внутри тега head html код menubar, похожий на пример ниже:</p>
+		
+		<pre class="codebg">
+<span class="tag">&lt;html</span> <span class="tagattrn">lang</span>=<span class="tagattrv">"ru"</span><span class="tag">&gt;</span>
+	<span class="tag">&lt;head</span> <span class="tag">&gt;</span>
+	<span class="hcomment">&lt;!-- здесь теги title, meta[windowButtons]... и другие, которые вам нужны --&gt;</span>
+		<span class="tag">&lt;menubar</span> <span class="tagattrn">style</span>=<span class="tagattrv">"display:none"</span><span class="tag">&gt;</span>
+			<span class="tag">&lt;menu</span> <span class="tagattrn">title</span>=<span class="tagattrv">"Action"</span><span class="tag">&gt;</span>
+				<span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickExitMenu()"</span> <span class="tag">&gt;</span>Quit Ctrl+Q<span class="tag">&lt;/item&gt;</span>
+			<span class="tag">&lt;/menu&gt;</span>
+			<span class="tag">&lt;menu</span> <span class="tagattrn">title</span>=<span class="tagattrv">"Language"</span><span class="tag">&gt;</span>
+				<span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickSelectEn()"</span> <span class="tag">&gt;</span>English<span class="tag">&lt;/item&gt;</span>
+				<span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickSelectRu()"</span> <span class="tag">&gt;</span>Russian<span class="tag">&lt;/item&gt;</span>
+			<span class="tag">&lt;/menu&gt;</span>
+		<span class="tag">&lt;/menubar&gt;</span>
+	<span class="tag">&lt;/head&gt;</span>
+	<span class="hcomment">&lt;!-- здесь тег body... --&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+		</pre>
+		<p>Это создаст главное меню окна программы, как на рисунке</p>
+		<p class="tc">
+			<img src="/home/andrey/hdata/programs/my/cpp/qt/gjs/data/default/doc/i/menubar.png">
+		</p>
+		<p>Обработчики нажатий на пунктах меню должны быть доступны в подключенном к окну js файле.</p>
+		<p>Qt5 WebView парсит тег menubar при запуске и добавляет его в меню окна. Но оно никак не обрабатывает его видимость. Поэтому в примере тегу menubar добавлен стиль display:none;</p>
+		<p>Здесь будет пример файла.</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+		<p>Here Content</p>
+	</div>
+	</td>
+</tr>
+</table>
+<!--div class="sidebar">
+	Navigation
+</div>
+<div class="content" id="contentArea">
+	<p>Here Content</p>
+</div>
+<div style="clear:both"></div-->
+</body>
+</html>

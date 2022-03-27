@@ -1,0 +1,9 @@
+input[type=text] {
+	height:32px;
+	width:100%;
+}
+
+ul {
+	margin:2px;
+	padding:2px;
+}

@@ -1,0 +1,22 @@
+html {
+	height: 100%;
+}
+body {
+	padding:0px;
+	margin:0px;
+	height: 100%;
+}
+.sidebar {
+	width:300px;
+	height: 100%;
+	float:left;
+	background-color:#AABEF8;
+	overflow-y:scroll;
+}
+.content {
+	/*float:left;*/
+	height: 100%;
+	width:75%;
+	background-color:#FFFFFF;
+	overflow:scroll;
+}
