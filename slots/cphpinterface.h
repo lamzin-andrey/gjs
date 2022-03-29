@@ -7,7 +7,7 @@
 #include <QByteArray>
 #include <QFile>
 #include <QDirIterator>
-#include <QImage>
+#include <QFile>
 #include <QFileInfo>
 #include <QRegExp>
 #include <QList>
@@ -44,10 +44,15 @@ public slots:
     bool file_exists(QString path);
     bool is_dir(QString path);
     qint64  filesize(QString path);
+    bool unlink(QString path);
 
     //exec
-    void execCProcess(QString command, QString onFinish, QString onOutput = "", QString onError = "");
-    void exec(QString command, QString onFinish, QString onOutput = "", QString onError = "");
+    unsigned int execCProcess(QString command, QString onFinish, QString onOutput = "", QString onError = "");
+    unsigned int exec(QString command, QString onFinish, QString onOutput = "", QString onError = "");
+    //пытался на основании QProcess state определять, в линуксе точно безуспешно
+    bool isRun(unsigned int n);
+    //идентификатор системного процесса
+    unsigned int getSysId(unsigned int n);
     void onCProcessOutput(QString onOutputEvaluateJavaScript, unsigned int resId);
     void onCProcessErrorOutput(QString onErrorOutputEvaluateJavaScript, unsigned int resId);
     void onCProcessEmptyArguments();
@@ -56,9 +61,6 @@ public slots:
 
     //file system
     QString _scandir(QString path);
-
-    //images
-    QString _getimagesize(QString path);
 };
 
 #endif // CPHPINTERFACE_H

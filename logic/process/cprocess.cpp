@@ -33,6 +33,7 @@ void CProcess::exec(QString command, QString workDir) {
     }
     //lib.qMessageBox("CProcess", "start " + execPath + " with args: (" + _execArgs.join(',') + ")");
     _proc->start(execPath, _execArgs);
+    _sysId = ((_PROCESS_INFORMATION*) _proc->pid() )->dwProcessId;
 }
 
 QString CProcess::_parseCommand(QString command) {
@@ -60,9 +61,6 @@ void CProcess::onOutput() {
         QString s = QString::fromUtf8(ba->data()).replace('\n', "\\n");
         s = s.replace('\'', "\\'");
         s = s.replace('"', "\\\"");
-        if (s != "rscexit") {
-            return;
-        }
         //lib.qMessageBox("CProcess", "onO - b emit onOutputSg(" + _onOutput + "('" + s + "');" + ")");
 
         if (_onOutput.length()) {
@@ -96,8 +94,20 @@ void CProcess::onFinish() {
     //lib.qMessageBox("CProcess", "onFin");
     QString o = _output.join(CMetadata::PIPE);
     QString e = _errors.join(CMetadata::PIPE);
-    if (o != "rscexit") {
-        return;
-    }
     emit(onFinishSg("QtBrige.onFinish('" + _onFinish + "', '" +  o  + "', '" + e + "');", _resId));
+}
+bool CProcess::isRun() {
+    if (_proc->state() == QProcess::NotRunning) {
+        return false;
+    }
+    return true;
+}
+unsigned int CProcess::id() {
+    return _resId;
+}
+/**
+ * @description Возвращает id системного процесса
+*/
+unsigned int CProcess::systemId() {
+    return _sysId;
 }

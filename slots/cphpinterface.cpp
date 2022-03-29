@@ -56,34 +56,33 @@ QString CPhpInterface::_scandir(QString path) {
 QString CPhpInterface::file_get_contents(QString path) {
     return lib.readtextfile(path, true);
 }
-void CPhpInterface::exec(QString command, QString onFinish, QString onOutput, QString onError) {
-    this->execCProcess(command, onFinish, onOutput, onError);
+unsigned int CPhpInterface::exec(QString command, QString onFinish, QString onOutput, QString onError) {
+    return this->execCProcess(command, onFinish, onOutput, onError);
 }
 
-void CPhpInterface::execCProcess(QString command, QString onFinish, QString onOutput, QString onError) {
-    //if (!procIsInit) {
+unsigned int CPhpInterface::execCProcess(QString command, QString onFinish, QString onOutput, QString onError) {
     cprocId++;
     CProcess * proc = new CProcess(cprocId, onOutput, onError, onFinish, this);
     connect(proc, SIGNAL(onOutputSg(QString, unsigned int)),
                   this, SLOT(onCProcessOutput(QString , unsigned int )));
-        connect(proc,
-                SIGNAL(
-                    onErrorSg(QString, unsigned int)),
-                this, SLOT(
-                    onCProcessErrorOutput(QString, unsigned int))
-               );
-        connect(proc, SIGNAL(onEmptyArgumentsSg()),
-                this, SLOT(onCProcessEmptyArguments()));
+    connect(proc,
+            SIGNAL(
+                onErrorSg(QString, unsigned int)),
+            this, SLOT(
+                onCProcessErrorOutput(QString, unsigned int))
+           );
+    connect(proc, SIGNAL(onEmptyArgumentsSg()),
+            this, SLOT(onCProcessEmptyArguments()));
 
-        connect(proc, SIGNAL(onEmptyOutputSg(bool)),
-                this, SLOT(onCProcessEmptyOutput(bool)) );
+    connect(proc, SIGNAL(onEmptyOutputSg(bool)),
+            this, SLOT(onCProcessEmptyOutput(bool)) );
 
-        connect(proc, SIGNAL(onFinishSg(QString, unsigned int)),
-                this, SLOT(onCProcessFinish(QString, unsigned int)) );
-    //}
+    connect(proc, SIGNAL(onFinishSg(QString, unsigned int)),
+            this, SLOT(onCProcessFinish(QString, unsigned int)) );
+
     proc->exec(command);
     cprocList.append(proc);
-
+    return cprocId;
 }
 
 void CPhpInterface::onCProcessOutput(QString evaluateJavaScript, unsigned int resId) {
@@ -115,12 +114,26 @@ void CPhpInterface::onCProcessFinish(QString evaluateJavaScript, unsigned int re
     //lib.qMessageBox("CPhp", "onCProcessFinish(" + evaluateJavaScript + ")");
     this->webView->page()->currentFrame()->evaluateJavaScript(evaluateJavaScript);
 }
-
-QString CPhpInterface::_getimagesize(QString path) {
-    if (!this->file_exists(path)) {
-        return "";
+bool CPhpInterface::isRun(unsigned int n) {
+    for (unsigned int i = 0; i < cprocList.length(); i++)  {
+        if (cprocList[i]->id() == n) {
+            return cprocList[i]->isRun();
+        }
     }
-    QImage * image = new QImage(path);
-    QString r = QString::number( image->width() ) + "," + QString::number( image->height() );
-    return r;
+    return false;
+}
+unsigned int CPhpInterface::getSysId(unsigned int n) {
+    for (unsigned int i = 0; i < cprocList.length(); i++)  {
+        if (cprocList[i]->id() == n) {
+            return cprocList[i]->systemId();
+        }
+    }
+    return 0;
+}
+
+bool CPhpInterface::unlink(QString path) {
+    if (this->file_exists(path)){
+        return QFile::remove(path);
+    }
+    return true;
 }
