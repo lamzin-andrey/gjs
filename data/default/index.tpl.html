@@ -1,198 +1,605 @@
 <!DOCTYPE html>
 <html xml:lang="en" lang="en">
 <head>
-	<title>QT5 WEB VIEW DESKTOP API Documentation</title>
-	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-	<meta name="windowButtons" content="1110" width="1020" height="600">
-	<script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/vendor/micron.js"></script>
-	<script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/main.js"></script>
-	<link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/layout.css" type="text/css" rel="stylesheet"></link>
-	<link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/table.css" type="text/css" rel="stylesheet"></link>
-	<link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/sidebar.css" type="text/css" rel="stylesheet"></link>
-	<link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/content.css" type="text/css" rel="stylesheet"></link>
-	<link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/htmlcode.css" type="text/css" rel="stylesheet"></link>
-	<link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/jscode.css" type="text/css" rel="stylesheet"></link>
+    <title>QT5 WEB VIEW DESKTOP API Documentation</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="windowButtons" content="1110" width="1020" height="600">
+    <script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/vendor/micron.js"></script>
+    <script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/main.js"></script>
+    <script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/src/simpledemo.js"></script>
+    <link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/layout.css" type="text/css" rel="stylesheet"></link>
+    <link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/table.css" type="text/css" rel="stylesheet"></link>
+    <link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/sidebar.css" type="text/css" rel="stylesheet"></link>
+    <link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/content.css" type="text/css" rel="stylesheet"></link>
+    <link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/htmlcode.css" type="text/css" rel="stylesheet"></link>
+    <link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/jscode.css" type="text/css" rel="stylesheet"></link>
 </head>
 <body>
 <table cellpadding="0" cellspacing="0" class="layout">
 <tr>
-	<td class="sidebar" width="300">
-	<div>
-		<input type="text" id="iFilter" placeholder="Search...">
-	</div>
-	<ul class="sections">
-		<li><a href="#about">About</a></li>
-		<li><a href="#htmlfeat">Html features</a></li>
-		<ul class="subsections">
-			<li><a href="#windowButtons">windowButtons</a></li>
-			<li><a href="#windowStyle">Стиль окна приложения</a></li>
-		</ul>
-		<li><a href="#mainmenu">Главное меню окна</a></li>
-		<li>Desktop API</li>
-	</ul>
-	</td>
-	<td class="content">
-	<div id="contentArea">
-		<h4 id="about">О программе</h4>
-		<p>Qt5 WebView позволяет быстро создавать windows и linux xubuntu десктоп-приложения.</p>
-		<p>Особенно легко это будет web-разработчикам, знакомыми с базовыми функциями языков javascript и PHP.</p>
-		<p>Qt5 WebView предоставляет javascript API позволяющее запускать программы операционных систем Windows и Linux Xubuntu и взаимодействовать с файловой системой.</p>
-		<p>Это позволяет создать вам ваше десктоп-приложение так же легко, как если бы вы создавали web сайт.</p>
-		<h4 id="htmlfeat">HTML features</h4>
-		<p>Здесь описаны специфичные для Qt5 WebView элементы html которые вы можете использовать в вашем приложении.</p>
-		<h5 id="windowButtons">meta[name=windowButtons]</h5>
-		<p>Используйте мета-тег с атрибутом name windowButtons для управления кнопками окна вашего приложения.
-		Атрибут content тега содержит строковое представление битовой маски, нули и единицы, которые управляют видимостью кнопок вашего окна.</p>
-		<p>Пример тега:</p>
-		<p class="codebg">
-			<span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1110"</span> 
-			<span class="tag">&gt;</span>
-		</p>
-		<p>Смысл цифр в content (перечислены справа налево, нумеруются с нуля)</p>
+    <td class="sidebar" width="300">
+    <div>
+        <input type="text" id="iFilter" placeholder="Search...">
+    </div>
+    <ul class="sections">
+        <li><a href="#about">About</a></li>
+        <li><a href="#htmlfeat">Html features</a></li>
+        <ul class="subsections">
+            <li><a href="#windowButtons">windowButtons</a></li>
+            <li><a href="#windowStyle">Стиль окна приложения</a></li>
+        </ul>
+        <li><a href="#mainmenu">Главное меню окна</a></li>
+        <li><a href="#dapi">Desktop API</a></li>
+        <ul class="subsections">
+            <li><a href="#winManage">Управление окном</a></li>
+            <ul class="subsections4">
+				<li><a href="#resizeTo">Qt.resizeTo</a></li>
+				<li><a href="#maximize">Qt.maximize</a></li>
+				<li><a href="#minimize">Qt.minimize</a></li>
+				<li ><a href="#sfs">Qt.showFullScreen</a></li>
+				<li ><a href="#sNormal">Qt.showNormal</a></li>
+				<li ><a href="#hideMainMenu">Qt.hideMainMenu</a></li>
+				<li ><a href="#showMainMenu">Qt.showMainMenu</a></li>
+				<li ><a href="#moveTo">Qt.moveTo</a></li>
+				<li ><a href="#swi">Qt.setWindowIconImage</a></li>
+				<li ><a href="#quit">Qt.quit</a></li>
+			</ul>
+			<li><a href="#env">Взаимодействие с окружением</a></li>
+			<ul class="subsections4">
+				<li><a href="#jexec">jexec</a></li>
+			</ul>
+        </ul>
+        
+    </ul>
+    </td>
+    <td class="content" id="lastM">
+    <div id="contentArea">
+        <h4 id="about">О программе</h4>
+        <p>Qt5 WebView позволяет быстро создавать windows и linux xubuntu десктоп-приложения.</p>
+        <p>Особенно легко это будет web-разработчикам, знакомыми с базовыми функциями языков javascript и PHP.</p>
+        <p>Qt5 WebView предоставляет javascript API позволяющее запускать программы операционных систем Windows и Linux Xubuntu и взаимодействовать с файловой системой.</p>
+        <p>Это позволяет создать вам ваше десктоп-приложение так же легко, как если бы вы создавали web сайт.</p>
+        <h4 id="htmlfeat">HTML features</h4>
+        <p>Здесь описаны специфичные для Qt5 WebView элементы html которые вы можете использовать в вашем приложении.</p>
+        <h5 id="windowButtons">meta[name=windowButtons]</h5>
+        <p>Используйте мета-тег с атрибутом name windowButtons для управления кнопками окна вашего приложения.
+        Атрибут content тега содержит строковое представление битовой маски, нули и единицы, которые управляют видимостью кнопок вашего окна.</p>
+        <p>Пример тега:</p>
+        <p class="codebg">
+            <span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1110"</span> 
+            <span class="tag">&gt;</span>
+        </p>
+        <p>Смысл цифр в content (перечислены справа налево, нумеруются с нуля)</p>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>Номер бита</th>
+                <th>0</th>
+                <th>1</th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>Не показывать кнопку контекстной справки</td>
+                <td>Показывать кнопку контекстной справки</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Не показывать кнопку закрытия окна</td>
+                <td>Показывать кнопку закрытия окна</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Не показывать кнопку максимизации окна</td>
+                <td>Показывать кнопку максимизации окна</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Не показывать кнопку минимизации окна</td>
+                <td>Показывать кнопку минимизации окна</td>
+            </tr>
+        </table>
+        <p>Значение по умолчанию: 1110</p>
+
+        <h5 id="windowStyle">Атрибуты стиля окна</h5>
+        <p>Задаются также в метатеге windowButtons</p>
+        <table class="contentTable" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>Атрибут</th>
+                <th>Значение</th>
+            </tr>
+            <tr>
+                <td>onlyTop</td>
+                <td>Показывать окно на переднем плане</td>
+            </tr>
+            <tr>
+                <td >noFrame</td>
+                <td>Показывать окно без рамки</td>
+            </tr>
+            <tr>
+                <td>fulScreen</td>
+                <td>Показывать окно без рамки и развернутым на весь экран</td>
+            </tr>
+            <tr>
+                <td>width</td>
+                <td>Ширина окна приложения, например width="100", двойные кавычки обязательны</td>
+            </tr>
+            <tr>
+                <td>height</td>
+                <td>Высота окна приложения, например height="100", двойные кавычки обязательны</td>
+            </tr>
+            <tr>
+                <td>fixed</td>
+                <td>Если заданы width или height и fixed окно становится неизменяемого размера</td>
+            </tr>
+        </table>
+        <p>Пример окна 800 на 600 пискелей, не позволяющего пользователю изменять размер</p>
+        <p class="codebg">
+            <span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1110"</span> 
+                <span class="tagattrn">width</span>=<span class="tagattrv">"800"</span>
+                <span class="tagattrn">height</span>=<span class="tagattrv">"600"</span>
+                <span class="tagattrn">fixed</span>
+            <span class="tag">&gt;</span>
+        </p>
+        <h4 id="mainmenu">Главное меню окна программы</h4>
+        <p>Чтобы добавить в ваше окно приложения главное меню программы, 
+        вам надо добавить внутри тега head html код menubar, похожий на пример ниже:</p>
+        
+        <pre class="codebg">
+<span class="tag">&lt;html</span> <span class="tagattrn">lang</span>=<span class="tagattrv">"ru"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;head</span> <span class="tag">&gt;</span>
+    <span class="hcomment">&lt;!-- здесь теги title, meta[windowButtons]... и другие, которые вам нужны --&gt;</span>
+        <span class="tag">&lt;menubar</span> <span class="tagattrn">style</span>=<span class="tagattrv">"display:none"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;menu</span> <span class="tagattrn">title</span>=<span class="tagattrv">"Action"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickExitMenu()"</span> <span class="tag">&gt;</span>Quit Ctrl+Q<span class="tag">&lt;/item&gt;</span>
+            <span class="tag">&lt;/menu&gt;</span>
+            <span class="tag">&lt;menu</span> <span class="tagattrn">title</span>=<span class="tagattrv">"Language"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickSelectEn()"</span> <span class="tag">&gt;</span>English<span class="tag">&lt;/item&gt;</span>
+                <span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickSelectRu()"</span> <span class="tag">&gt;</span>Russian<span class="tag">&lt;/item&gt;</span>
+            <span class="tag">&lt;/menu&gt;</span>
+        <span class="tag">&lt;/menubar&gt;</span>
+    <span class="tag">&lt;/head&gt;</span>
+    <span class="hcomment">&lt;!-- здесь тег body... --&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+        </pre>
+        <p>Это создаст главное меню окна программы, как на рисунке</p>
+        <p class="tc">
+            <img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/menubar.png">
+            <div class="tc">
+                <i>Рисунок 1. Главное меню оконного приложения (пример)</i>
+            </div>
+        </p>
+        <p>Qt5 WebView парсит тег menubar при запуске и добавляет данные из него в меню окна.
+            Но оно никак не обрабатывает его видимость.
+            Поэтому в примере тегу menubar добавлен стиль display:none; (иначе в вашем окне будут совершенно ненужные строки "Quit Ctrl+Q", "English", "Russian").
+        </p>
+        <p>Обработчики нажатий на пунктах меню должны быть доступны в подключенном к окну js файле.</p>
+        <p class="codebg">
+            <span class="tag">&lt;script</span> <span class="tagattrn">src</span>=<span class="tagattrv">"./js/mainMenuListeners.js"</span>
+            <span class="tag">&gt;&lt;/script&gt;</span>
+        </p>
+        <p>И в файле определяем обработчики событий кликов мышью на пунктах меню:</p>
+        <pre class="codebg">
+<span class="kw">function</span> onClickExitMenu() {
+    <span class="jcomm">// Закрыть окно</span>
+    Qt.quit();
+}
+
+<span class="kw">function</span> onClickSelectEn() {
+    <span class="jcomm">// Здесь реализуете смену языка интерфейса вашего приложения</span>
+}
+<span class="kw">function</span> onClickSelectRu() {
+    <span class="jcomm">// Здесь реализуете смену языка интерфейса вашего приложения</span>
+}
+<span class="jcomm">// Добавляем поддержку хоткея</span>
+window.onkeyup = onKeyUp;
+
+<span class="kw">function</span> onKeyUp(evt) {
+    <span class="kw">if</span> (evt.ctrlKey) {
+        <span class="kw">switch</span>(evt.keyCode) {
+            <span class="kw">case</span> <span class="nm">81</span>:    <span class="jcomm">// "Q"</span>
+            onClickExitMenu();
+            <span class="kw">break</span>;
+        }
+    }
+}           
+        </pre>
+<h4 id="dapi">Desktop API</h4>
+<h5 id="winManage">Управление окном приложения</h5>
+<p>Управление окном доступно из javascript кода</p>
+	<div id="resizeTo" class="function">
 		<table cellpadding="0" cellspacing="0">
 			<tr>
-				<th>Номер бита</th>
-				<th>0</th>
-				<th>1</th>
+				<td class="fname">
+					<h5>Qt.resizeTo</h5>
+				</td>
+				<td class="fd">
+					<i>Qt.resizeTo(<span class="dkw">Number</span> width, <span class="dkw">Number</span> height)</h5>
+				</td>
 			</tr>
 			<tr>
-				<td>0</td>
-				<td>Не показывать кнопку контекстной справки</td>
-				<td>Показывать кнопку контекстной справки</td>
+				<td class="fdf" colspan="2">
+					<p>Изменяет размер окна приложения. Координаты левого верхнего угла при этом не изменяются. Используйте Qt.moveTo() при необходимости их изменить.</p>
+					<p></p>
+				</td>
 			</tr>
 			<tr>
-				<td>1</td>
-				<td>Не показывать кнопку закрытия окна</td>
-				<td>Показывать кнопку закрытия окна</td>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<input type="button" value="Изменить размер этого окна" onclick="Qt.resizeTo(800, 600);">
+				</td>
 			</tr>
-			<tr>
-				<td>2</td>
-				<td>Не показывать кнопку максимизации окна</td>
-				<td>Показывать кнопку максимизации окна</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Не показывать кнопку минимизации окна</td>
-				<td>Показывать кнопку минимизации окна</td>
-			</tr>
-		</table>
-		<p>Значение по умолчанию: 1110</p>
-
-		<h5 id="windowStyle">Атрибуты стиля окна</h5>
-		<p>Задаются также в метатеге windowButtons</p>
-		<table class="contentTable" cellpadding="0" cellspacing="0">
-			<tr>
-				<th>Атрибут</th>
-				<th>Значение</th>
-			</tr>
-			<tr>
-				<td>onlyTop</td>
-				<td>Показывать окно на переднем плане</td>
-			</tr>
-			<tr>
-				<td >noFrame</td>
-				<td>Показывать окно без рамки</td>
-			</tr>
-			<tr>
-				<td>fulScreen</td>
-				<td>Показывать окно без рамки и развернутым на весь экран</td>
-			</tr>
-			<tr>
-				<td>width</td>
-				<td>Ширина окна приложения, например width="100", двойные кавычки обязательны</td>
-			</tr>
-			<tr>
-				<td>height</td>
-				<td>Высота окна приложения, например height="100", двойные кавычки обязательны</td>
-			</tr>
-			<tr>
-				<td>fixed</td>
-				<td>Если заданы width или height и fixed окно становится неизменяемого размера</td>
-			</tr>
-		</table>
-		<p>Пример окна 800 на 600 пискелей, не позволяющего пользователю изменять размер</p>
-		<p class="codebg">
-			<span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1110"</span> 
-				<span class="tagattrn">width</span>=<span class="tagattrv">"800"</span>
-				<span class="tagattrn">height</span>=<span class="tagattrv">"600"</span>
-				<span class="tagattrn">fixed</span>
-			<span class="tag">&gt;</span>
-		</p>
-		<h4 id="mainmenu">Главное меню окна программы</h4>
-		<p>Чтобы добавить в ваше окно приложения главное меню программы, 
-		вам надо добавить внутри тега head html код menubar, похожий на пример ниже:</p>
 		
-		<pre class="codebg">
-<span class="tag">&lt;html</span> <span class="tagattrn">lang</span>=<span class="tagattrv">"ru"</span><span class="tag">&gt;</span>
-	<span class="tag">&lt;head</span> <span class="tag">&gt;</span>
-	<span class="hcomment">&lt;!-- здесь теги title, meta[windowButtons]... и другие, которые вам нужны --&gt;</span>
-		<span class="tag">&lt;menubar</span> <span class="tagattrn">style</span>=<span class="tagattrv">"display:none"</span><span class="tag">&gt;</span>
-			<span class="tag">&lt;menu</span> <span class="tagattrn">title</span>=<span class="tagattrv">"Action"</span><span class="tag">&gt;</span>
-				<span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickExitMenu()"</span> <span class="tag">&gt;</span>Quit Ctrl+Q<span class="tag">&lt;/item&gt;</span>
-			<span class="tag">&lt;/menu&gt;</span>
-			<span class="tag">&lt;menu</span> <span class="tagattrn">title</span>=<span class="tagattrv">"Language"</span><span class="tag">&gt;</span>
-				<span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickSelectEn()"</span> <span class="tag">&gt;</span>English<span class="tag">&lt;/item&gt;</span>
-				<span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickSelectRu()"</span> <span class="tag">&gt;</span>Russian<span class="tag">&lt;/item&gt;</span>
-			<span class="tag">&lt;/menu&gt;</span>
-		<span class="tag">&lt;/menubar&gt;</span>
-	<span class="tag">&lt;/head&gt;</span>
-	<span class="hcomment">&lt;!-- здесь тег body... --&gt;</span>
-<span class="tag">&lt;/html&gt;</span>
-		</pre>
-		<p>Это создаст главное меню окна программы, как на рисунке</p>
-		<p class="tc">
-			<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/menubar.png">
-		</p>
-		<p>Обработчики нажатий на пунктах меню должны быть доступны в подключенном к окну js файле.</p>
-		<p>Qt5 WebView парсит тег menubar при запуске и добавляет его в меню окна. Но оно никак не обрабатывает его видимость. Поэтому в примере тегу menubar добавлен стиль display:none;</p>
-		<p>Здесь будет пример файла.</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
-		<p>Here Content</p>
+		</table>
 	</div>
-	</td>
+	
+	<div id="maximize" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="fname">
+					<h5>Qt.maximize</h5>
+				</td>
+				<td class="fd">
+					<i>Qt.maximize()</h5>
+				</td>
+			</tr>
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Разворачивает окно приложения на весь экран.</p>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<input type="button" value="Изменить размер этого окна до 800x600" onclick="Qt.resizeTo(800, 600);">
+					<input type="button" value="Развернуть на весь экран" onclick="Qt.maximize();">
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+	
+	<div id="minimize" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="fname">
+					<h5>Qt.minimize</h5>
+				</td>
+				<td class="fd">
+					<i>Qt.minimize()</h5>
+				</td>
+			</tr>
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Сворачивает окно приложения на панель задач.
+					Примечание: после первого запуска приложения работает, как ожидается, но после первого 
+					"свёртывания" и последующего восстановления путём клика на кнопку окна на панели в 
+					Xubuntu 18.04 функция как-будто бы не работает. Добиться устойчивой работы можно предварительно
+					вызвав Qt.showNormal(); и повторив это через небольшую задержку.</p>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<input type="button" value="Свернуть окно" onclick="Demo.minimize()">
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					Пример кода:<br>
+					<pre class="codebg">
+<span class="kw">function</span> onClickButtonMinimizeWindow(){
+    Qt.showNormal();
+    Qt.minimize();
+    <span class="jcomm">// Для устойчивой работы в Xubuntu 18.04 с XFCE</span>
+    setTimeout(<span class="kw">function</span>() {
+        Qt.showNormal();
+        Qt.minimize();
+    }, <span class="nm">100</span>);
+}
+</pre>
+					
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+	
+	<div id="sfs" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="fname">
+					<h5>Qt.showFullScreen</h5>
+				</td>
+				<td class="fd">
+					<i>Qt.showFullScreen()</h5>
+				</td>
+			</tr>
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Скрывает рамку окна и разворачивает окно на предний план.</p>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<input type="button" value="Вернуть рамку" onclick="Qt.showNormal();">
+					<input type="button" value="Развернуть на весь экран скрыв рамку" onclick="Qt.showFullScreen();">
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+	
+	<div id="sNormal" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="fname">
+					<h5>Qt.showNormal</h5>
+				</td>
+				<td class="fd">
+					<i>Qt.showNormal()</h5>
+				</td>
+			</tr>
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Показывает рамку окна если оно было скрыто функцией showFullScreen().</p>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<input type="button" value="Вернуть рамку" onclick="Qt.showNormal();">
+					<input type="button" value="Развернуть на весь экран скрыв рамку" onclick="Qt.showFullScreen();">
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+	
+	<div id="hideMainMenu" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="fname">
+					<h5>Qt.hideMainMenu</h5>
+				</td>
+				<td class="fd">
+					<i>Qt.hideMainMenu()</h5>
+				</td>
+			</tr>
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Скрывает главное меню окна приложения</p>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<input type="button" value="Скрыть главное меню" onclick="Qt.hideMainMenu();">
+					<input type="button" value="Показать главное меню" onclick="Qt.showMainMenu();">
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+	
+	<div id="showMainMenu" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="fname">
+					<h5>Qt.showMainMenu</h5>
+				</td>
+				<td class="fd">
+					<i>Qt.showMainMenu()</h5>
+				</td>
+			</tr>
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Показывает главное меню окна приложения, если оно было скрыто вызовом Qt.hideMainMenu();</p>
+					<p>Примечание: Если в верстке вашего окна главное меню не задано тегом menubar, функция естественно не покажет главное меню.</p>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<input type="button" value="Скрыть главное меню" onclick="Qt.hideMainMenu();">
+					<input type="button" value="Показать главное меню" onclick="Qt.showMainMenu();">
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+	
+	<div id="moveTo" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="fname">
+					<h5>Qt.moveTo</h5>
+				</td>
+				<td class="fd">
+					<i>Qt.moveTo(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y)</h5>
+				</td>
+			</tr>
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Перемещает окно приложения. Аргументы - это координаты левого верхнего угла окна приложения.</p>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<input type="button" value="Уменьшить окно и разместить его в центре экрана." onclick="Demo.onClickPosOnCenter()">
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					Пример кода:<br>
+                    <pre class="codebg">
+<span class="kw">function</span> onClickButtonPosWindowOnScreenCenter(){
+    <span class="kw">var</span> w = <span class="nm">800</span>, h = <span class="nm">600</span>;
+    Qt.moveTo( (screen.width - w) / <span class="nm">2</span>, (screen.height - h) / <span class="nm">2</span>);
+    Qt.resizeTo(w, h);
+}
+</pre>
+					
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+	
+	<div id="swi" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="fname">
+					<h5>Qt.setWindowIconImage</h5>
+				</td>
+				<td class="fd">
+					<i>Qt.setWindowIconImage(<span class="dkw">String</span> pathToPng32x32)</h5>
+				</td>
+			</tr>
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Устанавливает иконку в окне приложения рядом с заголовком окна.
+					Аргумент - путь к png файлу изображения размером 32 на 32 пикселя или 24 на 24 пикселя. Примечание:
+					В Xubuntu 14.04 - 22.04 изображения слева от текста заголовка окна поддерживает тема Kokodi.</p>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<div><input type="button" value="Изменить иконку окна" onclick="Qt.setWindowIconImage( Qt.appDir() + '/doc/i/demo.png');"></div>
+					<div><input type="button" value="Вернуть как было" onclick="Qt.setWindowIconImage( Qt.appDir() + '/doc/i/exec.png');"></div>
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+	
+	<div id="quit" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="fname">
+					<h5>Qt.quit</h5>
+				</td>
+				<td class="fd">
+					<i>Qt.quit()</h5>
+				</td>
+			</tr>
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Закрывает окно приложения и завершает его работу</p>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<div><input type="button" value="Закрыть это окно" onclick="Qt.quit();"></div>
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+<h4 id="env">Взаимодействие с окружением</h4>
+	<div id="jexec" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="fname">
+					<h5>jexec</h5>
+				</td>
+				<td class="fd">
+					<i><span class="dkw">Array</span> jexec(<span class="dkw">String</span> command, <span class="dkw">Function|Array|Object</span> onFinish, <span class="dkw">Function|Array|Object</span> onStdout, <span class="dkw">Function|Array|Object</span> onStdErr)</h5>
+				</td>
+			</tr>
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Запускает другое приложение или shell или batch файл</p>
+					<p>Примечание 1: В windows чтение stdin и stdout не поддерживается.</p>
+					<p>Примечание 2: В windows вместо терминала xterm будет запущен Блокнот.</p>
+					<p>Примечание 3: Для завершения процесса в этом примере используется kill в linux xubuntu и taskkill в windows. Если их нет в системе, закрытие запущенной программы не будет работать.</p>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Демо:</div>
+					<input type="button" value="Запустить xterm" onclick="Demo.runXTerm()">
+					<input type="button" value="Закрыть xterm" onclick="Demo.closeXTerm()">
+					<div>
+						<div id="xtStdOut">
+							<div class="outheader">Stdout:</div>
+						</div>
+						<div id="xtStdErr">
+							<div class="outheader">Stderr:</div>
+						</div>	
+						<div class="clear"></div>
+					</div>
+					
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2">
+					Пример кода:<br>
+                    <pre class="codebg">
+<span class="kw">function</span> onClickButtonPosWindowOnScreenCenter(){
+    <span class="kw">var</span> w = <span class="nm">800</span>, h = <span class="nm">600</span>;
+    Qt.moveTo( (screen.width - w) / <span class="nm">2</span>, (screen.height - h) / <span class="nm">2</span>);
+    Qt.resizeTo(w, h);
+}
+</pre>
+					
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+	
+    <p id="stopHere">Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+        <p>Here Content</p>
+    </div>
+    </td>
 </tr>
 </table>
 <!--div class="sidebar">
-	Navigation
+    Navigation
 </div>
 <div class="content" id="contentArea">
-	<p>Here Content</p>
+    <p>Here Content</p>
 </div>
 <div style="clear:both"></div-->
 </body>

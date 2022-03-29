@@ -32,7 +32,7 @@ function onKeyUp(evt) {
 	    
     }
 	if (evt.keyCode == 27 && window.mainMenuIsHide) {
-		exitFromFullscreen();
+		Qt.showMainMenu();
 	}
 }
 

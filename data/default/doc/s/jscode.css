@@ -1,0 +1,15 @@
+.codebg {
+	background-color: #E2E2E2;
+	padding: 4px 0px;
+}
+.kw {
+	color:blue;
+	font-weight: bold;
+}
+.jcomm {
+	color:green;
+	font-style: italic;
+}
+.nm {
+	color: #FF6E00;
+}
