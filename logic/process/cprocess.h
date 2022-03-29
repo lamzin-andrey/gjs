@@ -7,6 +7,11 @@
 #include <QByteArray>
 #include <QRegExp>
 
+// it important for _sysId!
+// uncomment _sysId = ((_PROCESS_INFORMATION*) _proc->pid() )->dwProcessId; in exec!
+// #include <windows.h>
+// #include <winbase.h>
+
 #include "../../lib/utils.h"
 #include "../cmetadata.h"
 
