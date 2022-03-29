@@ -34,6 +34,14 @@ void CProcess::exec(QString command, QString workDir) {
     //lib.qMessageBox("CProcess", "start " + execPath + " with args: (" + _execArgs.join(',') + ")");
     _proc->start(execPath, _execArgs);
     _sysId = (unsigned int) _proc->pid();
+    // In windows:
+    // in .h :
+    //
+    
+    
+    // here:
+    //   _sysId = ((_PROCESS_INFORMATION*) _proc->pid() )->dwProcessId;
+    
 }
 
 QString CProcess::_parseCommand(QString command) {
