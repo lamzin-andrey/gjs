@@ -82,3 +82,12 @@
 	text-align:center;
 	color: black;
 }
+
+.arglist {
+	background-color: #0F0B83;
+	color: white;
+	font-weight: bold;
+}
+.argname {
+	color: blue!important;
+}

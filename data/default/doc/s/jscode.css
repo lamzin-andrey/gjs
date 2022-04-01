@@ -6,10 +6,13 @@
 	color:blue;
 	font-weight: bold;
 }
-.jcomm {
+.jcomm{
 	color:green;
 	font-style: italic;
 }
 .nm {
 	color: #FF6E00;
+}
+.st {
+	color:green;
 }

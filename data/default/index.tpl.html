@@ -33,21 +33,21 @@
         <ul class="subsections">
             <li><a href="#winManage">Управление окном</a></li>
             <ul class="subsections4">
-				<li><a href="#resizeTo">Qt.resizeTo</a></li>
-				<li><a href="#maximize">Qt.maximize</a></li>
-				<li><a href="#minimize">Qt.minimize</a></li>
-				<li ><a href="#sfs">Qt.showFullScreen</a></li>
-				<li ><a href="#sNormal">Qt.showNormal</a></li>
-				<li ><a href="#hideMainMenu">Qt.hideMainMenu</a></li>
-				<li ><a href="#showMainMenu">Qt.showMainMenu</a></li>
-				<li ><a href="#moveTo">Qt.moveTo</a></li>
-				<li ><a href="#swi">Qt.setWindowIconImage</a></li>
-				<li ><a href="#quit">Qt.quit</a></li>
-			</ul>
-			<li><a href="#env">Взаимодействие с окружением</a></li>
-			<ul class="subsections4">
-				<li><a href="#jexec">jexec</a></li>
-			</ul>
+                <li><a href="#resizeTo">Qt.resizeTo</a></li>
+                <li><a href="#maximize">Qt.maximize</a></li>
+                <li><a href="#minimize">Qt.minimize</a></li>
+                <li ><a href="#sfs">Qt.showFullScreen</a></li>
+                <li ><a href="#sNormal">Qt.showNormal</a></li>
+                <li ><a href="#hideMainMenu">Qt.hideMainMenu</a></li>
+                <li ><a href="#showMainMenu">Qt.showMainMenu</a></li>
+                <li ><a href="#moveTo">Qt.moveTo</a></li>
+                <li ><a href="#swi">Qt.setWindowIconImage</a></li>
+                <li ><a href="#quit">Qt.quit</a></li>
+            </ul>
+            <li><a href="#env">Взаимодействие с окружением</a></li>
+            <ul class="subsections4">
+                <li><a href="#jexec">jexec</a></li>
+            </ul>
         </ul>
         
     </ul>
@@ -205,88 +205,88 @@ window.onkeyup = onKeyUp;
 <h4 id="dapi">Desktop API</h4>
 <h5 id="winManage">Управление окном приложения</h5>
 <p>Управление окном доступно из javascript кода</p>
-	<div id="resizeTo" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>Qt.resizeTo</h5>
-				</td>
-				<td class="fd">
-					<i>Qt.resizeTo(<span class="dkw">Number</span> width, <span class="dkw">Number</span> height)</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Изменяет размер окна приложения. Координаты левого верхнего угла при этом не изменяются. Используйте Qt.moveTo() при необходимости их изменить.</p>
-					<p></p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<input type="button" value="Изменить размер этого окна" onclick="Qt.resizeTo(800, 600);">
-				</td>
-			</tr>
-		
-		</table>
-	</div>
-	
-	<div id="maximize" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>Qt.maximize</h5>
-				</td>
-				<td class="fd">
-					<i>Qt.maximize()</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Разворачивает окно приложения на весь экран.</p>
-					<p></p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<input type="button" value="Изменить размер этого окна до 800x600" onclick="Qt.resizeTo(800, 600);">
-					<input type="button" value="Развернуть на весь экран" onclick="Qt.maximize();">
-				</td>
-			</tr>
-		
-		</table>
-	</div>
-	
-	<div id="minimize" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>Qt.minimize</h5>
-				</td>
-				<td class="fd">
-					<i>Qt.minimize()</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Сворачивает окно приложения на панель задач.
-					Примечание: после первого запуска приложения работает, как ожидается, но после первого 
-					"свёртывания" и последующего восстановления путём клика на кнопку окна на панели в 
-					Xubuntu 18.04 функция как-будто бы не работает. Добиться устойчивой работы можно предварительно
-					вызвав Qt.showNormal(); и повторив это через небольшую задержку.</p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<input type="button" value="Свернуть окно" onclick="Demo.minimize()">
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					Пример кода:<br>
-					<pre class="codebg">
+    <div id="resizeTo" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.resizeTo</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.resizeTo(<span class="dkw">Number</span> width, <span class="dkw">Number</span> height)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Изменяет размер окна приложения. Координаты левого верхнего угла при этом не изменяются. Используйте Qt.moveTo() при необходимости их изменить.</p>
+                    <p></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="Изменить размер этого окна" onclick="Qt.resizeTo(800, 600);">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="maximize" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.maximize</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.maximize()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Разворачивает окно приложения на весь экран.</p>
+                    <p></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="Изменить размер этого окна до 800x600" onclick="Qt.resizeTo(800, 600);">
+                    <input type="button" value="Развернуть на весь экран" onclick="Qt.maximize();">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="minimize" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.minimize</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.minimize()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Сворачивает окно приложения на панель задач.
+                    Примечание: после первого запуска приложения работает, как ожидается, но после первого 
+                    "свёртывания" и последующего восстановления путём клика на кнопку окна на панели в 
+                    Xubuntu 18.04 функция как-будто бы не работает. Добиться устойчивой работы можно предварительно
+                    вызвав Qt.showNormal(); и повторив это через небольшую задержку.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="Свернуть окно" onclick="Demo.minimize()">
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
 <span class="kw">function</span> onClickButtonMinimizeWindow(){
     Qt.showNormal();
     Qt.minimize();
@@ -297,145 +297,145 @@ window.onkeyup = onKeyUp;
     }, <span class="nm">100</span>);
 }
 </pre>
-					
-				</td>
-			</tr>
-		
-		</table>
-	</div>
-	
-	<div id="sfs" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>Qt.showFullScreen</h5>
-				</td>
-				<td class="fd">
-					<i>Qt.showFullScreen()</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Скрывает рамку окна и разворачивает окно на предний план.</p>
-					<p></p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<input type="button" value="Вернуть рамку" onclick="Qt.showNormal();">
-					<input type="button" value="Развернуть на весь экран скрыв рамку" onclick="Qt.showFullScreen();">
-				</td>
-			</tr>
-		
-		</table>
-	</div>
-	
-	<div id="sNormal" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>Qt.showNormal</h5>
-				</td>
-				<td class="fd">
-					<i>Qt.showNormal()</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Показывает рамку окна если оно было скрыто функцией showFullScreen().</p>
-					<p></p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<input type="button" value="Вернуть рамку" onclick="Qt.showNormal();">
-					<input type="button" value="Развернуть на весь экран скрыв рамку" onclick="Qt.showFullScreen();">
-				</td>
-			</tr>
-		
-		</table>
-	</div>
-	
-	<div id="hideMainMenu" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>Qt.hideMainMenu</h5>
-				</td>
-				<td class="fd">
-					<i>Qt.hideMainMenu()</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Скрывает главное меню окна приложения</p>
-					<p></p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<input type="button" value="Скрыть главное меню" onclick="Qt.hideMainMenu();">
-					<input type="button" value="Показать главное меню" onclick="Qt.showMainMenu();">
-				</td>
-			</tr>
-		
-		</table>
-	</div>
-	
-	<div id="showMainMenu" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>Qt.showMainMenu</h5>
-				</td>
-				<td class="fd">
-					<i>Qt.showMainMenu()</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Показывает главное меню окна приложения, если оно было скрыто вызовом Qt.hideMainMenu();</p>
-					<p>Примечание: Если в верстке вашего окна главное меню не задано тегом menubar, функция естественно не покажет главное меню.</p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<input type="button" value="Скрыть главное меню" onclick="Qt.hideMainMenu();">
-					<input type="button" value="Показать главное меню" onclick="Qt.showMainMenu();">
-				</td>
-			</tr>
-		
-		</table>
-	</div>
-	
-	<div id="moveTo" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>Qt.moveTo</h5>
-				</td>
-				<td class="fd">
-					<i>Qt.moveTo(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y)</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Перемещает окно приложения. Аргументы - это координаты левого верхнего угла окна приложения.</p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<input type="button" value="Уменьшить окно и разместить его в центре экрана." onclick="Demo.onClickPosOnCenter()">
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					Пример кода:<br>
+                    
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="sfs" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.showFullScreen</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.showFullScreen()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Скрывает рамку окна и разворачивает окно на предний план.</p>
+                    <p></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="Вернуть рамку" onclick="Qt.showNormal();">
+                    <input type="button" value="Развернуть на весь экран скрыв рамку" onclick="Qt.showFullScreen();">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="sNormal" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.showNormal</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.showNormal()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Показывает рамку окна если оно было скрыто функцией showFullScreen().</p>
+                    <p></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="Вернуть рамку" onclick="Qt.showNormal();">
+                    <input type="button" value="Развернуть на весь экран скрыв рамку" onclick="Qt.showFullScreen();">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="hideMainMenu" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.hideMainMenu</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.hideMainMenu()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Скрывает главное меню окна приложения</p>
+                    <p></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="Скрыть главное меню" onclick="Qt.hideMainMenu();">
+                    <input type="button" value="Показать главное меню" onclick="Qt.showMainMenu();">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="showMainMenu" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.showMainMenu</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.showMainMenu()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Показывает главное меню окна приложения, если оно было скрыто вызовом Qt.hideMainMenu();</p>
+                    <p>Примечание: Если в верстке вашего окна главное меню не задано тегом menubar, функция естественно не покажет главное меню.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="Скрыть главное меню" onclick="Qt.hideMainMenu();">
+                    <input type="button" value="Показать главное меню" onclick="Qt.showMainMenu();">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="moveTo" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.moveTo</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.moveTo(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Перемещает окно приложения. Аргументы - это координаты левого верхнего угла окна приложения.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="Уменьшить окно и разместить его в центре экрана." onclick="Demo.onClickPosOnCenter()">
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
                     <pre class="codebg">
 <span class="kw">function</span> onClickButtonPosWindowOnScreenCenter(){
     <span class="kw">var</span> w = <span class="nm">800</span>, h = <span class="nm">600</span>;
@@ -443,118 +443,281 @@ window.onkeyup = onKeyUp;
     Qt.resizeTo(w, h);
 }
 </pre>
-					
-				</td>
-			</tr>
-		
-		</table>
-	</div>
-	
-	<div id="swi" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>Qt.setWindowIconImage</h5>
-				</td>
-				<td class="fd">
-					<i>Qt.setWindowIconImage(<span class="dkw">String</span> pathToPng32x32)</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Устанавливает иконку в окне приложения рядом с заголовком окна.
-					Аргумент - путь к png файлу изображения размером 32 на 32 пикселя или 24 на 24 пикселя. Примечание:
-					В Xubuntu 14.04 - 22.04 изображения слева от текста заголовка окна поддерживает тема Kokodi.</p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<div><input type="button" value="Изменить иконку окна" onclick="Qt.setWindowIconImage( Qt.appDir() + '/doc/i/demo.png');"></div>
-					<div><input type="button" value="Вернуть как было" onclick="Qt.setWindowIconImage( Qt.appDir() + '/doc/i/exec.png');"></div>
-				</td>
-			</tr>
-		
-		</table>
-	</div>
-	
-	<div id="quit" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>Qt.quit</h5>
-				</td>
-				<td class="fd">
-					<i>Qt.quit()</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Закрывает окно приложения и завершает его работу</p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<div><input type="button" value="Закрыть это окно" onclick="Qt.quit();"></div>
-				</td>
-			</tr>
-		
-		</table>
-	</div>
+                    
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="swi" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.setWindowIconImage</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.setWindowIconImage(<span class="dkw">String</span> pathToPng32x32)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Устанавливает иконку в окне приложения рядом с заголовком окна.
+                    Аргумент - путь к png файлу изображения размером 32 на 32 пикселя или 24 на 24 пикселя. Примечание:
+                    В Xubuntu 14.04 - 22.04 изображения слева от текста заголовка окна поддерживает тема Kokodi.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div><input type="button" value="Изменить иконку окна" onclick="Qt.setWindowIconImage( Qt.appDir() + '/doc/i/demo.png');"></div>
+                    <div><input type="button" value="Вернуть как было" onclick="Qt.setWindowIconImage( Qt.appDir() + '/doc/i/exec.png');"></div>
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="quit" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.quit</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.quit()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Закрывает окно приложения и завершает его работу</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div><input type="button" value="Закрыть это окно" onclick="Qt.quit();"></div>
+                </td>
+            </tr>
+        
+        </table>
+    </div>
 <h4 id="env">Взаимодействие с окружением</h4>
-	<div id="jexec" class="function">
-		<table cellpadding="0" cellspacing="0">
-			<tr>
-				<td class="fname">
-					<h5>jexec</h5>
-				</td>
-				<td class="fd">
-					<i><span class="dkw">Array</span> jexec(<span class="dkw">String</span> command, <span class="dkw">Function|Array|Object</span> onFinish, <span class="dkw">Function|Array|Object</span> onStdout, <span class="dkw">Function|Array|Object</span> onStdErr)</h5>
-				</td>
-			</tr>
-			<tr>
-				<td class="fdf" colspan="2">
-					<p>Запускает другое приложение или shell или batch файл</p>
-					<p>Примечание 1: В windows чтение stdin и stdout не поддерживается.</p>
-					<p>Примечание 2: В windows вместо терминала xterm будет запущен Блокнот.</p>
-					<p>Примечание 3: Для завершения процесса в этом примере используется kill в linux xubuntu и taskkill в windows. Если их нет в системе, закрытие запущенной программы не будет работать.</p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					<div>Демо:</div>
-					<input type="button" value="Запустить xterm" onclick="Demo.runXTerm()">
-					<input type="button" value="Закрыть xterm" onclick="Demo.closeXTerm()">
-					<div>
-						<div id="xtStdOut">
-							<div class="outheader">Stdout:</div>
-						</div>
-						<div id="xtStdErr">
-							<div class="outheader">Stderr:</div>
-						</div>	
-						<div class="clear"></div>
-					</div>
-					
-				</td>
-			</tr>
-			<tr>
-				<td class="fe" colspan="2">
-					Пример кода:<br>
+    <div id="jexec" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>jexec</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> jexec(<span class="dkw">String</span> command, <span class="dkw">Function|Array|Object</span> onFinish, <span class="dkw">Function|Array|Object</span> onStdout, <span class="dkw">Function|Array|Object</span> onStdErr)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Запускает другое приложение или shell или batch файл.
+                    </p>
+                    <p>Примечание 1: Если запускаемому приложению передаются аргументы, лучше использовать shell или batch файлы. В противном случае работа запуска не гарантируется.</p>
+                    <p>Примечание 2: В windows чтение stdin и stdout не поддерживается.</p>
+                    <p>Примечание 3: В windows вместо терминала xterm будет запущен Блокнот.</p>
+                    <p>Примечание 4: Для завершения процесса в этом примере используется kill в linux xubuntu и taskkill в windows. Если их нет в системе, закрытие запущенной программы не будет работать.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Аргументы метода
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String command</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> command</i>. Команда для запуска, например g++, хterm или notepad.
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Function|Object|Array onFinish</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>.
+                    Функция, которая будет вызвана, когда выполнение команды завершится. Аргумент stdout содержит весь вывод команды в стандартный поток вывода.
+                    Аргумент stderr содержит весь вывод команды в стандартный поток ошибок. Не работает в windows.
+                    Вызов функции происходит, но stdout и stderr в windows всегда пусты.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Примечание: В windows чтение stdin и stdout не поддерживается.
+                     Можно использовать обходной путь, заключающийся в том,
+                     что ваша программа сначала создаёт командный batch файл с перенаправлением потоков в текстовые файлы.
+                     Запустив этот файл ваша программа может например раз в 500 миллисекунд считывать из файлов, в которые выполняется перенаправление
+                     stdin и stdout, а контролировать, запущен ли процесс путём вызова PHP.isRun(innerProcessId); 
+                     innerProcessId содержится во втором (с индексом 1) элементе массива, который возвращает jexec 
+                     после запуска.
+                     </p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Function|Object|Array onStdOut</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Function</span> onStdOut(<span class="dkw">String</span> stdout)</i>.
+                    Функция, которая вызвается немедленно, как только вызываемая программа что-то выводит в стандартный поток вывода.
+                    Не работает в windows.
+                    Вызов функции происходит, но stdout и stderr в windows всегда пусты.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Примечание: В windows чтение из stdout не поддерживается.
+                     Можно использовать обходной путь, см. примечание к onFinish
+                     </p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Function|Object|Array onStdErr</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Function</span> onStdErr(<span class="dkw">String</span> stderr)</i>.
+                    Функция, которая вызвается немедленно, как только вызываемая программа что-то выводит в стандартный поток ошибок.
+                    Не работает в windows.
+                    Вызов функции происходит, но stdout и stderr в windows всегда пусты.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Примечание: В windows чтение из stdout не поддерживается.
+                     Можно использовать обходной путь, см. примечание к onFinish
+                     </p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Возвращаемое значение
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Array result</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> result</i>. В нулевом элементе содержится идентификатор процесса в операционной системе. В элементе с индексом 1 внутренний идентификатор процесса.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Формат аргументов функций
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Function</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>. Имя функции может быть любым. Она должна быть доступна для вызова в области вызова окна.
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Object</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Object</span> {context: <span class="dkw">Object</span>, m: <span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>}.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Вы определяете объект. В context передаёте указатель на него, а в m - функцию, определённую в объекте. Это позволяет не засорять глобальную область видимости (см. ООП и всё что мы любим).</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Array</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> [<span class="dkw">Object</span>, <span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>].
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Вы определяете объект. В нулевом элементе массива передаёте указатель на него, а в первом - функцию, определённую в объекте. Это позволяет не засорять глобальную область видимости (см. ООП и всё что мы любим).</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="Запустить xterm" onclick="Demo.runXTerm()">
+                    <input type="button" value="Закрыть xterm" onclick="Demo.closeXTerm()">
+                    <div>
+                        <div id="xtStdOut">
+                            <div class="outheader">Stdout:</div>
+                        </div>
+                        <div id="xtStdErr">
+                            <div class="outheader">Stderr:</div>
+                        </div>    
+                        <div class="clear"></div>
+                    </div>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Пример кода (stdout и stdin в windows не будет работать):<br>
                     <pre class="codebg">
-<span class="kw">function</span> onClickButtonPosWindowOnScreenCenter(){
-    <span class="kw">var</span> w = <span class="nm">800</span>, h = <span class="nm">600</span>;
-    Qt.moveTo( (screen.width - w) / <span class="nm">2</span>, (screen.height - h) / <span class="nm">2</span>);
-    Qt.resizeTo(w, h);
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
 }
-</pre>
-					
-				</td>
-			</tr>
-		
-		</table>
-	</div>
-	
+<span class="kw">var</span> RunProgrammExample = {
+    runXTerm: <span class="kw">function</span>(){
+        <span class="kw">var</span> o = <span class="kw">this</span>,
+            cmd = <span class="st">'xterm'</span>;
+        <span class="kw">if</span> (!PHP.file_exists(<span class="st">'/usr'</span>)) {
+            cmd = <span class="st">'notepad'</span>;
+        }
+        <span class="kw">this</span>.xtId = jexec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
+        
+    },
+    closeXTerm: <span class="kw">function</span>(){
+        <span class="kw">var</span> o = <span class="kw">this</span>, cmd = <span class="st">'kill '</span> + <span class="kw">this</span>.xtId[<span class="nm">0</span>];
+        
+        <span class="kw">if</span> (!PHP.file_exists(<span class="st">'/usr'</span>)) {
+            cmd = <span class="st">'TASKKILL /PID '</span> + <span class="kw">this</span>.xtId[<span class="nm">0</span>] + <span class="st">' /T'</span>;
+        }
+        
+        <span class="kw">this</span>.xtId = jexec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
+    },
+    
+    onFinishXT: <span class="kw">function</span>(stdout, stderr) {
+        e(<span class="st">'xtStdOut'</span>).innerHTML += <span class="st">'&lt;div&gt;'</span> + stdout + <span class="st">'&lt;/div&gt;'</span>;
+        e(<span class="st">'xtStdErr'</span>).innerHTML += <span class="st">'&lt;div&gt;'</span> + stderr + <span class="st">'&lt;/div&gt;'</span>;
+    },
+    
+    onStdOutXT: <span class="kw">function</span>(stdout) {
+        <span class="jcomm">// e('xtStdOut').innerHTML += '&lt;div&gt;' + stdout + '&lt;/div&gt;';</span>
+    },
+    
+    onStdErrXT: <span class="kw">function</span>(stdout) {
+        <span class="jcomm">// e('xtStdErr').innerHTML += '&lt;div&gt;' + stdout + '&lt;/div&gt;';</span>
+    }
+}
+<span class="kw">function</span> onClickRunXTerm() {
+    RunProgrammExample.runXTerm();
+}
+<span class="kw">function</span> onClickStopXTerm() {
+    RunProgrammExample.stopXTerm();
+}</pre>
+                    
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+    
     <p id="stopHere">Here Content</p>
         <p>Here Content</p>
         <p>Here Content</p>
