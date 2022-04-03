@@ -62,16 +62,16 @@
 	margin-bottom:34px;
 }
 
-#xtStdErr {
+#xtStdErr, #xtStdErr2 {
 	color: #AA0000;
 	float:left;
 }
 
-#xtStdOut {
+#xtStdOut, #xtStdOut2 {
 	color: #0000AA;
 	float:left;
 }
-#xtStdErr,#xtStdOut {
+#xtStdErr,#xtStdOut,#xtStdErr2,#xtStdOut2 {
 	width: 200px;
 	border: 1px solid gray;
 	height: 200px;

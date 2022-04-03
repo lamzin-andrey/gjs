@@ -47,6 +47,8 @@
             <li><a href="#env">Взаимодействие с окружением</a></li>
             <ul class="subsections4">
                 <li><a href="#jexec">jexec</a></li>
+                <li><a href="#isRun">PHP.isRun</a></li>
+                <li><a href="#appDir">Qt.appDir</a></li>
             </ul>
         </ul>
         
@@ -510,7 +512,7 @@ window.onkeyup = onKeyUp;
                     <h5>jexec</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Array</span> jexec(<span class="dkw">String</span> command, <span class="dkw">Function|Array|Object</span> onFinish, <span class="dkw">Function|Array|Object</span> onStdout, <span class="dkw">Function|Array|Object</span> onStdErr)</h5>
+                    <i><span class="dkw">Array</span> jexec(<span class="dkw">String</span> command, <span class="dkw">Function|Array|Object</span> onFinish, <span class="dkw">Function|Array|Object</span> onStdOut, <span class="dkw">Function|Array|Object</span> onStdErr)</h5>
                 </td>
             </tr>
             <tr>
@@ -590,7 +592,7 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Примечание: В windows чтение из stdout не поддерживается.
+                    <p>Примечание: В windows чтение из stderr не поддерживается.
                      Можно использовать обходной путь, см. примечание к onFinish
                      </p>
                 </td>
@@ -715,6 +717,65 @@ window.onkeyup = onKeyUp;
                 </td>
             </tr>
             
+        </table>
+    </div>
+    
+    <div id="isRun" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>PHP.isRun</h5>
+                </td>
+                <td class="fd">
+                    <i>PHP.isRun(<span class="dkw">Number</span> innerProcId)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Проверяет, завершён ли уже запущенный процесс. innerProcId это элемент массива, который возвращает jexec, с индексом 1.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="Запустить xterm" onclick="Demo.runXTerm2()">
+                    <input type="button" value="Запущен ли xterm," onclick="Demo.checkXTerm2()">
+                    <input type="button" value="Закрыть xterm" onclick="Demo.closeXTerm2()">
+                    <div>
+                        <div id="xtStdOut2">
+                            <div class="outheader">Stdout:</div>
+                        </div>
+                        <div id="xtStdErr2">
+                            <div class="outheader">Stderr:</div>
+                        </div>    
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="appDir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.appDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Qt.appDir()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Возвращает путь к каталогу, в котором находится исполняемый файл приложения</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="В каком каталоге лежит эта программа?" onclick="alert(Qt.appDir());">
+                </td>
+            </tr>
         </table>
     </div>
     

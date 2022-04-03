@@ -1,8 +1,8 @@
 appDir|Qt.|()|
-setLineDelimeter(|Qt.|(String delimiter)|
-getLineDelimeter(|Qt.|()|
+setLineDelimeter|Qt.|(String delimiter)|
+getLineDelimeter|Qt.|()|
 moveTo|Qt.|(Number x, Number y)|
-resizeTo(|Qt.|(Number x, Number y)|
+resizeTo|Qt.|(Number x, Number y)|
 quit|Qt.|()|
 showFullScreen|Qt.|()|
 showNormal|Qt.|()|
@@ -31,7 +31,7 @@ setTitle|Qt.|(String s)|
 readFileAsBinaryString|String  Qt.|(String file, Number indexA = 0, Number indexB = -1)|
 copyFile|String  Qt.|(String file, String dest, Number indexA = 0, Number indexB = -1)|
 setWindowIconImage|Qt.|(String pathToPng24x24)|
-
+isRun|PHP.|(Number innerProcId)|
 
 
 
