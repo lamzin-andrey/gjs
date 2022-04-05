@@ -78,5 +78,18 @@ var Demo = {
 	
 	onStdErrXT: function(stdout) {
 		// e('xtStdErr').innerHTML += '<div>' + stdout + '</div>';
+	},
+	runCopyWithArg: function() {
+		var o = this,
+			qdjsPath = Qt.appDir().replace('default', '') + 'hw',
+			nixHeader = '#! /bin/bash',
+			ext = PHP.file_exists('/usr') ? 'sh' : 'bat',
+			header = PHP.file_exists('/usr') ? nixHeader : '',
+			batchFilePath = Qt.appDir() + '/tmp/shell.' + ext,
+			n = '\n',
+			cmd = header + n + qdjsPath  + ' ' + Qt.appDir() + ' HelloWorld';
+		PHP.file_put_contents(batchFilePath, cmd);
+		
+		jexec(batchFilePath, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErr]);
 	}
 };
