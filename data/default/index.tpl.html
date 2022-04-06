@@ -42,6 +42,7 @@
                 <li ><a href="#showMainMenu">Qt.showMainMenu</a></li>
                 <li ><a href="#moveTo">Qt.moveTo</a></li>
                 <li ><a href="#swi">Qt.setWindowIconImage</a></li>
+                <li ><a href="#setTitle">Qt.setTitle</a></li>
                 <li ><a href="#quit">Qt.quit</a></li>
             </ul>
             <li><a href="#env">Взаимодействие с окружением</a></li>
@@ -50,6 +51,12 @@
                 <li><a href="#isRun">PHP.isRun</a></li>
                 <li><a href="#appDir">Qt.appDir</a></li>
                 <li><a href="#getArgs">Qt.getArgs</a></li>
+                <li><a href="#getLastKeyChar">Qt.getLastKeyChar</a></li>
+                <li><a href="#getLastKeyCode">Qt.getLastKeyCode</a></li>
+            </ul>
+            <li><a href="#files">Файлы</a></li>
+            <ul class="subsections4">
+                <li><a href="#fgc">PHP.file_get_contents</a></li>
             </ul>
         </ul>
         
@@ -505,6 +512,32 @@ window.onkeyup = onKeyUp;
         
         </table>
     </div>
+    
+    <div id="setTitle" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.setTitle</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.setTitle(<span class="dkw">String</span> title)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Позволяет изменить заголовок окна</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>Набирайте текст в текстовом поле:</div>
+                    <input type="text" value="" onkeydown="Demo.onkeydown3()" id="inpKD3">
+                </td>
+            </tr>
+        </table>
+    </div>
+    
 <h4 id="env">Взаимодействие с окружением</h4>
     <div id="jexec" class="function">
         <table cellpadding="0" cellspacing="0">
@@ -740,7 +773,7 @@ window.onkeyup = onKeyUp;
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
                     <input type="button" value="Запустить xterm" onclick="Demo.runXTerm2()">
-                    <input type="button" value="Запущен ли xterm," onclick="Demo.checkXTerm2()">
+                    <input type="button" value="Запущен ли xterm?" onclick="Demo.checkXTerm2()">
                     <input type="button" value="Закрыть xterm" onclick="Demo.closeXTerm2()">
                     <div>
                         <div id="xtStdOut2">
@@ -812,6 +845,80 @@ window.onkeyup = onKeyUp;
         </table>
     </div>
     
+    <div id="getLastKeyChar" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.getLastKeyChar</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Qt.getLastKeyChar()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Возвращает символ последней нажатой клавиши (если она алфавитно-цифровая). Важно, так как Qt5 WebView не позволяет считать символ нажатой клавиши в событиях keydown и keyup через свойство key.
+						В этом случае вы можете использовать вызов Qt.getLastKeyChar() чтобы получить его. В демо ниже в левом окне пытаемся получить символ клавиши, декодируя свойство keyboardEvent.keyIdentifier. В Xubuntu 18.04 и Qt 5.2.1 это более-менее корректно работает только при латинской раскладке клавиатуры. В Windows и Qt 4.6.8 это работает и с латинской и с русской раскладками, но вам пришлось бы самим мониторить состояние Caps Lock и Shift. В правом окне вы видите результат вызова Qt.getLastKeyChar()</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>Набирайте текст в текстовом поле:</div>
+                    <input type="text" value="" onkeydown="Demo.onkeydown1(window.event)" id="inpKD1">
+                    <div>
+                        <div id="xtStdOut3">
+                            <div class="outheader">JS key char:</div>
+                        </div>
+                        <div id="xtStdErr3">
+                            <div class="outheader">Qt key char:</div>
+                        </div>    
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="getLastKeyCode" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.getLastKeyCode</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Number</span> Qt.getLastKeyCode()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Возвращает код последней нажатой клавиши. Важно, так как Qt5 WebView не позволяет корректно считать код нажатой клавиши в событиях keydown и keyup через свойство keyCode.
+						В этом случае вы можете использовать вызов Qt.getLastKeyCode() чтобы получить его.
+						В демо ниже в левом окне пытаемся получить код клавиши, используя свойство keyboardEvent.keyCode.
+						В правом окне вы видите результат вызова Qt.getLastKeyCode(). Оно далеко не всегда совпадает с кодом javasript, но оно никогда не равно 0, что немаловажно.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>Набирайте текст в текстовом поле:</div>
+                    <input type="text" value="" onkeydown="Demo.onkeydown2(window.event)" id="inpKD2">
+                    <div>
+                        <div id="xtStdOut4">
+                            <div class="outheader">JS event.keyCode:</div>
+                        </div>
+                        <div id="xtStdErr4">
+                            <div class="outheader">Qt key code:</div>
+                        </div>    
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+<h4 id="files">Файлы</h4>
+    
+<h4 id="env">пример заголовка</h4>
     <p id="stopHere">Here Content</p>
         <p>Here Content</p>
         <p>Here Content</p>

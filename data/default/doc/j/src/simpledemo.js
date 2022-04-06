@@ -91,5 +91,45 @@ var Demo = {
 		PHP.file_put_contents(batchFilePath, cmd);
 		
 		jexec(batchFilePath, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErr]);
+	},
+	onkeydown1:function(evt) {
+        var trg = e('inpKD1'),	
+			jsOut = e('xtStdOut3'),
+			qtOut = e('xtStdErr3'),
+			o = this;
+		setTimeout(function() {
+			jsOut.innerHTML += '<div>' + String.fromCharCode(o.decodeKeyId(evt.keyIdentifier)) + '</div>';
+			qtOut.innerHTML += '<div>' + Qt.getLastKeyChar() + '</div>';
+		}, 100);
+	},
+	decodeKeyId:function(id) {
+		var i, q = '', firstNotZeroFound = 0;
+		id = String(id).replace('U+', '');
+		// alert(id);
+		for (i = 0; i < id.length; i++) {
+			if (firstNotZeroFound || id.charAt(i) != '0') {
+				q += id.charAt(i);
+				firstNotZeroFound = 1;
+			}
+		}
+		// alert(q);
+		return parseInt(q, 16);
+	},
+	onkeydown2:function(evt) {
+        var trg = e('inpKD2'),	
+			jsOut = e('xtStdOut4'),
+			qtOut = e('xtStdErr4'),
+			o = this;
+		setTimeout(function() {
+			jsOut.innerHTML += '<div>' + evt.keyCode + '</div>';
+			qtOut.innerHTML += '<div>' + Qt.getLastKeyCode() + '</div>';
+		}, 100);
+	},
+	onkeydown3:function(evt) {
+        var trg = e('inpKD3'),
+			o = this;
+		setTimeout(function() {
+			Qt.setTitle(trg.value);
+		}, 10);
 	}
 };

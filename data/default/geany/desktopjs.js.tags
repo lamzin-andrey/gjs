@@ -25,11 +25,11 @@ maximize|Qt.|()|
 hideMainMenu|Qt.|()|
 showMainMenu|Qt.|()|
 getArgs|Array Qt.|()|
-getLastKeyCode|Number Qt.|()|
 getLastKeyChar|String Qt.|()|
+getLastKeyCode|Number Qt.|()|
 setTitle|Qt.|(String s)|
 readFileAsBinaryString|String  Qt.|(String file, Number indexA = 0, Number indexB = -1)|
-copyFile|String  Qt.|(String file, String dest, Number indexA = 0, Number indexB = -1)|
+copyFile|String Qt.|(String file, String dest, Number indexA = 0, Number indexB = -1)|
 setWindowIconImage|Qt.|(String pathToPng24x24)|
 isRun|PHP.|(Number innerProcId)|
 

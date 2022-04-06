@@ -62,16 +62,16 @@
 	margin-bottom:34px;
 }
 
-#xtStdErr, #xtStdErr2 {
+#xtStdErr, #xtStdErr2, #xtStdErr3, #xtStdErr4 {
 	color: #AA0000;
 	float:left;
 }
 
-#xtStdOut, #xtStdOut2 {
+#xtStdOut, #xtStdOut2, #xtStdOut3, #xtStdOut4 {
 	color: #0000AA;
 	float:left;
 }
-#xtStdErr,#xtStdOut,#xtStdErr2,#xtStdOut2 {
+#xtStdErr,#xtStdOut,#xtStdErr2,#xtStdOut2,#xtStdErr3,#xtStdOut3,#xtStdErr4,#xtStdOut4 {
 	width: 200px;
 	border: 1px solid gray;
 	height: 200px;
