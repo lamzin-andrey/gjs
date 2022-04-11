@@ -132,8 +132,10 @@ unsigned int CPhpInterface::getSysId(unsigned int n) {
 }
 
 bool CPhpInterface::unlink(QString path) {
-    if (this->file_exists(path)){
+    bool r = this->file_exists(path);
+    if (r){
         return QFile::remove(path);
     }
-    return true;
+    return r;
 }
+
