@@ -33,7 +33,7 @@ QString OS:: getLocalFileStartUrl() {
 
 QString OS:: getTempFolderPath() {
 
-    return QApplication::applicationDirPath() + "/tmp";
+    // return QApplication::applicationDirPath() + "/tmp";
 
     int sz = 255;
     char* buf[sz];
@@ -44,4 +44,9 @@ QString OS:: getTempFolderPath() {
     string s((char*)buf);
     QString qs = QString::fromStdString(s);
     return qs;
+}
+
+
+QString OS:: getTempDir() {
+    return getTempFolderPath();
 }
