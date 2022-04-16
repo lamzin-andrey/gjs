@@ -153,3 +153,9 @@ function __jqtSetXdgOpenForLinks() {
 		}
 	}
 }
+
+window.FS = {
+	unlink:function(path) {
+		return PHP.unlink(path);
+	}
+};

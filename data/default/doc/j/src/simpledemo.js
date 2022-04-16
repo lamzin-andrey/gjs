@@ -1,4 +1,15 @@
 var Demo = {
+	init:function(){
+		e('qdjsExeFilePath').innerHTML = Qt.appDir() + '/index.html';
+		e('qdjsExeFileCopyPath').innerHTML = Qt.appDir() + '/index.html.copy';
+		
+		var sep = '/',
+			tempFile;
+		if (!PHP.file_exists('/usr/bin')) {
+			sep = '\\';
+		}
+		e('tempFolder1').innerHTML = OS.getTempDir() + sep;
+	},
 	onClickPosOnCenter: function(){
 		var w = 800, h = 600;
 		Qt.moveTo( (screen.width - w) / 2, (screen.height - h) / 2);
@@ -131,5 +142,33 @@ var Demo = {
 		setTimeout(function() {
 			Qt.setTitle(trg.value);
 		}, 10);
+	},
+	onClickLoadFile:function(){
+		this.currentTextFile = Qt.openFileDialog('Выберите текстовый файл с расширением txt или js', '', '*.txt *.js');
+		e('inpKD5').value = PHP.file_get_contents(this.currentTextFile);
+	},
+	onClickSaveFile:function(){
+		if (!this.currentTextFile) {
+			alert('Надо сначала выбрать текстовый файл');
+			return;
+		}
+		var nB = PHP.file_put_contents(this.currentTextFile, e('inpKD5').value);
+		alert('Записано байт: ' + nB);
+	},
+	checkQdjsExists:function(){
+		alert(PHP.file_exists(Qt.appDir() + '/index.html'));
+	},
+	checkQdjsCopyExists:function(){
+		alert(PHP.file_exists(Qt.appDir() + '/index.html.copy'));
+	},
+	unlink:function() {
+		var sep = '/',
+			tempFile;
+		if (!PHP.file_exists('/usr/bin')) {
+			sep = '\\';
+		}
+		tempFile = OS.getTempDir() + sep + 't.txt'
+		e('tempFolder1').innerHTML = OS.getTempDir() + sep;
+		return FS.unlink(tempFile);
 	}
 };

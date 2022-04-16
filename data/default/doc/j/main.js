@@ -6,6 +6,7 @@ function main() {
 	window.onresize = onResize;
 	window.onkeyup = onKeyUp;
 	onResize();
+	Demo.init();
 }
 function onResize() {
 	// for table

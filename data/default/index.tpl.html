@@ -57,6 +57,9 @@
             <li><a href="#files">Файлы</a></li>
             <ul class="subsections4">
                 <li><a href="#fgc">PHP.file_get_contents</a></li>
+                <li><a href="#fpc">PHP.file_put_contents</a></li>
+                <li><a href="#fex">PHP.file_exists</a></li>
+                <li><a href="#unlink">FS.unlink</a></li>
             </ul>
         </ul>
         
@@ -917,6 +920,164 @@ window.onkeyup = onKeyUp;
         </table>
     </div>
 <h4 id="files">Файлы</h4>
+	<div id="fgc" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>PHP.file_get_contents</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> PHP.file_get_contents(<span class="dkw">String</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p> Возвращает содержимое текстового файла. При использовании стоит помнить о том, что размер оперативной памяти на устройстве пользователя ограничен.
+                        То есть не надо читать из файла имеющего размер в 1  гигабайт используя эту функцию (хотя многие современные ПК гигабайт пожалуй проглотят, но, я думаю мысль ясна).
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="fpc" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>PHP.file_put_contents</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Number</span> PHP.file_put_contents(<span class="dkw">String</span> path, <span class="dkw">String</span> data, <span class="dkw">Number</span> flags)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p> Записывает содержимое строки data в текстовый файл path. При использовании стоит помнить о том, что размер оперативной памяти на устройстве пользователя ограничен.
+                        То есть не надо разом писать в файл текст, имеющий размер 1 гигабайт используя эту функцию (хотя многие современные ПК гигабайт пожалуй проглотят, но, я думаю мысль ясна).
+                        Возвращает число записанных байт.
+                    </p>
+                    <p>
+						Примечание 1: flags на данный момент поддерживает одно только значение <span class="dkw">FILE_APPEND</span>.
+                    </p>
+                    <p>
+						Примечание 2: <span class="dkw">FILE_APPEND</span> = 1, что не равно значению этой константы в PHP. В планах привести это в соответствие в новых версиях.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>Нажмите на кнопку &laquo;Загрузить из файла&raquo;, выберите текстовый или javascript файл и отредактируйте текст:</div>
+                    <div>
+						<textarea id="inpKD5" style="width:99%" rows="10"></textarea>
+                    </div>
+                    <div>
+						<input type="button" value="Загрузить из файла" onclick="Demo.onClickLoadFile();">
+						<input type="button" value="Сохранить" onclick="Demo.onClickSaveFile();">
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> ReadAndWriteExample = {
+    onClickLoadFile: <span class="kw">function</span>(){
+        <span class="kw">this</span>.currentTextFile = Qt.openFileDialog(<span class="st">'Выберите текстовый файл с расширением txt или js'</span>, <span class="st">''</span>, <span class="st">'*.txt *.js'</span>);
+        e(<span class="st">'inpKD5'</span>).value = PHP.file_get_contents(<span class="kw">this</span>.currentTextFile);
+    },
+
+    onClickSaveFile: <span class="kw">function</span>(){
+		<span class="kw">if</span> (!<span class="kw">this</span>.currentTextFile) {
+			alert(<span class="st">'Надо сначала выбрать текстовый файл'</span>);
+			<span class="kw">return</span>;
+		}
+		<span class="kw">var</span> nB = PHP.file_put_contents(<span class="kw">this</span>.currentTextFile, e(<span class="st">'inpKD5'</span>).value);
+		alert(<span class="st">'Записано байт: '</span> + nB);
+    }
+}</pre></td>
+            </tr>
+            
+        </table>
+    </div>
+    
+    <div id="fex" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>PHP.file_exists</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Boolean</span> PHP.file_exists(<span class="dkw">Sring</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Вернёт true если файл, путь к которому передан в аргументе path, существует.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    
+                    <div>
+						Проверьте, существует ли файл <b><span id="qdjsExeFilePath"></span></b>
+					</div>
+					<div>
+						<input type="button" value="Проверить!" onclick="Demo.checkQdjsExists();">
+                    </div>
+                    <div>
+						(Должен вернуть true)
+					</div>
+					
+					<div style="margin-top:10px;">
+						Проверьте, существует ли файл <b><span id="qdjsExeFileCopyPath"></span></b>
+					</div>
+					<div>
+						<input type="button" value="Проверить!" onclick="Demo.checkQdjsCopyExists();">
+                    </div>
+                    <div>
+						(Должен вернуть false, конечно если вы его не создали)
+					</div>
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+    
+    <div id="unlink" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.unlink</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Boolean</span> FS.unlink(<span class="dkw">Sring</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Вернёт true если удалось удалить файл, путь к которому передан в аргументе path.</p>
+                    <p>Примечание. Также доступна как <span class="dkw">Boolean</span> PHP.unlink(<span class="dkw">Sring</span> path).</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>
+						Удалить файл <b><span id="tempFolder1">/TEMPAPTH/</span>t.txt</b>
+					</div>
+					<div>
+						<input type="button" value="Удалить!" onclick="alert(Demo.unlink());">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
     
 <h4 id="env">пример заголовка</h4>
     <p id="stopHere">Here Content</p>
