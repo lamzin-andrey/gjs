@@ -32,6 +32,8 @@ signals:
 public slots:
     int ShellExecute(QString operation, QString path, QString params, QString directory, bool showCmdLine = false);
     void onCProcessFinish(QString evaluateJavaScript, unsigned int resId);
+    QString getTempFolderPath();
+    QString getTempDir();
 
 private:
     CWebView *webView;

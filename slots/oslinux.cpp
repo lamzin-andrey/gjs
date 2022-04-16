@@ -26,7 +26,16 @@ void OSLinux::onCProcessFinish(QString evaluateJavaScript, unsigned int resId) {
 }
 
 
-QString OSLinux:: getLocalFileStartUrl() {
+QString OSLinux::getLocalFileStartUrl() {
     return "file://localhost";
 }
 
+QString OSLinux::getTempFolderPath() {
+
+    return "/tmp";
+}
+
+QString OSLinux::getTempDir() {
+
+    return getTempFolderPath();
+}

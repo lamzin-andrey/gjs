@@ -451,7 +451,9 @@ QString CWindow::readFileAsBinaryString(QString filename, long offset, long limi
         /*GetEnvironmentVariableA((LPSTR)"TEMP", (LPSTR)buf, sz);
         string s((char*)buf);
         QString tempFolder = QString::fromStdString(s);*/
-        QString tempFolder = OS::getTempDir();//TODO
+
+        OS os;
+        QString tempFolder = os.getTempDir();//TODO
 
         QString tempFile = tempFolder + "/temp.bin";
         QFile::remove(tempFile);
