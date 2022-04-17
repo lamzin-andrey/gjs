@@ -56,10 +56,13 @@
             </ul>
             <li><a href="#files">Файлы</a></li>
             <ul class="subsections4">
-                <li><a href="#fgc">PHP.file_get_contents</a></li>
-                <li><a href="#fpc">PHP.file_put_contents</a></li>
-                <li><a href="#fex">PHP.file_exists</a></li>
+                <li><a href="#fgc">FS.readfile</a></li>
+                <li><a href="#fpc">FS.writefile</a></li>
+                <li><a href="#fex">FS.fileExists</a></li>
                 <li><a href="#unlink">FS.unlink</a></li>
+                <li><a href="#idir">FS.isDir</a></li>
+                <li><a href="#scn">FS.scandir</a></li>
+                <li><a href="#fsz">FS.filesize</a></li>
             </ul>
         </ul>
         
@@ -838,11 +841,11 @@ window.onkeyup = onKeyUp;
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
                     <div>
-						<input type="button" value="Показать аргументы командной строки этой программы" onclick="alert(Qt.getArgs());">
-					</div>
-					<div>
-						<input type="button" value="Запустить ещё одну копию этой программы и проверить аргументы в ней" onclick="Demo.runCopyWithArg();">
-					</div>
+                        <input type="button" value="Показать аргументы командной строки этой программы" onclick="alert(Qt.getArgs());">
+                    </div>
+                    <div>
+                        <input type="button" value="Запустить ещё одну копию этой программы и проверить аргументы в ней" onclick="Demo.runCopyWithArg();">
+                    </div>
                 </td>
             </tr>
         </table>
@@ -861,7 +864,7 @@ window.onkeyup = onKeyUp;
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Возвращает символ последней нажатой клавиши (если она алфавитно-цифровая). Важно, так как Qt5 WebView не позволяет считать символ нажатой клавиши в событиях keydown и keyup через свойство key.
-						В этом случае вы можете использовать вызов Qt.getLastKeyChar() чтобы получить его. В демо ниже в левом окне пытаемся получить символ клавиши, декодируя свойство keyboardEvent.keyIdentifier. В Xubuntu 18.04 и Qt 5.2.1 это более-менее корректно работает только при латинской раскладке клавиатуры. В Windows и Qt 4.6.8 это работает и с латинской и с русской раскладками, но вам пришлось бы самим мониторить состояние Caps Lock и Shift. В правом окне вы видите результат вызова Qt.getLastKeyChar()</p>
+                        В этом случае вы можете использовать вызов Qt.getLastKeyChar() чтобы получить его. В демо ниже в левом окне пытаемся получить символ клавиши, декодируя свойство keyboardEvent.keyIdentifier. В Xubuntu 18.04 и Qt 5.2.1 это более-менее корректно работает только при латинской раскладке клавиатуры. В Windows и Qt 4.6.8 это работает и с латинской и с русской раскладками, но вам пришлось бы самим мониторить состояние Caps Lock и Shift. В правом окне вы видите результат вызова Qt.getLastKeyChar()</p>
                 </td>
             </tr>
             <tr>
@@ -896,9 +899,9 @@ window.onkeyup = onKeyUp;
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Возвращает код последней нажатой клавиши. Важно, так как Qt5 WebView не позволяет корректно считать код нажатой клавиши в событиях keydown и keyup через свойство keyCode.
-						В этом случае вы можете использовать вызов Qt.getLastKeyCode() чтобы получить его.
-						В демо ниже в левом окне пытаемся получить код клавиши, используя свойство keyboardEvent.keyCode.
-						В правом окне вы видите результат вызова Qt.getLastKeyCode(). Оно далеко не всегда совпадает с кодом javasript, но оно никогда не равно 0, что немаловажно.</p>
+                        В этом случае вы можете использовать вызов Qt.getLastKeyCode() чтобы получить его.
+                        В демо ниже в левом окне пытаемся получить код клавиши, используя свойство keyboardEvent.keyCode.
+                        В правом окне вы видите результат вызова Qt.getLastKeyCode(). Оно далеко не всегда совпадает с кодом javasript, но оно никогда не равно 0, что немаловажно.</p>
                 </td>
             </tr>
             <tr>
@@ -920,20 +923,23 @@ window.onkeyup = onKeyUp;
         </table>
     </div>
 <h4 id="files">Файлы</h4>
-	<div id="fgc" class="function">
+    <div id="fgc" class="function">
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>PHP.file_get_contents</h5>
+                    <h5>FS.readfile</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">String</span> PHP.file_get_contents(<span class="dkw">String</span> path)</h5>
+                    <i><span class="dkw">String</span> FS.readfile(<span class="dkw">String</span> path)</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p> Возвращает содержимое текстового файла. При использовании стоит помнить о том, что размер оперативной памяти на устройстве пользователя ограничен.
                         То есть не надо читать из файла имеющего размер в 1  гигабайт используя эту функцию (хотя многие современные ПК гигабайт пожалуй проглотят, но, я думаю мысль ясна).
+                    </p>
+                    <p>
+                        Примечание. Доступна также как <i><span class="dkw">String</span> PHP.file_get_contents(<span class="dkw">String</span> path)</i>
                     </p>
                 </td>
             </tr>
@@ -943,10 +949,10 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>PHP.file_put_contents</h5>
+                    <h5>FS.writefile</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Number</span> PHP.file_put_contents(<span class="dkw">String</span> path, <span class="dkw">String</span> data, <span class="dkw">Number</span> flags)</h5>
+                    <i><span class="dkw">Number</span> FS.writefile(<span class="dkw">String</span> path, <span class="dkw">String</span> data, <span class="dkw">Number</span> flags)</i>
                 </td>
             </tr>
             <tr>
@@ -956,10 +962,13 @@ window.onkeyup = onKeyUp;
                         Возвращает число записанных байт.
                     </p>
                     <p>
-						Примечание 1: flags на данный момент поддерживает одно только значение <span class="dkw">FILE_APPEND</span>.
+                        Примечание 1: Доступна также как <i><span class="dkw">Number</span> PHP.file_put_contents(<span class="dkw">String</span> path, <span class="dkw">String</span> data, <span class="dkw">Number</span> flags)</i>
                     </p>
                     <p>
-						Примечание 2: <span class="dkw">FILE_APPEND</span> = 1, что не равно значению этой константы в PHP. В планах привести это в соответствие в новых версиях.
+                        Примечание 2: flags на данный момент поддерживает одно только значение <span class="dkw">FILE_APPEND</span>.
+                    </p>
+                    <p>
+                        Примечание 3: <span class="dkw">FILE_APPEND</span> = 1, что не равно значению этой константы в PHP. В планах привести это в соответствие в новых версиях.
                     </p>
                 </td>
             </tr>
@@ -968,11 +977,11 @@ window.onkeyup = onKeyUp;
                     <div>Демо:</div>
                     <div>Нажмите на кнопку &laquo;Загрузить из файла&raquo;, выберите текстовый или javascript файл и отредактируйте текст:</div>
                     <div>
-						<textarea id="inpKD5" style="width:99%" rows="10"></textarea>
+                        <textarea id="inpKD5" style="width:99%" rows="10"></textarea>
                     </div>
                     <div>
-						<input type="button" value="Загрузить из файла" onclick="Demo.onClickLoadFile();">
-						<input type="button" value="Сохранить" onclick="Demo.onClickSaveFile();">
+                        <input type="button" value="Загрузить из файла" onclick="Demo.onClickLoadFile();">
+                        <input type="button" value="Сохранить" onclick="Demo.onClickSaveFile();">
                     </div>
                 </td>
             </tr>
@@ -992,12 +1001,12 @@ window.onkeyup = onKeyUp;
     },
 
     onClickSaveFile: <span class="kw">function</span>(){
-		<span class="kw">if</span> (!<span class="kw">this</span>.currentTextFile) {
-			alert(<span class="st">'Надо сначала выбрать текстовый файл'</span>);
-			<span class="kw">return</span>;
-		}
-		<span class="kw">var</span> nB = PHP.file_put_contents(<span class="kw">this</span>.currentTextFile, e(<span class="st">'inpKD5'</span>).value);
-		alert(<span class="st">'Записано байт: '</span> + nB);
+        <span class="kw">if</span> (!<span class="kw">this</span>.currentTextFile) {
+            alert(<span class="st">'Надо сначала выбрать текстовый файл'</span>);
+            <span class="kw">return</span>;
+        }
+        <span class="kw">var</span> nB = PHP.file_put_contents(<span class="kw">this</span>.currentTextFile, e(<span class="st">'inpKD5'</span>).value);
+        alert(<span class="st">'Записано байт: '</span> + nB);
     }
 }</pre></td>
             </tr>
@@ -1009,15 +1018,18 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>PHP.file_exists</h5>
+                    <h5>FS.fileExists</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Boolean</span> PHP.file_exists(<span class="dkw">Sring</span> path)</h5>
+                    <i><span class="dkw">Boolean</span> FS.fileExists(<span class="dkw">String</span> path)</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Вернёт true если файл, путь к которому передан в аргументе path, существует.</p>
+                    <p>
+                        Примечание 1: Доступна также как <i><span class="dkw">Boolean</span> PHP.file_exists(<span class="dkw">String</span> path)</i>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -1025,24 +1037,24 @@ window.onkeyup = onKeyUp;
                     <div>Демо:</div>
                     
                     <div>
-						Проверьте, существует ли файл <b><span id="qdjsExeFilePath"></span></b>
-					</div>
-					<div>
-						<input type="button" value="Проверить!" onclick="Demo.checkQdjsExists();">
+                        Проверьте, существует ли файл <b><span id="qdjsExeFilePath"></span></b>
                     </div>
                     <div>
-						(Должен вернуть true)
-					</div>
-					
-					<div style="margin-top:10px;">
-						Проверьте, существует ли файл <b><span id="qdjsExeFileCopyPath"></span></b>
-					</div>
-					<div>
-						<input type="button" value="Проверить!" onclick="Demo.checkQdjsCopyExists();">
+                        <input type="button" value="Проверить!" onclick="Demo.checkQdjsExists();">
                     </div>
                     <div>
-						(Должен вернуть false, конечно если вы его не создали)
-					</div>
+                        (Должен вернуть true)
+                    </div>
+                    
+                    <div style="margin-top:10px;">
+                        Проверьте, существует ли файл <b><span id="qdjsExeFileCopyPath"></span></b>
+                    </div>
+                    <div>
+                        <input type="button" value="Проверить!" onclick="Demo.checkQdjsCopyExists();">
+                    </div>
+                    <div>
+                        (Должен вернуть false, конечно если вы его не создали)
+                    </div>
                 </td>
             </tr>
             
@@ -1056,66 +1068,162 @@ window.onkeyup = onKeyUp;
                     <h5>FS.unlink</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Boolean</span> FS.unlink(<span class="dkw">Sring</span> path)</h5>
+                    <i><span class="dkw">Boolean</span> FS.unlink(<span class="dkw">String</span> path)</h5>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Вернёт true если удалось удалить файл, путь к которому передан в аргументе path.</p>
-                    <p>Примечание. Также доступна как <span class="dkw">Boolean</span> PHP.unlink(<span class="dkw">Sring</span> path).</p>
+                    <p>Примечание. Также доступна как <span class="dkw">Boolean</span> PHP.unlink(<span class="dkw">String</span> path).</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
                     <div>
-						Удалить файл <b><span id="tempFolder1">/TEMPAPTH/</span>t.txt</b>
-					</div>
-					<div>
-						<input type="button" value="Удалить!" onclick="alert(Demo.unlink());">
+                        Удалить файл <b><span id="tempFolder1">/TEMPAPTH/</span>t.txt</b>
+                    </div>
+                    <div>
+                        <input type="button" value="Удалить!" onclick="alert(Demo.unlink());">
                     </div>
                 </td>
             </tr>
         </table>
     </div>
     
+    <div id="idir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.isDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Boolean</span> FS.is_dir(<span class="dkw">String</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Вернёт true если файл, путь к которому передан в аргументе path каталог.</p>
+                    <p>Примечание. Также доступна как <span class="dkw">Boolean</span> PHP.is_dir(<span class="dkw">String</span> path).</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>
+                        Введите путь к файлу или каталогу, или выберите существующий с помощью кнопок ниже.<br>
+                        Затем отредактируйте путь, чтобы он указывал на несуществующий каталог или на файл 
+                        и нажмите на кнопку &laquo;Это каталог?&raquo;
+                    </div>
+                    <div>
+                        <input type="text" value="" id="isDirPath">
+                    </div>
+                    <div>
+                        <input type="button" value="Выбрать файл" onclick="Demo.isDirChooseFile();">
+                        <input type="button" value="Выбрать каталог" onclick="Demo.isDirChooseDir();">
+                        <input type="button" value="Это каталог?" onclick="Demo.isDir();">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="scn" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.scandir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> FS.scandir(<span class="dkw">String</span> path)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Возвращает список файлов в каталоге.</p>
+                    <p>Примечание. Также доступна как <span class="dkw">Array</span> PHP.scandir(<span class="dkw">String</span> path).</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>&nbsp;</div>
+                    <input type="button" value="Выбрать каталог" onclick="Demo.scandir()">
+                    <div>
+                        <div id="xtStdOut5">
+                            <div class="outheader">Catalogs and files:</div>
+                            <div id="xtStdOut5Content">
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> ReadDirectoryContentExample = {
+    scandir: <span class="kw">function</span>(){
+        <span class="kw">var</span> s = Qt.openDirectoryDialog(<span class="st">'Выберите каталог'</span>, <span class="st">''</span>, <span class="st">''</span>);
+            ls = FS.scandir(s), i, icon = <span class="st">'exec.png'</span>, width = <span class="nm">24</span>, file;
+    ls.sort();
+    e(<span class="st">'xtStdOut5Content'</span>).innerHTML = '';
+    <span class="kw">for</span> (i = 0; i &lt; ls.length; i++) {
+        icon = <span class="st">'exec.png'</span>;
+        <span class="kw">if</span> (FS.isDir(s + <span class="st">'/'</span> + ls[i])) {
+            icon = <span class="st">'folder'</span> + width + <span class="st">'.png'</span>;
+        }
+        file = <span class="st">'&lt;div&gt;&lt;img class="filielistitem" width="'</span> + width
+            + <span class="st">'" height="'</span>
+            + width + <span class="st">'" src="'</span> + Qt.appDir() 
+            + <span class="st">'/doc/i/'</span> + icon 
+            + <span class="st">'"&gt; &lt;span class="filelistitemtext"&gt;'&lt;/span&gt;'</span> + ls[i] + 
+            <span class="st">'&lt;/span&gt;&lt;/div&gt;'</span>;
+        
+        e(<span class="st">'xtStdOut5Content'</span>).innerHTML += file;
+    }
+}</pre></td>
+            </tr>
+            
+        </table>
+    </div>
+    
+    <div id="fsz" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.filesize</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Number</span> FS.filesize(<span class="dkw">String</span> path)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Возвращает размер файла в байтах.</p>
+                    <p>Примечание. Также доступна как <i><span class="dkw">Number</span> PHP.filesize(<span class="dkw">String</span> path).</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>&nbsp;</div>
+                    <input type="button" value="Выбрать файл" onclick="Demo.filesize()">
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    
 <h4 id="env">пример заголовка</h4>
     <p id="stopHere">Here Content</p>
         <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
-        <p>Here Content</p>
+        
     </div>
     </td>
 </tr>

@@ -157,5 +157,23 @@ function __jqtSetXdgOpenForLinks() {
 window.FS = {
 	unlink:function(path) {
 		return PHP.unlink(path);
+	},
+	isDir:function(path) {
+		return PHP.is_dir(path);
+	},
+	readfile:function(path){
+		return PHP.file_get_contents(path);
+	},
+	writefile:function(path, content, flags){
+		return PHP.file_put_contents(path, content, flags);
+	},
+	fileExists:function(path){
+		return PHP.file_exists(path);
+	},
+	scandir:function(path){
+		return PHP.scandir(path);
+	},
+	filesize:function(path){
+		return PHP.filesize(path);
 	}
 };

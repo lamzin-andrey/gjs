@@ -1,3 +1,7 @@
+// Пока здесь
+function L(s) {
+	return s;
+}
 var Demo = {
 	init:function(){
 		e('qdjsExeFilePath').innerHTML = Qt.appDir() + '/index.html';
@@ -145,14 +149,14 @@ var Demo = {
 	},
 	onClickLoadFile:function(){
 		this.currentTextFile = Qt.openFileDialog('Выберите текстовый файл с расширением txt или js', '', '*.txt *.js');
-		e('inpKD5').value = PHP.file_get_contents(this.currentTextFile);
+		e('inpKD5').value = FS.readfile(this.currentTextFile);
 	},
 	onClickSaveFile:function(){
 		if (!this.currentTextFile) {
 			alert('Надо сначала выбрать текстовый файл');
 			return;
 		}
-		var nB = PHP.file_put_contents(this.currentTextFile, e('inpKD5').value);
+		var nB = FS.writefile(this.currentTextFile, e('inpKD5').value);
 		alert('Записано байт: ' + nB);
 	},
 	checkQdjsExists:function(){
@@ -170,5 +174,43 @@ var Demo = {
 		tempFile = OS.getTempDir() + sep + 't.txt'
 		e('tempFolder1').innerHTML = OS.getTempDir() + sep;
 		return FS.unlink(tempFile);
+	},
+	isDirChooseFile:function() {
+		e('isDirPath').value = Qt.openFileDialog('Выберите файл', '', '*.*');
+	},
+	isDirChooseDir:function() {
+		e('isDirPath').value = Qt.openDirectoryDialog('Выберите каталог', '');
+	},
+	isDir:function() {
+		var s = e('isDirPath').value;
+		if (!s || !PHP.file_exists(s)) {
+			alert('Файл не выбран или не существует');
+			return;
+		}
+		
+		alert(PHP.is_dir(s));
+	},
+	scandir:function() {
+		var s = Qt.openDirectoryDialog(L('Выберите каталог'), ''),
+			ls = FS.scandir(s), i, icon = 'exec.png', width = 24, file;
+		ls.sort();
+		e('xtStdOut5Content').innerHTML = '';
+		for (i = 0; i < ls.length; i++) {
+			icon = 'exec.png'
+			if (FS.isDir(s + '/' + ls[i])) {
+				icon = 'folder' + width + '.png';
+			}
+			file = '<div><img class="filielistitem" width="' + width + '" height="' + width + '" src="' + Qt.appDir() + '/doc/i/' + icon + '"> <span class="filelistitemtext">' + ls[i] + '</span></div>';
+			
+			e('xtStdOut5Content').innerHTML += file;
+		}
+	},
+	filesize:function(){
+		var s = Qt.openFileDialog(L('ВЫберите файл'), '', '*.*');
+		if (FS.fileExists(s)) {
+			alert(L('Размер файла ') + FS.filesize(s) + ' ' + L('байт'));
+		} else {
+			alert(L('Надо выбрать файл'));
+		}
 	}
 };
