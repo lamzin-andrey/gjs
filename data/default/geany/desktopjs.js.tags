@@ -1,37 +1,66 @@
 appDir|Qt.|()|
-setLineDelimeter|Qt.|(String delimiter)|
-getLineDelimeter|Qt.|()|
+dir|App.|()|
+setLineDelimeter(|Qt.|(String delimiter)|
+getLineDelimeter(|Qt.|()|
 moveTo|Qt.|(Number x, Number y)|
-resizeTo|Qt.|(Number x, Number y)|
+moveTo|MW.|(Number x, Number y)|
+resizeTo(|Qt.|(Number x, Number y)|
+resizeTo(|MW.|(Number x, Number y)|
 quit|Qt.|()|
+quit|App.|()|
 showFullScreen|Qt.|()|
+showFullScreen|MW.|()|
 showNormal|Qt.|()|
-exec|PHP.|(String cmd, String onFinallyExecuteFunctionName, String onStdoutFunctionName, String onStderrFunctionName)|
+showNormal|MW.|()|
+jexec|global|(String cmd, Function onFinallyExecute, Function onStdout, Function onStderr)|
+Env.exec|global|(String cmd, Function onFinallyExecute, Function onStdout, Function onStderr)|
 file_put_contents|PHP.|(String path, String data, int flag = 0)|
+writefile|FS.|(String path, String data, int flag = 0)|
 file_get_contents|PHP.|(String path)|
+readfile|FS.|(String path)|
 file_exists|PHP.|(String path)|
+fileExists|FS.|(String path)|
 unlink|PHP.|(String path)|
+unlink|FS.|(String path)|
 is_dir|PHP.|(String path)|
+isDir|FS.|(String path)|
+isRun|PHP.|(Number innerProcId)|
+Env.isRun|PHP.|(Number innerProcId)|
 scandir|PHP.|(String path)|
+scandir|FS.|(String path)|
 filesize|PHP.|(String path)|
+filesize|FS.|(String path)|
 openFileDialog|String Qt.|(String caption, String dir, String filter)|
+openFileDialog|String Env.|(String caption, String dir, String filter)|
 openFilesDialog|Array Qt.|(String caption, String dir, String filter)|
+openFilesDialog|Array Env.|(String caption, String dir, String filter)|
 openDirectoryDialog|String  Qt.|(String caption, String dir, String filter)|
+openDirectoryDialog|String  Env.|(String caption, String dir)|
 saveFileDialog|String  Qt.|(String caption, String dir, String filter)|
+saveFileDialog|String  Env.|(String caption, String dir, String filter)|
 savePng|Qt.|(String path, String base64Str,  Number iQuality)|
 saveJpeg|Qt.|(String path, String base64Str,  Number iQuality)|
 minimize|Qt.|()|
+minimize|MW.|()|
 maximize|Qt.|()|
+maximize|MW.|()|
 hideMainMenu|Qt.|()|
+hideMainMenu|MW.|()|
 showMainMenu|Qt.|()|
+showMainMenu|MW.|()|
 getArgs|Array Qt.|()|
-getLastKeyChar|String Qt.|()|
+getArgs|Array App.|()|
 getLastKeyCode|Number Qt.|()|
+getLastKeyCode|Number MW.|()|
+getLastKeyChar|String Qt.|()|
+getLastKeyChar|String MW.|()|
 setTitle|Qt.|(String s)|
+setTitle|MW.|(String s)|
 readFileAsBinaryString|String  Qt.|(String file, Number indexA = 0, Number indexB = -1)|
-copyFile|String Qt.|(String file, String dest, Number indexA = 0, Number indexB = -1)|
+copyFile|String  Qt.|(String file, String dest, Number indexA = 0, Number indexB = -1)|
 setWindowIconImage|Qt.|(String pathToPng24x24)|
-isRun|PHP.|(Number innerProcId)|
+setIconImage|MW.|(String pathToPng24x24)|
+
 
 
 
