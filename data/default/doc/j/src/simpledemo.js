@@ -16,16 +16,16 @@ var Demo = {
 	},
 	onClickPosOnCenter: function(){
 		var w = 800, h = 600;
-		Qt.moveTo( (screen.width - w) / 2, (screen.height - h) / 2);
-		Qt.resizeTo(w, h);
+		MW.moveTo( (screen.width - w) / 2, (screen.height - h) / 2);
+		MW.resizeTo(w, h);
 	},
 	minimize: function() {
-		Qt.showNormal();
-		Qt.minimize();
+		MW.showNormal();
+		MW.minimize();
 		
 		setTimeout(function() {
-			Qt.showNormal();
-			Qt.minimize();
+			MW.showNormal();
+			MW.minimize();
 		}, 100);
 	},
 	runXTerm: function(){

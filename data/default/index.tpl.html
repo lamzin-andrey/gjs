@@ -33,17 +33,17 @@
         <ul class="subsections">
             <li><a href="#winManage">Управление окном</a></li>
             <ul class="subsections4">
-                <li><a href="#resizeTo">Qt.resizeTo</a></li>
-                <li><a href="#maximize">Qt.maximize</a></li>
-                <li><a href="#minimize">Qt.minimize</a></li>
-                <li ><a href="#sfs">Qt.showFullScreen</a></li>
-                <li ><a href="#sNormal">Qt.showNormal</a></li>
-                <li ><a href="#hideMainMenu">Qt.hideMainMenu</a></li>
-                <li ><a href="#showMainMenu">Qt.showMainMenu</a></li>
-                <li ><a href="#moveTo">Qt.moveTo</a></li>
-                <li ><a href="#swi">Qt.setWindowIconImage</a></li>
-                <li ><a href="#setTitle">Qt.setTitle</a></li>
-                <li ><a href="#quit">Qt.quit</a></li>
+                <li><a href="#resizeTo">MW.resizeTo</a></li>
+                <li><a href="#maximize">MW.maximize</a></li>
+                <li><a href="#minimize">MW.minimize</a></li>
+                <li ><a href="#sfs">MW.showFullScreen</a></li>
+                <li ><a href="#sNormal">MW.showNormal</a></li>
+                <li ><a href="#hideMainMenu">MW.hideMainMenu</a></li>
+                <li ><a href="#showMainMenu">MW.showMainMenu</a></li>
+                <li ><a href="#moveTo">MW.moveTo</a></li>
+                <li ><a href="#swi">MW.setIconImage</a></li>
+                <li ><a href="#setTitle">MW.setTitle</a></li>
+                <li ><a href="#quit">MW.close</a></li>
             </ul>
             <li><a href="#env">Взаимодействие с окружением</a></li>
             <ul class="subsections4">
@@ -51,8 +51,8 @@
                 <li><a href="#isRun">Env.isRun</a></li>
                 <li><a href="#appDir">App.dir</a></li>
                 <li><a href="#getArgs">App.getArgs</a></li>
-                <li><a href="#getLastKeyChar">Qt.getLastKeyChar</a></li>
-                <li><a href="#getLastKeyCode">Qt.getLastKeyCode</a></li>
+                <li><a href="#getLastKeyChar">MW.getLastKeyChar</a></li>
+                <li><a href="#getLastKeyCode">MW.getLastKeyCode</a></li>
                 <li><a href="#openFileDialog">Env.openFileDialog</a></li>
                 <li><a href="#openFilesDialog">Env.openFilesDialog</a></li>
                 <li><a href="#saveFileDialog">Env.saveFileDialog</a></li>
@@ -224,27 +224,28 @@ window.onkeyup = onKeyUp;
         </pre>
 <h4 id="dapi">Desktop API</h4>
 <h5 id="winManage">Управление окном приложения</h5>
-<p>Управление окном доступно из javascript кода</p>
+<p>Управление окном доступно из javascript кода через объект MW (от MainWindow - главное окно программы). </p>
     <div id="resizeTo" class="function">
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.resizeTo</h5>
+                    <h5>MW.resizeTo</h5>
                 </td>
                 <td class="fd">
-                    <i>Qt.resizeTo(<span class="dkw">Number</span> width, <span class="dkw">Number</span> height)</h5>
+                    <i>MW.resizeTo(<span class="dkw">Number</span> width, <span class="dkw">Number</span> height)</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Изменяет размер окна приложения. Координаты левого верхнего угла при этом не изменяются. Используйте Qt.moveTo() при необходимости их изменить.</p>
-                    <p></p>
+                    <p>Изменяет размер окна приложения. Координаты левого верхнего угла при этом не изменяются. 
+                    Используйте MW.moveTo() при необходимости их изменить.</p>
+                    <p>Примечание: также доступна как <i>Qt.resizeTo(<span class="dkw">Number</span> width, <span class="dkw">Number</span> height)</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
-                    <input type="button" value="Изменить размер этого окна" onclick="Qt.resizeTo(800, 600);">
+                    <input type="button" value="Изменить размер этого окна" onclick="MW.resizeTo(800, 600);">
                 </td>
             </tr>
         
@@ -255,10 +256,10 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.maximize</h5>
+                    <h5>MW.maximize</h5>
                 </td>
                 <td class="fd">
-                    <i>Qt.maximize()</h5>
+                    <i>MW.maximize()</h5>
                 </td>
             </tr>
             <tr>
@@ -270,8 +271,8 @@ window.onkeyup = onKeyUp;
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
-                    <input type="button" value="Изменить размер этого окна до 800x600" onclick="Qt.resizeTo(800, 600);">
-                    <input type="button" value="Развернуть на весь экран" onclick="Qt.maximize();">
+                    <input type="button" value="Изменить размер этого окна до 800x600" onclick="MW.resizeTo(800, 600);">
+                    <input type="button" value="Развернуть на весь экран" onclick="MW.maximize();">
                 </td>
             </tr>
         
@@ -282,19 +283,21 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.minimize</h5>
+                    <h5>MW.minimize</h5>
                 </td>
                 <td class="fd">
-                    <i>Qt.minimize()</h5>
+                    <i>MW.minimize()</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Сворачивает окно приложения на панель задач.
-                    Примечание: после первого запуска приложения работает, как ожидается, но после первого 
+                    </p>
+                    <p>Примечание1 : после первого запуска приложения работает, как ожидается, но после первого 
                     "свёртывания" и последующего восстановления путём клика на кнопку окна на панели в 
                     Xubuntu 18.04 функция как-будто бы не работает. Добиться устойчивой работы можно предварительно
-                    вызвав Qt.showNormal(); и повторив это через небольшую задержку.</p>
+                    вызвав MW.showNormal(); и повторив это через небольшую задержку.</p>
+                    <p>Примечание 2: также доступна как <i>MW.minimize()</i></p>
                 </td>
             </tr>
             <tr>
@@ -308,12 +311,12 @@ window.onkeyup = onKeyUp;
                     Пример кода:<br>
                     <pre class="codebg">
 <span class="kw">function</span> onClickButtonMinimizeWindow(){
-    Qt.showNormal();
-    Qt.minimize();
+    MW.showNormal();
+    MW.minimize();
     <span class="jcomm">// Для устойчивой работы в Xubuntu 18.04 с XFCE</span>
     setTimeout(<span class="kw">function</span>() {
-        Qt.showNormal();
-        Qt.minimize();
+        MW.showNormal();
+        MW.minimize();
     }, <span class="nm">100</span>);
 }
 </pre>
@@ -328,23 +331,23 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.showFullScreen</h5>
+                    <h5>MW.showFullScreen</h5>
                 </td>
                 <td class="fd">
-                    <i>Qt.showFullScreen()</h5>
+                    <i>MW.showFullScreen()</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Скрывает рамку окна и разворачивает окно на предний план.</p>
-                    <p></p>
+                    <p><i>Примечание: также доступна как Qt.showFullScreen()</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
-                    <input type="button" value="Вернуть рамку" onclick="Qt.showNormal();">
-                    <input type="button" value="Развернуть на весь экран скрыв рамку" onclick="Qt.showFullScreen();">
+                    <input type="button" value="Вернуть рамку" onclick="MW.showNormal();">
+                    <input type="button" value="Развернуть на весь экран скрыв рамку" onclick="MW.showFullScreen();">
                 </td>
             </tr>
         
@@ -355,23 +358,23 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.showNormal</h5>
+                    <h5>MW.showNormal</h5>
                 </td>
                 <td class="fd">
-                    <i>Qt.showNormal()</h5>
+                    <i>MW.showNormal()</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Показывает рамку окна если оно было скрыто функцией showFullScreen().</p>
-                    <p></p>
+                    <p>Примечание: также доступна как <i>Qt.showNormal()</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
-                    <input type="button" value="Вернуть рамку" onclick="Qt.showNormal();">
-                    <input type="button" value="Развернуть на весь экран скрыв рамку" onclick="Qt.showFullScreen();">
+                    <input type="button" value="Вернуть рамку" onclick="MW.showNormal();">
+                    <input type="button" value="Развернуть на весь экран скрыв рамку" onclick="MW.showFullScreen();">
                 </td>
             </tr>
         
@@ -382,23 +385,23 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.hideMainMenu</h5>
+                    <h5>MW.hideMainMenu</h5>
                 </td>
                 <td class="fd">
-                    <i>Qt.hideMainMenu()</h5>
+                    <i>MW.hideMainMenu()</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Скрывает главное меню окна приложения</p>
-                    <p></p>
+                    <p>Примечание: также доступна как  <i>Qt.hideMainMenu()</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
-                    <input type="button" value="Скрыть главное меню" onclick="Qt.hideMainMenu();">
-                    <input type="button" value="Показать главное меню" onclick="Qt.showMainMenu();">
+                    <input type="button" value="Скрыть главное меню" onclick="MW.hideMainMenu();">
+                    <input type="button" value="Показать главное меню" onclick="MW.showMainMenu();">
                 </td>
             </tr>
         
@@ -409,26 +412,27 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.showMainMenu</h5>
+                    <h5>MW.showMainMenu</h5>
                 </td>
                 <td class="fd">
-                    <i>Qt.showMainMenu()</h5>
+                    <i>MW.showMainMenu()</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Показывает главное меню окна приложения, если оно было скрыто вызовом Qt.hideMainMenu();</p>
-                    <p>Примечание: Если в верстке вашего окна главное меню не задано тегом menubar, функция естественно не покажет главное меню.</p>
+                    <p>Показывает главное меню окна приложения, если оно было скрыто вызовом MW.hideMainMenu();</p>
+                    <p>Примечание 1: Если в верстке вашего окна главное меню не задано тегом menubar, функция
+						естественно не покажет главное меню.</p>
+					<p>Примечание 2: также доступна как  <i>Qt.showMainMenu()</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
-                    <input type="button" value="Скрыть главное меню" onclick="Qt.hideMainMenu();">
-                    <input type="button" value="Показать главное меню" onclick="Qt.showMainMenu();">
+                    <input type="button" value="Скрыть главное меню" onclick="MW.hideMainMenu();">
+                    <input type="button" value="Показать главное меню" onclick="MW.showMainMenu();">
                 </td>
             </tr>
-        
         </table>
     </div>
     
@@ -436,15 +440,16 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.moveTo</h5>
+                    <h5>MW.moveTo</h5>
                 </td>
                 <td class="fd">
-                    <i>Qt.moveTo(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y)</h5>
+                    <i>MW.moveTo(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y)</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Перемещает окно приложения. Аргументы - это координаты левого верхнего угла окна приложения.</p>
+                    <p>Примечание: также доступна как <i>Qt.moveTo(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y)</i></p>
                 </td>
             </tr>
             <tr>
@@ -459,8 +464,8 @@ window.onkeyup = onKeyUp;
                     <pre class="codebg">
 <span class="kw">function</span> onClickButtonPosWindowOnScreenCenter(){
     <span class="kw">var</span> w = <span class="nm">800</span>, h = <span class="nm">600</span>;
-    Qt.moveTo( (screen.width - w) / <span class="nm">2</span>, (screen.height - h) / <span class="nm">2</span>);
-    Qt.resizeTo(w, h);
+    MW.moveTo( (screen.width - w) / <span class="nm">2</span>, (screen.height - h) / <span class="nm">2</span>);
+    MW.resizeTo(w, h);
 }
 </pre>
                     
@@ -474,24 +479,29 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.setWindowIconImage</h5>
+                    <h5>MW.setIconImage</h5>
                 </td>
                 <td class="fd">
-                    <i>Qt.setWindowIconImage(<span class="dkw">String</span> pathToPng32x32)</h5>
+                    <i>MW.setIconImage(<span class="dkw">String</span> pathToPng32x32)</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Устанавливает иконку в окне приложения рядом с заголовком окна.
-                    Аргумент - путь к png файлу изображения размером 32 на 32 пикселя или 24 на 24 пикселя. Примечание:
-                    В Xubuntu 14.04 - 22.04 изображения слева от текста заголовка окна поддерживает тема Kokodi.</p>
+                    <p>	
+						Устанавливает иконку в окне приложения рядом с заголовком окна.
+						Аргумент - путь к png файлу изображения размером 32 на 32 пикселя или 24 на 24 пикселя. Примечание:
+						В Xubuntu 14.04 - 22.04 изображения слева от текста заголовка окна поддерживает тема Kokodi.
+                    </p>
+                    <p>
+						Примечание: также доступна как <i>Qt.setWindowIconImage(<span class="dkw">String</span> pathToPng32x32)</i>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
-                    <div><input type="button" value="Изменить иконку окна" onclick="Qt.setWindowIconImage( Qt.appDir() + '/doc/i/demo.png');"></div>
-                    <div><input type="button" value="Вернуть как было" onclick="Qt.setWindowIconImage( Qt.appDir() + '/doc/i/exec.png');"></div>
+                    <div><input type="button" value="Изменить иконку окна" onclick="MW.setIconImage( Qt.appDir() + '/doc/i/demo.png');"></div>
+                    <div><input type="button" value="Вернуть как было" onclick="MW.setIconImage( Qt.appDir() + '/doc/i/exec.png');"></div>
                 </td>
             </tr>
         
@@ -502,21 +512,22 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.quit</h5>
+                    <h5>MW.close</h5>
                 </td>
                 <td class="fd">
-                    <i>Qt.quit()</h5>
+                    <i>MW.close()</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Закрывает окно приложения и завершает его работу</p>
+                    <p>Примечание: также доступно как <i>App.quit();</i> и <i>Qt.quit();</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
-                    <div><input type="button" value="Закрыть это окно" onclick="Qt.quit();"></div>
+                    <div><input type="button" value="Закрыть это окно" onclick="App.quit();"></div>
                 </td>
             </tr>
         
@@ -864,16 +875,28 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.getLastKeyChar</h5>
+                    <h5>MW.getLastKeyChar</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">String</span> Qt.getLastKeyChar()</h5>
+                    <i><span class="dkw">String</span> MW.getLastKeyChar()</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Возвращает символ последней нажатой клавиши (если она алфавитно-цифровая). Важно, так как Qt5 WebView не позволяет считать символ нажатой клавиши в событиях keydown и keyup через свойство key.
-                        В этом случае вы можете использовать вызов Qt.getLastKeyChar() чтобы получить его. В демо ниже в левом окне пытаемся получить символ клавиши, декодируя свойство keyboardEvent.keyIdentifier. В Xubuntu 18.04 и Qt 5.2.1 это более-менее корректно работает только при латинской раскладке клавиатуры. В Windows и Qt 4.6.8 это работает и с латинской и с русской раскладками, но вам пришлось бы самим мониторить состояние Caps Lock и Shift. В правом окне вы видите результат вызова Qt.getLastKeyChar()</p>
+                    <p>Возвращает символ последней нажатой клавиши (если она алфавитно-цифровая).
+						Важно, так как Qt5 WebView не позволяет считать символ нажатой клавиши в событиях keydown и keyup
+						 через свойство key.
+                        В этом случае вы можете использовать вызов MW.getLastKeyChar() чтобы получить его. 
+                        В демо ниже в левом окне пытаемся получить символ клавиши, декодируя свойство javascript
+                        keyboardEvent.keyIdentifier.
+                        В Xubuntu 18.04 и Qt 5.2.1 это более-менее корректно работает только при латинской раскладке клавиатуры.
+                        В Windows и Qt 4.6.8 это работает и с латинской и с русской раскладками,
+                        но вам пришлось бы самим мониторить состояние Caps Lock и Shift.
+                        В правом окне вы видите результат вызова MW.getLastKeyChar()
+                     </p>
+                     <p>
+						 Примечание: <i><span class="dkw">String</span> Qt.getLastKeyChar()</i>
+                     </p>
                 </td>
             </tr>
             <tr>
@@ -899,18 +922,23 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.getLastKeyCode</h5>
+                    <h5>MW.getLastKeyCode</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Number</span> Qt.getLastKeyCode()</h5>
+                    <i><span class="dkw">Number</span> MW.getLastKeyCode()</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Возвращает код последней нажатой клавиши. Важно, так как Qt5 WebView не позволяет корректно считать код нажатой клавиши в событиях keydown и keyup через свойство keyCode.
-                        В этом случае вы можете использовать вызов Qt.getLastKeyCode() чтобы получить его.
+                        В этом случае вы можете использовать вызов MW.getLastKeyCode() чтобы получить его.
                         В демо ниже в левом окне пытаемся получить код клавиши, используя свойство keyboardEvent.keyCode.
-                        В правом окне вы видите результат вызова Qt.getLastKeyCode(). Оно далеко не всегда совпадает с кодом javasript, но оно никогда не равно 0, что немаловажно.</p>
+                        В правом окне вы видите результат вызова MW.getLastKeyCode().
+                        Оно далеко не всегда совпадает с кодом javasript, но оно гораздо реже равно 0, что немаловажно.
+                    </p>
+                    <p>
+						Примечание: также доступна как <i><span class="dkw">Number</span> Qt.getLastKeyCode()</i>
+                    </p>
                 </td>
             </tr>
             <tr>
