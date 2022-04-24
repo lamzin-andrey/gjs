@@ -177,3 +177,33 @@ window.FS = {
 		return PHP.filesize(path);
 	}
 };
+
+window.Env = {
+    openFileDialog: function(caption, dir, filter){
+		return Qt.openFileDialog(caption, dir, filter);
+	},
+	openFilesDialog: function(caption, dir, filter){
+		return Qt.openFilesDialog(caption, dir, filter);
+	},
+	openDirectoryDialog: function(caption, dir) {
+		return Qt.openDirectoryDialog(caption, dir, '');
+	},
+	saveFileDialog: function(caption, dir, filter) {
+		return Qt.saveFileDialog(caption, dir, filter);
+	},
+	exec: function(command, onFinallyExecute, onStdOut, onStdErr) {
+		return jexec(command, onFinallyExecute, onStdOut, onStdErr);
+	},
+	isRun: function(innerProcId) {
+		return PHP.isRun(innerProcId);
+	}
+};
+
+window.App = {
+	dir: function(){
+		return Qt.appDir();
+	},
+	getArgs: function(){
+		return Qt.getArgs();
+	}
+};

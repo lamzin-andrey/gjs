@@ -47,12 +47,16 @@
             </ul>
             <li><a href="#env">Взаимодействие с окружением</a></li>
             <ul class="subsections4">
-                <li><a href="#jexec">jexec</a></li>
-                <li><a href="#isRun">PHP.isRun</a></li>
-                <li><a href="#appDir">Qt.appDir</a></li>
-                <li><a href="#getArgs">Qt.getArgs</a></li>
+                <li><a href="#ejexec">Env.exec</a></li>
+                <li><a href="#isRun">Env.isRun</a></li>
+                <li><a href="#appDir">App.dir</a></li>
+                <li><a href="#getArgs">App.getArgs</a></li>
                 <li><a href="#getLastKeyChar">Qt.getLastKeyChar</a></li>
                 <li><a href="#getLastKeyCode">Qt.getLastKeyCode</a></li>
+                <li><a href="#openFileDialog">Env.openFileDialog</a></li>
+                <li><a href="#openFilesDialog">Env.openFilesDialog</a></li>
+                <li><a href="#saveFileDialog">Env.saveFileDialog</a></li>
+                <li><a href="#openDirectoryDialog">Env.openDirectoryDialog</a></li>
             </ul>
             <li><a href="#files">Файлы</a></li>
             <ul class="subsections4">
@@ -545,14 +549,14 @@ window.onkeyup = onKeyUp;
     </div>
     
 <h4 id="env">Взаимодействие с окружением</h4>
-    <div id="jexec" class="function">
+    <div id="ejexec" class="function">
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>jexec</h5>
+                    <h5>Env.exec</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Array</span> jexec(<span class="dkw">String</span> command, <span class="dkw">Function|Array|Object</span> onFinish, <span class="dkw">Function|Array|Object</span> onStdOut, <span class="dkw">Function|Array|Object</span> onStdErr)</h5>
+                    <i><span class="dkw">Array</span> Env.exec(<span class="dkw">String</span> command, <span class="dkw">Function|Array|Object</span> onFinish, <span class="dkw">Function|Array|Object</span> onStdOut, <span class="dkw">Function|Array|Object</span> onStdErr)</h5>
                 </td>
             </tr>
             <tr>
@@ -561,7 +565,7 @@ window.onkeyup = onKeyUp;
                     </p>
                     <p>Примечание 1: Если запускаемому приложению передаются аргументы, лучше использовать shell или batch файлы. В противном случае работа запуска не гарантируется.</p>
                     <p>Примечание 2: В windows чтение stdin и stdout не поддерживается.</p>
-                    <p>Примечание 3: В windows вместо терминала xterm будет запущен Блокнот.</p>
+                    <p>Примечание 3: В windows при запуске демо ниже вместо терминала xterm будет запущен Блокнот.</p>
                     <p>Примечание 4: Для завершения процесса в этом примере используется kill в linux xubuntu и taskkill в windows. Если их нет в системе, закрытие запущенной программы не будет работать.</p>
                 </td>
             </tr>
@@ -652,7 +656,7 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf arglist" colspan="2">
-                    Формат аргументов функций
+                    Формат аргументов функции
                 </td>
             </tr>
             <tr>
@@ -721,7 +725,7 @@ window.onkeyup = onKeyUp;
         <span class="kw">if</span> (!PHP.file_exists(<span class="st">'/usr'</span>)) {
             cmd = <span class="st">'notepad'</span>;
         }
-        <span class="kw">this</span>.xtId = jexec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
+        <span class="kw">this</span>.xtId = Env.exec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
         
     },
     closeXTerm: <span class="kw">function</span>(){
@@ -731,7 +735,7 @@ window.onkeyup = onKeyUp;
             cmd = <span class="st">'TASKKILL /PID '</span> + <span class="kw">this</span>.xtId[<span class="nm">0</span>] + <span class="st">' /T'</span>;
         }
         
-        <span class="kw">this</span>.xtId = jexec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
+        <span class="kw">this</span>.xtId = Env.exec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
     },
     
     onFinishXT: <span class="kw">function</span>(stdout, stderr) {
@@ -764,15 +768,15 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>PHP.isRun</h5>
+                    <h5>Env.isRun</h5>
                 </td>
                 <td class="fd">
-                    <i>PHP.isRun(<span class="dkw">Number</span> innerProcId)</h5>
+                    <i>Env.isRun(<span class="dkw">Number</span> innerProcId)</h5>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Проверяет, завершён ли уже запущенный процесс. innerProcId это элемент массива, который возвращает jexec, с индексом 1.</p>
+                    <p>Проверяет, завершён ли уже запущенный процесс. innerProcId это значение элемента массива, который возвращает Env.exec, с индексом 1.</p>
                 </td>
             </tr>
             <tr>
@@ -799,21 +803,22 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.appDir</h5>
+                    <h5>App.dir</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">String</span> Qt.appDir()</h5>
+                    <i><span class="dkw">String</span> App.dir()</h5>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Возвращает путь к каталогу, в котором находится исполняемый файл приложения</p>
+                    <p>Примечание: Также доступна как <span class="dkw">String</span> Qt.appDir()</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
-                    <input type="button" value="В каком каталоге лежит эта программа?" onclick="alert(Qt.appDir());">
+                    <input type="button" value="В каком каталоге лежит эта программа?" onclick="alert(App.dir());">
                 </td>
             </tr>
         </table>
@@ -823,25 +828,29 @@ window.onkeyup = onKeyUp;
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>Qt.getArgs</h5>
+                    <h5>App.getArgs</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Array</span> Qt.getArgs()</h5>
+                    <i><span class="dkw">Array</span> App.getArgs()</i>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Возвращает аргументы командной строки переданые приложению при запуске.
-                    Полезно например для вьюера (программы просмотра) фотографий.
-                    Например если пользователь настроил Windows чтобы все jpg файлы открывались в вашем вьюере,
-                    вам надо считать аргумент с индексом 1, который и содержит путь к выбранному пользователем файлу. </p>
+						Полезно например для вьюера (программы просмотра) фотографий.
+						Например если пользователь настроил Windows чтобы все jpg файлы открывались в вашем вьюере,
+						вам надо считать аргумент с индексом 1, который и содержит путь к выбранному пользователем файлу.
+                    </p>
+                    <p>
+						Примечание: Также доступна как <i><span class="dkw">Array</span> Qt.getArgs()</i>
+                    </p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
                     <div>
-                        <input type="button" value="Показать аргументы командной строки этой программы" onclick="alert(Qt.getArgs());">
+                        <input type="button" value="Показать аргументы командной строки этой программы" onclick="alert(App.getArgs());">
                     </div>
                     <div>
                         <input type="button" value="Запустить ещё одну копию этой программы и проверить аргументы в ней" onclick="Demo.runCopyWithArg();">
@@ -922,7 +931,218 @@ window.onkeyup = onKeyUp;
             </tr>
         </table>
     </div>
-<h4 id="files">Файлы</h4>
+    
+    <div id="openFileDialog" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.openFileDialog</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.openFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Открывает системный диалог выбора файла для чтения. Возвращает путь к выбранному файлу.
+						Если файл не выбран, вернёт пустую строку.</p>
+					<p>
+						Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>Выберите текстовый или javascript файл и вы увидите его размер в байтах.</div>
+                    <input type="button" value="Выбор файла" onclick="Demo.filesize('*.txt *.js')">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Возвращаемое значение
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String filename</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> filename</i>. Возвращает путь к выбранному файлу.
+						Если файл не выбран, вернёт пустую строку.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Аргументы метода
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String caption</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> caption</i>.
+                     Текст в заголовке диалога выбора файлов
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String dir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> dir</i>.
+                     Путь к каталогу, файлы которого покажутся при открытии диалога.
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String filter</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> filter</i>.
+                     Расширения файлов, которые будут отображаться в диалоге.
+                     Например <span class="st">"*.txt *.js"</span> укажет методу, что надо отображать только файлы с расширением txt и js.
+                     Если надо отобразить только например исполняемые файлы windows, фильтр выглядел бы
+                     <span class="st">"*.exe"</span>.
+                     Расширения в строке фильтров разделяются одним пробелом.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="saveFileDialog" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.saveFileDialog</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.saveFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Открывает системный диалог выбора файла для сохранения.
+						Возвращает массив путей к выбранным файлам.
+						Если ни один файл не выбран, вернёт пустой массив.
+						Аргументы метода полностью аналогичны аргументам Env.openFileDialog;
+						Возвращаемое значение метода полностью аналогично Env.openFileDialog.
+					</p>
+					<p>
+						Примечание: Доступна также как <i><span class="dkw">String</span> Qt.saveFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>Нажмите на кнопку &laquo;Загрузить из файла&raquo;, выберите текстовый или javascript файл и отредактируйте текст:</div>
+                    <div>
+                        <textarea id="inpKD5" style="width:99%" rows="10"></textarea>
+                    </div>
+                    <div>
+                        <input type="button" value="Загрузить из файла" onclick="Demo.onClickLoadFile();">
+                        <input type="button" value="Сохранить" onclick="Demo.onClickSaveFileWithDialog();">
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    
+    <div id="openFilesDialog" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.openFilesDialog</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.openFilesDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Открывает системный диалог выбора файлов для чтения. Возвращает массив путей к выбранным файлам.
+						Если ни один файл не выбран, вернёт пустой массив. Аргументы метода полностью аналогичны аргументам Env.openFileDialog;</p>
+					<p>
+						Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openFilesDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>Выберите текстовые или javascript файлы и вы увидите их размер в байтах.</div>
+                    <input type="button" value="Выбор файлов" onclick="Demo.filessize('*.txt *.js')">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Возвращаемое значение
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Array filenames</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> filenames</i>. Возвращает массив строк - путей к выбранным файлам.
+						Если ни один файл не выбран, вернёт пустой массив.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="openDirectoryDialog" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.openDirectoryDialog</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.openDirectoryDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Открывает системный диалог выбора каталога. Возвращает строку с путём к выбранному каталогу.
+						Если каталог не выбран, вернёт пустую строку.
+						Аргументы метода полностью аналогичны первым двум аргументам Env.openFileDialog. 
+						Возвращаемое значение метода полностью аналогично Env.openFileDialog.
+					</p>
+					<p>
+						Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openDirectoryDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir)</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>Выберите каталог</div>
+                    <input type="button" value="Выбор каталога" onclick="alert('Вы выбрали каталог ' + Env.openDirectoryDialog(L('Выбор каталога'), L('')));">
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Возвращаемое значение
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Array filenames</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> filenames</i>. Возвращает массив строк - путей к выбранным файлам.
+						Если ни один файл не выбран, вернёт пустой массив.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+<h4 id="files" class="stopHere">Файлы</h4>
     <div id="fgc" class="function">
         <table cellpadding="0" cellspacing="0">
             <tr>
@@ -1221,7 +1441,7 @@ window.onkeyup = onKeyUp;
     
     
 <h4 id="env">пример заголовка</h4>
-    <p id="stopHere">Here Content</p>
+    <p id="">Here Content</p>
         <p>Here Content</p>
         
     </div>

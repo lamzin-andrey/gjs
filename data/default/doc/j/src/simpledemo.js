@@ -35,7 +35,11 @@ var Demo = {
 			cmd = 'notepad';
 		}
 		o.outputIndex = 0;
-		this.xtId = jexec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
+		try {
+			this.xtId = Env.exec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
+		} catch (err) {
+			alert(err);
+		}
 		
 	},
 	closeXTerm: function(){
@@ -55,7 +59,7 @@ var Demo = {
 			cmd = 'notepad';
 		}
 		o.outputIndex = 2;
-		this.xtId = jexec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
+		this.xtId = Env.exec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
 		
 	},
 	closeXTerm2: function(){
@@ -65,14 +69,14 @@ var Demo = {
 			cmd = 'TASKKILL /PID ' + this.xtId[0] + ' /T';
 		}
 		o.outputIndex = 2;
-		this.xtId = jexec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
+		this.xtId = Env.exec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
 	},
     checkXTerm2: function() {
 		var suffix = '2';
 		if (!this.xtId) {
 			e('xtStdErr' + suffix).innerHTML += '<div>Proc is not run yet.</div>';
 		}
-        if (PHP.isRun(this.xtId[1])) {
+        if (Env.isRun(this.xtId[1])) {
 			e('xtStdOut' + suffix).innerHTML += '<div>Proc is run.</div>';
 		} else {
 			e('xtStdOut' + suffix).innerHTML += '<div>Proc is not run.</div>';
@@ -159,6 +163,19 @@ var Demo = {
 		var nB = FS.writefile(this.currentTextFile, e('inpKD5').value);
 		alert('Записано байт: ' + nB);
 	},
+	onClickSaveFileWithDialog:function(){
+		if (!this.currentTextFile) {
+			alert(L('Надо сначала выбрать текстовый файл'));
+			return;
+		}
+		var sPath = Env.saveFileDialog('Выберите файл для сохранения', this.currentTextFile, '*.txt *.js');
+		if (!sPath) {
+			alert(L('Надо выбрать файл для сохранения'));
+			return;
+		}
+		var nB = FS.writefile(sPath, e('inpKD5').value);
+		alert('Записано байт: ' + nB);
+	},
 	checkQdjsExists:function(){
 		alert(PHP.file_exists(Qt.appDir() + '/index.html'));
 	},
@@ -205,10 +222,27 @@ var Demo = {
 			e('xtStdOut5Content').innerHTML += file;
 		}
 	},
-	filesize:function(){
-		var s = Qt.openFileDialog(L('ВЫберите файл'), '', '*.*');
+	filesize:function(filter){
+		filter = filter ? filter : '*.*';
+		var s = Qt.openFileDialog(L('Выберите файл'), '', filter);
 		if (FS.fileExists(s)) {
 			alert(L('Размер файла ') + FS.filesize(s) + ' ' + L('байт'));
+		} else {
+			alert(L('Надо выбрать файл'));
+		}
+	},
+	filessize:function(filter){
+		filter = filter ? filter : '*.*';
+		var a = Qt.openFilesDialog(L('Выберите файлы'), '', filter),
+			i, s, sum = 0;
+		for (i = 0; i < a.length; i++) {
+			s = a[i];
+			if (FS.fileExists(s)) {
+				sum += FS.filesize(s);
+			}
+		}
+		if (a.length > 0) {
+			alert(L('Размер файлов в сумме ') + sum + ' ' + L('байт'));
 		} else {
 			alert(L('Надо выбрать файл'));
 		}
