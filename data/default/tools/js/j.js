@@ -205,5 +205,47 @@ window.App = {
 	},
 	getArgs: function(){
 		return Qt.getArgs();
+	},
+	quit:function(){
+		Qt.quit();
+	}
+};
+
+window.MW = {
+	getLastKeyChar: function(){
+		return Qt.getLastKeyChar();
+	},
+	getLastKeyCode: function(){
+		return Qt.getLastKeyCode();
+	},
+	moveTo: function(x, y) {
+		Qt.moveTo(x, y);
+	},
+	resizeTo: function(w, h) {
+		Qt.resizeTo(w, h);
+	},
+	showFullScreen: function() {
+		Qt.showFullScreen();
+	},
+	showNormal: function() {
+		Qt.showNormal();
+	},
+	minimize: function() {
+		Qt.minimize();
+	},
+	maximize: function() {
+		Qt.maximize();
+	},
+	showMainMenu: function() {
+		Qt.showMainMenu();
+	},
+	setIconImage: function(path) {
+		Qt.setWindowIconImage(path);
+	},
+	hideMainMenu: function() {
+		Qt.hideMainMenu();
+	},
+	setTitle: function(s) {
+		Qt.setTitle(s);
 	}
 };
