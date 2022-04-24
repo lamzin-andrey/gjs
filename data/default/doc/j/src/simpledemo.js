@@ -151,16 +151,18 @@ var Demo = {
 			Qt.setTitle(trg.value);
 		}, 10);
 	},
-	onClickLoadFile:function(){
-		this.currentTextFile = Qt.openFileDialog('Выберите текстовый файл с расширением txt или js', '', '*.txt *.js');
-		e('inpKD5').value = FS.readfile(this.currentTextFile);
+	onClickLoadFile:function(suff){
+		suff = suff ? suff : '';
+		this.currentTextFile = Env.openFileDialog('Выберите текстовый файл с расширением txt или js', '', '*.txt *.js');
+		e('inpKD5' + suff).value = FS.readfile(this.currentTextFile);
 	},
-	onClickSaveFile:function(){
+	onClickSaveFile:function(suff){
+		suff = suff ? suff : '';
 		if (!this.currentTextFile) {
 			alert('Надо сначала выбрать текстовый файл');
 			return;
 		}
-		var nB = FS.writefile(this.currentTextFile, e('inpKD5').value);
+		var nB = FS.writefile(this.currentTextFile, e('inpKD5' + suff).value);
 		alert('Записано байт: ' + nB);
 	},
 	onClickSaveFileWithDialog:function(){
