@@ -39,7 +39,9 @@ openDirectoryDialog|String  Env.|(String caption, String dir)|
 saveFileDialog|String  Qt.|(String caption, String dir, String filter)|
 saveFileDialog|String  Env.|(String caption, String dir, String filter)|
 savePng|Qt.|(String path, String base64Str,  Number iQuality)|
+savePng|FS.|(String path, String base64Str,  Number iQuality)|
 saveJpeg|Qt.|(String path, String base64Str,  Number iQuality)|
+saveJpeg|FS.|(String path, String base64Str,  Number iQuality)|
 minimize|Qt.|()|
 minimize|MW.|()|
 maximize|Qt.|()|

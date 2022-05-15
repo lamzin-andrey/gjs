@@ -175,6 +175,12 @@ window.FS = {
 	},
 	filesize:function(path){
 		return PHP.filesize(path);
+	},
+	savePng:function(path, base64Str, iQuality) {
+		Qt.savePng(path, base64Str, iQuality);
+	},
+	saveJpeg:function(path, base64Str, iQuality) {
+		Qt.saveJpeg(path, base64Str, iQuality);
 	}
 };
 

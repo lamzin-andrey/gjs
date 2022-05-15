@@ -7,6 +7,14 @@
     <script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/vendor/micron.js"></script>
     <script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/main.js"></script>
     <script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/src/simpledemo.js"></script>
+    
+    <!-- Simple Drawing App -->
+    <script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/vendor/objects/recentdir.js"></script>
+    <script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/src/simpleDrawApp/se2d.js"></script>
+    <script src="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/src/simpleDrawApp/sdapp.js"></script>
+    <link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/j/src/simpleDrawApp/sda.css" type="text/css" rel="stylesheet"></link>
+    <!-- / Simple Drawing App -->
+    
     <link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/layout.css" type="text/css" rel="stylesheet"></link>
     <link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/table.css" type="text/css" rel="stylesheet"></link>
     <link href="F:/dev-11-2014/qt/DTOxp/release/default/doc/s/sidebar.css" type="text/css" rel="stylesheet"></link>
@@ -67,6 +75,8 @@
                 <li><a href="#idir">FS.isDir</a></li>
                 <li><a href="#scn">FS.scandir</a></li>
                 <li><a href="#fsz">FS.filesize</a></li>
+                <li><a href="#spng">FS.savePng</a></li>
+                <li><a href="#sjng">FS.saveJpeg</a></li>
             </ul>
         </ul>
         
@@ -1462,6 +1472,71 @@ window.onkeyup = onKeyUp;
                     <div>Демо:</div>
                     <div>&nbsp;</div>
                     <input type="button" value="Выбрать файл" onclick="Demo.filesize()">
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="spng" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.savePng</h5>
+                </td>
+                <td class="fd">
+                    <i>FS.savePng(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str,  <span class="dkw">Number</span> iQuality)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Сохраняет изображение в формате png. В качестве аргументов принимает путь к сохраняемому изображению, строку с данными изображения в base64 и степень качества изображения.</p>
+                    <p>Примечание. Также доступна как <i>Qt.savePng(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str,  <span class="dkw">Number</span> iQuality).</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>&nbsp;</div>
+                    <div class="simpleDrawApp"><!-- Потом отсюда вытащить в отдельное приложение -->
+						<div class="canvasPlacer">
+							<canvas id="pngCanvas" width="480" height="240"></canvas>
+						</div>
+						<div class="toolbar">
+							<fieldset class="watermarkBox float-left">
+								<legend id="hwatermarkPositionLegend">Watermark position</legend>
+								<div class="inputLine">
+									<span class="inputLineWrapper">
+										<label>x: </label>
+										<input type="number" id="iX" value="0">
+									</span>
+									<span class="inputLineWrapper">
+										<label class="sizeLabel">width: </label>
+										<input type="number" id="iW" value="48">
+									</span>
+								</div>
+								<div class="inputLine">
+									<span class="inputLineWrapper">
+										<label>y: </label>
+										<input type="number" id="iY" value="0">
+									</span>
+									<span class="inputLineWrapper">
+										<label class="sizeLabel">height: </label>
+										<input type="number" id="iH" value="48">
+									</span>
+								</div>
+							</fieldset>
+							<div class="inputLine float-left browseButtonPlacer">
+								<div>
+									<input type="button" id="browseImage" class="browseImage" value="Choose Image">
+								</div>
+								<div>
+									<input type="button" id="saveImage" class="saveImage" value="Save Image">
+								</div>
+								
+							</div>
+							<div class="clearfix"></div>
+						</div>
+                    </div><!-- Конец Потом отсюда вытащить в отдельное приложение -->
                 </td>
             </tr>
         </table>

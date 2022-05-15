@@ -1,5 +1,5 @@
 /**
- * version 1.0
+ * version 1.1
  * @description Запускает Qt.openFileDialog но при этом запоминает последнюю выбранную директорию
  * @param {String} sTitle - тайтл окна диалога
  * @param {String} sFileTypes  - @see Qt.openFileDialog filetypes (for example '*.sql' in Linux)
@@ -25,6 +25,15 @@ function jqlOpenDirectoryDialog(sTitle, sFileTypes) {
 	}
 	RecentDir.filePath = s;
 	RecentDir.jmp3cutSaveSetting('lastDir', RecentDir.jmp3cutGetDir(false));
+	return s;
+}
+function jqlSaveFileDialog(sTitle, sFileTypes) {
+	s = Qt.saveFileDialog(sTitle, RecentDir.jmp3cutLastDir(), sFileTypes);
+	if (!s) {
+		return '';
+	}
+	RecentDir.filePath = s;
+	RecentDir.jmp3cutSaveSetting('lastDir', RecentDir.jmp3cutGetDir());
 	return s;
 }
 window.RecentDir  = {
