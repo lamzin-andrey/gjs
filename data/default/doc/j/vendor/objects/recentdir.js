@@ -1,5 +1,5 @@
 /**
- * version 1.1
+ * version 1.0
  * @description Запускает Qt.openFileDialog но при этом запоминает последнюю выбранную директорию
  * @param {String} sTitle - тайтл окна диалога
  * @param {String} sFileTypes  - @see Qt.openFileDialog filetypes (for example '*.sql' in Linux)

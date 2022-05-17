@@ -7,6 +7,11 @@ function main() {
 	window.onkeyup = onKeyUp;
 	onResize();
 	Demo.init();
+	try {
+		Search.init();
+	} catch(err) {
+		alert(err);
+	}
 }
 function onResize() {
 	// for table
