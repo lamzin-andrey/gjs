@@ -33,6 +33,7 @@
     </div>
     <ul class="sections" id="hResults">
         <li><a href="#about">О программе</a></li>
+        <li><a href="#principes">Почему не Qt 10+ и не Apache Cordova</a></li>
         <li><a href="#htmlfeat">Возможности html</a></li>
         <ul class="subsections">
             <li><a href="#windowButtons">windowButtons</a></li>
@@ -87,10 +88,145 @@
     <td class="content" id="lastM">
     <div id="contentArea">
         <h4 id="about">О программе</h4>
-        <p>Qt5 WebView позволяет быстро создавать windows и linux xubuntu десктоп-приложения.</p>
-        <p>Особенно легко это будет web-разработчикам, знакомыми с базовыми функциями языков javascript и PHP.</p>
-        <p>Qt5 WebView предоставляет javascript API позволяющее запускать программы операционных систем Windows и Linux Xubuntu и взаимодействовать с файловой системой.</p>
-        <p>Это позволяет создать вам ваше десктоп-приложение так же легко, как если бы вы создавали web сайт.</p>
+        <p>Qt5 WebView DESKTOP API позволяет быстро создавать windows и linux xubuntu десктоп-приложения.</p>
+        <p>Особенно легко это должно быть web-разработчикам со стажем, знакомым с базовыми функциями языков javascript ES5 и PHP.</p>
+        <p>Это прежде всего Qt5 WebView - то есть по сути web-браузер, лишенный адресной строки и работающий с файлами на диске пользователя.</p>
+        <p>Помимо этого программа предоставляет javascript API, позволяющее запускать программы операционных систем Linux Xubuntu и Windows, взаимодействовать с файловой системой.</p>
+        <p>Это позволяет создать вам ваше десктоп-приложение так же легко, как если бы вы создавали web сайт. </p>
+        
+        <h4 id="principes">Почему не Qt 10 и не javascript ES6+ и не Apache Cordova например</h4>
+        <p>Я разрабатываю Qt5 WebView Desktop API с целью решить несколько своих проблем.
+        Qt5 WebView Desktop API (и приложения, написанные с его использованием)
+         предназначены для разработчиков и пользователей, которые их тоже ощущают. И их при этом не беспокоит, что пятая и четвертая (для windows) версии Qt уже очень старые.</p>
+        <ol>
+			<li><p>Мне не нравится чрезмерная зависимость Xubuntu от наличия Интернета 
+					и практически полное отсутствие обратной совместимости.
+				Я хотел бы иметь возможность сохранить deb пакеты многих программ, когда я работал в 
+				Xubuntu 9.10 и установить их снова в Xubuntu 12.04, а потом в Xubuntu 14.04, 18.04, 22.04 и так далее 
+				(первая цифра в названии версий Xubuntu - это год).
+				<p>Речь не о всех программах (например, web-браузеры точно необходимо обновлять как можно чаще),
+				но некоторые из программ, такие как Kate, Inkscape или KolourPaint (список легко можно продолжить) 
+				по сути не менялись все эти годы
+				(или я использую лишь ту часть их функций, которые не менялись все эти годы).</p>
+				<p>Мне точно хватило бы функционала перечисленных программ тех версий, которые были установлены в Xubuntu 9.10.
+				Но, <i><b>нормально</b></i> установить deb пакеты со старыми версиями невозможно.
+				Иногда возможно распаковать их вручную, вместе со старыми библиотеками 
+				- но всё это не то, отнимает уйму времени и обычно приводит к проблемам с установкой других (новых) приложений.
+				</p>
+				<p>
+					Я вынужден скачивать новые версии этих программ, когда перехожу на новую LTS версию.
+					Когда интернет хороший, это вообще не проблема. Но он хороший не всегда.
+				</p>
+				<p>
+					При этом мне нравится именно Xubuntu и я не хочу менять её на что-то другое.
+					Нравится именно другой стороной описанной выше проблемы: если я регулярно раз в 5 лет перехожу на новую LTS,
+					у меня нет проблем с новейшими обновлениями браузеров и новейшими обновлениями безопасности.					
+				</p>
+				<p>
+					В итоге я захотел иметь возможность максимально просто создавать десктопные приложения для Xubuntu 
+					и не пересобирать их бинарник каждый раз при выходе новой LTS версии.
+					И я этого добился, мои первые небольшие приложения, написанные ещё на 32-разрядной Xubuntu 14.04
+					успешно перекочевали в 64-разрядную Xubuntu 18.04, а в 2022 году убедился, что в Xubuntu 22.04 они тоже работают и мне не нужен интернет, чтобы их установить.
+					Да, конечно мне пришлось пересобрать бинарник Qt5 WebView для 64-разрядной архитектуры, но есть некоторая разница, 
+					делать это раз в 8 лет (и не более, пока не придётся переходить на 128-разрядные ПК) или каждые 4 - 5 лет.
+				</p>
+				<p>
+					Я хочу написать с помощью Qt5 WebView аналоги тех программ, 
+					которые фактически не менялись в течении последних нескольких лет, 
+					чтобы не скачивать их из Интернета бесконечное число раз.
+				</p>
+			 </li>
+			 
+			 <li>
+				 <p>Как и многие жители постсоветского пространства я начинал пользоваться ПК с установленной ОС Windows. 
+				 О Linux я узнал гораздо позже и перейдя на него естественно искал программы, 
+				 максимально похожие на те, к которым я привык в Windows.</p>
+				 <p>Debian и Ubuntu имеют огромное количество программ, но получилось так, что 
+				 лучшие из них завязаны на разные графические оболочки.
+				 Примерно с 2014 года я окончательно выбрал для себя XFCE, но я не хочу отказываться от KolourPaint и Kate.
+				 В них есть функции, которых нет в Gimp, Gpaint и Mousepad.</p>
+				 <p>Поэтому из-за этих двух программок я вынужден каждый раз при обновлении версии Xubuntu скачавать массу библиотек KDE. 
+				 Это глупо. И опять же, это совсем не проблема при наличии быстрого Интернета, но это проблема, когда его нет.</p>
+				 <p>Я обязательно напишу их аналоги используя  Qt5 WebView и избавлюсь от этой необходимости.</p>
+			 </li>
+			 
+			 <li>
+				 <p>Пока я учился в университете, мы писали программы на Pascal и C++, на C# и Java.</p>
+				 <p>Оказалось, что программировать на javascript и создавать интерфейсы на html и css гораздо проще, 
+					чем с помощью перечисленных языков программирования.
+				 Мечталось о "браузере", который наконец сможет полноценно работать с файловой системой ПК, с реестром,
+				 взаимодействовать напрямую с базой данных.</p>
+				 <p>И вот появилась Apache Cordova. Но пустое оконное приложение для linux i386 у меня просто не взлетело.
+					Собралось без ошибок, но не запустилось. Ок, возможно у меня неправильный радиус кривизны рук. Но.
+					Я хочу один раз что-то установить на свой ПК.
+					Потом выполнить
+				 </p>
+				 <pre class="codebg">
+что-то /путь/к/моей/папке/с/index.html
+				 </pre>
+				 <p>И это должно работать так же безотказно, надёжно, как если бы вместо "что-то" я ввёл chrome или firefox.
+				 Ну и да, "что-то" должно уметь работать с файловой системой и запускать консольные программки в фоне.</p>
+				 <p>Заявление немного смелое, но пока я вижу, что Qt5 WebView работает именно так.</p>
+				 <pre class="codebg">
+qdjs /путь/к/моей/папке/с/index.html
+				 </pre>
+				 <p>и никаких проблем. Причем qdjs я ставлю из одного и того же архива с 2014 года. 
+				 Я иногда перекомпилирую бинарник, потому что добавляю в него новые функции, 
+				 но он работает с теми же самыми версиями библиотек, с которыми работал в 2014 году.
+				 </p>
+				 <p>Я понимаю, что это небезопасно. Но я, черт возьми, не боюсь и 
+					даже хочу хотя бы раз убедитсья в том что это небезопасно на собственном опыте.</p>
+				 <p>Я разумный человек и не использую это на том компьютере, на котором работаю с данными других людей.</p>
+				 <p> Я понимаю, что люди, у которых с моим решением 
+				 будут те же проблемы, что у меня были с Apache Cordova обязательно найдутся. Но я рад, что буду не в их числе.
+				 А поскольку я совсем не уникум, должно найтись много разработчиков, которым пользоваться Qt5 WebViw DESKTOP API окажется легко и удобно.</p>
+			 </li>
+			 
+			 <li>
+				 <p>Мне не нравится npm. Потому что меня просто убивает необходимость при создании каждого нового 
+					проекта загружать из Интернета безумное количество маленьких скриптов, а если их потом ради интереса сжать,
+					архив весит 50 - 70 мегабайт. Ладно бы это происходило разово, 
+					но мы вынуждены это делать каждый раз, когда создаем новый проект.
+					Или просто хотим попробовать что-то новое в отдельном проекте. Это ужасно.</p>
+				 <p>Вместе с тем я хочу писать на javascript для десктопа. Особенно для Xubuntu.
+					Используя Qt5 WebView DESKTOP API (я сейчас представил, что я не его создатель) 
+					я должен один раз скачать из интернета архив 40 Мб,
+					потом время от времени скачивать обновление в виде бинарного файла, который весит меньше 1 Мб.
+					Ну а приложения для Qt5 WebView DESKTOP API обычно весят не более, чем средняя web страница.
+				 </p>
+			 </li>
+			 
+			 <li>
+				 <p>Qt - кроссплатформенная библиотека. Вместе с тем, с каждой новой версией её всё сложнее деплоить в Windows. 
+					Однажды (в 2015 или 2016 году) я написал на заказ windows-приложение используя Qt WebView.
+					Я использовал последнюю стабильную на тот момент версию Qt (не берусь сейчас сказать, какую именно),
+					так как был озабочен пресловутой безопасностью.
+					Проект был небольшой, я, заказчик приложения и несколкьо клиентов - пользователей.
+				</p>
+				 <p>Мы тщательно протестировали продукт перед релизом. У нас всё было ок. 
+					Но, несмотря на небольшое количество пользователей тут же нашлось несколько пользователей, 
+					у которых приложение просто отказалось запускаться.
+					И это несмотря на то, что я успешно тестировал в том числе на только что установленной Windows 10 Insider Preview 
+					на которую ничего, кроме моей программы установлено не было.
+				 </p>
+				 <p>Согласовав с заказчиком я произвел "даунгрейд" версии Qt, использовав Qt 4.6.8, 
+						на которой ранее успешно писал программы для курсовых и диплома и проблема внезапно исчезла - 
+						все пользователи смогли запустить абсолютно тот же код, скомпилированный более ранней версией Qt.
+				 </p>
+			 </li>
+			 
+			 <li>
+				 <p>Я не боюсь "застрять" на javascript ES5. Я его неплохо знаю и порой предпочитаю добиваться результата 
+				 в виде работающих приложений, а не набивать шишки об незнакомые компоненты популярных фреймвёрков 
+					и недотестированные разработчиками новые возможности.</p>
+				 <p>К тому же я не собираюсь ограничивать себя одним только 
+					программированием для <strike>старого браузера</strike> Qt5 WebView, 
+					описание которого вы возможно собираетесь прочитать. Мне хватает ES6+ на работе и в других местах.</p>
+				 <p>Ещё мне интересно самому написать транслятор некоторых конструкций ES6 в ES5, потому что не люблю npm и как следствие babel.
+				 </p>
+			 </li>
+        </ol>
+        
         <h4 id="htmlfeat">HTML features</h4>
         <p>Здесь описаны специфичные для Qt5 WebView элементы html которые вы можете использовать в вашем приложении.</p>
         <h5 id="windowButtons">meta[name=windowButtons]</h5>
@@ -436,8 +572,8 @@ window.onkeyup = onKeyUp;
                 <td class="fdf" colspan="2">
                     <p>Показывает главное меню окна приложения, если оно было скрыто вызовом MW.hideMainMenu();</p>
                     <p>Примечание 1: Если в верстке вашего окна главное меню не задано тегом menubar, функция
-						естественно не покажет главное меню.</p>
-					<p>Примечание 2: также доступна как  <i>Qt.showMainMenu()</i></p>
+                        естественно не покажет главное меню.</p>
+                    <p>Примечание 2: также доступна как  <i>Qt.showMainMenu()</i></p>
                 </td>
             </tr>
             <tr>
@@ -501,13 +637,13 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>	
-						Устанавливает иконку в окне приложения рядом с заголовком окна.
-						Аргумент - путь к png файлу изображения размером 32 на 32 пикселя или 24 на 24 пикселя. Примечание:
-						В Xubuntu 14.04 - 22.04 изображения слева от текста заголовка окна поддерживает тема Kokodi.
+                    <p>    
+                        Устанавливает иконку в окне приложения рядом с заголовком окна.
+                        Аргумент - путь к png файлу изображения размером 32 на 32 пикселя или 24 на 24 пикселя. Примечание:
+                        В Xubuntu 14.04 - 22.04 изображения слева от текста заголовка окна поддерживает тема Kokodi.
                     </p>
                     <p>
-						Примечание: также доступна как <i>Qt.setWindowIconImage(<span class="dkw">String</span> pathToPng32x32)</i>
+                        Примечание: также доступна как <i>Qt.setWindowIconImage(<span class="dkw">String</span> pathToPng32x32)</i>
                     </p>
                 </td>
             </tr>
@@ -863,12 +999,12 @@ window.onkeyup = onKeyUp;
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Возвращает аргументы командной строки переданые приложению при запуске.
-						Полезно например для вьюера (программы просмотра) фотографий.
-						Например если пользователь настроил Windows чтобы все jpg файлы открывались в вашем вьюере,
-						вам надо считать аргумент с индексом 1, который и содержит путь к выбранному пользователем файлу.
+                        Полезно например для вьюера (программы просмотра) фотографий.
+                        Например если пользователь настроил Windows чтобы все jpg файлы открывались в вашем вьюере,
+                        вам надо считать аргумент с индексом 1, который и содержит путь к выбранному пользователем файлу.
                     </p>
                     <p>
-						Примечание: Также доступна как <i><span class="dkw">Array</span> Qt.getArgs()</i>
+                        Примечание: Также доступна как <i><span class="dkw">Array</span> Qt.getArgs()</i>
                     </p>
                 </td>
             </tr>
@@ -899,8 +1035,8 @@ window.onkeyup = onKeyUp;
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Возвращает символ последней нажатой клавиши (если она алфавитно-цифровая).
-						Важно, так как Qt5 WebView не позволяет считать символ нажатой клавиши в событиях keydown и keyup
-						 через свойство key.
+                        Важно, так как Qt5 WebView не позволяет считать символ нажатой клавиши в событиях keydown и keyup
+                         через свойство key.
                         В этом случае вы можете использовать вызов MW.getLastKeyChar() чтобы получить его. 
                         В демо ниже в левом окне пытаемся получить символ клавиши, декодируя свойство javascript
                         keyboardEvent.keyIdentifier.
@@ -910,7 +1046,7 @@ window.onkeyup = onKeyUp;
                         В правом окне вы видите результат вызова MW.getLastKeyChar()
                      </p>
                      <p>
-						 Примечание: <i><span class="dkw">String</span> Qt.getLastKeyChar()</i>
+                         Примечание: <i><span class="dkw">String</span> Qt.getLastKeyChar()</i>
                      </p>
                 </td>
             </tr>
@@ -952,7 +1088,7 @@ window.onkeyup = onKeyUp;
                         Оно далеко не всегда совпадает с кодом javasript, но оно гораздо реже равно 0, что немаловажно.
                     </p>
                     <p>
-						Примечание: также доступна как <i><span class="dkw">Number</span> Qt.getLastKeyCode()</i>
+                        Примечание: также доступна как <i><span class="dkw">Number</span> Qt.getLastKeyCode()</i>
                     </p>
                 </td>
             </tr>
@@ -988,10 +1124,10 @@ window.onkeyup = onKeyUp;
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Открывает системный диалог выбора файла для чтения. Возвращает путь к выбранному файлу.
-						Если файл не выбран, вернёт пустую строку.</p>
-					<p>
-						Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
-					</p>
+                        Если файл не выбран, вернёт пустую строку.</p>
+                    <p>
+                        Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -1013,7 +1149,7 @@ window.onkeyup = onKeyUp;
                 </td>
                 <td class="fd">
                     <i><span class="dkw">String</span> filename</i>. Возвращает путь к выбранному файлу.
-						Если файл не выбран, вернёт пустую строку.
+                        Если файл не выбран, вернёт пустую строку.
                 </td>
             </tr>
             <tr>
@@ -1068,14 +1204,14 @@ window.onkeyup = onKeyUp;
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Открывает системный диалог выбора файла для сохранения.
-						Возвращает массив путей к выбранным файлам.
-						Если ни один файл не выбран, вернёт пустой массив.
-						Аргументы метода полностью аналогичны аргументам Env.openFileDialog;
-						Возвращаемое значение метода полностью аналогично Env.openFileDialog.
-					</p>
-					<p>
-						Примечание: Доступна также как <i><span class="dkw">String</span> Qt.saveFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
-					</p>
+                        Возвращает массив путей к выбранным файлам.
+                        Если ни один файл не выбран, вернёт пустой массив.
+                        Аргументы метода полностью аналогичны аргументам Env.openFileDialog;
+                        Возвращаемое значение метода полностью аналогично Env.openFileDialog.
+                    </p>
+                    <p>
+                        Примечание: Доступна также как <i><span class="dkw">String</span> Qt.saveFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -1108,10 +1244,10 @@ window.onkeyup = onKeyUp;
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Открывает системный диалог выбора файлов для чтения. Возвращает массив путей к выбранным файлам.
-						Если ни один файл не выбран, вернёт пустой массив. Аргументы метода полностью аналогичны аргументам Env.openFileDialog;</p>
-					<p>
-						Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openFilesDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
-					</p>
+                        Если ни один файл не выбран, вернёт пустой массив. Аргументы метода полностью аналогичны аргументам Env.openFileDialog;</p>
+                    <p>
+                        Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openFilesDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -1133,7 +1269,7 @@ window.onkeyup = onKeyUp;
                 </td>
                 <td class="fd">
                     <i><span class="dkw">Array</span> filenames</i>. Возвращает массив строк - путей к выбранным файлам.
-						Если ни один файл не выбран, вернёт пустой массив.
+                        Если ни один файл не выбран, вернёт пустой массив.
                 </td>
             </tr>
         </table>
@@ -1152,13 +1288,13 @@ window.onkeyup = onKeyUp;
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Открывает системный диалог выбора каталога. Возвращает строку с путём к выбранному каталогу.
-						Если каталог не выбран, вернёт пустую строку.
-						Аргументы метода полностью аналогичны первым двум аргументам Env.openFileDialog. 
-						Возвращаемое значение метода полностью аналогично Env.openFileDialog.
-					</p>
-					<p>
-						Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openDirectoryDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir)</i>
-					</p>
+                        Если каталог не выбран, вернёт пустую строку.
+                        Аргументы метода полностью аналогичны первым двум аргументам Env.openFileDialog. 
+                        Возвращаемое значение метода полностью аналогично Env.openFileDialog.
+                    </p>
+                    <p>
+                        Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openDirectoryDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir)</i>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -1496,7 +1632,16 @@ window.onkeyup = onKeyUp;
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Сохраняет изображение в формате png. В качестве аргументов принимает путь к сохраняемому изображению, строку с данными изображения в base64 и степень качества изображения 0 - 9.</p>
-                    <p>Примечание. Также доступна как <i>Qt.savePng(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str,  <span class="dkw">Number</span> iQuality).</i></p>
+                    <p>Код примера вы можете видеть в каталоге C:\qdjs\default\doc\j\src\simpleDrawApp. </p>
+                    <p>Примечание 1. В windows при использовании Image для отображения на HTML5 Canvas необходимо указывать в атрибуте <span class="dkw">src</span> 
+                        путь к изображению, которое находится в том же каталоге, в котором находится ваш index.html
+                        , иначе при попытке получить данные изображения вызовом canvas.toDataURL() возникает ошибка SECURITY_ERR: DOM Exception 18
+                    </p>
+                    <p>Примечание 2. Пример использует возможности html5 canvas 2d, полное описание работы с ними выходит за рамки этого 
+                        руководства, более подробно о возможностях html5 canvas можно прочитать на сайтах
+                        MDN (Mozilla Developer Network) или MSDN (Microsoft Developer Network).
+                    </p>
+                    <p>Примечание 3. Также доступна как <i>Qt.savePng(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str,  <span class="dkw">Number</span> iQuality).</i></p>
                 </td>
             </tr>
             <tr>
@@ -1504,44 +1649,44 @@ window.onkeyup = onKeyUp;
                     <div>Демо, вы можете выбрать изображение на вашем ПК, разместить на нем "водяной знак" и сохранить вместе с ним:</div>
                     <div>&nbsp;</div>
                     <div class="simpleDrawApp"><!-- Потом отсюда вытащить в отдельное приложение -->
-						<div class="canvasPlacer">
-							<canvas id="pngCanvas" width="480" height="240"></canvas>
-						</div>
-						<div class="toolbar">
-							<fieldset class="watermarkBox float-left">
-								<legend id="hwatermarkPositionLegend">Watermark position</legend>
-								<div class="inputLine">
-									<span class="inputLineWrapper">
-										<label>x: </label>
-										<input type="number" id="iX" value="0">
-									</span>
-									<span class="inputLineWrapper">
-										<label class="sizeLabel">width: </label>
-										<input type="number" id="iW" value="48">
-									</span>
-								</div>
-								<div class="inputLine">
-									<span class="inputLineWrapper">
-										<label>y: </label>
-										<input type="number" id="iY" value="0">
-									</span>
-									<span class="inputLineWrapper">
-										<label class="sizeLabel">height: </label>
-										<input type="number" id="iH" value="48">
-									</span>
-								</div>
-							</fieldset>
-							<div class="inputLine float-left browseButtonPlacer">
-								<div>
-									<input type="button" id="browseImage" class="browseImage" value="Choose Image">
-								</div>
-								<div>
-									<input type="button" id="saveImage" class="saveImage" value="Save Image">
-								</div>
-								
-							</div>
-							<div class="clearfix"></div>
-						</div>
+                        <div class="canvasPlacer">
+                            <canvas id="pngCanvas" width="480" height="240"></canvas>
+                        </div>
+                        <div class="toolbar">
+                            <fieldset class="watermarkBox float-left">
+                                <legend id="hwatermarkPositionLegend">Watermark position</legend>
+                                <div class="inputLine">
+                                    <span class="inputLineWrapper">
+                                        <label>x: </label>
+                                        <input type="number" id="iX" value="0">
+                                    </span>
+                                    <span class="inputLineWrapper">
+                                        <label class="sizeLabel">width: </label>
+                                        <input type="number" id="iW" value="48">
+                                    </span>
+                                </div>
+                                <div class="inputLine">
+                                    <span class="inputLineWrapper">
+                                        <label>y: </label>
+                                        <input type="number" id="iY" value="0">
+                                    </span>
+                                    <span class="inputLineWrapper">
+                                        <label class="sizeLabel">height: </label>
+                                        <input type="number" id="iH" value="48">
+                                    </span>
+                                </div>
+                            </fieldset>
+                            <div class="inputLine float-left browseButtonPlacer">
+                                <div>
+                                    <input type="button" id="browseImage" class="browseImage" value="Choose Image">
+                                </div>
+                                <div>
+                                    <input type="button" id="saveImage" class="saveImage" value="Save Image">
+                                </div>
+                                
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
                     </div><!-- Конец Потом отсюда вытащить в отдельное приложение -->
                 </td>
             </tr>
@@ -1554,6 +1699,39 @@ window.onkeyup = onKeyUp;
 <span class="jcomm">// Пусть есть элемент canvas с изображением, которое нужно сохранить и id="appCanvas"</span>
 <span class="kw">var</span> imageData = document.getElementById(<span class="st">'appCanvas'</span>).toDataURL(<span class="st">'image/png'</span>, <span class="nm">1</span>);
 FS.savePng(<span class="st">'/home/andrey/image.png'</span>, imageData, <span class="nm">9</span>);
+
+<span class="jcomm">// Неочевидный момент. Это фрагмент кода C:\qdjs\default\doc\j\src\simpleDrawApp</span>
+WaterMarkApp.<span class="kw">prototype</span>.onClickBrowseImage = <span class="kw">function</span>() {
+    <span class="kw">var</span> file = jqlOpenFileDialog(<span class="st">'Select png image'</span>, <span class="st">'*.png'</span>),
+        o = SE2D.app,
+        tmpFile,
+        tmpDir,
+        cmd,
+        dt = new <span class="kw">Date</span>();
+    <span class="jcomm">// Копируем файл в каталог нашего приложения, иначе</span>
+    <span class="jcomm">// при попытке получить данные измененного изображения с canvas</span>
+    <span class="jcomm">// возникнет ошибка Error: SECURITY_ERR: DOM Exception 18</span>
+    
+    <span class="kw">if</span> (file && FS.fileExists(file)) {
+        tmpFile = App.dir() + <span class="st">'/tmp'</span>;
+        tmpDir = tmpFile;
+        this.tmpFile = tmpFile = tmpDir + <span class="st">'/tmp'</span> + (dt.getTime()) + <span class="st">'.png'</span>;
+        this.execBatch(copyCmd, (<span class="st">' "'</span> + file + <span class="st">'" "'</span> + tmpFile + <span class="st">'"'</span>), [o, o.onFinishCopy], [o, o.onStdoutCopy], [o, o.onStderrCopy]);
+    }
+}
+<span class="jcomm">// И только скопировав в каталог приложения выводим на canvas</span>
+WaterMarkApp.<span class="kw">prototype</span>.onFinishCopy = <span class="kw">function</span>(stdout, stderr) {
+    <span class="kw">var</span> o = SE2D.app;
+    <span class="kw">this</span>.img = new <span class="kw">Image</span>();
+    <span class="jcomm">// this.img.setAttribute('crossOrigin', 'anonymous'); могло бы помочь, но не помогло</span>
+    <span class="kw">this</span>.img.onload = <span class="kw">function</span>() {
+        o.onLoadSelectedImage();
+        <span class="kw">delete</span> o.img;
+        FS.unlink(o.tmpFile);
+        o.execBatch(<span class="st">'rm'</span>, <span class="st">'"'</span> + App.dir()  + <span class="st">'/tmp/*.png"'</span>, o.onStdoutCopy, o.onStdoutCopy, o.onStdoutCopy);
+    }
+    this.img.src = this.tmpFile;
+}
 </pre></td>
             </tr>
             
@@ -1573,14 +1751,15 @@ FS.savePng(<span class="st">'/home/andrey/image.png'</span>, imageData, <span cl
             <tr>
                 <td class="fdf" colspan="2">
                     <p>Сохраняет изображение в формате jpeg. В качестве аргументов принимает путь к сохраняемому изображению, строку с данными изображения в base64 и степень качества изображения 0 - 100.</p>
-                    <p>Примечание. Также доступна как <i>Qt.saveJpeg(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str,  <span class="dkw">Number</span> iQuality).</i></p>
+                    <p>Примечание1. При разработке в windows смотрите более полный пример в описании savePng, так как проблема с SECURITY_ERR: DOM Exception 18 также актуальна.</p>
+                    <p>Примечание 2. Также доступна как <i>Qt.saveJpeg(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str,  <span class="dkw">Number</span> iQuality).</i></p>
                 </td>
             </tr>
             
             <tr>
                 <td class="fe" colspan="2">
                     Пример кода:<br>
-                    <pre class="codebg">
+                    
 <pre class="codebg">
 <span class="jcomm">// Пусть есть элемент canvas с изображением, которое нужно сохранить и id="appCanvas"</span>
 <span class="kw">var</span> imageData = document.getElementById(<span class="st">'appCanvas'</span>).toDataURL(<span class="st">'image/png'</span>, <span class="nm">1</span>);
@@ -1591,6 +1770,259 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
         </table>
     </div>
     
+<h4 id="sampleEditor">Пример десктопного приложения - редактор текстовых файлов</h4>
+Расмотрим простое приложение, редактор текстовых файлов.
+<h5 id="getReady">Подготовка к работе</h5>
+Установите на свой ПК или ноутбук Qt5 Desktop WebView API.
+<div>
+<div>
+	<a href="https://andryuxa.ru/portfolio/qdjs/qdjs.tar.gz" target="_blank">Скачать Qt5 Desktop WebView API для Linux Xubuntu 18.04 - 22.04</a>
+	<div>Контрольная сумма SHA256</div>
+	<div class="checksum">TODO</div>
+</div>
+<a href="https://andryuxa.ru/portfolio/qdjs/win32.exe" target="_blank">Скачать Qt5 Desktop WebView API для Windows</a>
+<div>Контрольная сумма SHA256</div>
+<div class="checksum">TODO</div>
+</div>
+<p>Запустите программу QtJavascriptDesktop (у вас откроется окно с этой справкой и все демо-примеры в документации должны работать), чтобы убедиться, что установка прошла корректно.
+</p>
+<p>
+	Установите редактор кода Geany. В xubuntu это можно сделать командой
+</p>
+<pre class="codebg">
+<span class="kw">sudo apt-get install</span> geany
+</pre>
+<p>
+	<a href="https://geany.org" target="_blank">Скачать Geany для Windows</a>
+</p>
+<p>
+	Скопируйте содержимое файла 
+	<a href="https://github.com/lamzin-andrey/gjs/blob/master/data/default/geany/desktopjs.js.tags" target="_blank">desktopjs.js.tags</a>
+</p>
+<p>
+	В каталог с настройками Geany. В Xubintu это каталог /home/username/.config/geany/tags.
+	В windows 11 это C:\Users\username\AppData\Roaming\geany\tags (для Geany 1.38, версия может быть важна, так как для Geany 0.18 пути были другими).
+</p>
+
+
+<h5 id="filesCreate">Создание файлов приложения</h5>
+<ol>
+	<li>Создайте новый каталог, 
+		например /home/username/myapps/simpleTextEditor в Xubuntu или
+		 D:\myapps\simpleTextEditor в Windows и перейдите в созданный каталог.</li>
+	<li>
+		<ul>
+			<li>
+			<p>
+				В Xubuntu вызовите контекстное меню рабочего стола (правая кнопка мыши) и выбирите "Создать кнопку запуска".
+			</p>
+			<p>Заполните поля диалога, как показано на рисунке:
+				<p class="tc">
+					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0001.png">
+				</p>
+				<p class="tc">
+					<i>Диалог создания кнопки запуска в Xubuntu 18.04, тема оформления Kokodi, значки oxygen, так что это не KDE, но также красиво )</i>
+				</p>
+				<p>
+					Обратите внимание на строку команды. Она выглядит так:
+<pre class="codebg">
+qdjs /home/username/myapps/simpleTextEditor
+</pre>
+то есть мы вызываем веб вью qdjs и передаём ей аргументом путь к каталогу, в котором буду лежать файлы вашего будущего desktop приложения.
+				</p>
+<p>
+	Значок для меню приложения вы можете выбрать один из стандартных для активной темы оформления (я люблю использовать oxygen, это заставляет 
+	неопытных убунтоводов думать, что я использую kubuntu а не xubuntu, но что поделать, xubuntu нравится мне своей производительностью, а в oxygen значки классные) ), а можете нарисовать своё изображение, если умеете. Формат png прекрасно подойдёт.
+</p>
+<p>Дважды кликаем на созданном значке. Xubuntu при первом клике предложит сделать файл исполняемым, соглашаемся (вы-ж-программист), запускаем, и смотрим, что получилось.</p>
+<p>Получиться должно как на картинке</p>
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0002.png"
+</p>
+<p class="tc">
+	<i>Вид окна вашего приложения, когда файлов приложения ещё нет.</i>
+</p>
+<p>При желании скопируйте кнопку запуска в каталог вашего приложения, лично я так и сделал.</p>
+			</li>
+			<li> 
+				<p>В windows в созданном каталоге выберите в контекстном меню Проводника пункт "Создать ярлык"</p>
+				
+				
+				<p>Заполните поля диалога, как показано на рисунке:</p>
+				<p class="tc">
+					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0001.png">
+				</p>
+				<p class="tc">
+					<i>Диалог создания ярлыка в Windows 11. Красиво, но XP мне нравилась больше )</i>
+				</p>
+				
+				<p>Нажав на кнопку "Обзор..." вы можете выбрать файл qdjs.exe (в ранних версиях он называется hw.exe). 
+					Если вы не изменяли параметры во время установки, он находится по адресу C:\qdjs\hw.exe
+				</p>
+				<p class="tc">
+					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0002.png">
+				</p>
+				<p class="tc">
+					<i>Путь к файлу hw.exe</i>
+				</p>
+				
+				<p>После выбора файла дописываете в строку команды путь к каталогу, в котором будут находитсья файлы вашей программы:
+				</p>
+				<p class="tc">
+					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0003.png">
+				</p>
+				<p class="tc">
+					<i>Указываем Qt5 WebView где находятся файлы нашего приложения</i>
+				</p>
+				
+				<p>
+					Обратите внимание на строку команды. Она выглядит примерно так:
+<pre class="codebg">
+C:\qdjs\hw.exe D:\myappps\simpleTextEditor
+</pre>
+то есть мы вызываем веб вью Qt 5 (В windows мы на самом деле мы всё ещё вызываем WebView Qt 4.6) 
+и передаём ей аргументом путь к каталогу, в котором буду лежать файлы вашего будущего desktop приложения.
+</p>
+
+<p>И вводим имя ярлыка:</p>
+
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0004.png">
+</p>
+<p class="tc">
+	<i>Вводим имя ярлыка и завершаем</i>
+</p>
+
+<p>
+	Значок для меню приложения вы можете изменить после его создания, выбрав в свойствах ярлыка одну из иконок windows.
+	
+	Вы также можете нарисовать своё изображение, если умеете. Формат png прекрасно подойдёт.
+	Сохранить его в формате ico можно например с помощью программы Gimp.
+</p>
+<p>Дважды кликаем на созданном значке и смотрим, что получилось.</p>
+<p>Получиться должно как на картинке</p>
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0005.png"
+</p>
+<p class="tc">
+	<i>Вид окна вашего приложения, когда файлов приложения ещё нет.</i>
+</p>
+			</li>
+		</ul>
+	</li
+	>
+	<li>
+		<p>Создайте index.html вашего приложения.
+		</p>
+		<p>Мы будем двигаться от простого к сложному, поэтому сначала создадим окно фиксированного размера, а поддержку ресайза добавим в следующем, более продвинутом примере:</p>
+        
+<pre class="codebg">
+<span class="tag">&lt;DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="tagattrn">lang</span>=<span class="tagattrv">"ru"</span><span class="tag">&gt;</span>
+	<span class="tag">&lt;head&gt;</span>
+		<link rel="stylesheet" type="text/css" href="./css/editor.css">
+		<span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1010"</span> <span class="tagattrn">width</span>=<span class="tagattrv">"800"</span> <span class="tagattrn">height</span>=<span class="tagattrv">"600"</span> <span class="tagattrn">fixed</span><span class="tag">&gt;</span>
+		<span class="tag">&lt;title&gt;</span>Простой редактор текстовых файлов<span class="tag">&lt;/title&gt;</span>
+	<span class="tag">&lt;/head&gt;</span>
+	<span class="tag">&lt;body&gt;</span>
+		<span class="tag">&lt;div</span> <span class="tagattrn">class</span>=<span class="tagattrv">"textplacer"</span><span class="tag">&gt;</span>
+			<span class="tag">&lt;textarea</span> <span class="tagattrn">id</span>=<span class="tagattrv">"edit1"</span> <span class="tagattrn">class</span>=<span class="tagattrv">"mainTextEdit"</span> <span class="tagattrn">rows</span>=<span class="tagattrv">"1"</span><span class="tag">&gt;</span><span class="tag">&lt;/textarea&gt;</span>
+		<span class="tag">&lt;/div&gt;</span>
+		<span class="tag">&lt;div</span> <span class="tagattrn">class</span>=<span class="tagattrv">"statusBar"</span>&gt;</span>&amp;nbsp;0:0<span class="tag">&lt;/div&gt;</span>
+		<span class="tag">&lt;script</span> <span class="tagattrn">src</span>=<span class="tagattrv">"./js/simpleTextEditor.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+	<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</pre>
+<p>Закончив, запустите вашу кнопку запуска или ярлык windows, если вы в windows.
+Вы должны увидеть окно, как на следующем рисунке:</p>
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0003.png">
+</p>
+<p class="tc">
+	<i>Qt5 Web View загрузило вёрстку вашего приложения.</i>
+</p>
+<p>
+	Глядя в html примера нетрудно догадаться, что в каталоге simpleTextEditor надо создать ещё подкаталоги js и css,
+		а в них положить файлы simpleTextEditor.js и editor.css.
+	Можно считать, что все минимально необходимые файлы приложения созданы, можно приступать к программированию.
+</p>
+<p>В windows правда есть проблема: Qt 4.6 WebView не понимает относительные ссылки на файлы,
+	поэтому пока можете указать абсолютные пути (для нашего примера 
+	D:/myappps/simpleTextEditor/js/simpleTextEditor.js вместо ./js/simpleTextEditor.js и 
+	D:/myappps/simpleTextEditor/css/editor.css вместо ./css/editor.css).</p>
+<p>Позже мы научимся обходить это ограничение, а если 
+у вас уже есть какой-то опыт в программировании вы можете попробовать понять, как это сделано в данной справке,
+ посмотрев в файлы C:\qdjs\default\index.html и C:\qdjs\default\index.tpl.html, там достаточно простой код.</p>
+	</li>
+</ol>
+
+<h5>Внешний вид редактора</h5>
+<p>За внешний вид в html приложениях css отвечает чуть более, чем полностью.</p>
+<pre class="codebg">
+<span class="tag">body</span> {
+	<span class="tagattrn">margin</span>: <span class="nm">0px;</span>
+	<span class="tagattrn">padding</span>: <span class="nm">0px;</span>
+}
+
+<span class="tag">.textplacer</span> {
+	<span class="tagattrn">width</span>: <span class="nm">100%</span>;
+	<span class="tagattrn">height</span>: <span class="nm">560px</span>;
+}
+
+<span class="tag">.textplacer textarea</span>{
+	<span class="tagattrn">width</span>: <span class="nm">100%</span>;
+	<span class="tagattrn">height</span>: <span class="nm">560px</span>;
+	<span class="tagattrn">border</span>: <span class="st">gray solid 1px</span>;
+	<span class="tagattrn">resize</span>: <span class="st">none</span>;
+}
+
+<span class="tag">.statusBar</span> {
+	<span class="tagattrn">width</span>: <span class="nm">100%</span>;
+	<span class="tagattrn">height</span>: <span class="nm">40px</span>;
+	<span class="tagattrn">text-align</span>: <span class="st">right</span>;
+	<span class="tagattrn">background-color</span>: <span class="st">#EFE9D6</span>;
+	<span class="tagattrn">font-family</span>: <span class="st">MS Sans Serif,Courier new,Liberation Sans, Geneva, Arial</span>;
+}
+</pre>
+
+Если вы не знаете css, обратитесь на сайты или к литературе для понимания этого кода.
+Если же вы его знаете (а Qt5 WebView ориентировано прежде всего на людей, которые с html + js + css уже знакомы) у вас не должно возникнуть проблем с пониманием.
+Должен сказать, я уверен, что и люди мало знакомые с html должны оценить простоту стилизации внешнего вида html(5) приложений.
+
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0004.png">
+</p>
+<p class="tc">
+	<i>Вид вашего приложения после стилизации.</i>
+</p>
+
+<p>
+Однако, мы хотим ещё избавиться от неинтересной иконки приложения в левом вержнем углу, а для этого нам понадобится 
+редактировать наш javascript файл.
+</p>
+<pre class="codebg">
+<span class="kw">function</span> Editor() {}
+<span class="kw">var</span> P = Editor.<span class="kw">prototype</span>;
+P.init = <span class="kw">function</span>() {
+	MW.setIconImage(App.dir() + <span class="st">'/img/icon48.png'</span>);
+};
+
+window.editor = <span class="kw">new</span> Editor();
+window.addEventListener(<span class="st">'load'</span>, editor.init, <span class="kw">false</span>);
+</pre>
+
+<p>
+	Люди, знакомые с современной web разработкой сейчас дружно вздохнули закрыли сайт и решили сюда больше не возвращаться. 
+	Действительно, не иметь в 2022 году возможности использовать стандарт ES6+ крайне печально.
+	Но, я уверен, что опечалятся далеко не все. 
+</p>
+<p>
+	Причины, по которым я использую Qt 5 WebView в Xubuntu и Qt 4.6 в windows есть, они изложены в разделе "О программе".
+	Плюсы от этого использования для меня перевешивают минусы от отсутствия ключевого слова 
+	class и стрелочных функций.
+	Qt5 WebView прежде всего для тех людей, кто разделяет это понимание.
+</p>
+
 </div><!-- /layout -->
     </td><!-- /layout -->
 </tr><!-- /layout -->

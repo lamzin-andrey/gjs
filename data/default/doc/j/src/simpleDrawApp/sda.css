@@ -1,7 +1,7 @@
 .simpleDrawApp {
 	border: 2px black solid;
 	width: 480px;
-	height: 328px;
+	height: 339px;
 	background-color:gray;
 }
 .simpleDrawApp  .toolbar {
@@ -17,7 +17,7 @@
 	display:inline-block;
 }
 .watermarkBox {
-	width:180px;
+	width:200px;
 }
 .browseImage {
 	margin-top: 15px;

@@ -67,24 +67,86 @@ WaterMarkApp.prototype.setListeners = function() {
 
 WaterMarkApp.prototype.onClickSaveImage = function() {
 	var file = jqlSaveFileDialog('Select png image', '*.png'),
-		data;
+		data,
+		tmpFile;
 	if (file) {
-		data = SE2D.canvas.toDataURL('image/png', 1);
-		FS.savePng(file, data, 100);
+		try {
+			data = SE2D.canvas.toDataURL('image/png', 1);
+			FS.savePng(file, data, 9);
+		} catch (err) {
+			alert(err);
+		}
+		
 	}
 }
 
 WaterMarkApp.prototype.onClickBrowseImage = function() {
 	var file = jqlOpenFileDialog('Select png image', '*.png'),
-		o = SE2D.app;
+		o = SE2D.app,
+		tmpFile,
+		tmpDir,
+		cmd,
+		dt = new Date(),
+		batchFile = 'shell.sh',
+		copyCmd = 'cp';
 	if (file && FS.fileExists(file)) {
-		this.img = new Image();
-		this.img.onload = function() {
-			o.onLoadSelectedImage();
-		}
-		this.img.src = file;
+		tmpFile = App.dir() + '/tmp';
+		tmpDir = tmpFile;
+		this.tmpFile = tmpFile = tmpDir + '/tmp' + (dt.getTime()) + '.png';
+		this.execBatch(copyCmd, (' "' + file + '" "' + tmpFile + '"'), [o, o.onFinishCopy], [o, o.onStdoutCopy], [o, o.onStderrCopy]);
 	}
 }
+WaterMarkApp.prototype.execBatch = function(cmd, args, onFinish, onStdout, onStderr) {
+	var tmpFile, 
+		tmpDir = App.dir() + '/tmp',
+		batchFile = 'shell.sh',
+		sep = '/',
+		head = '#!/bin/bash\n';
+	if (!FS.fileExists('/tmp')) {
+		switch (cmd) {
+			case 'cp':
+				cmd = 'copy';
+				break;
+			case 'rm':
+				cmd = 'del';
+				break;
+		}
+		head = '';
+		batchFile = 'shell.bat';
+		sep = '\\';
+	}
+	args = args.replace(/\//mig, sep);
+	cmd = head + cmd + ' ' + args;
+	PHP.file_put_contents(tmpDir + '/' + batchFile, cmd);
+	try {
+		Env.exec(tmpDir + '/' + batchFile, onFinish, onStdout, onStderr);
+	} catch (ex) {
+		alert(ex);
+	}
+	setTimeout(function(){
+		if (onFinish instanceof Array){
+			onFinish[1].call(onFinish[0], '', '');
+		} else {
+			onFinish('', '');
+		}
+	}, 500);
+}
+
+WaterMarkApp.prototype.onFinishCopy = function(stdout, stderr) {
+	var o = SE2D.app;
+	this.img = new Image();
+	// this.img.setAttribute('crossOrigin', 'anonymous');
+	this.img.onload = function() {
+		o.onLoadSelectedImage();
+		// delete o.img;
+		// FS.unlink(o.tmpFile);
+		// o.execBatch('rm', '"' + App.dir()  + '/tmp/*.png"', o.onStdoutCopy, o.onStdoutCopy, o.onStdoutCopy);
+	}
+	this.img.src = this.tmpFile;
+	
+}
+WaterMarkApp.prototype.onStdoutCopy = function(stdout) {}
+WaterMarkApp.prototype.onStderrCopy = function(stderr) {}
 
 WaterMarkApp.prototype.onLoadSelectedImage = function() {
 	var mc, k = 1;
