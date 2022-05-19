@@ -139,7 +139,15 @@ function jexec(command, onFinish, onStdout, onStderr) {
 // Set xdg-open for all links
 
 function __jqtSetXdgOpenForLinks() {
-	var ls = document.getElementsByTagName('a'), i, lnk, ctx, Null = new Function();
+	var ls = document.getElementsByTagName('a'), 
+		i,
+		lnk,
+		ctx,
+		isWindows = false,
+		Null = new Function();
+	if (OS.getTempFolderPath()[1] == ':') {
+		isWindows = true;
+	}
 	for (i = 0; i < ls.length; i++) {
 		lnk = ls[i].getAttribute('href');
 		if (lnk.indexOf('http') === 0) {
@@ -147,7 +155,15 @@ function __jqtSetXdgOpenForLinks() {
 			ls[i].addEventListener('click', function(evt){
 				evt.preventDefault();
 				var link = this.getAttribute('href');
-				PHP.exec('xdg-open ' + link, Null, Null, Null);
+				if (!isWindows) {
+					PHP.exec('xdg-open ' + link, Null, Null, Null);
+				} else {
+					try {
+						OS.ShellExecuteQ('open', link, '', '', false);
+					} catch(err) {
+						alert(err);
+					}
+				}
 				return false;
 			}, false);
 		}
