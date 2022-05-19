@@ -253,5 +253,8 @@ window.MW = {
 	},
 	setTitle: function(s) {
 		Qt.setTitle(s);
+	},
+	close: function() {
+		Qt.quit();
 	}
 };

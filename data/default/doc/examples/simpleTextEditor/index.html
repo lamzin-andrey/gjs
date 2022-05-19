@@ -1,0 +1,23 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="./css/editor.css">
+		<meta charset="UTF-8">
+		<meta name="windowButtons" content="1010" width="800" height="600" fixed>
+		<title>Простой редактор текстовых файлов</title>
+		<menubar class="d-none">
+			<menu title="File">
+				<item onselect="onClickOpenMenuItem()">Open Ctrl+O</item>
+				<item onselect="onClickSaveMenuItem()">Save Ctrl+S</item>
+				<item onselect="onClickExitMenuItem()">Exit Ctrl+Q</item>
+			</menu>
+		</menubar>
+	</head>
+	<body>
+		<div class="textplacer">
+			<textarea id="edit1" class="mainTextEdit" rows="1"></textarea>
+		</div>
+		<div class="statusBar">&nbsp;0:0</div>
+		<script src="./js/simpleTextEditor.js"></script>
+	</body>
+</html>

@@ -13,3 +13,11 @@ ul {
 	margin-left:4px;
 	padding-left:4px;
 }
+
+.sections li {
+	margin-top:10px;
+}
+
+.subsections li {
+	margin-top:auto;
+}

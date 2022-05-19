@@ -17,9 +17,16 @@ function onResize() {
 	// for table
 	e('contentArea').style.height = (getViewport().h - 0) + 'px';
 	e('contentArea').style.maxHeight = (getViewport().h - 32) + 'px';
+	
+	e('sidebarWrapper').style.height = (getViewport().h - 0) + 'px';
+	e('sidebarWrapper').style.maxHeight = (getViewport().h - 32) + 'px';
+	
 	setTimeout(function() {
 		e('contentArea').style.height = (getViewport().h - 0) + 'px';
 		e('contentArea').style['max-height'] = (getViewport().h - 32) + 'px';
+		
+		e('sidebarWrapper').style.height = (getViewport().h - 0) + 'px';
+		e('sidebarWrapper').style.maxHeight = (getViewport().h - 32) + 'px';
 	}, 1000);
 	
 	
@@ -44,6 +51,10 @@ function onKeyUp(evt) {
 
 function onClickExitMenu() {
 	Qt.quit();
+}
+
+function onClickAbout() {
+	alert('Version 3.1.1 pre-release');
 }
 
 window.onload = main;
