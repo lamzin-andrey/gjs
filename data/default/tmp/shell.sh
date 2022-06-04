@@ -1,2 +1,2 @@
-#! /bin/bash
-/home/andrey/hdata/programs/my/cpp/qt/gjs/data/hw /home/andrey/hdata/programs/my/cpp/qt/gjs/data/default HelloWorld
+#!/bin/bash
+cp  "/home/andrey/09.png" "/opt/qt-desktop-js/default/tmp/tmp1652864718202.png"
