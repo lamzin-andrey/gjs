@@ -17,6 +17,8 @@
 #include <QImage>
 #include <QByteArray>
 #include <QTextStream>
+#include <QClipboard>
+
 #include "../lib/utils.h"
 #include "../lib/binfile.h"
 #include "../slots/cphpinterface.h"
@@ -99,6 +101,8 @@ public:
     QString readFileAsBinaryString(QString filename, long offset = 0, long limit = -1);
     void copyFile(QString src, QString dest, long srcOffset = 0, long srcLimit = -1);
     void setWindowIconImage(QString s);
+    QString readClipboard();
+    void writeClipboard(QString s);
 
  signals:
     void loadComplete();

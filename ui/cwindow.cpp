@@ -539,3 +539,13 @@ void CWindow::setWindowIconImage(QString s)
     QIcon ic(s);
     setWindowIcon(ic);
 }
+
+QString CWindow::readClipboard()
+{
+    return QApplication::clipboard()->text();
+}
+
+void CWindow::writeClipboard(QString s)
+{
+    QApplication::clipboard()->setText(s);
+}
