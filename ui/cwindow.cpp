@@ -287,40 +287,9 @@ void CWindow::_setMainMenu() {
     for (int i = 0; i < list.length(); i++) {
         QString menuTitle = this->_transliteApp(list[i]->getAttribute("title"));
         QMenu* tempMainMenu =  menubar->addMenu(menuTitle);
-        this->_setMenuItems(tempMainMenu, list[i]->childs);
+        this->_setMenuItems(tempMainMenu, list[i]->childs, i);
     }
-    return; //TODO remove me and bottom
 
-    menubar = new QMenuBar(this);
-    this->setMenuBar(menubar);
-
-    QStringList mainList, actionList1, actionList2;
-    mainList << "File" << "Edit" << "Build";
-    actionList1 << "Open" << "Save" << "SaveAs";
-    actionList2 << "Undo" << "Redo" << "CopyFromBuffer";
-
-    for (int i = 0; i < 3; i++) {
-        QMenu* tempMainMenu =  menubar->addMenu(mainList[i]);
-        QStringList temp;
-        if (i == 0) {
-            temp = actionList1;
-        }
-        if (i == 1) {
-            temp = actionList2;
-        }
-        if (i == 3) {
-            temp.clear();
-            //tempMainMenu->addSeparator()
-            //tempMainMenu->addMenu()
-        }
-        for (int j = 0; j < temp.length(); j++) {
-            QAction* act = tempMainMenu->addAction(temp[j]);
-            QString tempJsAction = "on" + temp[j];
-            CAction* cact = new CAction(temp[j], tempJsAction);
-            connect(act, SIGNAL(triggered()), cact, SLOT(triggered()));
-            connect(cact, SIGNAL(triggeredExt(QString, QString)), this, SLOT(onMainMenuAction(QString, QString)));
-        }
-    }
 
 }
 
@@ -330,21 +299,22 @@ void CWindow::onMainMenuAction(QString title, QString action) {
     this->js(action + "()");
 }
 
-void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items)  {
+void CWindow::_setMenuItems(QMenu* menu, QList<CXml*> items, int x)  {
     for (int i = 0; i < items.length(); i++) {
         if (items[i]->tagName.toUpper() == "ITEM") {
             QAction* act = menu->addAction(this->_transliteApp( items[i]->innerXML));
             QString jsAction = items[i]->getAttribute("onselect");
-            CAction* cact = new CAction(items[i]->innerXML, jsAction );
+            CAction* cact = new CAction(items[i]->innerXML, jsAction, act, x, i);
             connect(act, SIGNAL(triggered()), cact, SLOT(triggered()));
             connect(cact, SIGNAL(triggeredExt(QString, QString)), this, SLOT(onMainMenuAction(QString, QString)));
+            mainMenuActions.append(cact);
         }
         if (items[i]->tagName.toUpper() == "SEPARATOR") {
             menu->addSeparator();
         }
         if (items[i]->tagName.toUpper() == "MENU") {
             QMenu* nextMenu = menu->addMenu(this->_transliteApp(items[i]->getAttribute("title")));
-            _setMenuItems(nextMenu, items[i]->childs);
+            _setMenuItems(nextMenu, items[i]->childs, ++x);
         }
     }
 }
@@ -548,4 +518,14 @@ QString CWindow::readClipboard()
 void CWindow::writeClipboard(QString s)
 {
     QApplication::clipboard()->setText(s);
+}
+
+
+void CWindow::renameMenuItem(int x, int y, QString s)
+{
+    for (int i = 0; i < mainMenuActions.length(); i++) {
+        if (mainMenuActions[i]->x == x && mainMenuActions[i]->y == y) {
+             mainMenuActions[i]->qaction->setText(s);
+        }
+    }
 }

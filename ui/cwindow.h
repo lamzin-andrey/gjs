@@ -67,11 +67,12 @@ public:
 
     //главное меню окна
     void _setMainMenu();
-    void _setMenuItems(QMenu* menu, QList<CXml*> items);
+    void _setMenuItems(QMenu* menu, QList<CXml*> items, int x = 0);
     QString _transliteApp(QString key);
     CJSON* _localeJSON;
     void _initLocale();
     void _saveImageFromByteArray(QByteArray ba, QString path, QString ext, int quality);
+    QList<CAction*> mainMenuActions;
  private slots:
     void onLoad(bool success);
     void onMainMenuAction(QString title, QString action);
@@ -103,6 +104,7 @@ public:
     void setWindowIconImage(QString s);
     QString readClipboard();
     void writeClipboard(QString s);
+    void renameMenuItem(int x, int y, QString s);
 
  signals:
     void loadComplete();
