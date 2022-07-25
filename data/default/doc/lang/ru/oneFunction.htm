@@ -1,0 +1,47 @@
+<div id="MW.renameMenuItem" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.renameMenuItem</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.renameMenuItem(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y, <span class="dkw">String</span> text)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Позволяет изменить текст пункта главного меню программы</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <div>Набирайте текст в текстовом поле и он применится к пункту главного меню окна Помощь -> О программе :</div>
+                    <input type="text" value="О программе" onkeydown="Demo.onkeydown4()" id="inpKD4">
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> ChangeContextMenuTextExample = {
+    onkeydown: <span class="kw">function</span>(){
+        <span class="kw">var</span> trg = e(<span class="st">'inpKD4'</span>),
+             o = <span class="kw">this</span>;
+        setTimeout(<span class="kw">function</span>() {
+            MW.renameMenuItem(<span class="nm">2</span>, <span class="nm">0</span>, trg.value);
+                <span class="jcomm">// Здесь 2 - позиция пункта меню по горизонтали, начиная с 0</span>
+                <span class="jcomm">// Здесь 0 - позиция пункта меню по вертикали, начиная с 0.</span>
+        }, <span class="nm">10</span>);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>

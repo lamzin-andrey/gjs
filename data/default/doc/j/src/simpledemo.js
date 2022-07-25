@@ -248,5 +248,12 @@ var Demo = {
 		} else {
 			alert(L('Надо выбрать файл'));
 		}
-	}
+	},
+	onkeydown4:function(evt) {
+        var trg = e('inpKD4'),
+			o = this;
+		setTimeout(function() {
+			Qt.renameMenuItem(2, 0, trg.value);
+		}, 10);
+	},
 };

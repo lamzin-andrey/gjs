@@ -62,7 +62,8 @@ readFileAsBinaryString|String  Qt.|(String file, Number indexA = 0, Number index
 copyFile|String  Qt.|(String file, String dest, Number indexA = 0, Number indexB = -1)|
 setWindowIconImage|Qt.|(String pathToPng24x24)|
 setIconImage|MW.|(String pathToPng24x24)|
-
+renameMenuItem|Qt.|(Number x, Number y,  String text)|
+renameMenuItem|MW.|(Number x, Number y,  String text)|
 
 
 

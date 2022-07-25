@@ -272,5 +272,8 @@ window.MW = {
 	},
 	close: function() {
 		Qt.quit();
-	}
+	},
+	renameMenuItem: function(x, y, s) {
+		Qt.renameMenuItem(x, y, s);
+	},
 };
