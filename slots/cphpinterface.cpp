@@ -139,3 +139,7 @@ bool CPhpInterface::unlink(QString path) {
     return r;
 }
 
+bool CPhpInterface::mkdir(QString path) {
+    QDir dir;
+    return dir.mkpath(path);
+}

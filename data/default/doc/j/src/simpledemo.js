@@ -13,6 +13,18 @@ var Demo = {
 			sep = '\\';
 		}
 		e('tempFolder1').innerHTML = OS.getTempDir() + sep;
+		AppEnv.init([this, this.onOldUserData], [this, this.onLastUserData]);
+	},
+	onOldUserData:function() {
+		this.onUserData();
+	},
+	onLastUserData:function() {
+		this.onUserData();
+	},
+	onUserData:function() {
+		var s = e('inpMkdir').value;
+		e('inpMkdir').value = s.replace('/user/', '/' + USER + '/');
+		
 	},
 	onClickPosOnCenter: function(){
 		var w = 800, h = 600;
@@ -256,4 +268,7 @@ var Demo = {
 			Qt.renameMenuItem(2, 0, trg.value);
 		}, 10);
 	},
+	onClickCreateDir:function() {
+		alert(FS.mkdir(e('inpMkdir').value));
+	}
 };

@@ -30,6 +30,8 @@ scandir|PHP.|(String path)|
 scandir|FS.|(String path)|
 filesize|PHP.|(String path)|
 filesize|FS.|(String path)|
+mkdir|PHP.|(String path)|
+mkdir|FS.|(String path)|
 openFileDialog|String Qt.|(String caption, String dir, String filter)|
 openFileDialog|String Env.|(String caption, String dir, String filter)|
 openFilesDialog|Array Qt.|(String caption, String dir, String filter)|

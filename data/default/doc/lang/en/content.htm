@@ -1747,6 +1747,51 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
         </table>
     </div>
     
+    <div id="mkdir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.mkdir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Boolean</span> FS.mkdir(<span class="dkw">String</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Create directory.</p>
+                    <p>Note 1. Also callable as <i>PHP.mkdir(<span class="dkw">String</span> path).</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>Eneter a directory name. If it wil created, you will see "true":</div>
+                    <input type="text" value="/home/user/one/two/three" id="inpMkdir">
+                    <input type="button" value="Create catalog" id="bMkdir" onclick="Demo.onClickCreateDir()">
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+    
 <h4 id="sampleEditor">Пример десктопного приложения - редактор текстовых файлов</h4>
 Расмотрим простое приложение, редактор текстовых файлов.
 <h5 id="getReady">Подготовка к работе</h5>

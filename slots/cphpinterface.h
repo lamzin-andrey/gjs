@@ -7,6 +7,7 @@
 #include <QByteArray>
 #include <QFile>
 #include <QDirIterator>
+#include <QDir>
 #include <QFile>
 #include <QFileInfo>
 #include <QRegExp>
@@ -45,6 +46,7 @@ public slots:
     bool is_dir(QString path);
     qint64  filesize(QString path);
     bool unlink(QString path);
+    bool mkdir(QString path);
 
     //exec
     unsigned int execCProcess(QString command, QString onFinish, QString onOutput = "", QString onError = "");

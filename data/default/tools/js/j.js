@@ -197,6 +197,9 @@ window.FS = {
 	},
 	saveJpeg:function(path, base64Str, iQuality) {
 		Qt.saveJpeg(path, base64Str, iQuality);
+	},
+	mkdir:function(path) {
+		return PHP.mkdir(path);
 	}
 };
 
@@ -272,8 +275,5 @@ window.MW = {
 	},
 	close: function() {
 		Qt.quit();
-	},
-	renameMenuItem: function(x, y, s) {
-		Qt.renameMenuItem(x, y, s);
-	},
+	}
 };
