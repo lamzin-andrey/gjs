@@ -14,6 +14,7 @@
 #include <QList>
 #include <QWebFrame>
 #include <string>
+#include <stdio.h>
 
 #include "../lib/utils.h"
 #include "../logic/process/cprocess.h"
@@ -35,6 +36,11 @@ private:
     CProcess * _cproc;
     QList<CProcess *> cprocList;
     unsigned int cprocId;
+
+    // files work
+    QList<FILE *> fileHandlersList;
+    unsigned int fileHandlerState[255];
+    FILE *getFreeFile(QString filename, QString mode, bool &success, unsigned int &idx);
     
 signals:
     
@@ -63,6 +69,18 @@ public slots:
 
     //file system
     QString _scandir(QString path);
+
+    int  open(QString filename, QString mode);
+    bool close(unsigned int fileId);
+    QString gets(unsigned int fileId);
+    bool puts(unsigned int fileId, QString s);
+    bool eof(unsigned int fileId);
+    /*QString fgetc(unsigned int fileId);
+    bool fputc(unsigned int fileId, QString s);
+    bool fputc(unsigned int fileId, char c);
+    bool fseek(unsigned int fileId, unsigned int pos, unsigned int mode);
+    unsigned int fgetb(unsigned int fileId);
+    bool fgetbytes(unsigned int fileId, QList<unsigned int> buffer);*/
 };
 
 #endif // CPHPINTERFACE_H
