@@ -17,6 +17,7 @@
 #include <stdio.h>
 
 #include "../lib/utils.h"
+#include "../lib/utilsstd.h"
 #include "../logic/process/cprocess.h"
 #include "../ui/cwebview.h"
 
@@ -27,6 +28,7 @@ public:
     explicit CPhpInterface(QWidget *parent = 0, CWebView *webView = 0);
 private:
     Utils lib;
+    UtilsStd libStd;
     //php exec procs
 
     bool procIsInit;
@@ -81,6 +83,8 @@ public slots:
     bool fseek(unsigned int fileId, unsigned int pos, unsigned int mode);
     unsigned int fgetb(unsigned int fileId);
     bool fgetbytes(unsigned int fileId, QList<unsigned int> buffer);*/
+
+    void replaceInFile(QString filename, QString search, QString replace, QString outfile);
 };
 
 #endif // CPHPINTERFACE_H

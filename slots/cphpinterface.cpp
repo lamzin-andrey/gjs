@@ -220,3 +220,29 @@ FILE *CPhpInterface::getFreeFile(QString filename, QString mode, bool &success, 
 
     return NULL;
 }
+
+void CPhpInterface::replaceInFile(QString filename, QString search, QString replace, QString outfile) {
+    //QString s = file_get_contents(filename);
+
+    FILE* fh = fopen(filename.toStdString().c_str(), "r");
+    string r = "";
+
+    unsigned int sz = 4096;
+    while (!feof(fh)) {
+        char cStr[sz];
+        fgets(cStr, sz - 2, fh);
+        string str(cStr);
+        r += str;
+    }
+    fclose(fh);
+    int idx = libStd.pos(search.toStdString(), r);
+    if (idx != -1) {
+        r = libStd.Delete(r, idx, search.length());
+        r = libStd.Insert(r, replace.toStdString(), idx);
+    }
+
+
+    FILE* fh2 = fopen(outfile.toStdString().c_str(), "w");
+    fputs(r.c_str(), fh2);
+    fclose(fh2);
+}
