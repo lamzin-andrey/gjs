@@ -270,5 +270,53 @@ var Demo = {
 	},
 	onClickCreateDir:function() {
 		alert(FS.mkdir(e('inpMkdir').value));
+	},
+	browseForPartDir:function() {
+		var s = Qt.openDirectoryDialog(L('Выберите каталог'), ''),
+			ls, i, icon = 'exec.png', width = 24, file, o = this, fileInfo, title;
+		ls = FS.partDir(s, e('inpPartDir').value, e('chPartDirReset').checked);
+		ls.sort(function(a, b) {
+			var itemA = o.partDirParseFile(a), itemB = o.partDirParseFile(a);
+			if ("EOF" == itemA || "EOF" == itemB) {
+				return 0;
+			}
+			if (itemA.name < itemB.name) {
+				return -1;
+			}
+			return 1;
+		});
+		
+		if (e('chPartDirReset').checked || window.partDirPrevPath != s) {
+			e('xtStdOut6Content').innerHTML = '';
+		}
+		window.partDirPrevPath = s;
+		for (i = 0; i < ls.length; i++) {
+			icon = 'exec.png'
+			try {
+				fileInfo = o.partDirParseFile(ls[i]);
+			} catch(err) {
+				alert(err);
+			}
+			if (fileInfo == "EOF") {
+				break;
+			}
+			// alert(fileInfo.isExec);
+			if (fileInfo.isDir) {
+				icon = 'folder' + width + '.png';
+			}
+			title = "Size: " + fileInfo.size + ".\n";
+			title += "lastModify timestamp: " + fileInfo.mtime + ".\n";
+			title += "Owner: " + fileInfo.owner + ":" + fileInfo.group + ".\n";
+			title += (fileInfo.isSymlink ? "Symlink." : "No symlink.") + "\n";
+			title += ((fileInfo.isExec === 1) ? "Executable." : " No exec") + "\n";
+			title += "Path: " + fileInfo.path + ".\n";
+			title += "Code: " + fileInfo.src + ".\n";
+			file = '<div title="' + title + '"><img class="filielistitem" width="' + width + '" height="' + width + '" src="' + Qt.appDir() + '/doc/i/' + icon + '"> <span class="filelistitemtext">' + fileInfo.name + '</span></div>';
+			
+			e('xtStdOut6Content').innerHTML += file;
+		}
+	},
+	partDirParseFile:function(s) {
+		return FS.partDirItem(s);
 	}
 };

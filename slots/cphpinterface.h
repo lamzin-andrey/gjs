@@ -10,6 +10,7 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QDateTime>
 #include <QRegExp>
 #include <QList>
 #include <QWebFrame>
@@ -43,6 +44,10 @@ private:
     QList<FILE *> fileHandlersList;
     unsigned int fileHandlerState[255];
     FILE *getFreeFile(QString filename, QString mode, bool &success, unsigned int &idx);
+
+    QString qDirIteratorLastPath;
+    bool qDirIteratorIsInit;
+    QDirIterator *qDirIterator;
     
 signals:
     
@@ -85,6 +90,10 @@ public slots:
     bool fgetbytes(unsigned int fileId, QList<unsigned int> buffer);*/
 
     void replaceInFile(QString filename, QString search, QString replace, QString outfile);
+
+    // partDir
+    QStringList partDir(QString path, unsigned int sz, bool reset = false);
+    // end partDir
 };
 
 #endif // CPHPINTERFACE_H

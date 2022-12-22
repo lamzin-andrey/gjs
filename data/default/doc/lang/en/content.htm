@@ -1570,6 +1570,210 @@ window.onkeyup = onKeyUp;
         </table>
     </div>
     
+    <div id="pdir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.partDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> FS.partDir(<span class="dkw">String</span> path, <span class="dkw">Number</span> partSize, <span class="dkw">Boolean</span> fromFirst = <span class="dkw">false</span>)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p> Method for read part of file list of large catalog content.
+					   Every call FS.partDir return "partSize" files from catalog "path".
+					   Parameter fromFirst = true break pointer on first file in catalog "path".
+					   If on call FS.partDir argument "path" will different with previous call, than also pointer will set on first file from catalog "path".
+					   If reading catalog done,  return string "EOF" in last item of returned array.
+					</p>
+					<p> 
+						Returned Array containts of strings like
+						<pre class="codebg">size/mtime/owner/grp/TEname/path</pre>
+					</p>
+					<p> 
+						Decode similar string to fast object you can with method FS.partDirItem();
+						Description of the returned object you can see in description <a href="#pdi">FS.partDirItem</a>.
+						Semantic the string item:
+					</p>
+					<p> 						
+						size - filesize in bytes (hex).
+					</p>
+					<p> 						
+						mtime - Last modify file time. It a seconds from 01/01/1970 (hex).
+					</p>
+					<p> 						
+						owner - Owner of the file.
+					</p>
+					<p> 						
+						grp - Group of the file. Empty if equivalent with owner
+					</p>
+					<p> 						
+						TEname. Here T - is a type, E - executable flag for linux. "name" is a short filename, e. g. "notepad.exe".
+					</p>
+					<p> 						
+						T = 0. Is a catalog.
+					</p>
+					<p> 						
+						T = 1. Is a file.
+					</p>
+					<p> 						
+						T = 2. Symbol link to a catalog.
+					</p>
+					<p> 						
+						T = 3. Symbol link to a file.
+					</p>
+					<p> 						
+						Е = 0. File is not executable (Linux).
+					</p>
+					<p> 						
+						Е = 1. File is executable (Linux).
+					</p>
+					<p> 						
+						path - full filename, from filesystem root. For example "C:/WINDOWS/explorer.exe".
+					</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>Select a directory and read files. Quantity files set in input field.</div>
+                    <input type="button" value="Выбрать каталог" id="bBrowsePartDir" onclick="Demo.browseForPartDir()">
+                    <input type="text" value="2" id="inpPartDir" style="width:100px">
+                    <input type="checkbox"  id="chPartDirReset"> <label for="chPartDirReset">From begin of catalog</label>
+                    <div>
+                        <div id="xtStdOut6">
+                            <div class="outheader">Catalogs and files:</div>
+                            <div id="xtStdOut6Content">
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">var</span> ReadNFilesFromDirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> ls = FS.partDir(<span class="st">'C:/WINDOWS/system32'</span>, <span class="nm">10</span>, <span class="kw">true</span>), i, fileItem;
+        <span class="kw">for</span> (i = <span class="nm">0</span>; i < ls.length; i++) {
+			fileItem = FS.partDirItem(ls[i]);
+			if (fileItem == <span class="st">"EOF"</span>) {
+				<span class="kw">break</span>; <span class="jcomm">// all files was read</span>
+			}
+			alert(fileItem.size);      <span class="jcomm">// bytes, decimical</span>
+			alert(fileItem.mtime);     <span class="jcomm">// last modify file time, seconds from 01.01.1970, decimical</span>
+			alert(fileItem.owner);     <span class="jcomm">// owner of file</span>
+			alert(fileItem.group);     <span class="jcomm">// group of file</span>
+			alert(fileItem.type);      <span class="jcomm">// type code</span>
+			alert(fileItem.isDir);     <span class="jcomm">// true if is catalog</span>
+			alert(fileItem.isSymlink); <span class="jcomm">// true if is symlink</span>
+			alert(fileItem.isExec);    <span class="jcomm">// 1 if is executable file</span>
+			alert(fileItem.name);      <span class="jcomm">// short filename. For example, notepad.exe</span>
+			alert(fileItem.path);      <span class="jcomm">// Full filename. For example, C:\Windows\explorer.exe</span>
+			alert(fileItem.src);       <span class="jcomm">// Source string item of Array returned FS.partDir</span>
+	}
+	ls = FS.partDir(<span class="st">'C:/WINDOWS/system32'</span>, <span class="nm">10</span>);<span class="jcomm"> // And get next 10 files...</span>
+    }
+}</pre>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="pdi" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.partDirItem</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Object</span> or <span class="dkw">String</span> FS.partDirItem(<span class="dkw">String</span> encodedFileInfo)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p> Method for encoding string from array, which returned FS.partDir() in fast for work object.
+					</p>
+					<p> 
+						May return a string "EOF". It mean, all files from catalog was reading.
+						But early it return the obkect containts from fields:
+					</p>
+					<p> 						
+						size - filesize in bytes (decimical).
+					</p>
+					<p> 						
+						mtime - Last modify file time. Seconds from 01/01/1970. (decimical).
+					</p>
+					<p> 						
+						owner - Owner of the file.
+					</p>
+					<p> 						
+						group - Group of the file. Empty if equivalent with owner.
+					</p>
+					<p> 						
+						type - it type of file. See "T" in description FS.partDir. Flags isDir and isSymlink make it field secondary.
+					</p>
+					<p> 						
+						isDir - true if this is catalog.
+					</p>
+					<p> 						
+						isSymlink - true if this is symlink.
+					</p>
+					<p> 						
+						isExec - 1 if this is executable file.
+					</p>
+					<p> 						
+						name short filename, e. g. "notepad.exe".
+					</p>
+					<p> 						
+						path - full filename, from filesystem root, include filename. For example "C:/WINDOWS/explorer.exe".
+					</p>
+					<p> 						
+						src - source encoded fileinfo.
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">var</span> ReadNFilesFromDirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> ls = FS.partDir(<span class="st">'C:/WINDOWS/system32'</span>, <span class="nm">10</span>, <span class="kw">true</span>), i, fileItem;
+        <span class="kw">for</span> (i = <span class="nm">0</span>; i < ls.length; i++) {
+			fileItem = FS.partDirItem(ls[i]);
+			if (fileItem == <span class="st">"EOF"</span>) {
+				<span class="kw">break</span>; <span class="jcomm">// all files was read</span>
+			}
+			alert(fileItem.size);      <span class="jcomm">// bytes, decimical</span>
+			alert(fileItem.mtime);     <span class="jcomm">// last modify file time, seconds from 01.01.1970, decimical</span>
+			alert(fileItem.owner);     <span class="jcomm">// owner of file</span>
+			alert(fileItem.group);     <span class="jcomm">// group of file</span>
+			alert(fileItem.type);      <span class="jcomm">// type code</span>
+			alert(fileItem.isDir);     <span class="jcomm">// true if is catalog</span>
+			alert(fileItem.isSymlink); <span class="jcomm">// true if is symlink</span>
+			alert(fileItem.isExec);    <span class="jcomm">// 1 if is executable file</span>
+			alert(fileItem.name);      <span class="jcomm">// short filename. For example, notepad.exe</span>
+			alert(fileItem.path);      <span class="jcomm">// Full filename. For example, C:\Windows\explorer.exe</span>
+			alert(fileItem.src);       <span class="jcomm">// Source string item of Array returned FS.partDir</span>
+	}
+	ls = FS.partDir(<span class="st">'C:/WINDOWS/system32'</span>, <span class="nm">10</span>);<span class="jcomm"> // And get next 10 files...</span>
+    }
+}</pre>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+    
     <div id="fsz" class="function">
         <table cellpadding="0" cellspacing="0">
             <tr>

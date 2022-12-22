@@ -10,6 +10,9 @@ CPhpInterface::CPhpInterface(QWidget *parent, CWebView *webView) :
     for (unsigned int i = 0; i < 255; i++) {
         fileHandlerState[i] = 0;
     }
+
+    qDirIteratorLastPath = "";
+    qDirIteratorIsInit = false;
 }
 
 int CPhpInterface::file_put_contents(QString path, QString data, int flag) {
@@ -54,6 +57,84 @@ QString CPhpInterface::_scandir(QString path) {
         ls.append(it.next() );
     }
     return ls.join(CMetadata::PIPE);
+}
+
+QStringList CPhpInterface::partDir(QString path, unsigned int sz, bool reset) {
+    //QDirIterator it(path, QDirIterator::NoIteratorFlags);
+
+    if (reset || qDirIteratorLastPath != path || !this->qDirIteratorIsInit) {
+        if (this->qDirIteratorIsInit) {
+            this->qDirIterator->~QDirIterator();
+        }
+        this->qDirIterator = new QDirIterator(path, QDirIterator::NoIteratorFlags);
+        qDirIteratorLastPath = path;
+        this->qDirIteratorIsInit = true;
+    }
+
+    QStringList ls;
+    unsigned int i = 0;
+    while (this->qDirIterator->hasNext()) {
+        QStringList aItem;
+        QString item = "";
+        this->qDirIterator->next();
+        QFileInfo fi = this->qDirIterator->fileInfo();
+        // size/mtime/owner/grp/TEname/path
+        // T - type, E - isExec
+        item = QString::number(fi.size(), 16);
+        aItem.push_back(item);
+        item = QString::number(fi.lastModified().toTime_t(), 16);
+        aItem.push_back(item);
+        aItem.push_back(fi.owner());
+        item = fi.group();
+        if (item == fi.owner()) {
+            aItem.push_back("");
+        } else {
+            aItem.push_back(item);
+        }
+        /*
+         * 0 - dir
+         * 1 - file
+         * 2 - symlink dir
+         * 3 - symlink file
+         *
+        */
+        if (fi.isSymLink()) {
+            item = "3";
+            if (fi.isDir()) {
+                item = "2";
+            }
+        } else {
+            item = "1";
+            if (fi.isDir()) {
+                item = "0";
+            }
+        }
+
+        /*
+         * 0 - no exec
+         * 1 - exec
+        */
+        if (fi.isExecutable() && !fi.isDir()) {
+            item += "1";
+        } else {
+            item += "0";
+        }
+        item += fi.fileName();
+        aItem.push_back(item);
+        item = fi.filePath();
+        aItem.push_back(item);
+        item = aItem.join('/');
+        ls.append(item);
+        // ls.append(this->qDirIterator->next().replace(path + "/", "") );
+        i++;
+        if (i >= sz) {
+            break;
+        }
+    }
+    if (!this->qDirIterator->hasNext()) {
+        ls.append("EOF");
+    }
+    return ls;
 }
 
 

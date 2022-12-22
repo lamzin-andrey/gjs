@@ -1,23 +1,34 @@
-<div id="MW.renameMenuItem" class="function">
+<div id="pdir" class="function">
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="fname">
-                    <h5>MW.renameMenuItem</h5>
+                    <h5>FS.partDir</h5>
                 </td>
                 <td class="fd">
-                    <i>MW.renameMenuItem(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y, <span class="dkw">String</span> text)</h5>
+                    <i>FS.partDir(<span class="dkw">String</span> path, <span class="dkw">Number</span> partSize, <span class="dkw">Boolean</span> fromFirst)</h5>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Позволяет изменить текст пункта главного меню программы</p>
+                    <p>Считывает partSize наименований файлов из каталога path.</p>
+                    <p>fromFirst сбрасывает указатель на первый файл.</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
                     <div>Демо:</div>
-                    <div>Набирайте текст в текстовом поле и он применится к пункту главного меню окна Помощь -> О программе :</div>
-                    <input type="text" value="О программе" onkeydown="Demo.onkeydown4()" id="inpKD4">
+                    <div>Выберите каталог и считайте столько файлов, сколько захотите.</div>
+                    <input type="button" value="Обзор" id="bBrowsePartDir">
+                    <input type="text" value="2" id="inpPartDir">
+                    <input type="checkbox"  id="chPartDirReset">
+                    <div>
+                        <div id="xtStdOut6">
+                            <div class="outheader">Catalogs and files:</div>
+                            <div id="xtStdOut6Content">
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
                 </td>
             </tr>
             <tr>

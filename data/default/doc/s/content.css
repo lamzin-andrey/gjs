@@ -77,16 +77,19 @@
 	height: 200px;
 	overflow-y:scroll;
 }
-#xtStdOut5 {
+#xtStdOut5,#xtStdOut6 {
 	width: 200px;
 	border: 1px solid gray;
 }
-#xtStdOut5Content {
+#xtStdOut5Content,#xtStdOut6Content {
 	width: 200px;
 	border: 1px solid gray;
 	height: 200px;
 	overflow-y:scroll;
 }
+
+
+
 .outheader {
 	background-color: #E0DBC6;
 	text-align:center;

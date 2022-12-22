@@ -66,6 +66,8 @@ setWindowIconImage|Qt.|(String pathToPng24x24)|
 setIconImage|MW.|(String pathToPng24x24)|
 renameMenuItem|Qt.|(Number x, Number y,  String text)|
 renameMenuItem|MW.|(Number x, Number y,  String text)|
+partDir|Array FS.|(String path, Number size,  Boolean fromStart = false)|
+partDirItem|Object or String FS.|(String encodedFileInfo)|
 
 
 

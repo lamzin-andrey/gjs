@@ -1,4 +1,4 @@
-//1.0.1
+//1.0.2
 //location this file relative djs.exe: "default/tools/js/j.js"
 window.QtBrige = {
 	/**
@@ -200,6 +200,46 @@ window.FS = {
 	},
 	mkdir:function(path) {
 		return PHP.mkdir(path);
+	},
+	partDir:function(path, size, fromFirstFile) {
+		return PHP.partDir(path, size, fromFirstFile);
+	},
+	partDirItem:function(s) {
+		var a = s.split('/'), r = {};
+		if (s == "EOF") {
+			return s;
+		}
+		// size/mtime/owner/grp/TEname/path
+		r.size = parseInt(a[0], 16);
+		r.mtime = parseInt(a[1], 16);
+		r.owner = a[2];
+		r.group = a[3];
+		if (!r.group) {
+			r.group = r.owner;
+		}
+		r.type = a[4].substring(0, 1);
+		r.isDir = false;
+		r.isSymlink = false;
+		switch (r.type) {
+			case '0':
+				r.isDir = true;
+				break;
+			case '2':
+				r.isDir = true;
+				r.isSymlink = true;
+				break;
+			case '3':
+				r.isSymlink = true;
+				break;
+		}
+		// alert(a[4].substring(1, 2));
+		r.isExec = parseInt(a[4].substring(1, 2));
+		r.name = a[4].substring(2);
+		a.splice(0, 5);
+		r.path = a.join('/');
+		r.src = s;
+		
+		return r;
 	}
 };
 
