@@ -41,9 +41,10 @@ CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindo
         timer = new QTimer();
         timer->setInterval(1);
         connect(
-                    timer, SIGNAL(timeout()),
-                    this, SLOT(onTimer()) );
+                timer, SIGNAL(timeout()),
+                this, SLOT(onTimer()) );
         timer->start();
+
     } else {
         this->show();
     }
@@ -257,6 +258,10 @@ void CWindow::onTimer(QPrivateSignal s) {
             this->setMinimumHeight(h);
         }
         this->show();
+
+        disconnect(
+                    timer, SIGNAL(timeout()),
+                    this, SLOT(onTimer()) );
     }
 }
 /**
@@ -528,4 +533,14 @@ void CWindow::renameMenuItem(int x, int y, QString s)
              mainMenuActions[i]->qaction->setText(s);
         }
     }
+
 }
+
+void CWindow::newWindow(QString path, QStringList args)
+{
+    CMetadata data(path, args);
+    CWindow *w = new CWindow(path, data);
+    w->show();
+}
+
+

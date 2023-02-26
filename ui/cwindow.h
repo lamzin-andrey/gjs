@@ -105,6 +105,7 @@ public:
     QString readClipboard();
     void writeClipboard(QString s);
     void renameMenuItem(int x, int y, QString s);
+    void newWindow(QString path, QStringList args);
 
  signals:
     void loadComplete();
