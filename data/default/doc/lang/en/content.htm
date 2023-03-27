@@ -1995,8 +1995,254 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
             </tr>
         </table>
     </div>
+<div id="swd" class="function"><!-- start one function doc -->
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.startWatchDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Boolean</span> FS.startWatchDir(<span class="dkw">String</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Start watching a directory. If in directory will created, modify or deleted a file, you can get it information, use call method FS.getModifyListInDir. In the linux xubuntu use kernel interface inotify.</p>
+                    <p>Return true if start inotifyd was success.</p>
+                    <p>Note 1. Watching first catalog level only.</p>
+                    <p>Note 2. Window not support this method.</p>
+                    <p>Note 3. Method do not check input argument. You can check, then catalog is exists before call.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2" id="swddemo">
+                    <div>Demo:</div>
+                    <div>Enter directory name, which we will watching.</div>
+                    <input type="button" value="Select catalog" onclick="Demo.onClickStartWatchSelectDir();">
+                    <input type="text" value="" id="inpStartWatchDir" readonly>
+                    <input type="button" value="Start watching" id="bStartWatchDir" onclick="Demo.onClickStartWatchDir()">
+                    <input type="button" value="Stop watching" id="bStopWatchDir" onclick="Demo.onClickStopWatchDir()">
+                    
+                    <div>
+                        <div id="xtStdOut7">
+                            <div class="outheader">Catalogs and files:</div>
+                            <div id="xtStdOut7Content">
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    
+                </td>
+            </tr>
+            <!-- tr class="codeExample">
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr-->
+        </table>
+    </div><!-- end one function doc -->
     
-<h4 id="sampleEditor">Пример десктопного приложения - редактор текстовых файлов</h4>
+    
+    <div id="stwd" class="function"><!-- start one function doc -->
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.stopWatchDir</h5>
+                </td>
+                <td class="fd">
+                    <i>FS.stopWatchDir()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Method stop watching catalog (see startWatchDir). In linux use kernel interface inotify.</p>
+                    <p>Note 1. Not support in Windows.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>See demo <a href="#swddemo">FS.startWatchDir()</a></div>
+                    
+                </td>
+            </tr>
+            <!-- tr class="codeExample">
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr-->
+        </table>
+    </div><!-- end one function doc -->
+
+<div id="inotls" class="function"><!-- start one function doc -->
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.getModifyListInDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> FS.getModifyListInDir()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Return list files and catalogs, changed in catalog after call startWatchDir. In linux use kernel interface inotify.</p>
+                    <p>Note 1. Watching only first level in catalog.</p>
+                    <p>Note 2. Windows not supported.</p>
+                    <p>Note 3. Every filename return with prefix containts of two char. First char define, file was created, modify or update. Second char define, is a file or a catalog.</p>
+                    <p>First char of prefix - event type: <i>'c'</i> - created,  <i>'m'</i> - modify,  <i>'d'</i> - delete.</p>
+                    <p>Second char of prefix - file or catalog: <i>'d'</i> - catalog,  <i>'f'</i> - file.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2" id="swddemo">
+                    <div>Demo:</div>
+                    <div>See demo <a href="#swddemo">FS.startWatchDir()</a></div>
+                    
+                </td>
+            </tr>
+            <!-- tr class="codeExample">
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr-->
+        </table>
+    </div><!-- end one function doc -->
+
+
+
+<div id="md5f" class="function"><!-- start one function doc -->
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.md5File</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> FS.md5File(<span class="dkw">String</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Return md5 sum for file, path which is the argument.</p>
+                    <p>Note 1. Also available as PHP.md5_file().</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2" id="swddemo">
+                    <div>Demo:</div>
+                    <input type="button" value="Select file" onclick="Demo.onClickSelectFileForMd5();">
+                    <input type="text" value="" id="inpFileForMd5" readonly>
+                </td>
+            </tr>
+            <!-- tr class="codeExample">
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr-->
+        </table>
+    </div><!-- end one function doc -->
+
+
+
+<div id="md5" class="function"><!-- start one function doc -->
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.md5</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> FS.md5(<span class="dkw">String</span> s)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Return md5 sum from argument s</p>
+                    <p>Note 1. Also access as PHP.md5().</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2" id="swddemo">
+                    <div>Demo:</div>
+                    <label for="inpMd5">Enter a string</label>
+                    <input type="text" value="" id="inpMd5" >
+                    <input type="button" value="Get md5" onclick="Demo.onClickDemoMd5();">
+                </td>
+            </tr>
+            <!-- tr class="codeExample">
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr-->
+        </table>
+    </div><!-- end one function doc -->
+        
+<h4 id="sampleEditor">Desktop application example - text file editor</h4>
 Расмотрим простое приложение, редактор текстовых файлов.
 <h5 id="getReady">Подготовка к работе</h5>
 Установите на свой ПК или ноутбук Qt5 Desktop WebView API.

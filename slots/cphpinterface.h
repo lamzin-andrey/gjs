@@ -14,6 +14,7 @@
 #include <QRegExp>
 #include <QList>
 #include <QWebFrame>
+#include <QCryptographicHash>
 #include <string>
 #include <stdio.h>
 
@@ -94,6 +95,11 @@ public slots:
     // partDir
     QStringList partDir(QString path, unsigned int sz, bool reset = false);
     // end partDir
+
+    // hashes
+    QString md5(QString s);
+    QString md5_file(QString filename);
+
 };
 
 #endif // CPHPINTERFACE_H

@@ -327,3 +327,30 @@ void CPhpInterface::replaceInFile(QString filename, QString search, QString repl
     fputs(r.c_str(), fh2);
     fclose(fh2);
 }
+
+
+// hashes
+QString CPhpInterface::md5(QString s) {
+    string ss = s.toStdString();
+    int size = ss.length();
+    QByteArray ba = QByteArray::fromRawData(ss.c_str(), size);
+    ba = QCryptographicHash::hash(ba, QCryptographicHash::Md5);
+    QString r(ba.toHex());
+    return r;
+}
+
+
+QString CPhpInterface::md5_file(QString filename)
+{
+    QFile f(filename);
+    if (f.open(QFile::ReadOnly)) {
+        QCryptographicHash hash(QCryptographicHash::Md5);
+        if (hash.addData(&f)) {
+            QString r = QString(hash.result().toHex());
+            f.close();
+            return r;
+        }
+    }
+
+    return "";
+}

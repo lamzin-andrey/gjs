@@ -8,7 +8,6 @@
 #include <fstream>
 #include <sys/stat.h>
 
-
 //#include "string.h"
 #include <stdexcept>
 #include <iomanip>
@@ -50,7 +49,7 @@ public:
     int procexists(string procname, string socketfile);
     int procalreadyrun(string procname, string socketfile);
     int linuxversion(string &osname, string sock="/tmp/checkv.sock");
-    
+
     /** Compress a STL string using zlib with given compression level and return
      * the binary data.
     */

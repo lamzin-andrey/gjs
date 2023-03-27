@@ -318,5 +318,124 @@ var Demo = {
 	},
 	partDirParseFile:function(s) {
 		return FS.partDirItem(s);
+	},
+	onClickStartWatchSelectDir:function(){
+		try {
+			this.watchDirTarget = Qt.openDirectoryDialog("Select catclog for watching", "");
+		} catch(err) {
+			alert(err);
+		}
+		e("inpStartWatchDir").value = this.watchDirTarget;
+	},
+	onClickStartWatchDir:function(){
+		var s = this.watchDirTarget, r, o = Demo;
+		if (!PHP.file_exists(s) || !PHP.is_dir(s)) {
+			alert("Selected file not exists or is a directory");
+			return;
+		}
+		try {
+			r = FS.startWatchDir(this.watchDirTarget);
+		} catch(err) {
+			alert("SWD Ex: " + err);
+		}
+		if (!r) {
+			alert("Fail start watch a directory " + this.watchDirTarget);
+			return;
+		}
+		if(this.watchDirIvalId) {
+			this.watchDirIvalId = 0;
+			clearInterval(this.watchDirIval);
+			alert("Cle!");
+		}
+		this.watchDirIval = setInterval(function(){
+			Demo.doWatchDir();
+		}, 1000);
+		this.watchDirIvalId = 11;
+		/*try {
+			o.doWatchDir();
+		} catch(err) {
+			alert(err);
+		}*/
+	},
+	doWatchDir:function() {
+		var ls, sz, i,
+			fileInfo, buf, textColor = '#000', width=24, height = 24;
+		
+		try {
+			ls = FS.getModifyListInDir();
+			sz = ls.length;
+		} catch (err) {
+			alert("SWD Ex: " + err);
+		}
+			
+		for (i = 0; i < sz; i++) {
+			icon = 'exec.png';
+			textColor = '#000';
+			buf = ls[i];
+			if (buf == "FAIL_READ_LIST") {
+				/*try {
+					FS.startWatchDir(this.watchDirTarget);
+				} catch(err) {
+					alert("SWD Ex: " + err);
+				}
+				return;*/
+			}
+			fileInfo = {};
+			fileInfo.name = buf.substring(2);
+			if (buf[1] == 'd') {
+				fileInfo.isDir = true;
+			}
+			if (buf[0] == 'd') {
+				textColor = '#AA0000';
+				fileInfo.name += " removed";
+			}
+			
+			
+			// alert(fileInfo.isExec);
+			if (fileInfo.isDir) {
+				icon = 'folder' + width + '.png';
+			}
+			title = "";
+			file = '<div title="' + title + '"><img class="filielistitem" width="' + width + '" height="' + width + '" src="' + Qt.appDir() + '/doc/i/' + icon + '"> <span class="filelistitemtext" style="color:' + textColor +  '">' + fileInfo.name + '</span></div>';
+			
+			e('xtStdOut7Content').innerHTML += file;
+		}
+		
+	},
+	onClickStopWatchDir:function() {
+		try {
+			FS.stopWatchDir();
+		} catch(err) {
+			alert("Ex: " + err);
+		}
+		e('xtStdOut7Content').innerHTML = '';
+		if(this.watchDirIvalId) {
+			this.watchDirIvalId = 0;
+			clearInterval(this.watchDirIval);
+		}
+		
+	},
+	onClickSelectFileForMd5:function(){
+		var file = Qt.openFileDialog("Select file for get MD5 sum", "", ""),
+			r;
+		if (FS.fileExists(file)) {
+			try {
+				r = FS.md5File(file);
+				alert(r);
+			} catch(err) {
+				alert(err);
+			}
+		}
+	},
+	onClickDemoMd5:function(){
+		var s = e("inpMd5").value,
+			r;
+		try {
+			r = FS.md5(s);
+			alert(r);
+		} catch(err) {
+			alert(err);
+		}
+		
 	}
 };

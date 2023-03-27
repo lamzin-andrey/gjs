@@ -13,6 +13,7 @@
 #include <QApplication>
 #include <QDir>
 #include "utilsstd.h"
+#include "inotifystd.h"
 using namespace std;
 
 class Utils
@@ -55,7 +56,15 @@ public:
 	//fields
 	char * data;
 	int size;
+
+    //inotify variables
+    bool inotStartWatch(QString target);
+    // return false if events more than sz
+    QStringList inotGetModifyList();
+    void inotStopWatch();
+    // end inotify variables
 private:
+    InotifyStd inotify;
 	string rToStr(int n);
  };
 void trim(QString &str, QChar sim);

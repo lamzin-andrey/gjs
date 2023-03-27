@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     lib/xml/cxmlattribbutes.cpp \
     slots/oslinux.cpp \
     slots/os.cpp \
-    lib/json/cjson.cpp
+    lib/json/cjson.cpp \
+    lib/inotifystd.cpp
 
 HEADERS  += \
     lib/utilsstd.h \
@@ -46,7 +47,8 @@ HEADERS  += \
     lib/xml/cxmlattribbutes.h \
     slots/oslinux.h \
     slots/os.h \
-    lib/json/cjson.h
+    lib/json/cjson.h \
+    lib/inotifystd.h
 
 FORMS    +=
 

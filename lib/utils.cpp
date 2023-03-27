@@ -608,6 +608,36 @@ int Utils :: writetextfile(QString fileName, QString data, bool append)
     file.close();
     return sz;
 }
+
+//inotify functions
+bool Utils :: inotStartWatch(QString target) {
+    return inotify.startWatch(target.toStdString());
+}
+// return false if events more than sz
+QStringList Utils :: inotGetModifyList()
+{
+    QStringList r;
+    unsigned int sz = 50;
+    unsigned int filled = 0;
+    unsigned int i = 0;
+    string list[sz];
+    bool success = inotify.getModifyList(list, sz, filled);
+    if (!success) {
+        r.push_back("FAIL_READ_LIST");
+        return r;
+    }
+    for (i = 0; i < filled; i++) {
+        QString s = QString::fromStdString(list[i]);
+        r.push_back(s);
+    }
+    return r;
+}
+void Utils :: inotStopWatch()
+{
+    inotify.stopWatch();
+}
+// end inotify
+
 //----------------------------------------------------------------------------------
 void Utils :: log(QString text)
 {

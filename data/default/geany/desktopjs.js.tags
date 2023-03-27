@@ -68,6 +68,13 @@ renameMenuItem|Qt.|(Number x, Number y,  String text)|
 renameMenuItem|MW.|(Number x, Number y,  String text)|
 partDir|Array FS.|(String path, Number size,  Boolean fromStart = false)|
 partDirItem|Object or String FS.|(String encodedFileInfo)|
+startWatchDir|Boolean FS.|(String path)|
+getModifyListInDir|Array FS.|()|
+stopWatchDir|void FS.|()|
+md5File|String FS.|(String path)|
+md5|String FS.|(String s)|
+md5_file|String PHP.|(String path)|
+md5|String PHP.|(String s)|
 
 
 
