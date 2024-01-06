@@ -437,5 +437,33 @@ var Demo = {
 			alert(err);
 		}
 		
-	}
+	},
+	onClickFopen:function(){
+		var filename = Env.openFileDialog("Выберите файл для чтения в кодировке UTF-8", "", "*.txt *.cpp *.c *.js *.pl *.sql");
+		try {
+			window.fopenFH = FS.open(filename, "r");
+		} catch (err) {
+			alert(err);
+		}
+	},
+	onClickFopenReadLine:function() {
+		var fh = window.fopenFH,
+			s;
+		try {
+			if(!FS.eof(fh)){
+			  s = FS.gets(fh);
+			}
+			e("xtStdOut8Content").innerHTML += '<div>' + s + '</div>';
+		} catch (err) {
+			alert(err);
+		}
+	}/*,
+	foobar:function(){
+		var fh = FS.open("file.txt", "r"),
+			s;
+		while(!FS.eof(fh)){
+		  s = FS.gets(fs);
+		}
+		FS.close(fh);
+	}*/
 };

@@ -2201,6 +2201,65 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
             </tr-->
         </table>
     </div><!-- end one function doc -->
+    
+    <div id="fopen" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.open</h5> 
+			  </td>
+			  <td class="fd">
+				  <i>FS.open(<span class="dkw">String</span> filename, <span class="dkw">String</span> mode)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Открывает файл filename для чтения или записи.</p>
+					<p>mode определяет режим.</p>
+					<p>r - файл открыт для чтения</p>
+					<p>w - файл открыт для записи. Если открыть таким образом существующий файл, его содержимое будет полностью переписано при записи.</p>
+					<p>a - файл будет открыт для добавления данных.</p>
+					<p>b -  используется вместе с r, w или a. Открывает файл в двоичном режиме. В текстовом режиме возврат каретки и перевод строки транслируется в символ новой строки. При выводе справедливо обратное: символ новой строки транслируется в возврат каретки и перевод строки. В двоичных файлах такого перевода не происходит.</p>
+					<p>+ - используется вместе с r, w или a. В. случае с r файл открывается сразу для чтения и записи. w+ равнозначно r+. a+ открывает файл сразу для добавления и чтения. Допускается запись X+b, где X это r, a или w.</p>
+					<p>Примечание 1. Вывести в textarea текст, содержащий символы, отличные от латиницы получится только если текстовый файл в кодировке UTF-8. </p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					 <div>Демо:</div>
+					 <div>Выберите многострочный текстовый файл в кодировке UTF-8 и считайте столько строк, сколько захотите.</div>
+					 <input type="button" value="Обзор" id="bBrowseTextFileFopen" onclick="Demo.onClickFopen()"> 
+					 <input type="button" value="Get line" id="bGetLine" onclick="Demo.onClickFopenReadLine()"> 
+					 <div>
+						<div id="xtStdOut8">
+							<div class="outheader">Lines:</div> 
+							<div id="xtStdOut8Content"> </div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				 </td> 
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Пример кода:<br>
+					<pre class="codebg">
+						<span class="kw">function</span> e(id) {
+							<span class="kw">return</span> document.getElementById(id); 
+						}
+						<span class="kw">var</span> ChangeContextMenuTextExample = { onkeydown: <span class="kw">function</span>(){
+							<span class="kw">var</span> trg = e(<span class="st">'inpKD4'</span>), o = <span class="kw">this</span>;
+								setTimeout(<span class="kw">function</span>() { MW.renameMenuItem(<span class="nm">2</span>, <span class="nm">0</span>, trg.value);
+								<span class="jcomm">// Здесь 2 - позиция пункта меню по горизонтали, начиная с 0</span>
+								<span class="jcomm">// Здесь 0 - позиция пункта меню по вертикали, начиная с 0.</span>
+							},
+							<span class="nm">10</span>);
+							}
+						}</pre>
+				</td>
+			</tr>
+		</table>
+    </div>
 
 
 

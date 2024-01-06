@@ -1,4 +1,4 @@
-//1.0.4
+//1.0.5
 //location this file relative djs.exe: "default/tools/js/j.js"
 window.QtBrige = {
 	/**
@@ -283,7 +283,20 @@ window.FS = {
 	},
 	md5:function(s){
 		return PHP.md5(s);
+	},
+	open:function(s, m) {
+		return PHP.open(s, m);
+	},
+	eof:function(n) {
+		return PHP.eof(n);
+	},
+	gets:function(n) {
+		return PHP.gets(n);
+	},
+	close:function(n) {
+		return PHP.close(n);
 	}
+	
 };
 
 window.Env = {

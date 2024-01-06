@@ -77,11 +77,11 @@
 	height: 200px;
 	overflow-y:scroll;
 }
-#xtStdOut5,#xtStdOut6,#xtStdOut7 {
+#xtStdOut5,#xtStdOut6,#xtStdOut7,#xtStdOut8 {
 	width: 200px;
 	border: 1px solid gray;
 }
-#xtStdOut5Content,#xtStdOut6Content,#xtStdOut7Content {
+#xtStdOut5Content,#xtStdOut6Content,#xtStdOut7Content,#xtStdOut8Content {
 	width: 200px;
 	border: 1px solid gray;
 	height: 200px;
