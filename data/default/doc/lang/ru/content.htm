@@ -2217,12 +2217,14 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
 				<td class="fdf" colspan="2">
 					<p>Открывает файл filename для чтения или записи.</p>
 					<p>mode определяет режим.</p>
-					<p>r - файл открыт для чтения</p>
-					<p>w - файл открыт для записи. Если открыть таким образом существующий файл, его содержимое будет полностью переписано при записи.</p>
-					<p>a - файл будет открыт для добавления данных.</p>
-					<p>b -  используется вместе с r, w или a. Открывает файл в двоичном режиме. В текстовом режиме возврат каретки и перевод строки транслируется в символ новой строки. При выводе справедливо обратное: символ новой строки транслируется в возврат каретки и перевод строки. В двоичных файлах такого перевода не происходит.</p>
-					<p>+ - используется вместе с r, w или a. В. случае с r файл открывается сразу для чтения и записи. w+ равнозначно r+. a+ открывает файл сразу для добавления и чтения. Допускается запись X+b, где X это r, a или w.</p>
+					<p><b>r</b> - файл открыт для чтения</p>
+					<p><b>w</b> - файл открыт для записи. Если открыть таким образом существующий файл, его содержимое будет полностью переписано при записи.</p>
+					<p><b>a</b> - файл будет открыт для добавления данных.</p>
+					<p><b>b</b> -  используется вместе с <b>r</b>, <b>w</b> или <b>a</b>. Открывает файл в двоичном режиме. В текстовом режиме возврат каретки и перевод строки транслируется в символ новой строки. При выводе справедливо обратное: символ новой строки транслируется в возврат каретки и перевод строки. В двоичных файлах такого перевода не происходит.</p>
+					<p><b>+</b> - используется вместе с <b>r</b>, <b>w</b> или <b>a</b>. В. случае с <b>r</b> файл открывается сразу для чтения и записи. <b>w+</b> равнозначно <b>r+</b>. <b>a+</b> открывает файл сразу для добавления и чтения. Допускается запись <b>X+b</b>, где <b>X</b> это <b>r</b>, <b>a</b> или <b>w</b>.</p>
 					<p>Примечание 1. Вывести в textarea текст, содержащий символы, отличные от латиницы получится только если текстовый файл в кодировке UTF-8. </p>
+					<p>Примечание 2. Доступен также как <i>PHP.open(<span class="dkw">String</span> filename, <span class="dkw">String</span> mode)</i> </p>
+					<p>Примечание 3. Планируется заменить <i>PHP.open</i> на <i>PHP.fopen</i> </p>
 				</td>
 			</tr>
 			  
@@ -2243,19 +2245,113 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
 			</tr>
 			<tr>
 				<td class="fe" colspan="2"> Пример кода:<br>
-					<pre class="codebg">
-						<span class="kw">function</span> e(id) {
-							<span class="kw">return</span> document.getElementById(id); 
-						}
-						<span class="kw">var</span> ChangeContextMenuTextExample = { onkeydown: <span class="kw">function</span>(){
-							<span class="kw">var</span> trg = e(<span class="st">'inpKD4'</span>), o = <span class="kw">this</span>;
-								setTimeout(<span class="kw">function</span>() { MW.renameMenuItem(<span class="nm">2</span>, <span class="nm">0</span>, trg.value);
-								<span class="jcomm">// Здесь 2 - позиция пункта меню по горизонтали, начиная с 0</span>
-								<span class="jcomm">// Здесь 0 - позиция пункта меню по вертикали, начиная с 0.</span>
-							},
-							<span class="nm">10</span>);
-							}
-						}</pre>
+					<pre class="codebg code2"><b>var</b> fd = FS.open(<span class="strcolor"> "/tmp/file.txt"</span>,<span class="strcolor"> "r"</span>),
+       s;
+<b>while</b> (!FS.eof(fd)) {
+  s += FS.gets(fd);
+}
+FS.close(fd);
+</pre>
+				</td>
+			</tr>
+		</table>
+    </div>
+    
+    <div id="fgets" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.gets</h5> 
+			  </td>
+			  <td class="fd">
+				  <i><span class="dkw">String</span> FS.gets(<span class="dkw">Number</span> fileDescriptor)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Считывает из ранее открытого с помощью <i>FS.open</i> файла строку. Окончанием строки считается символ <i>\n</i>.</p>
+					<p>Примечание 1. Вывести в textarea текст, содержащий символы, отличные от латиницы получится только если текстовый файл в кодировке UTF-8. </p>
+					<p>Примечание 2. Также доступна как <i><span class="dkw">String</span> PHP.gets(<span class="dkw">Number</span> fileDescriptor)</i>. </p>
+					<p>Примечание 3. Планируется заменить <i>PHP.gets</i> на <i>PHP.fgets</i>.</p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					 <div>Демо:</div>
+					 <div>Смотрите демо <a href="#fopen">FS.open</a></div>
+				 </td> 
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Пример кода:<br>
+					<div>Смотрите пример <a href="#fopen">FS.open</a></div>
+				</td>
+			</tr>
+		</table>
+    </div>
+    
+    <div id="feof" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.eof</h5> 
+			  </td>
+			  <td class="fd">
+				  <i><span class="dkw">Boolean</span> FS.eof(<span class="dkw">Number</span> fileDescriptor)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Вернет <b class="kw">true</b> если после очередного вызова FS.gets достигнут конец ранее открытого с помощью <i>FS.open</i> файла.</p>
+					<p>Примечание 1. Также доступна как <i><span class="dkw">Boolean</span> PHP.eof(<span class="dkw">Number</span> fileDescriptor)</i>. </p>
+					<p>Примечание 2. Планируется заменить <i>PHP.eof</i> на <i>PHP.feof</i>.</p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					 <div>Демо:</div>
+					 <div>Смотрите демо <a href="#fopen">FS.open</a></div>
+				 </td> 
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Пример кода:<br>
+					<div>Смотрите пример <a href="#fopen">FS.open</a></div>
+				</td>
+			</tr>
+		</table>
+    </div>
+    
+    <div id="fclose" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.close</h5> 
+			  </td>
+			  <td class="fd">
+				  <i>FS.close(<span class="dkw">Number</span> fileDescriptor)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Закрывает ранее открытый с помощью <i>FS.open</i> файл.</p>
+					<p>Примечание 1. Также доступна как <i>PHP.close(<span class="dkw">Number</span> fileDescriptor)</i>.</p>
+					<p>Примечание 2. Планируется заменить <i>PHP.close</i> на <i>PHP.fclose</i>.</p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					 <div>Демо:</div>
+					 <div>Смотрите демо <a href="#fopen">FS.open</a></div>
+				 </td> 
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Пример кода:<br>
+					<div>Смотрите пример <a href="#fopen">FS.open</a></div>
 				</td>
 			</tr>
 		</table>

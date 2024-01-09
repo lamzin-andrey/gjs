@@ -2,7 +2,7 @@
 	background-color: #E2E2E2;
 	padding: 4px 0px;
 }
-.kw {
+.kw, .code2 b {
 	color:blue;
 	font-weight: bold;
 }
@@ -13,6 +13,8 @@
 .nm {
 	color: #FF6E00;
 }
-.st {
+.st, .strcolor {
 	color:green;
 }
+
+
