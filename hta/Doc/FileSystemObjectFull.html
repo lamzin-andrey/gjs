@@ -1,0 +1,3841 @@
+
+<!-- saved from url=(0057)https://script-coding.com/WSH/FileSystemObject.html#3.20. -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>FileSystemObject</title>
+<meta name="keywords" content="WSH Windows Script Scripting Host документация объекты свойства методы">
+<meta name="description" content="Описание объекта FileSystemObject, его свойств и методов">
+<style type="text/css">
+	.paragraph {text-align:justify; text-indent:2em; margin-top:0; margin-bottom:0}
+</style>
+</head>
+<body bgcolor="#E0E0E0">
+
+<p><a href="https://script-coding.com/index.html">Перейти на главную страничку сайта (список статей, файлы для скачивания)</a></p>
+<p><a href="http://forum.script-coding.com/">ФОРУМ (здесь можно обсудить эту статью, а также любые проблемы программирования на различных макроязыках и в скриптовых средах)</a></p>
+<p><a href="https://script-coding.com/WSH.html">Описание объектов Windows Script Host, их свойств и методов</a></p>
+
+<h1>Объект FileSystemObject</h1>
+
+<p class="paragraph">
+Содержание:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre><a href="https://script-coding.com/WSH/FileSystemObject.html#1.">1. Создание объекта</a>
+<a href="https://script-coding.com/WSH/FileSystemObject.html#2.">2. Свойства</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#2.1.">2.1. Drives</a>
+<a href="https://script-coding.com/WSH/FileSystemObject.html#3.">3. Методы</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.1.">3.1. CreateFolder</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.2.">3.2. CopyFile</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.3.">3.3. CopyFolder</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.4.">3.4. MoveFile</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.5.">3.5. MoveFolder</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.6.">3.6. DeleteFile</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.7.">3.7. DeleteFolder</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.8.">3.8. BuildPath</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.9.">3.9. GetAbsolutePathName</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.10.">3.10. GetBaseName</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.11.">3.11. GetExtensionName</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.12.">3.12. GetFileName</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.13.">3.13. GetParentFolderName</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.14.">3.14. GetDriveName</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.15.">3.15. DriveExists</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.16.">3.16. FileExists</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.17.">3.17. FolderExists</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.18.">3.18. GetDrive</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.19.">3.19. GetFile</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.20.">3.20. GetFolder</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.21.">3.21. GetSpecialFolder</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.22.">3.22. GetTempName</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.23.">3.23. CreateTextFile</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.24.">3.24. OpenTextFile</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.25.">3.25. GetStandardStream</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#3.26.">3.26. GetFileVersion</a>
+<a href="https://script-coding.com/WSH/FileSystemObject.html#4.">4. Объект Drive</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#4.1.">4.1. Создание объекта</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.">4.2. Свойства</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.1.">4.2.1. AvailableSpace</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.2.">4.2.2. DriveLetter</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.3.">4.2.3. DriveType</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.4.">4.2.4. FileSystem</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.5.">4.2.5. FreeSpace</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.6.">4.2.6. IsReady</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.7.">4.2.7. Path</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.8.">4.2.8. RootFolder</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.9.">4.2.9. SerialNumber</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.10.">4.2.10. ShareName</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.11.">4.2.11. TotalSize</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#4.2.12.">4.2.12. VolumeName</a>
+<a href="https://script-coding.com/WSH/FileSystemObject.html#5.">5. Объект File</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#5.1.">5.1. Создание объекта</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.">5.2. Свойства</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.1.">5.2.1. Attributes</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.2.">5.2.2. DateCreated</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.3.">5.2.3. DateLastAccessed</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.4.">5.2.4. DateLastModified</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.5.">5.2.5. Drive</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.6.">5.2.6. Name</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.7.">5.2.7. ParentFolder</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.8.">5.2.8. Path</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.9.">5.2.9. ShortName</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.10.">5.2.10. ShortPath</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.11.">5.2.11. Size</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.2.12.">5.2.12. Type</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#5.3.">5.3. Методы</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.3.1.">5.3.1. Copy</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.3.2.">5.3.2. Move</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.3.3.">5.3.3. Delete</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#5.3.4.">5.3.4. OpenAsTextStream</a>
+<a href="https://script-coding.com/WSH/FileSystemObject.html#6.">6. Объект Folder</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#6.1.">6.1. Создание объекта</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.">6.2. Свойства</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.1.">6.2.1. Attributes</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.2.">6.2.2. DateCreated</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.3.">6.2.3. DateLastAccessed</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.4.">6.2.4. DateLastModified</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.5.">6.2.5. Drive</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.6.">6.2.6. IsRootFolder</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.7.">6.2.7. Name</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.8.">6.2.8. ParentFolder</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.9.">6.2.9. Path</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.10.">6.2.10. ShortName</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.11.">6.2.11. ShortPath</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.12.">6.2.12. Size</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.13.">6.2.13. Type</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.14.">6.2.14. SubFolders</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.2.15.">6.2.15. Files</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#6.3.">6.3. Методы</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.3.1.">6.3.1. Copy</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.3.2.">6.3.2. Move</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.3.3.">6.3.3. Delete</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#6.3.4.">6.3.4. CreateTextFile</a>
+<a href="https://script-coding.com/WSH/FileSystemObject.html#7.">7. Объект TextStream</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#7.1.">7.1. Создание объекта</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#7.2.">7.2. Свойства</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.2.1.">7.2.1. AtEndOfLine</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.2.2.">7.2.2. AtEndOfStream</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.2.3.">7.2.3. Column</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.2.4.">7.2.4. Line</a>
+    <a href="https://script-coding.com/WSH/FileSystemObject.html#7.3.">7.3. Методы</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.3.1.">7.3.1. Close</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.3.2.">7.3.2. Read</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.3.3.">7.3.3. ReadAll</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.3.4.">7.3.4. ReadLine</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.3.5.">7.3.5. Skip</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.3.6.">7.3.6. SkipLine</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.3.7.">7.3.7. Write</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.3.8.">7.3.8. WriteLine</a>
+        <a href="https://script-coding.com/WSH/FileSystemObject.html#7.3.9.">7.3.9. WriteBlankLines</a>
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="1.">1. Создание объекта</a></h2>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="2.">2. Свойства</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="2.1.">2.1. Drives</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Drives
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: объект-коллекция "Drives".
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+For Each Drive In FSO.Drives
+    MsgBox Drive.DriveLetter
+Next
+</pre>
+</span>
+
+<p class="paragraph">
+Другой пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Drives = FSO.Drives
+MsgBox "Всего дисков - " &amp; Drives.Count
+Set DriveC = Drives.Item("C:")
+MsgBox "Диск C: имеет метку " &amp; DriveC.VolumeName
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.">3. Методы</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="3.1.">3.1. CreateFolder</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>CreateFolder(&lt;Foldername&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: создаёт каталог с указанным именем.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Foldername&gt; - строка, путь к каталогу. Если такой каталог уже существует, произойдёт ошибка.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+FSO.CreateFolder "C:\New Folder"
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.2.">3.2. CopyFile</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>CopyFile(&lt;Source&gt;,&lt;Destination&gt;,&lt;Overwrite&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: копирует один или несколько файлов.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Source&gt; - строка, путь к источнику копирования (что копировать). В последнем компоненте параметра можно использовать групповые символы "*" и "?".</li>
+<li>&lt;Destination&gt; - строка, путь назначения (куда копировать).</li>
+<li>&lt;Overwrite&gt; - необязательный, булево (число). Перезаписывать существующие файлы, или нет. По умолчанию - True (перезаписывать). Если файл, который нужно перезаписать, имеет атрибут read-only, возникнет ошибка (независимо от установки этого параметра).</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+FSO.CopyFile "C:\*.bat", "A:\", 0
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.3.">3.3. CopyFolder</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>CopyFolder(&lt;Source&gt;,&lt;Destination&gt;,&lt;Overwrite&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: рекурсивно копирует каталог.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Source&gt; - строка, путь к источнику копирования (что копировать). В последнем компоненте параметра можно использовать групповые символы "*" и "?".</li>
+<li>&lt;Destination&gt; - строка, путь назначения (куда копировать).</li>
+<li>&lt;Overwrite&gt; - необязательный, булево (число). Перезаписывать существующие файлы, или нет. По умолчанию - True (перезаписывать). Если файл, который нужно перезаписать, имеет атрибут read-only, возникнет ошибка (независимо от установки этого параметра).</li>
+</ul>
+
+<p class="paragraph">
+Описание: процесс копирования прерывается после первой возникшей ошибки.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+FSO.CopyFolder "C:\NewFolder\*", "C:\TEMP\", 0
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.4.">3.4. MoveFile</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>MoveFile(&lt;Source&gt;,&lt;Destination&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: перемещает один или несколько файлов.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Source&gt; - строка, путь к источнику копирования (что копировать). В последнем компоненте параметра можно использовать групповые символы "*" и "?".</li>
+<li>&lt;Destination&gt; - строка, путь назначения (куда копировать).</li>
+</ul>
+
+<p class="paragraph">
+Описание: процесс перемещения прерывается после первой возникшей ошибки. Если перемещаемый файл уже существует или является папкой в Destination, возникнет ошибка.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+FSO.MoveFile "C:\*.txt", "A:\"
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.5.">3.5. MoveFolder</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>MoveFolder(&lt;Source&gt;,&lt;Destination&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: рекурсивно перемещает один или несколько каталогов.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Source&gt; - строка, путь к источнику копирования (что копировать). В последнем компоненте параметра можно использовать групповые символы "*" и "?".</li>
+<li>&lt;Destination&gt; - строка, путь назначения (куда копировать).</li>
+</ul>
+
+<p class="paragraph">
+Описание: процесс перемещения прерывается после первой возникшей ошибки. Если перемещаемый каталог уже существует или является файлом в Destination, возникнет ошибка.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+FSO.MoveFolder "C:\New Folde*", "C:\TEMP\"
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.6.">3.6. DeleteFile</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DeleteFile(&lt;Filespec&gt;,&lt;Force&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: удаляет указанный файл.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Filespec&gt; - строка, путь к файлу. В последнем компоненте параметра можно использовать групповые символы "*" и "?".</li>
+<li>&lt;Force&gt; - необязательный, булево (число). Определяет, удалять или нет файлы с атрибутом read-only. По умолчанию - False (не удалять).</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+FSO.DeleteFile "A:\*", 0
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.7.">3.7. DeleteFolder</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DeleteFolder(&lt;Folderspec&gt;,&lt;Force&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: удаляет указанную папку.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Folderspec&gt; - строка, путь к папке. В последнем компоненте параметра можно использовать групповые символы "*" и "?".</li>
+<li>&lt;Force&gt; - необязательный, булево (число). Определяет, удалять или нет файлы с атрибутом read-only. По умолчанию - False (не удалять).</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+FSO.DeleteFolder "A:\*", 0
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.8.">3.8. BuildPath</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>BuildPath(&lt;Path&gt;,&lt;Name&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: добавляет к заданному пути новое имя. Если необходимо, вставляется "\".
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Path&gt; - строка, путь.</li>
+<li>&lt;Name&gt; - строка, имя файла.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Path = FSO.BuildPath("C:\Program Files", "New Folder")
+MsgBox Path
+Path = FSO.BuildPath("C:\Program Files\", "New Folder")
+MsgBox Path
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.9.">3.9. GetAbsolutePathName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetAbsolutePathName(&lt;Pathspec&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает полный путь для заданного относительного пути (из текущего каталога).
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Pathspec&gt; - строка, относительный путь.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Path = FSO.GetAbsolutePathName("..")
+MsgBox Path
+Path = FSO.GetAbsolutePathName(".\aaa\bbb\ccc.txt")
+MsgBox Path
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.10.">3.10. GetBaseName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetBaseName(&lt;Path&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает имя (без расширения) последнего компонента в заданном пути.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Path&gt; - строка, путь.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Name = FSO.GetBaseName("Q:\aaa\bred\MySuperFile.txt")
+MsgBox Name
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.11.">3.11. GetExtensionName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetExtensionName(&lt;Path&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает расширение последнего компонента в заданном пути.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Path&gt; - строка, путь.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Name = FSO.GetExtensionName("Q:\aaa\bred\MySuperFile.txt")
+MsgBox Name
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.12.">3.12. GetFileName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetFileName(&lt;Path&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает имя (с расширением) последнего компонента в заданном пути.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Path&gt; - строка, путь.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Name = FSO.GetFileName("Q:\aaa\bred\MySuperFile.txt")
+MsgBox Name
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.13.">3.13. GetParentFolderName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetParentFolderName(&lt;Path&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает путь к последнему компоненту в заданном пути (его каталог).
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Path&gt; - строка, путь.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Name = FSO.GetParentFolderName("Q:\aaa\bred\MySuperFile.txt")
+MsgBox Name
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.14.">3.14. GetDriveName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetDriveName(&lt;Path&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает имя диска в заданном пути.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Path&gt; - строка, путь.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Name = FSO.GetDriveName("X:\aaa\bred\MySuperFile.txt")
+MsgBox Name
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.15.">3.15. DriveExists</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DriveExists(&lt;Drivespec&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает True, если указанный диск сущесвтвует, и False в противном случае.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Drivespec&gt; - строка, путь.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Disk = "A:"
+MsgBox "Диск " &amp; Disk &amp; " существует = " &amp; FSO.DriveExists(Disk)
+Disk = "Q:"
+MsgBox "Диск " &amp; Disk &amp; " существует = " &amp; FSO.DriveExists(Disk)
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.16.">3.16. FileExists</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>FileExists(&lt;Filespec&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает True, если указанный файл сущесвтвует, и False в противном случае.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Filespec&gt; - строка, путь.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+File = "C:\Program Files\1Cv77\BIN\1cv7s.exe"
+MsgBox "Файл " &amp; File &amp; " существует = " &amp; FSO.FileExists(File)
+File = "С:\1.txt"
+MsgBox "Файл " &amp; File &amp; " существует = " &amp; FSO.FileExists(File)
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.17.">3.17. FolderExists</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>FolderExists(&lt;Folderspec&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает True, если указанный каталог сущесвтвует, и False в противном случае.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Folderspec&gt; - строка, путь.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Folder = "C:\Program Files"
+MsgBox "Каталог " &amp; Folder &amp; " существует = " &amp; FSO.FolderExists(Folder)
+Folder = "С:\ProgramFiles"
+MsgBox "Каталог " &amp; Folder &amp; " существует = " &amp; FSO.FolderExists(Folder)
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.18.">3.18. GetDrive</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetDrive(&lt;Folderspec&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает объект "Drive" по указанному имени или пути.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Folderspec&gt; - строка, имя диска или путь к корневому каталогу диска, возможно UNC-путь.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Drive = FSO.GetDrive("C:")
+MsgBox Drive.FileSystem
+Set Drive = FSO.GetDrive("C:\")
+MsgBox Drive.FileSystem
+Set Drive = FSO.GetDrive("\\Server\1C_Predpr")
+MsgBox Drive.FileSystem
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.19.">3.19. GetFile</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetFile(&lt;Filespec&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает объект "File" по указанному пути.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Filespec&gt; - строка, путь.</li>
+</ul>
+
+<p class="paragraph">
+Описание: если файл не существует, произойдёт ошибка.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+MsgBox File.Size
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.20.">3.20. GetFolder</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetFolder(&lt;Folderspec&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает объект "Folder" по указанному пути.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Folderspec&gt; - строка, путь.</li>
+</ul>
+
+<p class="paragraph">
+Описание: если каталог не существует, произойдёт ошибка.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+MsgBox Folder.ShortName
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.21.">3.21. GetSpecialFolder</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetSpecialFolder(&lt;Folderspec&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает объект "Folder" для некоторых специальных папок Windows.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Folderspec&gt; - число, определяет специальную папку. Возможные значения:
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>0 - Каталог Windows.</li>
+<li>1 - Системный каталог библиотек и драйверов.</li>
+<li>2 - Каталог временных файлов, путь к которому хранится в переменной среды "TMP".</li>
+</ul>
+</li>
+</ul>
+
+<p class="paragraph">
+Описание: если каталог не существует, произойдёт ошибка.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+For i=0 To 2
+    Set Folder = FSO.GetSpecialFolder(i)
+    MsgBox Folder.Path
+Next
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.22.">3.22. GetTempName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetTempName()
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает случайным образом сгенерированное имя файла, которое может быть использовано для создания временного файла.
+</p>
+
+<p class="paragraph">
+Параметры: нет.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+MsgBox FSO.GetTempName()
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.23.">3.23. CreateTextFile</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>CreateTextFile(&lt;Filename&gt;,&lt;Overwrite&gt;,&lt;Unicode&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: создаёт новый текстовый файл и возвращает объект "TextStream", указывающий на него.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Filename&gt; - строка, путь к файлу.</li>
+<li>&lt;Overwrite&gt; - необязательный, булево (число). Перезаписывать файл, если он существует (True), или нет (False). По умолчанию - False. Если указано False и файл существует - произойдёт ошибка.</li>
+<li>&lt;Unicode&gt; - необязательный, булево (число). Файл в формате Unicode (True), или ASCII (False). По умолчанию - False.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set TextStream = FSO.CreateTextFile("C:\Test.txt")
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.24.">3.24. OpenTextFile</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>OpenTextFile(&lt;Filename&gt;,&lt;Iomode&gt;,&lt;Create&gt;,&lt;Format&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: открывает текстовый файл и возвращает объект "TextStream", указывающий на него.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Filename&gt; - строка, путь к файлу.</li>
+<li>&lt;Iomode&gt; - необязательный, число. Возможные значения:
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>1 - Открыть файл только для чтения.</li>
+<li>2 - Открыть файл для записи. Если файл уже существовал, его содержимое теряется.</li>
+<li>8 - Открыть файл для добавления. Если файл уже существовал, информация будет дописываться в конец файла.</li>
+</ul>
+</li>
+<li>&lt;Create&gt; - необязательный, булево (число). Создавать файл, если он не существует (True), или нет (False). По умолчанию - False.</li>
+<li>&lt;Format&gt; - необязательный, число. Возможные значения:
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>-2 - Открыть файл в формате, используемом системой по умолчанию.</li>
+<li>-1 - Открыть файл в формате Unicode.</li>
+<li>0 - Открыть файл в формате ASCII (по умолчанию).</li>
+</ul>
+</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set TextStream = FSO.OpenTextFile("C:\Test.txt", 2, True)
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.25.">3.25. GetStandardStream</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetStandardStream(&lt;StandardStreamType&gt;,&lt;Unicode&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает объект "TextStream", ассоциированный с потоком "StdIn", "StdOut" или "StdErr".
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;StandardStreamType&gt; - число, определяет поток. Возможные значения:
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>0 - StdIn.</li>
+<li>1 - StdOut.</li>
+<li>2 - StdErr.</li>
+</ul>
+</li>
+<li>&lt;Unicode&gt; - необязательный, булево (число). True - формат Unicode, False - ASCII. По умолчанию - False.</li>
+</ul>
+
+<p class="paragraph">
+Описание: метод применим при запуске административного скрипта в консоли с помощью CScript.exe.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set stdout = fso.GetStandardStream(1)
+stdout.WriteLine "Hello, VBScript."
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="3.26.">3.26. GetFileVersion</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>GetFileVersion(&lt;Path&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: возвращает номер версии исполняемого файла (строка).
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Path&gt; - строка, путь к файлу.</li>
+</ul>
+
+<p class="paragraph">
+Описание: метод возвращает информацию, которую можно просмотреть на вкладке "Версия" палитры свойств файла в проводнике.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+MsgBox FSO.GetFileVersion("C:\Program Files\1Cv77\BIN\1cv7s.exe")
+MsgBox FSO.GetFileVersion("C:\Program Files\1cv8\bin\1cv8.exe")
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.">4. Объект Drive</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="4.1.">4.1. Создание объекта</a></h2>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.Drives.Item("C:")
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.">4.2. Свойства</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="4.2.1.">4.2.1. AvailableSpace</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>AvailableSpace
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: число - количество доступного для пользователя места на диске в байтах.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.2.">4.2.2. DriveLetter</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DriveLetter
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: строка - буква, ассоциированная с ресурсом.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.3.">4.2.3. DriveType</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DriveType
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: число - определяет тип ресурса. Возможные значения:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>0 - неизвестное устройство.</li>
+<li>1 - устройство со сменным носителем.</li>
+<li>2 - жёсткий диск.</li>
+<li>3 - сетевой диск.</li>
+<li>4 - CD-ROM.</li>
+<li>5 - RAM-диск.</li>
+</ul>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.4.">4.2.4. FileSystem</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>FileSystem
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: cтрока - тип файловой системы (FAT, NTFS или CDFS).
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.5.">4.2.5. FreeSpace</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>FreeSpace
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: число - количество свободного места на диске в байтах.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.6.">4.2.6. IsReady</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>IsReady
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: булево (число) - True, если устройство готово, иначе - False. Актуально для устройства со сменным носителем или CD-ROM.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.7.">4.2.7. Path</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Path
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: строка - путь к диску (например, "C:", но не "C:\").
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.8.">4.2.8. RootFolder</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>RootFolder
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: объект "Folder", соответствующий корневому каталогу диска.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.9.">4.2.9. SerialNumber</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>SerialNumber
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: число - десятичный серийный номер диска.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.10.">4.2.10. ShareName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>ShareName
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: строка - сетевое имя диска, если диск сетевой (иначе - пустая строка).
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.11.">4.2.11. TotalSize</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>TotalSize
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: число - общий объём диска в байтах.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="4.2.12.">4.2.12. VolumeName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>VolumeName
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: строка - метка тома диска.
+</p>
+
+<p class="paragraph">
+Замечание: чтение и запись.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Str = "Диск C:" &amp; vbCrLf &amp; _
+"AvailableSpace: " &amp; DriveC.AvailableSpace &amp; vbCrLf &amp; _
+"DriveLetter: " &amp; DriveC.DriveLetter &amp; vbCrLf &amp; _
+"DriveType: " &amp; DriveC.DriveType &amp; vbCrLf &amp; _
+"FileSystem: " &amp; DriveC.FileSystem &amp; vbCrLf &amp; _
+"FreeSpace: " &amp; DriveC.FreeSpace &amp; vbCrLf &amp; _
+"IsReady: " &amp; DriveC.IsReady &amp; vbCrLf &amp; _
+"Path: " &amp; DriveC.Path &amp; vbCrLf &amp; _
+"RootFolder (Path): " &amp; DriveC.RootFolder.Path &amp; vbCrLf &amp; _
+"SerialNumber: " &amp; DriveC.SerialNumber &amp; vbCrLf &amp; _
+"ShareName: " &amp; DriveC.ShareName &amp; vbCrLf &amp; _
+"TotalSize: " &amp; DriveC.TotalSize &amp; vbCrLf &amp; _
+"VolumeName: " &amp; DriveC.VolumeName
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.">5. Объект File</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="5.1.">5.1. Создание объекта</a></h2>
+
+<p class="paragraph">
+Пример №1:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+</pre>
+</span>
+
+<p class="paragraph">
+Пример №2:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\")
+Set File = Folder.Files("autoexec.bat")
+</pre>
+</span>
+
+<p class="paragraph">
+Пример №3:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\")
+Set File = Folder.Files.Item("autoexec.bat")
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.">5.2. Свойства</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="5.2.1.">5.2.1. Attributes</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Attributes
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: число, набор флагов атрибутов файла. Флаги:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>0 - Normal. Обычный файл (нет атрибутов).</li>
+<li>1 - ReadOnly. Файл только для чтения. Чтение и запись.</li>
+<li>2 - Hidden. Скрытый. Чтение и запись.</li>
+<li>4 - System. Системный. Чтение и запись.</li>
+<li>8 - Volume. Диск. Только чтение.</li>
+<li>16 - Directory. Папка или файл. Только чтение.</li>
+<li>32 - Archive. Архивный. Чтение и запись.</li>
+<li>1024 - Alias. Ссылка или ярлык. Только чтение.</li>
+<li>2048 - Compressed. Сжатый. Только чтение.</li>
+</ul>
+
+<p class="paragraph">
+Замечание: чтение и запись или только чтение, в зависимости от атрибута.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Attrs = File.Attributes
+Set Dict = CreateObject("Scripting.Dictionary")
+Dict.Add "ReadOnly", 0
+Dict.Add "Hidden", 0
+Dict.Add "System", 0
+Dict.Add "Volume", 0
+Dict.Add "Directory", 0
+Dict.Add "Archive", 0
+Dict.Add "Alias", 0
+Dict.Add "Compressed", 0
+If Attrs And 2048 Then
+    Dict.Item("Compressed") = 1
+End If
+If Attrs And 1024 Then
+    Dict.Item("Alias") = 1
+End If
+If Attrs And 32 Then
+    Dict.Item("Archive") = 1
+End If
+If Attrs And 16 Then
+    Dict.Item("Directory") = 1
+End If
+If Attrs And 8 Then
+    Dict.Item("Volume") = 1
+End If
+If Attrs And 4 Then
+    Dict.Item("System") = 1
+End If
+If Attrs And 2 Then
+    Dict.Item("Hidden") = 1
+End If
+If Attrs And 1 Then
+    Dict.Item("ReadOnly") = 1
+End If
+Str = "Атрибуты файла """ &amp; File.Path &amp; """:" &amp; vbCrLf
+For Each Attr In Dict
+    Str = Str &amp; Attr &amp; " = " &amp; Dict.Item(Attr) &amp; vbCrLf
+Next
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.2.">5.2.2. DateCreated</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DateCreated
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: дата создания файла.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.3.">5.2.3. DateLastAccessed</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DateLastAccessed
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: дата последнего доступа к файлу.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.4.">5.2.4. DateLastModified</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DateLastModified
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: дата последней модификации файла.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.5.">5.2.5. Drive</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Drive
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: объект "Drive" диска, на котором находится файл.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.6.">5.2.6. Name</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Name
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: имя файла.
+</p>
+
+<p class="paragraph">
+Замечание: чтение и запись.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.7.">5.2.7. ParentFolder</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>ParentFolder
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: объект "Folder" родительского каталога.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.8.">5.2.8. Path</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Path
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: полный путь к файлу.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.9.">5.2.9. ShortName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>ShortName
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: короткое имя файла в формате 8.3.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.10.">5.2.10. ShortPath</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>ShortPath
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: короткий путь к файлу в формате 8.3.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.11.">5.2.11. Size</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Size
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: размер файла в байтах.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.2.12.">5.2.12. Type</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Type
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: тип файла. Информация, похожая на ту, которую можно увидеть в палитре свойств файла в проводнике.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; File.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; File.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; File.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; File.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; File.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; File.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; File.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; File.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; File.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; File.Size &amp; vbCrLf
+Str = Str &amp; "Тип файла - " &amp; File.Type
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.3.">5.3. Методы</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="5.3.1.">5.3.1. Copy</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Copy(&lt;Destination&gt;,&lt;Overwrite&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: копирует файл в указанное место.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Destination&gt; - строка, путь (куда копировать).</li>
+<li>&lt;Overwrite&gt; - необязательный, булево (число). Заменять файл, если он существует (True), или нет (False)</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+File.Copy "D:\"
+File.Copy "D:\Copy of autoexec.bat"
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.3.2.">5.3.2. Move</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Move(&lt;Destination&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: перемещает файл в указанное место.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Destination&gt; - строка, путь (куда перемещать).</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+File.Move "D:\"
+'File.Move "D:\Copy of autoexec.bat"
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.3.3.">5.3.3. Delete</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Delete(&lt;Force&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: удаляет файл.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Force&gt; - необязательный, булево (число). Удалять файл, если он имеет атрибут "только для чтения" (True), или нет (False).</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\Test.txt")
+File.Delete
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="5.3.4.">5.3.4. OpenAsTextStream</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>OpenAsTextStream(&lt;Iomode&gt;,&lt;Format&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: открывает текстовый файл и возвращает объект "TextStream", указывающий на него.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Iomode&gt; - необязательный, число. Возможные значения:
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>1 - Открыть файл только для чтения.</li>
+<li>2 - Открыть файл для записи. Если файл уже существовал, его содержимое теряется.</li>
+<li>8 - Открыть файл для добавления. Если файл уже существовал, информация будет дописываться в конец файла.</li>
+</ul>
+</li>
+<li>&lt;Format&gt; - необязательный, число. Возможные значения:
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>-2 - Открыть файл в формате, используемом системой по умолчанию.</li>
+<li>-1 - Открыть файл в формате Unicode.</li>
+<li>0 - Открыть файл в формате ASCII (по умолчанию).</li>
+</ul>
+</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+MsgBox TextStream.ReadAll()
+TextStream.Close
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.">6. Объект Folder</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="6.1.">6.1. Создание объекта</a></h2>
+
+<p class="paragraph">
+Пример №1:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+</pre>
+</span>
+
+<p class="paragraph">
+Пример №2:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetSpecialFolder(0)
+</pre>
+</span>
+
+<p class="paragraph">
+Пример №3:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set DriveC = FSO.GetDrive("C:")
+Set Folder = DriveC.RootFolder
+</pre>
+</span>
+
+<p class="paragraph">
+Пример №4:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+For Each SubFolder In Folder.SubFolders
+    WScript.Echo SubFolder.Name
+Next
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.">6.2. Свойства</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="6.2.1.">6.2.1. Attributes</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Attributes
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: число, набор флагов атрибутов папки. Флаги:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>0 - Normal. Обычный файл (нет атрибутов).</li>
+<li>1 - ReadOnly. Файл только для чтения. Чтение и запись.</li>
+<li>2 - Hidden. Скрытый. Чтение и запись.</li>
+<li>4 - System. Системный. Чтение и запись.</li>
+<li>8 - Volume. Диск. Только чтение.</li>
+<li>16 - Directory. Папка или файл. Только чтение.</li>
+<li>32 - Archive. Архивный. Чтение и запись.</li>
+<li>1024 - Alias. Ссылка или ярлык. Только чтение.</li>
+<li>2048 - Compressed. Сжатый. Только чтение.</li>
+</ul>
+
+<p class="paragraph">
+Замечание: чтение и запись или только чтение, в зависимости от атрибута.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Attrs = Folder.Attributes
+Set Dict = CreateObject("Scripting.Dictionary")
+Dict.Add "ReadOnly", 0
+Dict.Add "Hidden", 0
+Dict.Add "System", 0
+Dict.Add "Volume", 0
+Dict.Add "Directory", 0
+Dict.Add "Archive", 0
+Dict.Add "Alias", 0
+Dict.Add "Compressed", 0
+If Attrs And 2048 Then
+    Dict.Item("Compressed") = 1
+End If
+If Attrs And 1024 Then
+    Dict.Item("Alias") = 1
+End If
+If Attrs And 32 Then
+    Dict.Item("Archive") = 1
+End If
+If Attrs And 16 Then
+    Dict.Item("Directory") = 1
+End If
+If Attrs And 8 Then
+    Dict.Item("Volume") = 1
+End If
+If Attrs And 4 Then
+    Dict.Item("System") = 1
+End If
+If Attrs And 2 Then
+    Dict.Item("Hidden") = 1
+End If
+If Attrs And 1 Then
+    Dict.Item("ReadOnly") = 1
+End If
+Str = "Атрибуты папки """ &amp; Folder.Path &amp; """:" &amp; vbCrLf
+For Each Attr In Dict
+    Str = Str &amp; Attr &amp; " = " &amp; Dict.Item(Attr) &amp; vbCrLf
+Next
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.2.">6.2.2. DateCreated</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DateCreated
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: дата создания каталога.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.3.">6.2.3. DateLastAccessed</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DateLastAccessed
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: дата последнего доступа к каталогу.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.4.">6.2.4. DateLastModified</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>DateLastModified
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: дата последней модификации каталога.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.5.">6.2.5. Drive</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Drive
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: объект "Drive" диска, на котором находится каталог.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.6.">6.2.6. IsRootFolder</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>IsRootFolder
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: булево (число). Признак того, является ли каталог корневым.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.7.">6.2.7. Name</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Name
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: имя каталога.
+</p>
+
+<p class="paragraph">
+Замечание: чтение и запись.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.8.">6.2.8. ParentFolder</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>ParentFolder
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: объект "Folder" родительского каталога.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.9.">6.2.9. Path</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Path
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: полный путь к каталогу.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.10.">6.2.10. ShortName</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>ShortName
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: короткое имя каталога в формате 8.3.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.11.">6.2.11. ShortPath</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>ShortPath
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: короткий путь к каталогу в формате 8.3.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.12.">6.2.12. Size</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Size
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: размер всех файлов и подкаталогов, входящих в данный каталог, в байтах.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.13.">6.2.13. Type</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Type
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: тип каталога. Информация, похожая на ту, которую можно увидеть в палитре свойств каталога в проводнике.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+Str = vbNullString
+Str = Str &amp; "Дата создания - " &amp; Folder.DateCreated &amp; vbCrLf
+Str = Str &amp; "Дата последнего доступа - " &amp; Folder.DateLastAccessed &amp; vbCrLf
+Str = Str &amp; "Дата последней модификации - " &amp; Folder.DateLastModified &amp; vbCrLf
+Str = Str &amp; "Диск - " &amp; Folder.Drive.DriveLetter &amp; vbCrLf
+Str = Str &amp; "Это корневой каталог - " &amp; Folder.IsRootFolder &amp; vbCrLf
+Str = Str &amp; "Имя - " &amp; Folder.Name &amp; vbCrLf
+Str = Str &amp; "Родительский каталог - " &amp; Folder.ParentFolder.Path &amp; vbCrLf
+Str = Str &amp; "Путь - " &amp; Folder.Path &amp; vbCrLf
+Str = Str &amp; "Короткое имя - " &amp; Folder.ShortName &amp; vbCrLf
+Str = Str &amp; "Путь в формате 8.3 - " &amp; Folder.ShortPath &amp; vbCrLf
+Str = Str &amp; "Размер - " &amp; Folder.Size &amp; vbCrLf
+Str = Str &amp; "Тип каталога - " &amp; Folder.Type &amp; vbCrLf
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.14.">6.2.14. SubFolders</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>SubFolders
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: объект-коллекция "Folders", содержащая все подкаталоги данного каталога, включая скрытые и системные.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\")
+MsgBox Folder.SubFolders.Count
+Set SubFolder = Folder.SubFolders.Item("Program Files")
+MsgBox SubFolder.Path
+Set SubFolder = Folder.SubFolders("Program Files")
+MsgBox SubFolder.Path
+</pre>
+</span>
+
+<p class="paragraph">
+Другой пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\Program Files")
+For Each SubFolder In Folder.SubFolders
+    WScript.Echo SubFolder.Name
+Next
+</pre>
+</span>
+
+<p class="paragraph">
+Создание нового подкаталога:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\")
+Set NewFolder = Folder.SubFolders.Add("New Folder")
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.2.15.">6.2.15. Files</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Files
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: объект-коллекция "Files", содержащая все файлы данного каталога, включая скрытые и системные.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\")
+MsgBox Folder.Files.Count
+Set File = Folder.Files.Item("AUTOEXEC.BAT")
+MsgBox File.Path
+Set File = Folder.Files("AUTOEXEC.BAT")
+MsgBox File.Path
+</pre>
+</span>
+
+<p class="paragraph">
+Другой пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\")
+For Each File In Folder.Files
+    WScript.Echo File.Name
+Next
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.3.">6.3. Методы</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="6.3.1.">6.3.1. Copy</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Copy(&lt;Destination&gt;,&lt;Overwrite&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: копирует каталог в указанное место.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Destination&gt; - строка, путь (куда копировать).</li>
+<li>&lt;Overwrite&gt; - необязательный, булево (число). Заменять каталог, если он существует (True), или нет (False).</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("D:\Job\Site")
+Folder.Copy "D:\"
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.3.2.">6.3.2. Move</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Move(&lt;Destination&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: перемещает каталог в указанное место.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Destination&gt; - строка, путь (куда перемещать).</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("D:\Job\Site")
+Folder.Move "D:\"
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.3.3.">6.3.3. Delete</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Delete(&lt;Force&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: удаляет каталог со всем содержимым.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Force&gt; - необязательный, булево (число). Удалять каталог, если он имеет атрибут "только для чтения" (True), или нет (False).</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\New Folder")
+Folder.Delete
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="6.3.4.">6.3.4. CreateTextFile</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>CreateTextFile(&lt;Filename&gt;,&lt;Overwrite&gt;,&lt;Unicode&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: создаёт новый текстовый файл и возвращает объект "TextStream", указывающий на него.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Filename&gt; - строка, имя файла.</li>
+<li>&lt;Overwrite&gt; - необязательный, булево (число). Перезаписывать файл, если он существует (True), или нет (False). По умолчанию - False. Если указано False и файл существует - произойдёт ошибка.</li>
+<li>&lt;Unicode&gt; - необязательный, булево (число). Файл в формате Unicode (True), или ASCII (False). По умолчанию - False.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\")
+Set TextStream = Folder.CreateTextFile("Test.txt")
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.">7. Объект TextStream</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="7.1.">7.1. Создание объекта</a></h2>
+
+<p class="paragraph">
+Пример №1:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set TextStream = FSO.CreateTextFile("C:\Test.txt")
+</pre>
+</span>
+
+<p class="paragraph">
+Пример №2:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set Folder = FSO.GetFolder("C:\")
+Set TextStream = Folder.CreateTextFile("Test.txt")
+</pre>
+</span>
+
+<p class="paragraph">
+Пример №3:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set TextStream = FSO.OpenTextFile("C:\autoexec.bat")
+</pre>
+</span>
+
+<p class="paragraph">
+Пример №4:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\autoexec.bat")
+Set TextStream = File.OpenAsTextStream(1)
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.2.">7.2. Свойства</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="7.2.1.">7.2.1. AtEndOfLine</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>AtEndOfLine
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: содержит True, если указатель достиг конца строки и False в противном случае. Работает только если файл открыт для чтения.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+Str = vbNullString
+While Not TextStream.AtEndOfLine
+    Str = Str &amp; TextStream.Read(1)
+Wend
+TextStream.Close
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.2.2.">7.2.2. AtEndOfStream</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>AtEndOfStream
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: содержит True, если указатель достиг конца файла и False в противном случае. Работает только если файл открыт для чтения.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+Str = vbNullString
+While Not TextStream.AtEndOfStream
+    Str = Str &amp; TextStream.ReadLine() &amp; vbCrLf
+Wend
+TextStream.Close
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.2.3.">7.2.3. Column</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Column
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: содержит номер колонки текущего символа файла.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+Str = vbNullString
+While Not TextStream.AtEndOfLine
+    Str = Str &amp; TextStream.Column &amp; ": " &amp; TextStream.Read(1) &amp; vbCrLf
+Wend
+TextStream.Close
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.2.4.">7.2.4. Line</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Line
+</pre>
+</span>
+
+<p class="paragraph">
+Возвращаемое значение: содержит номер текущей строки файла.
+</p>
+
+<p class="paragraph">
+Замечание: только чтение.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+Str = vbNullString
+While Not TextStream.AtEndOfStream
+    Str = Str &amp; TextStream.Line &amp; ": " &amp; TextStream.ReadLine() &amp; vbCrLf
+Wend
+TextStream.Close
+MsgBox Str
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.3.">7.3. Методы</a></h2>
+
+<h2 style="text-indent:1.3em"><a name="7.3.1.">7.3.1. Close</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Close
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: закрывает открытый файл.
+</p>
+
+<p class="paragraph">
+Параметры: нет.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+MsgBox TextStream.ReadAll()
+TextStream.Close
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.3.2.">7.3.2. Read</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Read(&lt;Characters&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: считывает из файла указанное количество символов и возвращает полученную строку.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Characters&gt; - число, количество символов, которое нужно считать.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+MsgBox TextStream.Read(13)
+TextStream.Close
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.3.3.">7.3.3. ReadAll</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>ReadAll
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: считывает весь файл и возвращает полученную строку.
+</p>
+
+<p class="paragraph">
+Параметры: нет.
+</p>
+
+<p class="paragraph">
+Описание: для больших файлов использование этого метода потребует больших ресурсов памяти.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+MsgBox TextStream.ReadAll()
+TextStream.Close
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.3.4.">7.3.4. ReadLine</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>ReadLine
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: считывает строку из файла и возвращает полученную строку.
+</p>
+
+<p class="paragraph">
+Параметры: нет.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+Str = vbNullString
+While Not TextStream.AtEndOfStream
+    Str = Str &amp; TextStream.ReadLine() &amp; vbCrLf
+Wend
+MsgBox Str
+TextStream.Close
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.3.5.">7.3.5. Skip</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Skip(&lt;Characters&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: пропускает при чтении файла указанное количество символов.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Characters&gt; - число, количество символов, которые нужно пропустить.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+MsgBox TextStream.Read(13)
+TextStream.Skip 10
+MsgBox TextStream.Read(10)
+TextStream.Close
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.3.6.">7.3.6. SkipLine</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>SkipLine
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: пропускает при чтении файла строку.
+</p>
+
+<p class="paragraph">
+Параметры: нет.
+</p>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set File = FSO.GetFile("C:\boot.ini")
+Set TextStream = File.OpenAsTextStream(1)
+MsgBox TextStream.ReadLine()
+TextStream.SkipLine
+MsgBox TextStream.ReadLine()
+TextStream.Close
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.3.7.">7.3.7. Write</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Write(&lt;String&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: записывает в файл указанную строку. Символы возврата каретки и новой строки в файл не записываются.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;String&gt; - строка для записи в файл.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set TextStream = FSO.CreateTextFile("C:\Test.txt")
+TextStream.Write("Text")
+TextStream.Close
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.3.8.">7.3.8. WriteLine</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>WriteLine(&lt;String&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: записывает в файл указанную строку. В файл записываются символы возврата каретки и новой строки.
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;String&gt; - необязательный, строка для записи в файл. Если опущен, в файл записывается пустая строка.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set TextStream = FSO.CreateTextFile("C:\Test.txt")
+TextStream.WriteLine "Text"
+TextStream.Close
+</pre>
+</span>
+
+<h2 style="text-indent:1.3em"><a name="7.3.9.">7.3.9. WriteBlankLines</a></h2>
+
+<p class="paragraph">
+Синтаксис:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>WriteBlankLines(&lt;Lines&gt;)
+</pre>
+</span>
+
+<p class="paragraph">
+Назначение: записывает в файл указанное количество пустых строк (символы возврата каретки и новой строки).
+</p>
+
+<p class="paragraph">
+Параметры:
+</p>
+
+<ul style="text-indent:0em; margin-top:5; margin-bottom:5">
+<li>&lt;Lines&gt; - число, количество пустых строк, которое надо записать.</li>
+</ul>
+
+<p class="paragraph">
+Пример:
+</p>
+
+<span style="color:navy; font-weight:bold">
+<pre>Set FSO = CreateObject("Scripting.FileSystemObject")
+Set TextStream = FSO.CreateTextFile("C:\Test.txt")
+TextStream.WriteBlankLines 5
+TextStream.Close
+</pre>
+</span>
+
+<p style="text-align:right">
+<small>Составление - <a href="https://script-coding.com/resume.html">Людоговский Александр</a></small>
+</p>
+
+<p><a href="https://script-coding.com/index.html">Перейти на главную страничку сайта (список статей, файлы для скачивания)</a></p>
+
+<p><small>© 2007 <a href="http://www.script-coding.com/">http://www.script-coding.com</a> При любом использовании материалов сайта обязательна <b>ссылка</b> на него как на источник информации, а также сохранение <b>целостности</b> и <b>авторства</b> материалов.</small>
+
+
+
+</p></body></html>

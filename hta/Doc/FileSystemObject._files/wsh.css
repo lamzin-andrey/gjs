@@ -1,0 +1,63 @@
+        body { margin-right:0pt; margin-left:2pt; margin-top:0pt; background-color:#FFFFFF; color:#000000; }
+        .dd  { width: 770px;  border: 0px;  border-spacing:0px; padding:0px;  border-collapse:collapse; margin: 0 auto; }
+        .ddm { width: 250px;  border: 0px;  border-spacing:0px; padding:0px;  border-collapse:collapse; margin: 0 auto; 
+			font-size:7pt; font-family:Verdana,Arial,sans-serif; font-weight:normal;}
+        .mail {font-size:7pt; font-family:Verdana,Arial,sans-serif; font-weight:normal; text-decoration:none;}
+        a.tt:link,a.tt:visited,a.tt:active,a.tt:hover
+                {
+           color:#002675;font-size:7pt;font-family:Verdana,Arial,sans-serif;  text-decoration:none;font-weight:normal;
+        }
+        .mbg {background-image: url('/ngr/bg2_right.gif'); vertical-align:top;}
+        td {padding:0px;}
+        img {  border: 0;  text-decoration: none; margin:0;  display: block;}
+        .mtxt {font-size: 12pt; font-family: Verdana,Arial,sans-serif; text-align:left; font-weight:bold;}
+        table.bt2, table.bt2 td , table.bt2 th{  border: 1px solid black;  border-collapse: collapse; padding-left:10px; padding-right:10px;}
+        table.bt2 th{  margin-left: auto;  margin-right: auto;  font-weight: bold;  text-align: center; padding-top:8px;padding-bottom:8px;}
+        table.bt2 td{  text-align: left; padding-top:8px;  padding-bottom:8px;}
+        table.bt1, table.bt1 td , table.bt1 th
+               {  border: 1px solid black;  border-collapse: collapse; padding-left:10px; padding-right:10px; font-size: 10pt;}
+        table.bt1 th{  margin-left: auto;  margin-right: auto;  font-weight: bold; text-align: center; }
+        table.bt1 td{  text-align: left; padding-top:4px;  padding-bottom:4px;}
+        a.linkbold { font-weight:bold;  color:#000000; font-size: 13pt;  }
+        a.linknormal { font-weight:normal;  color:#000000; font-size: 12pt; }
+        .cent {display:block; margin:0 auto;}
+        #container {
+            width: 722px; /* Ширина слоя */
+            margin: 0 auto; /* Выравнивание по центру */
+            background: #f0f0f0; /* Цвет фона левой колонки */
+        }
+        #sidebar {
+            margin-top: 10px;
+            width: 176px; /* Ширина слоя */
+            padding: 0 4px; /* Отступы вокруг текста */
+            float: left; /* Обтекание по правому краю */
+            /* position: fixed;      Если надо фикс */
+        }
+        #content {
+            margin-left: 182px; /* Отступ слева */
+            padding: 6px; /* Поля вокруг текста */
+            /* background-image: url('/ngr/bg2_right.gif'); */
+            background: #fff; /*  Цвет фона правой колонки  */
+        }
+        #footer {
+            font-size: 7pt;
+            /* background: #8fa09b;  Цвет фона подвала */
+            color: #fff; /* Цвет текста */
+            /* padding: 5px;  Отступы вокруг текста */
+            clear: left; /* Отменяем действие float */
+        }
+        .Lmen1 { text-decoration: none; font-weight: bold; text-align: left; TEXT-INDENT: 0; margin-left: 1pt; font-size:8pt; }
+        .Lmen2 { text-decoration:none;  font-weight: bold; text-align: left; text-indent: 0;
+        display:block; margin-left: 2pt; margin-right: 2pt; line-height:13px;font-size:8pt; }
+        .dnd  { width: 80px;  height: 14px; text-align: center;  background: #EEE; border: 1px solid gray; padding:8px;
+        margin-left:20px; margin-bottom: 6px;}
+        .divfortab
+		{ width:720px; text-align: left; font-size: 13pt; font-weight: bold; margin-left: auto; margin-right: auto; }
+		 .primer {width: 500px; background-image: url('code-bg0.gif');  padding-left: 5px;
+		 border: 1px solid #AAAAAA; white-space: pre-wrap; font-size:10pt;}
+		.primers {width: 480px; background-image: url('code-bg0.gif');  padding-left: 5px;
+		 border: 1px solid #AAAAAA; white-space: pre-wrap; font-size:10pt;}	
+		.primersm {width: 405px; background-image: url('code-bg0.gif');  padding-left: 5px;
+		 border: 1px solid #AAAAAA; white-space: pre-wrap; font-size:10pt;}			 
+		.contentstyle {font-size: 11pt; margin-left:10px; margin-top:20px; margin-right:8px;}
+		.list3{width:5px; height:5px; float:left;}

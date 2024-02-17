@@ -1,0 +1,148 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<div id="placer">
+			<title>hello HTA</title>
+		<hta:application id="myHta" 
+			applicationName="myApp" 
+			icon="F:/tp7/TURBO.ico" 
+			
+			mycommnoframe="caption=No;border=None"
+				caption="Yes"
+				innerborder="no"
+				scroll="no"
+				border="dialog"
+			
+			mycommfixed=""
+				border="dialog"
+				maximizebutton="No"
+				minimizebutton="No"
+		/>
+		</div>
+		<!--OBJECT ID="WebBrowser" WIDTH=0 HEIGHT=0 CLASSID="clsid:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT-->
+		<input type="button" onclick="test()" value="Test Err JS">
+		<!--input type="button" onclick="alert(filedialog(window.saveDlgFilter, window.saveDlgDefaultDir, window.saveDlgTitle, true))" value="Save Proxy" id="saveproxy"-->
+		<div id="out" style="border:1px solid blue"></div>
+		
+		<table>
+			<tr>
+				<td>
+					<fieldset>
+						<legend>Proc1</legend>
+						<div id="proc1Out" style="border:1px solid blue"></div>
+					</fieldset>
+					<fieldset>
+						<legend>Proc1Final</legend>
+						<div id="proc1FOut" style="border:1px solid green"></div>
+					</fieldset>
+					<input type="button" value="Run Proc1" onclick="testRunProc1()">
+				</td>
+				
+				<td>
+					<fieldset>
+						<legend>Proc2</legend>
+						<div id="proc2Out" style="border:1px solid blue"></div>
+					</fieldset>
+					<fieldset>
+						<legend>Proc2Final</legend>
+						<div id="proc2FOut" style="border:1px solid green"></div>
+					</fieldset>
+					<input type="button" value="Run Proc2" onclick="testRunProc2()">
+				</td>
+			</tr>
+		</table>
+		
+		
+		<script type="text/JScript" src="./default/tools/js/j.js"></script>
+		<script type="text/VBScript" src="./default/tools/js/saver.vbs"></script>
+		<script type="text/javascript">
+			function e(i) {
+				return document.getElementById(i);
+			}
+			function test(s) {
+				// MW.showFullScreen();
+				var t = document.getElementById("placer");
+				var hta = document.getElementById("myHta");
+				t.innerHTML = '<title>Lalalal</title><hta:application id="myHta"applicationName="myApp" icon="cmd.exe" mycommnoframe="caption=No;border=None"			caption="Yes"			innerborder="no"			scroll="no"			border="dialog"					mycommfixed=""			border="dialog"			maximizebutton="No"			minimizebutton="No"		/>';
+				
+				
+				var file =  "C:/testfile1.txt";
+				file = "F:/hta";
+				
+				var ls = FS.scandir(file), i, SZ = ls.length;
+				for (i = 0; i < SZ; i++) {
+					out(ls[i]);
+				}
+				var s = Env.openDirectoryDialog("Saverrrrr", file);
+				out("Select File: " + s);
+				
+				file =  "C:/testfile.txt"
+				out(FS.filesize(file));
+				
+				// MW.maximize();
+				//setTimeout(function(){MW.showNormal();}, 	1000				);
+				
+				
+				//alert("Quit now");
+				e("myHta").setAttribute("icon", "cmd.exe");
+				FS.mkdir("F:\\testhtamd\\gigiu\\all");
+				//App.quit();
+				
+			}
+			function out(s) {
+				e("out").innerHTML += "<p>" + s + "</p>";
+			}
+			function lout(s) {
+				out(s);
+			}
+			
+			function testRunProc1() {
+				window.r = Env.exec("cscript " + App.dir() + "/sh/while.js", proc1OnFin, proc1OnOut, proc1OnErr);
+				// window.r = Env.exec("g++", proc1OnFin, proc1OnOut, proc1OnErr);
+				out("Drv onStart: " + window.r);
+			}
+			function proc1OnFin(stdout, err) {
+				
+				var a = stdout.split("\n"), i, SZ = a.length;
+				for (i = 0; i < SZ; i++) {
+					e("proc1FOut").innerHTML += "<div>" + a[i] + "</div>";
+				}
+				out("drv: r[0]: " + Env.getProcIdByHash(window.r[0]));
+				a = err.split("\n"), i, SZ = a.length;
+				for (i = 0; i < SZ; i++) {
+					e("proc1FOut").innerHTML += "<div style='color:#AA0000;'>" + a[i] + "</div>";
+				}
+				
+			}
+			function proc1OnOut(s) {
+				e("proc1Out").innerHTML += "<div>" + s + "</div>";
+			}
+			function proc1OnErr(s) {
+			}
+			
+			// PROC 2
+			function testRunProc2() {
+				Env.exec("cscript " + App.dir() + "/sh/while2.js", proc2OnFin, proc2OnOut, proc2OnErr);
+			}
+			function proc2OnFin(out, err) {
+				var a = out.split("\n"), i, SZ = a.length;
+				for (i = 0; i < SZ; i++) {
+					e("proc2FOut").innerHTML += "<div>" + a[i] + "</div>";
+				}
+				a = err.split("\n"), i, SZ = a.length;
+				for (i = 0; i < SZ; i++) {
+					e("proc2FOut").innerHTML += "<div style='color:#AA0000;'>" + a[i] + "</div>";
+				}
+			}
+			function proc2OnOut(s) {
+				e("proc2Out").innerHTML += "<div>" + s + "</div>";
+			}
+			function proc2OnErr(s) {
+			}
+						
+		</script>
+	</body>
+</html>
+

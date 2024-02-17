@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://forum.script-coding.com/viewtopic.php?id=5839 -->
+<html lang="ru" dir="ltr" class="js"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./WshScriptExec.Exec_files/up-and-down.js"></script><script src="./WshScriptExec.Exec_files/reputation.js"></script><script src="./WshScriptExec.Exec_files/bootstrap.min.js"></script>
+    <meta name="description" content="JScript: Проблема с WshScriptExec.Exec (Страница 1) — Windows Script Host, HTA (VBScript, JScript) — Общение — Серый форум — разработка скриптов">
+<title>JScript: Проблема с WshScriptExec.Exec (Страница 1) — Windows Script Host, HTA (VBScript, JScript) — Общение — Серый форум</title>
+<link rel="alternate" type="application/rss+xml" href="https://forum.script-coding.com/extern.php?action=feed&amp;tid=5839&amp;type=rss" title="RSS">
+<link rel="alternate" type="application/atom+xml" href="https://forum.script-coding.com/extern.php?action=feed&amp;tid=5839&amp;type=atom" title="ATOM">
+<link rel="author" type="text/html" href="https://forum.script-coding.com/userlist.php" title="Пользователи">
+
+<script type="text/javascript" src="./WshScriptExec.Exec_files/copycode.js"></script><link rel="stylesheet" type="text/css" media="all" href="./WshScriptExec.Exec_files/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="./WshScriptExec.Exec_files/Oxygen.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="./WshScriptExec.Exec_files/pun_bbcode.min.css">
+<style>.rep_plus_minus { font-style:italic; font-size: 90%; border-radius: 8px 8px; background-color:#F3F3F3; padding: 6px 12px !important;} .rep_plus_head { font-style:normal; color:#008000; } .rep_minus_head { font-style:normal; color:#FF0000; }</style>
+<link rel="stylesheet" type="text/css" media="all" href="./WshScriptExec.Exec_files/style.css">
+<noscript><style>#pun_bbcode_bar { display: none; }</style></noscript>
+<style>#pun_bbcode_bar #pun_bbcode_button_fancy_spoiler.image{background:url("//forum.script-coding.com/extensions/fancy_spoiler/css/Oxygen/img/spoiler.png") 50% 50% no-repeat}.fancy_spoiler_switcher{border:solid 1px #eee!important;border-radius:.2em;background:#fff;padding:.5em .75em;margin:.75em 1em}.fancy_spoiler_switcher_header{color:#cb4b16;cursor:pointer;-moz-user-select:none;-webkit-user-select:none;user-select:none}.fancy_spoiler{margin-top:.7em!important;padding-top:.7em!important;color:#333;border-top:dashed 1px #eee!important}</style>
+<link rel="stylesheet" type="text/css" media="all" href="./WshScriptExec.Exec_files/pun_attachment.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="./WshScriptExec.Exec_files/fancy_stop_spam.css">
+<style>.fancy_spoiler { display: none; padding: .35em 0; }</style>
+<noscript><style>.fancy_spoiler { display: block; padding: 0.35em 0; border: none !important; margin: 0 !important; }
+.fancy_spoiler_switcher { border: none !important; background: inherit !important; margin: 0 !important; padding: 0; }
+.fancy_spoiler_switcher_header { display: none; }</style></noscript>
+<link rel="stylesheet" type="text/css" media="all" href="./WshScriptExec.Exec_files/Oxygen.css">
+<link rel="stylesheet" type="text/css" media="all" href="./WshScriptExec.Exec_files/up-and-down.css">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://forum.script-coding.com/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+	<div id="brd-messages" class="brd" style="visibility: hidden;"></div>
+
+	<div id="brd-wrap" class="brd">
+	<div id="brd-viewtopic" class="brd-page paged-page">
+	<div id="brd-head" class="gen-content">
+		<p id="brd-access"><a href="https://forum.script-coding.com/viewtopic.php?id=5839#brd-main">Перейти к содержимому раздела</a></p>
+		<p id="brd-title"><a href="https://forum.script-coding.com/index.php">Серый форум</a></p>
+		<p id="brd-desc">разработка скриптов</p>
+	</div>
+	<a href="https://forum.script-coding.com/viewtopic.php?id=5839#" class="nav-toggle" aria-hidden="true">Серый форум</a><div id="brd-navlinks" class="gen-content nav-collapse nav-collapse-0 closed" aria-hidden="false" style="transition: max-height 284ms ease 0s; position: relative;">
+		<ul>
+		<li id="navindex"><a href="https://forum.script-coding.com/index.php">Форум</a></li>
+		<li id="navrules"><a href="https://forum.script-coding.com/misc.php?action=rules">Правила</a></li>
+		<li id="navregister"><a href="https://forum.script-coding.com/register.php">Регистрация</a></li>
+		<li id="navlogin"><a href="https://forum.script-coding.com/login.php">Вход</a></li>
+		<li id="navextra1"><a href="https://script-coding.com/">Главная</a></li>
+		<li id="navextra2"><a href="https://google.com/cse/home?cx=005032125877213764876:7_djx8ukuso&amp;hl=ru">Поиск Google</a></li>
+	</ul>
+		
+	</div>
+	<div id="brd-visit" class="gen-content">
+		<p id="welcome"><span>Вы не вошли.</span> <span>Пожалуйста, войдите или зарегистрируйтесь.</span></p>
+		
+	</div>
+	
+	<div class="hr"><hr></div>
+	<div id="brd-main">
+		<h1 class="main-title"><a class="permalink" href="https://forum.script-coding.com/viewtopic.php?id=5839" rel="bookmark" title="Постоянная ссылка на эту тему">JScript: Проблема с WshScriptExec.Exec</a></h1>
+
+		<div id="brd-crumbs-top" class="crumbs">
+	<p><span class="crumb crumbfirst"><a href="https://forum.script-coding.com/index.php">Серый форум</a></span> <span class="crumb"><span> →&nbsp;</span><a href="https://forum.script-coding.com/index.php?cid=1">Общение</a></span> <span class="crumb"><span> →&nbsp;</span><a href="https://forum.script-coding.com/viewforum.php?id=14">Windows Script Host, HTA (VBScript, JScript)</a></span> <span class="crumb crumblast"><span> →&nbsp;</span><a href="https://forum.script-coding.com/viewtopic.php?id=5839">JScript: Проблема с WshScriptExec.Exec</a></span> </p>
+</div>
+		
+		<div id="brd-pagepost-top" class="main-pagepost gen-content">
+	<p class="paging"><span class="pages">Страницы</span> <strong class="first-item">1</strong></p>
+	<p class="posting">Чтобы отправить ответ, вы должны <a href="https://forum.script-coding.com/login.php">войти</a> или <a href="https://forum.script-coding.com/register.php">зарегистрироваться</a></p>
+</div>
+		<div class="main-head">
+		<p class="options"><span class="feed first-item"><a class="feed" href="https://forum.script-coding.com/extern.php?action=feed&amp;tid=5839&amp;type=rss">RSS</a></span></p>
+		<h2 class="hn"><span><span class="item-info">Сообщения 31</span></span></h2>
+	</div>
+	<div id="forum14" class="main-content main-topic">
+		<div class="post odd firstpost topicpost">
+			<div id="p48706" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">1</span> <span class="post-byline"><span>Тема от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48706#p48706">2011-05-27 11:41:57</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48706" class="entry-title hn">Тема: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Хотел сделать расширенный аналог функции <a href="http://forum.script-coding.com/viewtopic.php?id=3965">поиск файлов по расширению</a>. Однако столкнулся с проблемой. Следующий скрипт не завершает выполнение на определенном каталоге (см. пример ниже). "Уничтожение" процесса завершает скрипт. Скрипт нормально работает если ввести уточнение шаблона, например, x* (около 20 файлов). Это проблема только у меня (Windows Vista)?<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>
+var cmd = 'cmd /c dir /b /a-d "C:\\Windows\\System32\\*"';
+
+var sh = new ActiveXObject('WScript.Shell');
+var ex = sh.Exec(cmd);
+
+while ( ex.Status == 0 ) {
+	WScript.Sleep(100);
+}
+
+WScript.Echo(ex.StdOut.ReadAll());</code></pre></div>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48707" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">2</span> <span class="post-byline"><span>Ответ от </span><strong>Xameleon</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48707#p48707">2011-05-27 12:23:00</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Xameleon</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/8836">Рейтинг</a> : [<span style="color:green">41</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48707" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Попробовал. У меня так же повисает и ждёт закрытия окна (Windows 7 Professional x32). Помогла только добавка <strong>Terminate</strong>. Но скорее всего это оборвёт перебор файлов в каталоге... Так что не вариант.</p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>var cmd = 'cmd /c dir /b /a-d "C:\\Windows\\System32\\*"';
+ 
+var sh = new ActiveXObject('WScript.Shell');
+var ex = sh.Exec(cmd);
+ 
+ex.Terminate();
+
+while ( ex.Status == 0 ) {
+    WScript.Sleep(100);
+}
+ 
+WScript.Echo(ex.StdOut.ReadAll());</code></pre></div>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>Передумал переделывать мир. Пашет и так, ну и ладно. Сделаю лучше свой !</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48708" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">3</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48708#p48708">2011-05-27 12:37:54</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48708" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Да. Terminate может прервать выполнения команды и, соответственно, перебор файлов. Если убрать цикл проверки статуса, то скрипт работает. Но это не гарантирует правильность его работы. Печально. А ведь это самый быстрый способ получения листинга каталога в отличие от скриптового перебора коллекции файлов/каталогов.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48709" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">4</span> <span class="post-byline"><span>Ответ от </span><strong>Xameleon</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48709#p48709">2011-05-27 12:39:34</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Xameleon</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/8836">Рейтинг</a> : [<span style="color:green">41</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48709" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Сделал тест - вставил в цикле запись в файл ex.StdOut.ReadLine-а. Выяснил, что просто перебор идёт очень медленно. В итоге у меня это жевалось где то минут 5. Но потом штатно закрылось окно cmd и выдалось сообщение со списком файлов. Делаю вывод - просто надо дождаться окончания работы приложения. И видимо, как я и предположил - Terminate просто не даёт перебору завершиться нормально.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>Передумал переделывать мир. Пашет и так, ну и ладно. Сделаю лучше свой !</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48710" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">5</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48710#p48710">2011-05-27 12:47:28</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48710" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Вот так работает. Быстро работает. Но надежно ли это?<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>
+var cmd = 'cmd /c dir /b /a-d "C:\\Windows\\System32\\*"';
+
+var sh = new ActiveXObject('WScript.Shell');
+var ex = sh.Exec(cmd);
+
+var result = [];
+while ( ! ex.StdOut.AtEndOfStream ) {
+	result.push(ex.StdOut.ReadLine());
+}
+WScript.Echo(result.join('\n'));
+WScript.Echo(result.length);</code></pre></div>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48711" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">6</span> <span class="post-byline"><span>Ответ от </span><strong>Xameleon</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48711#p48711">2011-05-27 12:54:48</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Xameleon</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/8836">Рейтинг</a> : [<span style="color:green">41</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48711" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Боюсь, что не совсем надёжно. Дело в том, что <strong>StdOut.AtEndOfStream</strong> может принимать значение <strong>True</strong>, если Вы успели считать из него (буфера) все данные, а новые ещё не были положены. Такое может происходить в процессе перебора в любой момент. Поэтому мне кажется, что это равноценно обрыву по <strong>Terminate</strong>. Хотя могу ошибаться.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>Передумал переделывать мир. Пашет и так, ну и ладно. Сделаю лучше свой !</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48712" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">7</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48712#p48712">2011-05-27 13:30:04</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48712" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<div class="quotebox"><blockquote><p>Боюсь, что не совсем надёжно.</p></blockquote></div><p>И я о том же. Запись вывода во временный файл и последующее чтение надежно, но не хотелось бы привязываться к внешнему временному файлу.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48715" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">8</span> <span class="post-byline"><span>Ответ от </span><strong>Xameleon</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48715#p48715">2011-05-27 14:24:35</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Xameleon</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/8836">Рейтинг</a> : [<span style="color:green">41</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48715" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Не нужен промежуточный файл. Нужно просто дождаться окончания работы процесса. И не более того. Вы просто <span class="bbu">не дожидаетесь</span>. Ваш первый код полностью рабочий.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>Передумал переделывать мир. Пашет и так, ну и ладно. Сделаю лучше свой !</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48716" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">9</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48716#p48716">2011-05-27 15:12:53</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48716" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Говоря о промежуточном файле я имел в виду следующее<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>
+sh.Run(cmd + '&gt;tmpfile', 0, true);</code></pre></div><p>Я согласен, что первый код рабочий. Ведь на других каталогах он работает. Вот только почему он не работает на каталогах с большим количеством объектов (например, C:\Windows\System32 содержит более 2500 файлов).</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48717" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">10</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48717#p48717">2011-05-27 15:14:08</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48717" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<div class="quotebox"><cite>Xameleon пишет:</cite><blockquote><p>Не нужен промежуточный файл. Нужно просто дождаться окончания работы процесса. И не более того. Вы просто <span class="bbu">не дожидаетесь</span>. Ваш первый код полностью рабочий.</p></blockquote></div><p>15 минут ожидания... И скрипт не завершился.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48719" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">11</span> <span class="post-byline"><span>Ответ от </span><strong>Xameleon</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48719#p48719">2011-05-27 15:35:11</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Xameleon</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/8836">Рейтинг</a> : [<span style="color:green">41</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48719" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Решил ещё раз потестировать. Убедился, что если из цикла убрать <strong>ex.StdOut.ReadAll</strong> или <strong>ex.StdOut.ReadLine</strong>, то окошко продолжает висеть. Стоит вернуть обратно - код срабатывает молниеносно.....<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>
+var fso = new ActiveXObject('Scripting.FileSystemObject');
+var ts = fso.OpenTextFile("log.txt",2,1);
+var cmd = 'cmd /c dir /b /a-d "C:\\Windows\\System32\\*"';
+ 
+var sh = new ActiveXObject('WScript.Shell');
+var ex = sh.Exec(cmd);
+ 
+while ( ex.Status == 0 ) {
+    ts.WriteLine(ex.StdOut.ReadAll());
+    WScript.Sleep(100);
+}
+ 
+WScript.Echo('END');</code></pre></div>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>Передумал переделывать мир. Пашет и так, ну и ладно. Сделаю лучше свой !</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48721" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">12</span> <span class="post-byline"><span>Ответ от </span><strong>Xameleon</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48721#p48721">2011-05-27 15:50:55</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Xameleon</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/8836">Рейтинг</a> : [<span style="color:green">41</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48721" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Без промежуточного файла я бы сделал так:<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>
+Dim sh, ex, tmp
+Set sh = CreateObject("WScript.Shell")
+Set ex = sh.Exec("cmd /c dir /b /a-d ""C:\windows\system32""")
+Do while ex.Status = 0
+	tmp = tmp &amp; ex.StdOut.ReadAll
+	WScript.Sleep 100
+Loop
+
+MsgBox tmp</code></pre></div><p>Написал на VBS, т.к тоже самое на JS у меня падало на строке <strong>WScript.Echo(tmp);</strong>. Видимо текст длиной 45294 для Echo перебор. А замену MsgBox в JS я не знаю.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>Передумал переделывать мир. Пашет и так, ну и ладно. Сделаю лучше свой !</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48722" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">13</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48722#p48722">2011-05-27 16:26:29</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48722" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Код <a href="http://forum.script-coding.com/viewtopic.php?pid=48710#p48710">#5</a> рабочий. Проверил на очень большом списке (более 19 тыс. файлов) и маленьком (2 файла). Вот его модификация:<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>
+var cmd = 'cmd /c dir /b /a-d /s "C:\\Windows\\System32\\*"';
+
+var sh = new ActiveXObject('WScript.Shell');
+var ex = sh.Exec(cmd);
+
+var result = [];
+while ( ex.Status == 0 ) {
+	if ( ex.StdOut.AtEndOfStream ) {
+		break;
+	}
+	result.push(ex.StdOut.ReadLine());
+}
+
+//WScript.Echo(result.join('\n'));
+WScript.Echo(result.length);</code></pre></div>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48742" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">14</span> <span class="post-byline"><span>Ответ от </span><strong>JSmаn</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48742#p48742">2011-05-28 12:23:10</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>JSmаn</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24434">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48742" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Приветствую. <strong>Rumata</strong>, а чем не устраивает промежуточный файл?</p><p>Кстати, консоль можно <a href="http://forum.script-coding.com/viewtopic.php?pid=37443#p37443">прятать</a>.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48752" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">15</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48752#p48752">2011-05-28 21:41:49</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48752" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p><strong>JSman</strong>, ничего не имею против временных файлов, но из "идеологических" соображений считаю неприемлемым одно действие дробить между разными процессами (получение списка в файл - один процесс, удаление файла - другой процесс).</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48762" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">16</span> <span class="post-byline"><span>Ответ от </span><strong>JSmаn</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48762#p48762">2011-05-29 13:50:26</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>JSmаn</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24434">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48762" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p><strong>Rumata</strong>, если решение готово, то предлагаю добавить в коллекцию :-)</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48775" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">17</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48775#p48775">2011-05-29 16:01:37</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48775" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p><strong>JSman</strong>, имеется в виду поиск файлов? Пока еще нет. Решение пока сыровато и требует некоторой доработки. Добавлю, как только приду к выводу, что решение может быть опубликовано.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48839" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">18</span> <span class="post-byline"><span>Ответ от </span><strong>shiz</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48839#p48839">2011-05-31 01:14:18</a></span> <span class="post-edit">(изменено: shiz, 2011-06-02 01:38:03)</span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>shiz</strong></li>
+						<li class="usertitle"><span>Участник</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/26249">Рейтинг</a> : [<span style="color:green">13</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48839" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Удивительно, что такой простой вопрос вызвал такое мощное обсуждение!<br>Просто уберите из исходного примера ненужное ожидание<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>while ( ex.Status == 0 ) {
+    WScript.Sleep(100);
+}</code></pre></div><p>- WshScriptExec.StdOut.ReadAll() всё равно будет ждать пока запущенное приложение не закроет свой выходной поток (во многих случаях это крайне неудобно, но не в этом).</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>Забыл пароль и потерял e-mail.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48845" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">19</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48845#p48845">2011-05-31 09:12:21</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48845" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p><strong>shiz</strong>, не делайте скоропалительных выводов. "Ненужное" ожидание необходимо, чтобы скрипт дождался окончания вызванного процесса. Из моих экспериментов я увидел, что скрипт не может дождаться окончания выполнения процесса. Простым удалением фрагмента кода ожидания проблема не решается. Хотя я и писал в #13, что код рабочий, но иногда он не прочитывает весь выходной поток процесса. То есть я столкнулся с ситуацией о которой говорил коллега <strong>Xameleon</strong>:</p><div class="quotebox"><cite>Xameleon пишет:</cite><blockquote><p>... <strong>StdOut.AtEndOfStream</strong> может принимать значение <strong>True</strong>, если Вы успели считать из него (буфера) все данные, а новые ещё не были положены. Такое может происходить в процессе перебора в любой момент...</p></blockquote></div>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48874" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">20</span> <span class="post-byline"><span>Ответ от </span><strong>shiz</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48874#p48874">2011-06-02 01:35:05</a></span> <span class="post-edit">(изменено: shiz, 2011-06-02 02:08:51)</span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>shiz</strong></li>
+						<li class="usertitle"><span>Участник</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/26249">Рейтинг</a> : [<span style="color:green">13</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48874" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<div class="quotebox"><cite>Rumata пишет:</cite><blockquote><p>То есть я столкнулся с ситуацией о которой говорил коллега Xameleon: </p><div class="quotebox"><cite>Xameleon пишет:</cite><blockquote><p>... StdOut.AtEndOfStream может принимать значение True, если Вы успели считать из него (буфера) все данные, а новые ещё не были положены. Такое может происходить в процессе перебора в любой момент...</p></blockquote></div></blockquote></div><p>Коллега Xameleon был бы прав, если бы мы запустили приложение перенаправив его выходной поток в физический файл и одновременно производили бы чтение из этого файла.<br>В данном же случае это не так. Для проверки предлагаю создать 2-3 простейших скрипта:</p><p>- ведомый (test1.js) </p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>var n=10;   //число повторов
+var t=1000; //задержка между повторами, мс
+
+for (var i=0; i&lt;n; i++) {WScript.Sleep(t); WScript.Echo(i);}</code></pre></div><p>- и запускающий его ведущий (в 2-х вариантах):<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>var WshShell=new ActiveXObject("WScript.Shell");
+var WshExec=WshShell.Exec("CScript.exe //nologo test1.js");
+WScript.Echo(WshExec.StdOut.ReadAll());</code></pre></div><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>var WshShell=new ActiveXObject("WScript.Shell");
+var WshExec=WshShell.Exec("CScript.exe //nologo test1.js");
+var result="";
+while (!WshExec.StdOut.AtEndOfStream) result+=WshExec.StdOut.ReadLine()+"\n";
+WScript.Echo(result);</code></pre></div><p>Так что ваши трудности, вероятно, связаны с чем-то другим.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>Забыл пароль и потерял e-mail.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48897" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">21</span> <span class="post-byline"><span>Ответ от </span><strong>Xameleon</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48897#p48897">2011-06-02 12:58:41</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Xameleon</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/8836">Рейтинг</a> : [<span style="color:green">41</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48897" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p><strong>2 shiz:</strong> Посмотрел примеры. <img src="./WshScriptExec.Exec_files/smile.png" width="15" height="15"> Благодарю. Видимо и правда я ошибался. Значит всё таки <strong>AtEndOfStream</strong> срабатывает один раз.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>Передумал переделывать мир. Пашет и так, ну и ладно. Сделаю лучше свой !</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48923" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">22</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48923#p48923">2011-06-02 23:23:57</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48923" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Коллеги, спасибо за обсуждение. Кажется общими усилиями мы нашли причину проблемы. </p><p>В какой-то момент я начал догадываться, что проблема как-то связана с размером выходного потока запускаемого процесса. Честно говоря, какое-то время мне было несколько лениво запускать тесты в поисках лимита размера буфера выходного потока. Еще более лениво было искать в интернетах описание этой проблемы. Но желание решить проблему пересилило первую лень. Следующий скрипт помогает найти этот пресловутый лимит. </p><p>Как это работает<br>1. Скрипт запускается из командной строки с или без ключа /GOOD или /BAD<br>2. Скрипт запускает самого себя с ключом /INIT чтобы вывести в выходной поток n-ное количество символов<br>3. Скрипт из п.1 читает выходной поток скрипта из п.2 и "собирает" его вывод в массив<br>4. По окончании выводит количество считанных байт. </p><p>Количество выводимых символов задается переменной n в первой строке скрипта. Примеры вызова:<br></p><div class="quotebox"><blockquote><p>// проверка "стандартного" алгоритма<br>cscript 1.js</p><p>// поверка "расширенного" алгоритма<br>cscript 1.js /ADV</p></blockquote></div><p>необходимо варьировать значение переменной n. Мои результаты утверждают, что стандартный алгоритм "вешается" при размере выходного потока превышающем 4 КБ. </p><p>"Стандартный" алгоритм запускает внешний скрипт и ожидает его завершение (while WshScriptExec.Exec.Status == 0). После этого считывает выходной поток.</p><p>"Расширенный" алгоритм запускает внешний скрипт и ожидая его завершения считывает выходной поток. Так как чтение потока теоретически может завершиться раньше полной записи процессом в поток, выполняется повторное чтение потока до его конца. Такая схема гарантирует а) корректное завершение работы внешнего процесса; б) полное чтение его выходного потока. </p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>
+// размер буфера в байтах
+var n = Math.floor(1024 * 4);
+
+// вывод заданного количества символов
+// количество опеделяется переменной n
+if ( WScript.Arguments.Named.Exists('INIT') ) {
+	var s = new Array(n + 1).join('0');
+	WScript.StdOut.Write(s);
+	WScript.Quit();
+}
+
+// внутренняя команда вывода
+var cmd = 'cscript //nologo ' + WScript.ScriptName + ' /INIT';
+
+var sh = new ActiveXObject('WScript.Shell');
+var ex = sh.Exec(cmd);
+
+// массив для заполнения данными внутреннего скрипта
+var result = [];
+if ( WScript.Arguments.Named.Exists('ADV') ) {
+	// "расширенный алгоритм
+	while ( ex.Status == 0 ) {
+		if ( ex.StdOut.AtEndOfStream ) {
+			break;
+		}
+		result.push(ex.StdOut.ReadLine());
+	}
+	while ( ! ex.StdOut.AtEndOfStream ) {
+		result.push(ex.StdOut.ReadLine());
+	}
+} else {
+	// стандартный алгоритм (взят из документации MSDN)
+	while ( ex.Status == 0 ) {
+		WScript.Sleep(100);
+	}
+	while ( ! ex.StdOut.AtEndOfStream ) {
+		result.push(ex.StdOut.ReadLine());
+	}
+}
+
+// Вывод статуса внутреннего процесса и размера буфера
+WScript.Echo(ex.Status);
+WScript.Echo(result.join('').length);</code></pre></div>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p48976" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">23</span> <span class="post-byline"><span>Ответ от </span><strong>jite</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48976#p48976">2011-06-06 03:46:00</a></span> <span class="post-edit">(изменено: jite, 2011-06-06 03:51:37)</span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>jite</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/25851">Рейтинг</a> : [<span style="color:green">0</span>|<span style="color:red">0</span>]</span></li>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48976" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Win XP - то же поведение. До 4KB способ MSDN читает, после - виснет. Продвинутый способ работает хорошо, тестировались размеры буфера до 3 MB (42 сек. на Intel E7200) <img src="./WshScriptExec.Exec_files/smile.png" width="15" height="15"></p><p>Реального использования "дочитывания" буфера в продвинутом способе замечено не было.</p><p>Решил помониторить объемы считывания с хронометражом. Одна строка нулей читалась, как можно догадаться, все время одним куском. Для приближения к реальности дописал генератор строк случайной длины из случайных символов. Вот код:<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>// размер буфера в байтах
+var n = Math.floor(1024 * 3);
+var sNL = "\n"; //Символ(ы) переноса строки
+// вывод заданного количества символов
+// количество опеделяется переменной n
+if (WScript.Arguments.Named.Exists('INIT')) {
+  //var s = new Array(n + 1).join('0'); //Было
+  var nLinesCount = 0;
+  var nNewLineLen;
+  var s = "";
+  while (s.length &lt; n) {
+    nNewLineLen = Math.floor(Math.random() * 400); //Случайная длина строки 0...399 символов
+    var ss = ""; //Строчка, заканчивающаяся переносом
+    for ( var i = 0; i &lt; nNewLineLen; i++) {
+      var nCode = Math.floor(Math.random() * (123 - 33)) + 33; //Латинские + точки-звездочки-и-тд.
+      ss += String.fromCharCode(nCode);
+    }
+    s += ss + sNL;
+    nLinesCount++;
+  }
+  s = s.substring(0, n);
+  WScript.StdOut.Write(s);
+  WScript.Quit(nLinesCount);
+}
+
+// внутренняя команда вывода
+var cmd = 'cscript //nologo ' + WScript.ScriptName + ' /INIT';
+
+var sh = new ActiveXObject('WScript.Shell');
+var ex = sh.Exec(cmd);
+
+// массив для заполнения данными внутреннего скрипта
+var result = [], times = [];
+var t = new Timer();
+if (WScript.Arguments.Named.Exists('ADV')) {
+  // "расширенный алгоритм
+  while (ex.Status == 0) {
+    if (ex.StdOut.AtEndOfStream) {
+      break;
+    }
+    result.push(ex.StdOut.ReadLine());
+    t.Stop();
+    times.push(t + "  " + result[result.length - 1].length + " символов");
+  }
+  while (!ex.StdOut.AtEndOfStream) {
+    result.push(ex.StdOut.ReadLine());
+    t.Stop();
+    times.push("дочитывание " + t + "  " + result[result.length - 1].length + " символов");
+  }
+}
+else {
+  // стандартный алгоритм (взят из документации MSDN)
+  while (ex.Status == 0) {
+    WScript.Sleep(100);
+  }
+  while (!ex.StdOut.AtEndOfStream) {
+    result.push(ex.StdOut.ReadLine());
+    t.Stop();
+    times.push(t + "  " + result[result.length - 1].length + " символов");
+  }
+}
+
+// Вывод статуса внутреннего процесса и размера буфера
+//vard(result, "Считанные блоки"); //Посмотреть генерируемый текст :)
+vard(times, "Хронология чтений");
+WScript.Echo("Скрипт-генератор " + (ex.Status ? ("завершен, сгенерировано строк: " + ex.ExitCode) : "не завершен"));
+WScript.Echo("Символов прочтено " + result.join(sNL).length);
+t.Stop();
+WScript.Echo("Конец работы " + t);
+
+//=== DEBUG_STUFF ==========================================================
+
+/** Возвращает строку рекурсивного описания содержимого объекта oBj
+ * @param sParentName - имя объекта, произвольное, по сути комментарий (можно опустить)
+ * @param nEsting - максимальный уровень вложенности объектов/значений (можно опустить)
+ */
+function vardump(oBj, sParentName, nEsting) {
+  var sNL = "\r\n"; // Перенос строки 
+  var nEsting_max = 12; //Максимальный исследуемый уровень вложенности, против бесконечных ссылок на самого себя
+  var nPadding = 2; //Структурный отступ сдвига потомков относительно родителей, в пробелах
+  //Ограничивать ли слишком длинное отображение объекта в поле &gt;значения&lt;
+  var bRestrictObjectVal = true, nRestrictWidth = 80, sCutSign = "...";
+  var bShowOnlyOwnProps = false; //Показывать только собственные (уникальные) свойства объекта или все приобретенные
+  var bShowFunctionsCode = false; //Показывать ли код функций
+  if (sParentName == undefined) sParentName = "";
+  if (isNaN(parseInt(nEsting))) nEsting = nEsting_max;
+  var sRes = "";
+  for ( var i = 0; i &lt; nPadding * (nEsting_max - nEsting); i++)
+    sRes += " ";
+  if (nEsting &gt;= 0) {
+    var sPrototype = Object.prototype.toString.call(oBj); //[object НекийТип], вызов через ***
+    sRes += sParentName + "  ";
+    switch (typeof oBj) { //Описание элемента toString() и обрамление в соответствии с его типом 
+    case "string":
+      sRes += "\"" + oBj + "\"";
+      break;
+    case "function":
+      if (sPrototype == "[object RegExp]") sRes += oBj + "  as function"; //В Chrome typeof =&gt; function
+      else {
+        var s = "" + oBj;
+        var nIdx = s.indexOf(")") + 1;
+        if (nIdx) s = s.substring(0, nIdx);
+        else
+          s = "function"; //Не должно произойти
+        sRes += s;
+      }
+      break;
+    case "object":
+      if (Object.prototype.toString.call(oBj) == "[object Array]") { //Для массива - еще длину
+        sRes += "Array[" + oBj.length + "]  ";
+      }
+      if (Object.prototype.toString.call(oBj) == "[object Date]" //Объекты с простым и информативным содерж. toString() 
+        || Object.prototype.toString.call(oBj) == "[object RegExp]") {
+        sRes += oBj;
+      }
+      else { //Вывод прочих объектов и массивов
+        sRes += "&gt;";
+        var sOTS = ("" + oBj).replace(/\r/g, "\\r").replace(/\n/g, "\\n");
+        if (bRestrictObjectVal) { //Если надо, подрезаем слишком длинные описания в строку
+          var nMaxOTSLength = nRestrictWidth - sRes.length - 1; //-1 под "&lt;"
+          var nCutOSTLength = nMaxOTSLength - sCutSign.length;
+          if (nCutOSTLength &lt; 0) nCutOSTLength = 0; //Ну да, вылезет...
+          if (sOTS.length &gt; nMaxOTSLength) sOTS = sOTS.substr(0, nCutOSTLength) + sCutSign;
+        }
+        sRes += sOTS + "&lt;";
+      }
+      break;
+    default: //числа, спецзначения, логические
+      sRes += oBj;
+    }
+    sRes += sNL;
+    //Вывод содержимого объекта: строками следующего уровня иерархии
+    var sEl;
+    var sGetChildName =
+      function(oParent, sParentName, sChildName) { //Формирование имени потомка
+        var sFullChildName = sParentName;
+        var bIsIndex = false;
+        if (Object.prototype.toString.call(oParent) == "[object Array]") {
+          var nIdx = parseInt(sChildName, 10);
+          if (!isNaN(nIdx) &amp;&amp; nIdx.toString() === sChildName.toString() &amp;&amp; nIdx &gt;= 0 &amp;&amp; nIdx &lt; oParent.length)
+            bIsIndex = true;
+        }
+        if (bIsIndex) sFullChildName += "[" + sChildName + "]";
+        else {
+          if (sFullChildName != "") sFullChildName += "."; //Если есть что отделять, отделяем точкой
+          sFullChildName += sChildName;
+        }
+        return sFullChildName;
+      }; //sGetChildName
+
+    if (Object.prototype.toString.call(oBj) == "[object RegExp]") { //В завис. от браузера typeof то object, то function
+      sEl = "lastIndex";
+      sRes += arguments.callee(oBj[sEl], sGetChildName(oBj, sParentName, sEl), nEsting - 1);
+    }
+    else { //Осмотрим внутренности
+      switch (typeof oBj) {
+      case "object": //Объекты и массивы
+        if (!oBj) break; //null
+        for (sEl in oBj) {
+          if (bShowOnlyOwnProps &amp;&amp; !oBj.hasOwnProperty(sEl)) break;
+          sRes += arguments.callee(oBj[sEl], sGetChildName(oBj, sParentName, sEl), nEsting - 1);
+        }
+        break;
+      case "function":
+        if (bShowFunctionsCode) sRes += "&gt;&gt;&gt;" + sNL + oBj + "&lt;&lt;&lt;" + sNL;
+        break;
+      //Остальное содержимого не имеет
+      }
+    }
+  }
+  else
+    sRes += sParentName + " ! Nesting limit !" + sNL;
+  return(sRes);
+}
+
+/** Echo-обертка
+ */
+function vard() {
+  WScript.Echo(vardump.apply(null, arguments));
+}
+
+/** Класс замеров временных промежутков ------------------------------------
+ */
+function Timer() {
+  this.StartTime = this.StopTime = new Date(); //Сразу начинает отсчет
+
+  //--- Методы
+
+  /** Начинает отсчет, возвращает дату начала
+   */
+  this.Start = function() {
+    return this.StartTime = this.StopTime = new Date();
+  };
+
+  /** Отмечает конечную точку отсчета (при этом по сути отсчет не останавливается), возвращает дату конца
+   */
+  this.Stop = function() {
+    return this.StopTime = new Date();
+  };
+
+  /** Возвращает время (мс) между StartTime и StopTime
+   */
+  this.Interval = function() {
+    return this.StopTime - this.StartTime;
+  };
+
+  /** Возвращает текстовое представление интервала "чч:мм:сс.мсс"
+   */
+  this.toString = function() {
+    var nInt = this.Interval();
+    var aInt = [0, 0, 0, 0]; //Период поделенный на мс, с, м, ч 
+    var aDivs = [1000, 60, 60, 10000000]; //Делители
+    var aDelims = [".", ":", ":", ""]; //Разделители
+    for ( var i = 0; i &lt; 4; i++) {
+      aInt[i] = nInt % aDivs[i];
+      if (aInt[i] == nInt) break; //Все поделено
+      nInt = Math.floor(nInt / aDivs[i]);
+    }
+    var sInt = "";
+    for ( var i = 0; i &lt; 4; i++)
+      sInt = aDelims[i] + sLeadingSigns(aInt[i]) + sInt;
+    return sInt;
+  };
+
+  /** Дополняет текстовое представление oBj знаками sSign (по ум. нулями) до длины nOutLength. 
+   * Минус выносится вперед, если не выставленно bDoNotMinusMove
+   */
+  function sLeadingSigns(oBj, nOutLength, sSign, bDoNotMinusMove) {
+    if (sSign == undefined) sSign = "0";
+    sSign = "" + sSign;
+    nOutLength = parseInt(nOutLength, 10);
+    if (isNaN(nOutLength) || nOutLength &lt; 1) nOutLength = 2; //По ум.
+    var sObj = "" + oBj;
+    if (sObj.length &lt; nOutLength) { //Если надо удлинять
+      var nZeros = nOutLength - sObj.length;
+      var sZeros = "";
+      for ( var i = 0; i &lt; nZeros; i++)
+        sZeros += sSign;
+      return bDoNotMinusMove ? sZeros + sObj : sObj.replace(/(\-{0,1})(.+)/, "$1" + sZeros + "$2");
+    }
+    else
+      return sObj;
+  }
+
+} //Timer()</code></pre></div><p>Как можно видеть, все читается четко построчно: сколько строк выдано, столько раз и ReadLine(). Собсно, как и ожидалось в теории.</p><p>А вся затея с хронометражом произошла из-за желания понять особенности чтения и решить задачу чтения вывода приложения, которое может зависнуть, <strong>с возможностью его принудительного завершения</strong> по таймлимиту или по результатам чтения вывода. А тут как раз родственная тема! <img src="./WshScriptExec.Exec_files/smile.png" width="15" height="15"></p><p>Надеюсь, из приведенного примера вполне удастся такое соорудить. Странно: раньше пример делал, вроде бы пока стороннее приложение не отрабатывало полностью, оно StdOut.AtEndOfStream не включало. А здесь включает после каждой строки. <img src="./WshScriptExec.Exec_files/roll.png" width="15" height="15"> Надо перепроверить...</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p48992" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">24</span> <span class="post-byline"><span>Ответ от </span><strong>jite</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=48992#p48992">2011-06-07 01:54:18</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>jite</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/25851">Рейтинг</a> : [<span style="color:green">0</span>|<span style="color:red">0</span>]</span></li>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc48992" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Задачку принудительного завершения действительно легко сделал (внутри while перед чтением просто добавляем проверку по времени). Теперь даже непонятно, что же вызывало затруднения раньше? Возможно, что и те самые зависания из примера с MSDN...</p><p>Словом, спасибо за идею (ex.Status == 0)! <img src="./WshScriptExec.Exec_files/big_smile.png" width="15" height="15"></p><div class="quotebox"><cite>jite пишет:</cite><blockquote><p>Странно: раньше пример делал, вроде бы пока стороннее приложение не отрабатывало полностью, оно StdOut.AtEndOfStream не включало. А здесь включает после каждой строки.</p></blockquote></div><p>Поправка. StdOut.AtEndOfStream всегда переходит в true после окончания всей отработки вывода приложения. На момент писания предыдущего поста просто не так понял алгоритм.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p49080" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">25</span> <span class="post-byline"><span>Ответ от </span><strong>jite</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=49080#p49080">2011-06-11 04:35:45</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>jite</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/25851">Рейтинг</a> : [<span style="color:green">0</span>|<span style="color:red">0</span>]</span></li>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc49080" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<div class="quotebox"><cite>jite пишет:</cite><blockquote><p>Задачку принудительного завершения действительно легко сделал...</p></blockquote></div><p>А вот и не работает, если приложение "решает" всерьез зависнуть, а не просто делает большие паузы.<br>Попробую продолжить данные рассуждения в теме <a href="http://forum.script-coding.com/viewtopic.php?pid=49079#p49079">WSH: Работа с командной строкой</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p50108" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">26</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=50108#p50108">2011-07-22 18:51:12</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc50108" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>На официальном сайте MSDN <a href="http://msdn.microsoft.com/en-us/library/za76z6hh%28v=VS.85%29.aspx">есть хороший пример</a>. <br>Привожу чуть сокращенную, не оптимизированную, но рабочую версию исходного кода, который можно посмотреть, пройдя по ссылке. </p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>
+
+var sh = new ActiveXObject('WScript.Shell');
+var ex = sh.Exec('%comspec% /c dire');
+
+var stdout = [];
+var stderr = [];
+
+while ( true ) {
+	if ( ! ex.StdOut.AtEndOfStream ) {
+		stdout.push(ex.StdOut.ReadLine());
+		continue;
+	}
+	if ( ! ex.StdErr.AtEndOfStream ) {
+		stderr.push(ex.StdErr.ReadLine());
+		continue;
+	}
+	if ( ex.Status == 1 ) {
+		break;
+	}
+}
+
+WScript.Echo('\nEXIT CODE :\n' + ex.ExitCode);
+WScript.Echo('\nSTDERR    :\n' + stderr.join('\n'));
+WScript.Echo('\nSTDOUT    :\n' + stdout.join('\n'));
+WScript.Quit();</code></pre></div>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p88390" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">27</span> <span class="post-byline"><span>Ответ от </span><strong>Rumata</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=88390#p88390">2014-11-16 14:33:22</a></span> <span class="post-edit">(изменено: Rumata, 2014-11-16 16:08:33)</span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Rumata</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/24846">Рейтинг</a> : [<span style="color:green">34</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc88390" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Мои последние эксперименты на Win7 Enterprise SP 1 показывают, что не все гладко с этим решением 3-годичной давности. Иногда вышеприведенный код не работает. Например, в случае запуска приложения, которое в случае успеха ничего не пишет в консоль и уходит в фоновый режим. Тогда пример выше зависает на первом <strong>if</strong>. </p><p>Приложение, запущенное в фоне возвращает статус ex.Status == 0, но проблема не в этом. Проблема именно в том, что стандартные потоки открыты/закрыты/заблокированы/ожидают (что-то еще?). Схожий пример я наблюдал в случае проверки STDIN:<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>
+// z.js
+WScript.Echo ( WScript.StdIn.AtEndOfStream );
+</code></pre></div><p>Если запустить "голый" скрипт, то он подвиснет, пока принудительно не завершите скрипт по CTRL-C:<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>cscript //nologo z.js</code></pre></div><p>Любое перенаправление - завершает скрипт<br></p><div class="codebox"><div style="border-bottom:1px #CCC solid; white-space: nowrap !important;">КОД: <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="copyCodeSection(this); return false;" class="permalink codetitle" title="Копирует код. Если выделен фрагмент кода, то будет скопирован фрагмент.">Копировать</a> <a href="https://forum.script-coding.com/viewtopic.php?id=5839#" onclick="selectCode(this); return false;" class="permalink codetitle" title="Выделяет код.">Выделить всё</a></div><pre><code>
+:: выведет -1 (конец файла достигнут)
+cscript //nologo z.js&lt;nul
+
+:: выведет 0 (есть данные, конец файла не достигнут)
+cscript //nologo z.js&lt;z.js
+</code></pre></div>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>( 2 * b ) || ! ( 2 * b )</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p101066" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">28</span> <span class="post-byline"><span>Ответ от </span><strong>daap</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=101066#p101066">2016-02-14 21:03:57</a></span> <span class="post-edit">(изменено: daap, 2016-02-14 21:05:34)</span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>daap</strong></li>
+						<li class="usertitle"><span>Участник</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/33685">Рейтинг</a> : [<span style="color:green">0</span>|<span style="color:red">0</span>]</span></li>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc101066" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<div class="quotebox"><cite>Rumata пишет:</cite><blockquote><p>Тогда пример выше зависает на первом <strong>if</strong></p></blockquote></div><p>Похоже та же картина. Пытаюсь найти с одним консольным движком общий язык.</p><p>AtEndOfStream&nbsp; и <br>ReadLine()</p><p>работают до тех пор, пока из потока чего-нибудь читается, когда доходит дело до того, что<br>AtEndOfStream&nbsp; должно вернуть конец - зависон глубокий пока не вырубишь консоль дочернего процесса</p><p>че делать не понятно. другие ж GUI работают с движком этим как-то ....</p><p>похоже что поток как-то не завершается как положено. Или это такой постоянно открытый поток ..</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd replypost">
+			<div id="p101074" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">29</span> <span class="post-byline"><span>Ответ от </span><strong>wisgest</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=101074#p101074">2016-02-15 03:04:04</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>wisgest</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/3850">Рейтинг</a> : [<span style="color:green">25</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc101074" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<div class="quotebox"><cite>daap пишет:</cite><blockquote><p>AtEndOfStream&nbsp; и <br>ReadLine()</p><p>работают до тех пор, пока из потока чего-нибудь читается, когда доходит дело до того, что<br>AtEndOfStream&nbsp; должно вернуть конец - зависон глубокий пока не вырубишь консоль дочернего процесса</p><p>че делать не понятно. другие ж GUI работают с движком этим как-то ....</p><p>похоже что поток как-то не завершается как положено. Или это такой постоянно открытый поток</p></blockquote></div><p>(Сейчас не перепроверял, пишу по воспоминаниям…)</p><p>Да, <em>AtEndOfStream</em> возвращает истинное значение,&nbsp; а <em>ReadLine</em> — пустую строку не в том случае, если поток пуст в данный момент, а если он закрыт, иначе — ждут пока в нём что-нибудь появится или он всё-таки наконец закроется.</p><p>Для проверки попробуйте в качестве «движка» сценарий WSH, в котором перед долгим <em>Sleep</em> отсутствует/присутствует <em>WScript.StdOut.Close</em>.</p><p>Если такое поведение «движка» не устраивает — перенаправьте его вывод в файл, — в этом случае будет определятся конец файла, если считано всё его текущее содержимое, даже если он не закрыт и в него может быть дописано что-то ещё.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span><a href="http://wisgest.name/">http://wisgest.name</a></div>
+						<div class="sig-content"><div class="rep_plus_minus"><span class="rep_plus_head">+ </span><span><a data-toggle="tooltip" data-placement="top" data-id="908" data-url="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/id/908" href="https://forum.script-coding.com/profile.php?id=33685" data-original-title="" title="">daap</a></span></div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post even replypost">
+			<div id="p101081" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">30</span> <span class="post-byline"><span>Ответ от </span><strong>Xameleon</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=101081#p101081">2016-02-15 11:53:49</a></span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>Xameleon</strong></li>
+						<li class="usertitle"><span>Разработчик</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/8836">Рейтинг</a> : [<span style="color:green">41</span>|<span style="color:red">0</span>]</span></li>
+						<p class="medals"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"><img src="./WshScriptExec.Exec_files/medal_silver.png" width="16" style="opacity: 0.1; filter: alpha(opacity=10);"></p>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc101081" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p>Господа, помню, что беда метода <strong>ReadLine</strong> именно в том, что он <span class="bbu">ждёт появления перевода строки</span> в <strong>StdOut</strong>. Поэтому если ничего не вернулось, то он реально повисает на этом моменте. Предполагаю, что Вам поможет метод <strong>Read</strong>, который читает N-ое количество символов. Вроде бы на форуме эта тема уже поднималась.</p>
+						<div class="sig-content"><span class="sig-line"><!-- --></span>Передумал переделывать мир. Пашет и так, ну и ладно. Сделаю лучше свой !</div>
+						<div class="sig-content"><div class="rep_plus_minus"><span class="rep_plus_head">+ </span><span><a data-toggle="tooltip" data-placement="top" data-id="909" data-url="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/id/909" href="https://forum.script-coding.com/profile.php?id=33685" data-original-title="" title="">daap</a></span></div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="post odd lastpost replypost">
+			<div id="p101124" class="posthead">
+				<h3 class="hn post-ident"><span class="post-num">31</span> <span class="post-byline"><span>Ответ от </span><strong>daap</strong></span> <span class="post-link"><a class="permalink" rel="bookmark" title="Постоянная ссылка на это сообщение" href="https://forum.script-coding.com/viewtopic.php?pid=101124#p101124">2016-02-16 00:14:59</a></span> <span class="post-edit">(изменено: daap, 2016-02-16 00:19:25)</span></h3>
+			</div>
+			<div class="postbody">
+				<div class="post-author">
+					<ul class="author-ident">
+						<li class="username"><strong>daap</strong></li>
+						<li class="usertitle"><span>Участник</span></li>
+						<li class="userstatus"><span>Неактивен</span></li>
+					</ul>
+					<ul class="author-info">
+						<li><span><a href="https://forum.script-coding.com/misc.php?r=reputation/reputation/view/uid/33685">Рейтинг</a> : [<span style="color:green">0</span>|<span style="color:red">0</span>]</span></li>
+					</ul>
+				</div>
+				<div class="post-entry">
+					<h4 id="pc101124" class="entry-title hn">Re: JScript: Проблема с WshScriptExec.Exec</h4>
+					<div class="entry-content">
+						<p><strong>Xameleon</strong></p><p>Спасибо друзья!&nbsp; &nbsp;не думал что тут живенько так.<br>С этим&nbsp; ReadLine - хрен с ним, он то работает после&nbsp; &nbsp;AtEndOfStream</p><p>Зависает и чего-то ждет именно AtEndOfStream<br>Т.е. я не могу узнать когда закончились строки в потоке, где же последняя.<br>Видать да, движок не завершает поток. Он как бы асинхронный, одновременно и принимает и выдает в обе дырки.</p><p>Пока выручила идея такая. <br>Я всегда знаю что движок должен ответить на каждый из запросов. Например я ему - "Эй",&nbsp; он мне всегда - "тут"<br>Поэтому составил таблицу вопрос-ответ - и у меня последняя строка всегда ожидаемый ответ и я принудительно выхожу из цикла.</p><p>Но это все как-то неправильно.&nbsp; Вдруг он не выдаст ожидаемый ответ, тогда зависон позорный. Не хорошо.</p><p>К сожалению я не очень продвинутый програмер, я по своему - в 1С ковыряю.<br>С этим только столкнулся по причине одного хобби, замутить интересное дело захотелось.</p><p>Поэтому такие вещи:&nbsp; "попробуйте в качестве «движка» сценарий WSH, в котором перед долгим Sleep отсутствует/присутствует WScript.StdOut.Close."&nbsp; &nbsp;<br>меня вводят в ступор&nbsp; &nbsp;:-)))</p><p>Кста, подозреваю что в этом СЛИП чета кроется хорошее.</p><p>"поможет метод Read"<br>надо это попробовать, хорошая идея, поищу примеры скриптов....<br>Т.е. надежда на то что&nbsp; Read&nbsp; как-то остановится?&nbsp; Т,е. он читает сплошным текстом а не построчно? Это было бы гуд.<br> а вдруг он после последнего символа также залипнет?</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="main-foot">
+		<h2 class="hn"><span><span class="item-info">Сообщения 31</span></span></h2>
+	</div>
+		<div id="brd-pagepost-end" class="main-pagepost gen-content">
+	<p class="paging"><span class="pages">Страницы</span> <strong class="first-item">1</strong></p>
+	<p class="posting">Чтобы отправить ответ, вы должны <a href="https://forum.script-coding.com/login.php">войти</a> или <a href="https://forum.script-coding.com/register.php">зарегистрироваться</a></p>
+</div>
+		<div id="brd-crumbs-end" class="crumbs">
+	<p><span class="crumb crumbfirst"><a href="https://forum.script-coding.com/index.php">Серый форум</a></span> <span class="crumb"><span> →&nbsp;</span><a href="https://forum.script-coding.com/index.php?cid=1">Общение</a></span> <span class="crumb"><span> →&nbsp;</span><a href="https://forum.script-coding.com/viewforum.php?id=14">Windows Script Host, HTA (VBScript, JScript)</a></span> <span class="crumb crumblast"><span> →&nbsp;</span><a href="https://forum.script-coding.com/viewtopic.php?id=5839">JScript: Проблема с WshScriptExec.Exec</a></span> </p>
+</div>
+	</div>
+		<!-- forum_qpost -->
+		<!-- forum_info -->
+	<div class="hr"><hr></div>
+	<div id="brd-about">
+		<a class="arrow-up" id="pan_top" style="display: none;"><img src="./WshScriptExec.Exec_files/up.png"></a>
+	<a class="arrow-down" id="pan_bottom" style="display: inline;"><img src="./WshScriptExec.Exec_files/down.png"></a>
+	<p id="copyright">
+    <a href="https://forum.script-coding.com/copyright.html">Условия использования информации</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://forum.script-coding.com/disclaimer.html">Отказ от ответственности</a>
+    <!-- 
+    Форум работает на&nbsp;<a href="http://punbb.informer.com/">PunBB</a><span class="hidden">, при&nbsp;поддержке <a href="http://www.informer.com/">Informer Technologies, Inc</a></span>    -->
+    </p>
+	</div>
+		<!-- forum_debug -->
+	</div>
+	</div>
+	<div class="modal fade" id="reputation-modal-container" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title"><span>Рейтинг</span></h4></div><div class="modal-body form-horizontal"><div id="modal_action_info" class="alert" role="alert"></div><div><label>Пожалуйста, укажите причину изменения рейтинга</label><textarea class="form-control" id="rep_form_reason" name="rep_form_reason" rows="4" cols="65"></textarea></div></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal" id="modal_reputation_cancel">Отменить</button><button type="button" class="btn btn-primary" id="modal_save_reputation" data-target="#form_save_reputation" data-loading-text="&lt;i  class=&#39;fa fa-refresh&#39;&gt;&lt;/i&gt;">Отправить</button></div></div></div></div>
+<div class="modal fade" id="remote-modal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"></div></div></div>
+<script>if (typeof PUNBB === 'undefined' || !PUNBB) {
+		var PUNBB = {};
+	}
+
+	PUNBB.env = {
+		base_url: "//forum.script-coding.com/",
+		base_js_url: "//forum.script-coding.com/include/js/",
+		user_lang: "Russian",
+		user_style: "Oxygen",
+		user_is_guest: "1",
+		page: "viewtopic"
+	};</script>
+<script src="./WshScriptExec.Exec_files/responsive-nav.min.js"></script>
+<script src="./WshScriptExec.Exec_files/punbb.common.min.js"></script>
+<script src="./WshScriptExec.Exec_files/jquery-1.12.4.min.js"></script>
+<script>
+	$LAB.setOptions({AlwaysPreserveOrder:false})
+	.script("/extensions/bootstrap/js/bootstrap.min.js").wait()
+	.wait(function () { PUNBB.pun_bbcode=(function(){return{init:function(){return true;},insert_text:function(d,h){var g,f,e=(document.all)?document.all.req_message:((document.getElementById("afocus")!==null)?(document.getElementById("afocus").req_message):(document.getElementsByName("req_message")[0]));if(!e){return false;}if(document.selection&&document.selection.createRange){e.focus();g=document.selection.createRange();g.text=d+g.text+h;e.focus();}else{if(e.selectionStart||e.selectionStart===0){var c=e.selectionStart,b=e.selectionEnd,a=e.scrollTop;e.value=e.value.substring(0,c)+d+e.value.substring(c,b)+h+e.value.substring(b,e.value.length);if(d.charAt(d.length-2)==="="){e.selectionStart=(c+d.length-1);}else{if(c===b){e.selectionStart=b+d.length;}else{e.selectionStart=b+d.length+h.length;}}e.selectionEnd=e.selectionStart;e.scrollTop=a;e.focus();}else{e.value+=d+h;e.focus();}}}};}());PUNBB.common.addDOMReadyEvent(PUNBB.pun_bbcode.init); })
+	.wait(function () { PUNBB.fancy_spoiler=(function(){function b(c){return(c.offsetWidth!==0);}function a(c){return function(){var e=c,d=e.nextSibling;if(d&&PUNBB.common.hasClass(d,"fancy_spoiler")){if(!b(d)){d.style.display="block";if(e.getAttribute("data-lang-close")){e.innerHTML="<strong>-</strong>&nbsp;"+e.getAttribute("data-lang-close");}else{e.innerHTML="<strong>-</strong>&nbsp;"+e.innerHTML.substr(24);}}else{d.style.display="none";if(e.getAttribute("data-lang-open")){e.innerHTML="<strong>+</strong>&nbsp;"+e.getAttribute("data-lang-open");}else{e.innerHTML="<strong>+</strong>&nbsp;"+e.innerHTML.substr(24);}}return false;}return true;};}return{init:function(){var c=PUNBB.common.arrayOfMatched(function(d){return(PUNBB.common.hasClass(d,"fancy_spoiler_switcher_header"));},document.getElementsByTagName("div"));PUNBB.common.map(function(d){d.onclick=a(d);},c);}};}());PUNBB.common.addDOMReadyEvent(PUNBB.fancy_spoiler.init); })
+	.wait(function () { PUNBB.env.rep_vars = {
+				"Reason" : "Причина изменения рейтинга"
+		    }; })
+	.script("//forum.script-coding.com/extensions/reputation/js/reputation.js").wait()
+	.script("//forum.script-coding.com/extensions/pan_up_down/js/up-and-down.js");
+</script>
+	<script>
+	    var main_menu = responsiveNav("#brd-navlinks", {
+		label: "Серый форум"
+	    });
+	    if(document.getElementsByClassName('admin-menu').length){
+		var admin_menu = responsiveNav(".admin-menu", {
+		    label: "Admin Menu"
+		});
+	    }
+	    if(document.getElementsByClassName('main-menu').length){
+		var profile_menu = responsiveNav(".main-menu", {
+		    label: "Profile Menu"
+		});
+	    }
+	</script>
+    
+<script type="text/javascript">
+if (typeof CodeParse !== 'function') var CodeParse = function(value) {};
+CodeParse('<div %bottom%>КОД: %copySection(Копировать)% %selectCode(Выделить всё)%</div>%code%');
+</script>
+
+
+
+</body></html>

@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85) -->
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus theme-light" lang="en-us" dir="ltr" data-authenticated="false" data-auth-status-determined="true" data-target="docs" x-ms-format-detection="none"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="HTA:APPLICATION Object">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85)">
+
+	<meta property="og:image" content="https://learn.microsoft.com/en-us/media/open-graph-image.png">
+
+	<meta property="og:image:alt" content="Microsoft Learn">
+
+	<meta name="twitter:card" content="summary_large_image">
+
+	<meta name="twitter:site" content="@MicrosoftLearn">
+
+	<meta name="color-scheme" content="light dark">
+
+
+	<meta name="APIName" content="HTA:APPLICATION">
+<meta name="APIType" content="NA">
+<meta name="breadcrumb_path" content="/previous-versions/visualstudio/breadcrumb/toc.json">
+<meta name="depot_name" content="MSDN.previous-versions-root">
+<meta name="document_id" content="c27e1254-d313-8888-d7ab-b1ae67a03bbf">
+<meta name="document_version_independent_id" content="c27e1254-d313-8888-d7ab-b1ae67a03bbf">
+<meta name="feedback_help_link_type" content="">
+<meta name="feedback_help_link_url" content="">
+<meta name="feedback_product_url" content="">
+<meta name="feedback_system" content="None">
+<meta name="git_commit_id" content="1d5ab8eb7ddb84d2b4ae7506e1fbb15f8c93e110">
+<meta name="gitcommit" content="https://docs-archive.visualstudio.com/DefaultCollection/docs-archive-project/_git/previous-versions-root/commit/1d5ab8eb7ddb84d2b4ae7506e1fbb15f8c93e110?path=/vs.85/ms536495(v=vs.85).md&amp;_a=contents">
+<meta name="is_archived" content="true">
+<meta name="locale" content="en-us">
+<meta name="ms.author" content="Archiveddocs">
+<meta name="ms.date" content="06/11/2013">
+<meta name="ms.prod" content="vs.85">
+<meta name="ms.topic" content="archived">
+<meta name="ms:assetid" content="VS|hta|~\workshop\author\hta\reference\objects\hta.htm">
+<meta name="ms:contentKeyID" content="5571418">
+<meta name="ms:mtpsurl" content="https://msdn.microsoft.com/en-us/library/ms536495(v=VS.85)">
+<meta name="mtps_version" content="v=VS.85">
+<meta name="original_content_git_url" content="https://docs-archive.visualstudio.com/DefaultCollection/docs-archive-project/_git/previous-versions-root?path=/vs.85/ms536495(v=vs.85).md&amp;version=GBlive&amp;_a=contents">
+<meta name="page_type" content="conceptual">
+<meta name="product_family_name" content="VS">
+<meta name="ROBOTS" content="INDEX,FOLLOW">
+<meta name="schema" content="Conceptual">
+<meta name="search.mshattr.devlang" content="html scr dhtml">
+<meta name="site_name" content="Docs">
+<meta name="TOCTitle" content="HTA:APPLICATION Object">
+<meta name="TopicType" content="apiref">
+<meta name="TopicType" content="kbSyntax">
+<meta name="uhfHeaderId" content="MSDocsHeader-Archive">
+<meta name="updated_at" content="2021-12-02 01:53 AM">
+<meta name="word_count" content="724">
+
+
+	<meta name="persistent_id" content="1190d494-01e2-64f1-9cad-bd3d99ea2763">
+	
+
+
+
+
+	<meta name="github_feedback_content_git_url" content="https://docs-archive.visualstudio.com/DefaultCollection/docs-archive-project/_git/previous-versions-root?path=/vs.85/ms536495(v=vs.85).md&amp;version=GBlive&amp;_a=contents">
+<link href="https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85)" rel="canonical">
+	<title>HTA:APPLICATION Object | Microsoft Learn</title>
+
+		<link rel="stylesheet" href="./HTA-ALL-attributes_files/9b5f3dea.site-ltr.css">
+
+	
+
+	<script id="msdocs-script">
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+			},
+			hasBinaryRating: false,
+			hasGithubIssues: false,
+			feedbackHelpLinkType:'',
+			feedbackHelpLinkUrl:'',
+			standardFeedback: false,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			contentWellNotification: '',
+			feedbackSystem: 'None',
+			feedbackGitHubRepo: '',
+			feedbackProductUrl: '',
+			extendBreadcrumb: true,
+			isEditDisplayable: false,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasPrintButton: true,
+			hasBookmark: true,
+			hasShare: true,
+			isPermissioned: false,
+			isPrivateUnauthorized: false,
+			hasRecommendations: true,
+		},
+		functions:{}
+	};
+	</script>
+	<script src="./HTA-ALL-attributes_files/wcp-consent.js"></script>
+	<script src="./HTA-ALL-attributes_files/ms.jsll-3.min.js"></script>
+
+	<script src="./HTA-ALL-attributes_files/67a45209.deprecation.js"></script>
+
+		<link rel="preconnect" href="https://mscom.demdex.net/" crossorigin="">
+		<link rel="dns-prefetch" href="https://target.microsoft.com/">
+		<link rel="dns-prefetch" href="https://microsoftmscompoc.tt.omtrdc.net/">
+		<link rel="preload" as="script" href="./HTA-ALL-attributes_files/at.js" integrity="sha384-1/viVM50hgc33O2gOgkWz3EjiD/Fy/ld1dKYXJRUyjNYVEjSUGcSN+iPiQF7e4cu" crossorigin="anonymous" id="adobe-target-script" type="application/javascript">
+		<script src="./HTA-ALL-attributes_files/ed3baf17.index-docs.js"></script><style></style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"name":"Learn","position":1,"@type":"ListItem","item":"https://learn.microsoft.com/en-us/"},{"name":"Previous Versions","position":2,"@type":"ListItem","item":"https://learn.microsoft.com/en-us/previous-versions/"},{"name":"HTA:APPLICATION Object","position":3,"@type":"ListItem"}]}</script></head>
+
+<body lang="en-us" dir="ltr">
+	<div class="header-holder has-default-focus">
+		<a href="https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85)#main" class="skip-to-main-link has-outline-color-text visually-hidden-until-focused position-fixed has-inner-focus focus-visible top-0 left-0 right-0 padding-xs has-text-centered has-body-background" tabindex="1">Skip to main content</a>
+
+		<div hidden="" id="cookie-consent-holder" data-test-id="cookie-consent-container"></div>
+
+		<div id="unsupported-browser" style="
+			background-color: white;
+			color: black;
+			padding: 16px;
+			border-bottom: 1px solid grey;" hidden="">
+			<div style="max-width: 800px; margin: 0 auto;">
+				<p style="font-size: 24px">This browser is no longer supported.</p>
+				<p style="font-size: 16px; margin-top: 16px;">Upgrade to Microsoft Edge to take advantage of the latest features, security updates, and technical support.</p>
+				<div style="margin-top: 12px;">
+					<a href="https://go.microsoft.com/fwlink/p/?LinkID=2092881" style="
+						background-color: #0078d4;
+						border: 1px solid #0078d4;
+						color: white;
+						padding: 6px 12px;
+						border-radius: 2px;
+						display: inline-block;
+						">
+Download Microsoft Edge					</a>
+					<a href="https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge" style="
+							background-color: white;
+							padding: 6px 12px;
+							border: 1px solid #505050;
+							color: #171717;
+							border-radius: 2px;
+							display: inline-block;
+							">
+More info about Internet Explorer and Microsoft Edge					</a>
+				</div>
+			</div>
+		</div>
+		<!-- liquid-tag banners global -->
+
+		<!-- site header -->
+		<header id="ms--site-header" class="display-none display-block-tablet" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization"><!---->
+		<div class="site-header" data-bi-name="L1-header">
+			<!-- MS logo -->
+			
+		<a href="https://www.microsoft.com/" aria-label="Microsoft" itemprop="url" data-bi-name="site-header-link-microsoft-logo">
+			<svg class="site-header-logo" aria-hidden="true" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" itemprop="logo" itemscope="itemscope">
+				<path d="M11.5216 0.5H0V11.9067H11.5216V0.5Z" fill="#f25022"></path>
+				<path d="M24.2418 0.5H12.7202V11.9067H24.2418V0.5Z" fill="#7fba00"></path>
+				<path d="M11.5216 13.0933H0V24.5H11.5216V13.0933Z" fill="#00a4ef"></path>
+				<path d="M24.2418 13.0933H12.7202V24.5H24.2418V13.0933Z" fill="#ffb900"></path>
+			</svg>
+		</a>
+	
+
+			<!-- Divider -->
+			<div class="site-header-divider"></div>
+
+			<!-- Brand -->
+			
+		<a class="site-header-brand" itemprop="url" href="https://learn.microsoft.com/" data-bi-name="site-nav-link-brand-learn">
+			<span><!---->Learn<!----></span>
+		</a>
+	
+
+			<div id="ms--search-expander-wrapper" class="display-flex justify-content-space-between flex-grow-1 align-items-center overflow-x-hidden height-full">
+				<!-- Main Nav -->
+				 <overflow-menu class="align-self-stretch" style="display: block; overflow: hidden; width: 100%;">
+		<nav class="site-header-nav" role="navigation" data-overflow-menu-container="" aria-label="Global" style="visibility: visible; overflow: hidden;">
+			<button type="button" data-overflow-menu-prev-button="" class="button button-clear button-sm inner-focus" data-bi-name="site-nav-button-prev" hidden="" aria-label="Previous">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-chevron-left-light"></span>
+				</span>
+			</button>
+			
+		<ul class="display-flex gap-xxs-desktop">
+			<!---->
+			<li aria-setsize="4" aria-posinset="1">
+				<panel-controller data-bi-name="site-nav-link-1-discover">
+					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-1" style="white-space: nowrap;">
+						<span><!---->Discover<!----></span>
+						<span class="icon expanded-indicator" aria-hidden="true">
+							<span class="docon docon-chevron-down-light"></span>
+						</span>
+					</button>
+					<div class="site-header-panel" hidden="" id="ms--panel-1" data-bi-name="panel-1-discover">
+						
+		<div class="site-header-panel-content">
+			<ul class="site-header-panel-cards">
+				<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-1-documentation">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/docs/">
+								Documentation
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->In-depth articles on Microsoft developer tools and technologies<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-2-training">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/training/">
+								Training
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Personalized learning paths and courses<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-3-credentials">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/credentials/">
+								Credentials
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Globally recognized, industry-endorsed credentials<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-4-qna">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/answers/">
+								Q&amp;A
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Technical questions and answers moderated by Microsoft<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-5-code-samples">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/samples/">
+								Code Samples
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Code sample library for Microsoft developer tools and technologies<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-6-assessments">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/assessments/">
+								Assessments
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Interactive, curated guidance and recommendations<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-7-shows">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/shows/">
+								Shows
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Thousands of hours of original programming from Microsoft experts<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+			</ul>
+			
+		</div>
+		
+			<section class="site-header-panel-featured-content"><!----><!---->
+				<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="featured-card-1-featured-assessment">
+					<div class="card-content">
+						<p class="card-supertitle"><!---->Featured assessment<!----></p>
+						<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/assessments/1c032171-8ca0-4032-8962-a38a5cc424a8/?wt.mc_id=ailearningjourney_rightrail_webpage_wwl">
+							It's your AI learning journey
+						</a>
+						<p class="card-content-description line-clamp-2"><!---->Wherever you are in your AI journey, Microsoft Learn meets you where you are and helps you deepen your skills.<!----></p>
+					</div>
+				</article>
+			<!----><!----></section>
+		
+	
+					</div>
+				</panel-controller>
+			</li>
+		<!---->
+			<li aria-setsize="4" aria-posinset="2">
+				<panel-controller data-bi-name="site-nav-link-2-product-documentation">
+					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-2" style="white-space: nowrap;">
+						<span><!---->Product documentation<!----></span>
+						<span class="icon expanded-indicator" aria-hidden="true">
+							<span class="docon docon-chevron-down-light"></span>
+						</span>
+					</button>
+					<div class="site-header-panel" hidden="" id="ms--panel-2" data-bi-name="panel-2-product-documentation">
+						
+		<div class="site-header-panel-content">
+			<ul class="site-header-panel-links">
+				<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/aspnet/" data-bi-name="panel-link-1-asp-dotnet">
+						ASP.NET
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/azure/" data-bi-name="panel-link-2-azure">
+						Azure
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/dynamics365/" data-bi-name="panel-link-3-dynamics365">
+						Dynamics 365
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/microsoft-365/" data-bi-name="panel-link-4-microsoft-365">
+						Microsoft 365
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/microsoft-edge/" data-bi-name="panel-link-5-microsoft-edge">
+						Microsoft Edge
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/entra/" data-bi-name="panel-link-6-microsoft-entra">
+						Microsoft Entra
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/graph/" data-bi-name="panel-link-7-microsoft-graph">
+						Microsoft Graph
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/mem/" data-bi-name="panel-link-8-microsoft-intune">
+						Microsoft Intune
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/purview/" data-bi-name="panel-link-9-microsoft-purview">
+						Microsoft Purview
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/microsoftteams/" data-bi-name="panel-link-10-microsoft-teams">
+						Microsoft Teams
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/dotnet/" data-bi-name="panel-link-11-dotnet">
+						.NET
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/power-apps/" data-bi-name="panel-link-12-power-apps">
+						Power Apps
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/power-automate/" data-bi-name="panel-link-13-power-automate">
+						Power Automate
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/power-bi/" data-bi-name="panel-link-14-power-bi">
+						Power BI
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/power-platform/" data-bi-name="panel-link-15-power-platform">
+						Power Platform
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/powershell/" data-bi-name="panel-link-16-powershell">
+						PowerShell
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/sql/" data-bi-name="panel-link-17-sql">
+						SQL
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/sysinternals/" data-bi-name="panel-link-18-sysinternals">
+						Sysinternals
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/visualstudio/" data-bi-name="panel-link-19-visual-studio">
+						Visual Studio
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/windows/" data-bi-name="panel-link-20-windows">
+						Windows
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/windows-server/" data-bi-name="panel-link-21-windows-server">
+						Windows Server
+					</a>
+				</li>
+			<!---->
+			</ul>
+			
+			<a class="button button-clear button-sm color-primary justify-content-flex-start border-none background-color-transparent margin-top-sm" href="https://learn.microsoft.com/docs/" data-bi-name="panel-cta-view-all-products">
+				View all products
+			</a>
+		
+		</div>
+		
+			<section class="site-header-panel-featured-content"><!----><!---->
+				<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="featured-card-1-featured-assessment">
+					<div class="card-content">
+						<p class="card-supertitle"><!---->Featured assessment<!----></p>
+						<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/assessments/1c032171-8ca0-4032-8962-a38a5cc424a8/?wt.mc_id=ailearningjourney_rightrail_webpage_wwl">
+							It's your AI learning journey
+						</a>
+						<p class="card-content-description line-clamp-2"><!---->Wherever you are in your AI journey, Microsoft Learn meets you where you are and helps you deepen your skills.<!----></p>
+					</div>
+				</article>
+			<!----><!----></section>
+		
+	
+					</div>
+				</panel-controller>
+			</li>
+		<!---->
+			<li aria-setsize="4" aria-posinset="3">
+				<panel-controller data-bi-name="site-nav-link-3-dev-languages">
+					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-3" style="white-space: nowrap;">
+						<span><!---->Development languages<!----></span>
+						<span class="icon expanded-indicator" aria-hidden="true">
+							<span class="docon docon-chevron-down-light"></span>
+						</span>
+					</button>
+					<div class="site-header-panel" hidden="" id="ms--panel-3" data-bi-name="panel-3-dev-languages">
+						
+		<div class="site-header-panel-content">
+			<ul class="site-header-panel-links">
+				<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/cpp/" data-bi-name="panel-link-1-cpp">
+						C++
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/dax/" data-bi-name="panel-link-2-dax">
+						DAX
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/java/" data-bi-name="panel-link-3-java">
+						Java
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/odata/" data-bi-name="panel-link-4-odata">
+						OData
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/openapi/" data-bi-name="panel-link-5-open-api">
+						OpenAPI
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/powerquery-m/" data-bi-name="panel-link-6-power-query-m">
+						Power Query M
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/office/vba/" data-bi-name="panel-link-7-vba">
+						VBA
+					</a>
+				</li>
+			<!---->
+			</ul>
+			
+		</div>
+		
+			<section class="site-header-panel-featured-content"><!----><!---->
+				<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="featured-card-1-featured-assessment">
+					<div class="card-content">
+						<p class="card-supertitle"><!---->Featured assessment<!----></p>
+						<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/assessments/1c032171-8ca0-4032-8962-a38a5cc424a8/?wt.mc_id=ailearningjourney_rightrail_webpage_wwl">
+							It's your AI learning journey
+						</a>
+						<p class="card-content-description line-clamp-2"><!---->Wherever you are in your AI journey, Microsoft Learn meets you where you are and helps you deepen your skills.<!----></p>
+					</div>
+				</article>
+			<!----><!----></section>
+		
+	
+					</div>
+				</panel-controller>
+			</li>
+		<!---->
+			<li aria-setsize="4" aria-posinset="4">
+				<panel-controller data-bi-name="site-nav-link-4-topics">
+					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-4" style="white-space: nowrap;">
+						<span><!---->Topics<!----></span>
+						<span class="icon expanded-indicator" aria-hidden="true">
+							<span class="docon docon-chevron-down-light"></span>
+						</span>
+					</button>
+					<div class="site-header-panel" hidden="" id="ms--panel-4" data-bi-name="panel-4-topics">
+						
+		<div class="site-header-panel-content">
+			<ul class="site-header-panel-links">
+				<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/ai/" data-bi-name="panel-link-1-ai">
+						Artificial intelligence
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/compliance/" data-bi-name="panel-link-2-compliance">
+						Compliance
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/devops/" data-bi-name="panel-link-3-devops">
+						DevOps
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/platform-engineering/" data-bi-name="panel-link-4-platform-engineering">
+						Platform engineering
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/security/" data-bi-name="panel-link-5-security">
+						Security
+					</a>
+				</li>
+			<!---->
+			</ul>
+			
+		</div>
+		
+			<section class="site-header-panel-featured-content"><!----><!---->
+				<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="featured-card-1-featured-assessment">
+					<div class="card-content">
+						<p class="card-supertitle"><!---->Featured assessment<!----></p>
+						<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/assessments/1c032171-8ca0-4032-8962-a38a5cc424a8/?wt.mc_id=ailearningjourney_rightrail_webpage_wwl">
+							It's your AI learning journey
+						</a>
+						<p class="card-content-description line-clamp-2"><!---->Wherever you are in your AI journey, Microsoft Learn meets you where you are and helps you deepen your skills.<!----></p>
+					</div>
+				</article>
+			<!----><!----></section>
+		
+	
+					</div>
+				</panel-controller>
+			</li>
+		<!---->
+		</ul>
+	
+			<button type="button" data-overflow-menu-next-button="" class="button button-clear button-sm inner-focus margin-left-auto" data-bi-name="site-nav-button-next" hidden="" aria-label="Next">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-chevron-right-light"></span>
+				</span>
+			</button>
+		</nav>
+	</overflow-menu>
+
+				<!-- Search -->
+				
+		<search-expander class="flex-grow-1 margin-left-xxs">
+			<div id="ms--site-header-search" class="display-flex align-items-center gap-xxs" hidden="">
+				
+		<form class="flex-grow-1" method="GET" role="search" id="ms--site-header-search-form" data-bi-name="site-header-search-form" name="site-header-search-form" aria-label="Search" action="https://learn.microsoft.com/en-us/search/">
+			<div class="autocomplete display-block" data-bi-name="autocomplete"><!---->
+			<div class="field-body control ">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="site-header-search-autocomplete-input" data-test-id="site-header-search-autocomplete-input" class="autocomplete-input input input-sm
+						
+						width-full" type="search" name="terms" aria-expanded="false" aria-owns="ax-2-listbox" aria-controls="ax-2-listbox" aria-activedescendant="" aria-label="Search" aria-describedby="ms--site-header-search-autocomplete-input-description" placeholder="Search previous versions" data-bi-name="site-header-search-autocomplete-input" pattern=".*">
+
+				
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+
+				<span hidden="" id="ms--site-header-search-autocomplete-input-description">
+					Suggestions will filter as you type
+				</span>
+			</div>
+
+			<ul role="listbox" id="ax-2-listbox" data-test-id="site-header-search-autocomplete-input-listbox" class="autocomplete-suggestions is-vertically-scrollable padding-xxs " aria-label="Suggestions" hidden="">
+				
+				
+			</ul>
+		<!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			<input name="dataSource" hidden="" value="previousVersions">
+			
+		</form>
+	
+				<button data-search-expander-trigger-close="" type="button" aria-controls="ms--site-header-search" class="button button-clear inner-focus" data-bi-name="site-nav-search-close" aria-label="Close search">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-navigate-close"></span>
+					</span>
+				</button>
+			</div>
+			<button data-search-expander-trigger-open="" type="button" aria-controls="ms--site-header-search" class="button button-clear inner-focus" data-bi-name="site-nav-search-open" aria-label="Open search">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-search"></span>
+				</span>
+			</button>
+		</search-expander>
+	
+			</div>
+
+			<!-- User avatar/Sign in -->
+			<!---->
+		<a href="https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85)#" data-bi-name="site-nav-sign-in" class="link-button font-size-sm flex-shrink-0 docs-sign-in auth-status-determined not-authenticated">
+			Sign in
+		</a>
+	 
+		<details data-bi-name="site-nav-user" class="popover popover-right auth-status-determined authenticated">
+			<summary data-bi-name="site-nav-user-avatar" aria-label="Your Account">
+				<div class="persona">
+					<figure class="persona-avatar">
+						<img alt="" data-profile-property="avatarThumbnailUrl">
+					</figure>
+				</div>
+			</summary>
+			<div class="popover-content width-auto" data-bi-name="site-nav-user-menu">
+				<div class="persona">
+					<figure class="persona-avatar">
+						<img alt="" data-profile-property="avatarUrl" aria-labelledby="ms--user-display-name">
+					</figure>
+					<div class="persona-details">
+						<p id="ms--user-display-name" class="persona-name" data-profile-property="displayName"></p>
+						<p data-profile-property="upn"></p>
+					</div>
+				</div>
+				<ul class="padding-block-xs">
+					<li class="padding-bottom-xs">
+						<a data-profile-property="profileUrl" class="font-size-sm" data-bi-name="site-nav-user-profile" href="https://learn.microsoft.com/en-us/users/me/activity/">
+							Profile
+						</a>
+					</li>
+					<li>
+						<a data-profile-property="settingsUrl" class="font-size-sm" data-bi-name="site-nav-user-settings" href="https://learn.microsoft.com/en-us/users/me/settings/">
+							Settings
+						</a>
+					</li>
+				</ul>
+				<div class="border-top padding-top-xs">
+					<a class="docs-sign-out font-size-sm" href="https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85)#" data-bi-name="site-nav-sign-out">
+						Sign out
+					</a>
+				</div>
+			</div>
+		</details>
+	<!---->
+		</div>
+	<!----></header>
+
+		<div id="headerAreaHolder" data-bi-name="header">
+<header role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization"><!----> <div class="nav-bar border-bottom display-none-tablet" data-test-id="primary-nav-bar" data-bi-name="L1-header" id="ms--primary-nav"><!----> 
+		<div class="display-flex align-items-center padding-none margin-left-xs margin-left-none-tablet ">
+			
+					<a itemprop="url" href="https://www.microsoft.com/" aria-label="Microsoft" data-bi-name="site-header-link-microsoft-logo-mobile">
+						
+				<div role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope" class="">
+					
+			<svg aria-hidden="true" viewBox="0 0 25 25" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" class="display-block">
+				<path d="M11.5216 0.5H0V11.9067H11.5216V0.5Z" fill="#f25022"></path>
+				<path d="M24.2418 0.5H12.7202V11.9067H24.2418V0.5Z" fill="#7fba00"></path>
+				<path d="M11.5216 13.0933H0V24.5H11.5216V13.0933Z" fill="#00a4ef"></path>
+				<path d="M24.2418 13.0933H12.7202V24.5H24.2418V13.0933Z" fill="#ffb900"></path>
+			</svg>
+		
+				</div>
+		  
+					</a>
+			   
+			<div class="nav-bar-item is-category display-none-tablet">
+				<a class="nav-bar-button font-size-xl font-weight-semibold has-hover-underline padding-inline-none" href="https://learn.microsoft.com/en-us/" data-bi-name="site-nav-link-brand-Learn-mobile">
+					<span><!---->Learn<!----></span>
+				</a>
+			</div>
+		
+		</div>
+	 
+						<div class="display-none-tablet display-flex alig-items-center margin-right-xs">
+							
+				
+		<div class="nav-bar-item is-hidden-tablet">
+			<div class="nav-bar-menu"><!---->
+				<button type="button" class="button button-clear button-lg inner-focus" data-test-id="mobile-nav-expander" data-bi-name="mobile-nav-open-button" title="Global navigation" aria-label="Global navigation" aria-expanded="false">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-menu"></span>
+					</span>
+				</button>
+		  <!----></div>
+		</div>
+	
+				
+		<nav class="nav-bar-nav" role="navigation" aria-label="Global">
+			<ul class="nav-bar-nav-list">
+				
+		<li class="nav-bar-item is-category">
+			<a data-test-id="header-link-category" class="nav-bar-button is-title has-hover-underline" itemprop="url" data-bi-name="L1-category-link" href="https://learn.microsoft.com/en-us/">
+				<span><!---->Learn<!----></span>
+			</a>
+		</li>
+	
+				<!---->
+				<li class="nav-bar-item" hidden="">
+					<a data-test-id="header-link-documentation" class=" nav-bar-button has-hover-underline is-active" href="https://learn.microsoft.com/en-us/docs/" aria-current="true" data-bi-name="L1-navigation-link">
+						<span><!---->Documentation<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a data-test-id="header-link-training" class=" nav-bar-button has-hover-underline " href="https://learn.microsoft.com/en-us/training/" data-bi-name="L1-navigation-link">
+						<span><!---->Training<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a data-test-id="header-link-credentials" class=" nav-bar-button has-hover-underline " href="https://learn.microsoft.com/en-us/credentials/" data-bi-name="L1-navigation-link">
+						<span><!---->Credentials<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a data-test-id="header-link-q&amp;a" class=" nav-bar-button has-hover-underline " href="https://learn.microsoft.com/en-us/answers/" data-bi-name="L1-navigation-link">
+						<span><!---->Q&amp;A<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a data-test-id="header-link-code-samples" class=" nav-bar-button has-hover-underline " href="https://learn.microsoft.com/en-us/samples/browse/" data-bi-name="L1-navigation-link">
+						<span><!---->Code Samples<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a data-test-id="header-link-assessments" class=" nav-bar-button has-hover-underline " href="https://learn.microsoft.com/en-us/assessments/" data-bi-name="L1-navigation-link">
+						<span><!---->Assessments<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a data-test-id="header-link-shows" class=" nav-bar-button has-hover-underline " href="https://learn.microsoft.com/en-us/shows/" data-bi-name="L1-navigation-link">
+						<span><!---->Shows<!----></span>
+					</a>
+				</li>
+		  <!---->
+		<li class="dropdown nav-bar-item">
+			<button type="button" aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-67" data-bi-name="L1-navigation-menu" value="undefined">
+				<span><!---->More<!----></span>
+				<span class="nav-bar-button-chevron" aria-hidden="true">
+					<span class="docon docon-chevron-down-light expanded-indicator"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu" id="ax-67" aria-label="More" data-bi-name="">
+				<!---->
+				<li class="nav-bar-item">
+					<a class=" nav-bar-button is-active" href="https://learn.microsoft.com/en-us/docs/" aria-current="true" data-bi-name="L1-navigation-link">
+						Documentation
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class=" nav-bar-button " href="https://learn.microsoft.com/en-us/training/" data-bi-name="L1-navigation-link">
+						Training
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class=" nav-bar-button " href="https://learn.microsoft.com/en-us/credentials/" data-bi-name="L1-navigation-link">
+						Credentials
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class=" nav-bar-button " href="https://learn.microsoft.com/en-us/answers/" data-bi-name="L1-navigation-link">
+						Q&amp;A
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class=" nav-bar-button " href="https://learn.microsoft.com/en-us/samples/browse/" data-bi-name="L1-navigation-link">
+						Code Samples
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class=" nav-bar-button " href="https://learn.microsoft.com/en-us/assessments/" data-bi-name="L1-navigation-link">
+						Assessments
+					</a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class=" nav-bar-button " href="https://learn.microsoft.com/en-us/shows/" data-bi-name="L1-navigation-link">
+						Shows
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+			</ul>
+		</nav>
+	
+				<span class="nav-bar-spacer"></span>
+				
+		<div class="nav-bar-search " id="ax-68" hidden="">
+			
+		<form class="nav-bar-search-form" method="GET" name="nav-bar-search-form" role="search" id="nav-bar-search-form" aria-label="Search" action="https://learn.microsoft.com/en-us/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!---->
+			<div class="field-body control ">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="site-search-input" data-test-id="site-search-input" class="autocomplete-input input input-sm
+						
+						" type="search" name="terms" aria-expanded="false" aria-owns="ax-69-listbox" aria-controls="ax-69-listbox" aria-activedescendant="" aria-label="Search" aria-describedby="ms--site-search-input-description" placeholder="Search previous versions" pattern=".*">
+
+				
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+
+				<span hidden="" id="ms--site-search-input-description">
+					Suggestions will filter as you type
+				</span>
+			</div>
+
+			<ul role="listbox" id="ax-69-listbox" data-test-id="site-search-input-listbox" class="autocomplete-suggestions is-vertically-scrollable padding-xxs " aria-label="Suggestions" hidden="">
+				
+				
+			</ul>
+		<!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			<input name="dataSource" hidden="" value="previousVersions">
+			
+		</form>
+	
+		</div>
+		
+					<div class="nav-bar-search">
+						<!-- hidden when the width drops to tablet -->
+						
+		<form class="nav-bar-search-form" method="GET" name="nav-bar-search-form" role="search" id="nav-bar-search-form-desktop" aria-label="Search" action="https://learn.microsoft.com/en-us/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!---->
+			<div class="field-body control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="site-search-input-desktop" data-test-id="site-search-input-desktop" class="autocomplete-input input input-sm
+						control has-icons-left
+						" type="search" name="terms" aria-expanded="false" aria-owns="ax-70-listbox" aria-controls="ax-70-listbox" aria-activedescendant="" aria-label="Search" aria-describedby="ms--site-search-input-desktop-description" placeholder="Search previous versions" pattern=".*">
+
+				
+					<span aria-hidden="true" class="icon is-small is-left">
+						<span class="has-text-primary docon docon-search"></span>
+					</span>
+			  
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+
+				<span hidden="" id="ms--site-search-input-desktop-description">
+					Suggestions will filter as you type
+				</span>
+			</div>
+
+			<ul role="listbox" id="ax-70-listbox" data-test-id="site-search-input-desktop-listbox" class="autocomplete-suggestions is-vertically-scrollable padding-xxs " aria-label="Suggestions" hidden="">
+				
+				
+			</ul>
+		<!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			<input name="dataSource" hidden="" value="previousVersions">
+			
+		</form>
+	
+					</div>
+			  
+		<div class="nav-bar-search " hidden="">
+			<div class="nav-bar-search-form-expander">
+				<button id="form-expander" data-test-id="form-expander" class="nav-bar-button has-hover-underline " title="Search" aria-expanded="false" aria-controls="ax-68">
+					
+		<span class="is-visually-hidden-mobile"><!---->Search<!----></span>
+		<span class="icon margin-left-xxs" aria-hidden="true">
+			<span class="docon docon-search"></span>
+		</span>
+	
+				</button>
+			</div>
+		</div>
+	
+				
+		<div class="nav-bar-profile">
+			
+		<a class="docs-sign-in auth-status-determined not-authenticated" href="https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85)#"> Sign in </a>
+	 
+		<div class="dropdown has-caret auth-status-determined authenticated">
+			<button class="dropdown-trigger button-reset" aria-controls="user-menu" aria-expanded="false" data-bi-name="L1-user-menu" aria-label="Your Account">
+				<figure class="image is-36x36">
+					<img class="has-body-background-medium border-radius-rounded" alt="" data-profile-property="avatarThumbnailUrl">
+				</figure>
+			</button>
+			<div class="dropdown-menu box justify-content-flex-start has-body-background" id="user-menu" data-bi-name="user-menu" role="menu">
+				<div class="media is-user-dir">
+					<div class="media-left">
+						<figure class="image is-48x48" aria-hidden="true">
+							<img class="has-body-background-medium border-radius-rounded" aria-labelledby="displayName" alt="" data-profile-property="avatarUrl">
+						</figure>
+					</div>
+					<div class="media-content">
+						<h2 class="title font-size-lg">
+							<span id="displayName" class="is-inline-truncated has-max-width-200" data-profile-property="displayName"></span>
+						</h2>
+						<p class="subtitle font-size-sm margin-bottom-none">
+							<span class="is-inline-truncated has-max-width-200" data-profile-property="upn"></span>
+						</p>
+					</div>
+				</div>
+				<ul class="padding-top-xs padding-bottom-xs">
+					<li class="padding-bottom-xs">
+						<a data-profile-property="profileUrl" href="https://learn.microsoft.com/en-us/users/me/activity/"><!---->Profile<!----></a>
+					</li>
+					<li>
+						<a data-profile-property="settingsUrl" href="https://learn.microsoft.com/en-us/users/me/settings/"><!---->Settings<!----></a>
+					</li>
+				</ul>
+				<div class="border-top padding-top-xs">
+					<a class="docs-sign-out" href="https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85)#"><!---->Sign out<!----></a>
+				</div>
+			</div>
+		</div>
+	
+		</div>
+	
+			
+						</div>
+				   <!----></div>  <!----></header>
+		</div>
+
+
+			<div id="content-header" class="content-header uhf-container has-padding has-default-focus border-bottom-none" data-bi-name="content-header">
+				<div class="content-header-controls margin-xxs margin-inline-sm-tablet">
+					<button type="button" class="contents-button button button-sm margin-right-xxs" data-bi-name="contents-expand" aria-haspopup="true" data-contents-button="">
+						<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+						<span class="contents-expand-title">
+Table of contents						</span>
+					</button>
+					<button type="button" class="ap-collapse-behavior ap-expanded button button-sm" data-bi-name="ap-collapse" aria-controls="action-panel">
+						<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+						<span>Exit focus mode</span>
+					</button>
+				</div>
+			</div>
+
+		<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus"><!---->
+			<section data-dismissable="disappearing" data-bi-name="banner" class="is-info alert is-banner">
+				<div class="uhf-container">
+					<button data-dismiss="" data-bi-name="close" type="button" class="delete position-absolute top-0 right-0 margin-xxs delete-lg">
+						<span class="visually-hidden"><!---->Dismiss alert<!----></span>
+					</button>
+					<div class="columns">
+						<div class="column is-12">
+							<div class="level justify-content-flex-start">
+								<div class="level-left flex-shrink-1">
+									<div class="level-item flex-shrink-1">
+										<p class="has-text-white-static disclaimer-title margin-top-xxs margin-right-xs has-line-height-reset">
+											<span class="icon">
+												<span class="docon docon-status-error-outline" aria-hidden="true"></span>
+											</span>
+											<span><!---->We're no longer updating this content regularly. Check the <a href="https://learn.microsoft.com/en-us/lifecycle/products">Microsoft Product Lifecycle</a> for information about how this product, service, technology, or API is supported.<!----></span>
+										</p>
+									</div>
+								</div>
+								 <div class="level-right margin-xxs margin-none-tablet">
+				<div class="level-item justify-content-flex-start padding-xxs-tablet">
+					
+					<a data-bi-name="CTA" href="https://learn.microsoft.com/" class="button button-info button-sm margin-inline-xxs">
+						<span><!---->Return to main site<!----></span>
+					</a>
+			  
+				</div>
+		  </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		<!----></div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="margin-top-sm-tablet position-sticky display-flex flex-direction-column" role="navigation" aria-label="Primary" data-bi-name="left toc" style="top: 24px; height: calc(-49px + 100vh); max-height: 3928.5px;"><form action="javascript:" role="search" aria-label="Search" class="margin-bottom-xxs"><label class="visually-hidden" for="ax-0">Search</label><div class="autocomplete display-block" data-bi-name="autocomplete"><!---->
+			<div class="field-body control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-0" data-test-id="ax-0" class="autocomplete-input input input-sm
+						control has-icons-left
+						width-full" type="text" aria-expanded="false" aria-owns="ax-1-listbox" aria-controls="ax-1-listbox" aria-activedescendant="" aria-describedby="ms--ax-0-description" placeholder="Filter by title" pattern=".*">
+
+				
+					<span aria-hidden="true" class="icon is-small is-left">
+						<span class="has-text-primary docon docon-filter-settings"></span>
+					</span>
+			  
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+
+				<span hidden="" id="ms--ax-0-description">
+					Suggestions will filter as you type
+				</span>
+			</div>
+
+			<ul role="listbox" id="ax-1-listbox" data-test-id="ax-0-listbox" class="autocomplete-suggestions is-vertically-scrollable padding-xxs " aria-label="Suggestions" hidden="">
+				
+				
+			</ul>
+		<!----></div></form><ul class="tree table-of-contents is-vertically-scrollable flex-grow-1 flex-shrink-1" role="tree" aria-label="Table of contents" data-bi-name="tree" data-is-collapsible="true"><li role="none"><a aria-setsize="1" aria-level="1" aria-posinset="1" role="treeitem" tabindex="0" class="tree-item is-leaf has-external-link-indicator is-selected" data-bi-name="tree-leaf" href="https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85)" aria-current="page">HTA:APPLICATION Object</a></li></ul></nav>
+			</div>
+
+			<!-- .primary-holder -->
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<!--div.columns -->
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+					<div id="main-column" class="column  is-full is-8-desktop">
+
+						<main id="main" class="" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+							<!-- article-header -->
+							<div id="article-header" class="background-color-body margin-top-sm-tablet margin-bottom-xs display-none-print">
+								<div class="display-flex align-items-center ">
+									<details id="article-header-breadcrumbs-overflow-popover" class="popover" data-for="article-header-breadcrumbs" hidden="">
+										<summary class="button button-clear button-primary button-sm inner-focus" aria-label="All breadcrumbs">
+											<span class="icon">
+												<span class="docon docon-more"></span>
+											</span>
+										</summary>
+										<div id="article-header-breadcrumbs-overflow" class="popover-content padding-none"><!---->
+			<nav>
+				<ol class="list-style-none">
+					<!---->
+								<li class="line-clamp-1">
+									<a class="display-block has-inner-focus padding-inline-xs padding-block-xxs border-radius font-size-sm" href="https://learn.microsoft.com/en-us/">
+										Learn
+									</a>
+								</li>
+							<!----><!---->
+								<li class="line-clamp-1">
+									<a class="display-block has-inner-focus padding-inline-xs padding-block-xxs border-radius font-size-sm" href="https://learn.microsoft.com/en-us/previous-versions/">
+										Previous Versions
+									</a>
+								</li>
+							<!----><!----><!---->
+				</ol>
+			</nav>
+			
+		<!----></div>
+									</details>
+
+									<bread-crumbs id="article-header-breadcrumbs" data-test-id="article-header-breadcrumbs" class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop margin-left-negative-xxs padding-left-xxs" style="display: block; white-space: nowrap; overflow: hidden;"><!---->
+			<nav>
+				<ol class="breadcrumbs">
+					<!---->
+								<li class="breadcrumbs-item" data-bread-crumbs-collapse-target="">
+									<a href="https://learn.microsoft.com/en-us/"><!---->Learn<!----></a>
+								</li>
+							<!----><!---->
+								<li class="breadcrumbs-item" data-bread-crumbs-collapse-target="" style="">
+									<a href="https://learn.microsoft.com/en-us/previous-versions/" style=""><!---->Previous Versions<!----></a>
+								</li>
+							<!----><!----><!---->
+				</ol>
+			</nav>
+		<!----></bread-crumbs>
+
+									<div id="article-header-page-actions" class="margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch">
+											<div class="language dropdown display-flex align-items-center">
+												<button class="dropdown-trigger button button-clear button-sm button-primary" aria-controls="language-menu" aria-expanded="false" title="Language" data-bi-name="language">
+													<span class="lang-title align-self-flex-start" dir="ltr">HTML</span>
+													<span class="icon" aria-hidden="true">
+														<span class="docon docon-chevron-down-light expanded-indicator"></span>
+													</span>
+												</button>
+												<div class="dropdown-menu padding-xxs language-selector" name="language-selector" role="menu">
+													<ul data-bi-name="language-links" dir="ltr">
+														<li>
+															<a class="button button-clear button-sm button-block justify-content-flex-start" data-bi-name="lang-html" tabindex="0" aria-selected="true">HTML</a>
+														</li>
+														<li>
+															<a class="button button-clear button-sm button-block justify-content-flex-start" data-bi-name="lang-scr" tabindex="0" aria-selected="false"></a>
+														</li>
+														<li>
+															<a class="button button-clear button-sm button-block justify-content-flex-start" data-bi-name="lang-dhtml" tabindex="0" aria-selected="false"></a>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										<a id="lang-link-tablet" class="button button-primary button-clear button-sm display-none display-inline-flex-tablet" title="Read in English" data-bi-name="language-toggle" data-read-in-link="" hidden="" href="https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85)" data-bi="{&quot;cN&quot;:&quot;language-toggle&quot;,&quot;value&quot;:&quot;off&quot;}">
+											<span class="icon margin-none" aria-hidden="true" data-read-in-link-icon="">
+												<span class="docon docon-locale-globe"></span>
+											</span>
+											<span class="is-visually-hidden" data-read-in-link-text="">Read in English</span>
+										</a>
+
+											<button type="button" class="collection button button-clear button-sm button-primary display-none display-inline-flex-tablet" data-list-type="collection" data-bi-name="collection" title="Add HTA:APPLICATION Object | Microsoft Learn to a collection" data-pressed="false">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-circle-addition"></span>
+												</span>
+												<span class="collection-status is-visually-hidden">Add</span>
+											</button>
+										
+
+										
+
+
+										
+										<details class="popover popover-right" id="article-header-page-actions-overflow">
+											<summary class="justify-content-flex-start button button-clear button-sm button-primary" aria-label="More actions">
+												<span class="icon" aria-hidden="true">
+													<span class="docon docon-more-vertical"></span>
+												</span>
+											</summary>
+											<div class="popover-content padding-none">
+													<button data-page-action-item="overflow-mobile" type="button" class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear display-none-tablet" data-bi-name="contents-expand" data-contents-button="" data-popover-close="">
+														<span class="icon">
+															<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+														</span>
+															<span class="contents-expand-title">Table of contents</span>
+													</button>
+
+												<a id="lang-link-overflow" class="justify-content-flex-start button-sm has-inner-focus button button-clear button-block display-none-tablet" title="Read in English" data-bi-name="language-toggle" data-page-action-item="overflow-mobile" data-check-hidden="true" data-read-in-link="" hidden="" href="https://learn.microsoft.com/en-us/previous-versions/ms536495(v=vs.85)" data-bi="{&quot;cN&quot;:&quot;language-toggle&quot;,&quot;value&quot;:&quot;off&quot;}">
+													<span class="icon" aria-hidden="true" data-read-in-link-icon="">
+														<span class="docon docon-locale-globe"></span>
+													</span>
+													<span data-read-in-link-text="">Read in English</span>
+												</a>
+
+													<button type="button" class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet" data-list-type="collection" data-bi-name="collection" title="Add HTA:APPLICATION Object | Microsoft Learn to a collection" data-page-action-item="overflow-mobile" data-check-hidden="true" data-popover-close="" data-pressed="false">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="collection-status">Add</span>
+													</button>
+
+
+													<button class="button button-block button-clear button-sm justify-content-flex-start has-inner-focus" title="Print" type="button" aria-label="Print" data-bi-name="print" data-page-action-item="overflow-all" data-popover-close="" data-print-page="" data-check-hidden="true">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-print"></span>
+														</span>
+														<span>Print</span>
+													</button>
+
+													<div aria-hidden="true" class="margin-none
+														border-top" data-page-action-item="overflow-all"></div>
+
+													
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-twitter" data-bi-name="twitter" data-page-action-item="overflow-all" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fprevious-versions%2Fms536495(v%3Dvs.85)%3FWT.mc_id%3Dtwitter&amp;text=Today%20I%20completed%20%22HTA%3AAPPLICATION%20Object%20%7C%20Microsoft%20Learn%22!%20I%27m%20so%20proud%20to%20be%20celebrating%20this%20achievement%20and%20hope%20this%20inspires%20you%20to%20start%20your%20own%20%40MicrosoftLearn%20journey!&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fprevious-versions%2Fms536495(v%3Dvs.85)%3FWT.mc_id%3Dtwitter">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-twitter"></span>
+															</span>
+															<span>Twitter</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-linkedin" data-bi-name="linkedin" data-page-action-item="overflow-all" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Today%20I%20completed%20%22HTA%3AAPPLICATION%20Object%20%7C%20Microsoft%20Learn%22!%20I%27m%20so%20proud%20to%20be%20celebrating%20this%20achievement%20and%20hope%20this%20inspires%20you%20to%20start%20your%20own%20%40MicrosoftLearn%20journey!%0A%0D%0Ahttps%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fprevious-versions%2Fms536495(v%3Dvs.85)%3FWT.mc_id%3Dlinkedin">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-linkedin"></span>
+															</span>
+															<span>LinkedIn</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-facebook" data-bi-name="facebook" data-page-action-item="overflow-all" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fprevious-versions%2Fms536495(v%3Dvs.85)%3FWT.mc_id%3Dfacebook">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-facebook"></span>
+															</span>
+															<span>Facebook</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-email" data-bi-name="email" data-page-action-item="overflow-all" href="mailto:?subject=%5BShared%20Article%5D%20HTA%3AAPPLICATION%20Object%20%7C%20Microsoft%20Learn&amp;body=Today%20I%20completed%20%22HTA%3AAPPLICATION%20Object%20%7C%20Microsoft%20Learn%22!%20I%27m%20so%20proud%20to%20be%20celebrating%20this%20achievement%20and%20hope%20this%20inspires%20you%20to%20start%20your%20own%20%40MicrosoftLearn%20journey!%0A%0D%0Ahttps%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fprevious-versions%2Fms536495(v%3Dvs.85)%3FWT.mc_id%3Demail">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-mail-message-fill"></span>
+															</span>
+															<span>Email</span>
+														</a>
+												
+											</div>
+										</details>
+										
+									</div>
+								</div>
+							</div>
+							<!-- end article-header -->
+
+
+							<div>
+								<button type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" data-bi-name="contents-expand" data-contents-button="" hidden="">
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span>
+										<span class="contents-expand-title">Table of contents</span>
+								</button>
+							</div>
+
+							<!-- end mobile-contents button  -->
+
+							<div class="content ">
+
+
+								<h1 id="htaapplication-element--htaapplication-object">HTA:APPLICATION Element | HTA:APPLICATION Object</h1>
+
+
+									<div class="display-flex justify-content-space-between align-items-center flex-wrap-wrap page-metadata-container">
+										<div class="margin-right-xxs">
+											<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+														<li>
+Article														</li>
+													<li>
+														<time class="" data-article-date="" aria-label="Article review date" datetime="2013-06-11T00:00:00.000Z" data-article-date-source="ms.date">06/11/2013</time>
+													</li>
+											</ul>
+										</div>
+									</div>
+
+									<div id="ms--inline-notifications" data-bi-name="inline-notification"></div>
+
+										<nav id="center-doc-outline" class="doc-outline is-hidden-desktop display-none-print margin-bottom-sm" data-bi-name="intopic toc" role="navigation" aria-label="In this article" hidden="">
+											<h2 id="ms--in-this-article" class="title is-6 margin-block-xs">In this article</h2>
+										</nav>
+
+								<!-- <content> -->
+									<p>Enables an extended object model for building HTML Applications (HTA).</p>
+<p><strong>Members Table</strong></p>
+<blockquote>
+<p>The following table lists the members exposed by the <strong>HTA:APPLICATION</strong> object.</p>
+<div class="buttons buttons-right margin-bottom-none margin-top-sm"><!----> <button class="button button-clear button-sm display-flex gap-xxs">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-expand color-primary"></span>
+		</span>
+		<span><!---->Expand table<!----></span>
+	</button><!----></div><div class="has-inner-focus"><table aria-label="Table 1" class="table table-sm margin-top-none">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://msdn.microsoft.com/en-us/library/ms533031(v=vs.85)" data-linktype="external">APPLICATIONNAME</a></td>
+<td><a href="https://msdn.microsoft.com/en-us/library/ms533031(v=vs.85)" data-linktype="external">applicationName</a></td>
+<td><p>Sets or gets the name of the HTML Application (HTA).</p></td>
+</tr>
+<tr class="even">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536476(v=vs.85)" data-linktype="relative-path">BORDER</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536476(v=vs.85)" data-linktype="relative-path">border</a></td>
+<td><p>Sets or gets the type of window border for the HTML Application (HTA).</p></td>
+</tr>
+<tr class="odd">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536477(v=vs.85)" data-linktype="relative-path">BORDERSTYLE</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536477(v=vs.85)" data-linktype="relative-path">borderStyle</a></td>
+<td><p>Sets or gets the style set for the content border in the HTML Application (HTA) window.</p></td>
+</tr>
+<tr class="even">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536478(v=vs.85)" data-linktype="relative-path">CAPTION</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536478(v=vs.85)" data-linktype="relative-path">caption</a></td>
+<td><p>Sets or gets a Boolean value that indicates whether the window is set to display a title bar or a caption, for the HTML Application (HTA).</p></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536479(v=vs.85)" data-linktype="relative-path">commandLine</a></td>
+<td><p>Gets the argument used to launch the HTML Application (HTA).</p></td>
+</tr>
+<tr class="even">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536480(v=vs.85)" data-linktype="relative-path">CONTEXTMENU</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536480(v=vs.85)" data-linktype="relative-path">contextMenu</a></td>
+<td><p>Sets or gets a string value that indicates whether the context menu is displayed when the right mouse button is clicked.</p></td>
+</tr>
+<tr class="odd">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536482(v=vs.85)" data-linktype="relative-path">ICON</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536482(v=vs.85)" data-linktype="relative-path">icon</a></td>
+<td><p>Sets or gets the name and location of the icon specified in the HTML Application (HTA).</p></td>
+</tr>
+<tr class="even">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536483(v=vs.85)" data-linktype="relative-path">INNERBORDER</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536483(v=vs.85)" data-linktype="relative-path">innerBorder</a></td>
+<td><p>Sets or gets a string value that indicates whether the inside 3-D border is displayed.</p></td>
+</tr>
+<tr class="odd">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536484(v=vs.85)" data-linktype="relative-path">MAXIMIZEBUTTON</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536484(v=vs.85)" data-linktype="relative-path">maximizeButton</a></td>
+<td><p>Sets or gets a Boolean value that indicates whether a <strong>Maximize</strong> button is displayed in the title bar of the HTML Application (HTA) window.</p></td>
+</tr>
+<tr class="even">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536485(v=vs.85)" data-linktype="relative-path">MINIMIZEBUTTON</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536485(v=vs.85)" data-linktype="relative-path">minimizeButton</a></td>
+<td><p>Sets or gets a Boolean value that indicates whether a <strong>Minimize</strong> button is displayed in the title bar of the HTML Application (HTA) window.</p></td>
+</tr>
+<tr class="odd">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536486(v=vs.85)" data-linktype="relative-path">NAVIGABLE</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536486(v=vs.85)" data-linktype="relative-path">navigable</a></td>
+<td><p>Sets or gets a string value that indicates whether linked documents are loaded in the main HTML Application (HTA) window or in a new browser window.</p></td>
+</tr>
+<tr class="even">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536487(v=vs.85)" data-linktype="relative-path">SCROLL</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536487(v=vs.85)" data-linktype="relative-path">scroll</a></td>
+<td><p>Sets or gets a string value that indicates whether the scroll bars are displayed.</p></td>
+</tr>
+<tr class="odd">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536488(v=vs.85)" data-linktype="relative-path">SCROLLFLAT</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536488(v=vs.85)" data-linktype="relative-path">scrollFlat</a></td>
+<td><p>Sets or gets a string value that indicates whether the scroll bar is 3-D or flat.</p></td>
+</tr>
+<tr class="even">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536489(v=vs.85)" data-linktype="relative-path">SELECTION</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536489(v=vs.85)" data-linktype="relative-path">selection</a></td>
+<td><p>Sets or gets a string value that indicates whether the content can be selected with the mouse or keyboard.</p></td>
+</tr>
+<tr class="odd">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536490(v=vs.85)" data-linktype="relative-path">SHOWINTASKBAR</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536490(v=vs.85)" data-linktype="relative-path">showInTaskBar</a></td>
+<td><p>Sets or gets a value that indicates whether the HTML Application (HTA) is displayed in the Windows taskbar.</p></td>
+</tr>
+<tr class="even">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536491(v=vs.85)" data-linktype="relative-path">SINGLEINSTANCE</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536491(v=vs.85)" data-linktype="relative-path">singleInstance</a></td>
+<td><p>Sets or gets a value that indicates whether only one instance of the specified HTML Application (HTA) can run at a time.</p></td>
+</tr>
+<tr class="odd">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536492(v=vs.85)" data-linktype="relative-path">SYSMENU</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536492(v=vs.85)" data-linktype="relative-path">sysMenu</a></td>
+<td><p>Sets or gets a Boolean value that indicates whether a system menu is displayed in the HTML Application (HTA).</p></td>
+</tr>
+<tr class="even">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536493(v=vs.85)" data-linktype="relative-path">VERSION</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536493(v=vs.85)" data-linktype="relative-path">version</a></td>
+<td><p>Sets or gets the version number of the HTML Application (HTA).</p></td>
+</tr>
+<tr class="odd">
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536494(v=vs.85)" data-linktype="relative-path">WINDOWSTATE</a></td>
+<td><a href="https://learn.microsoft.com/en-us/previous-versions/ms536494(v=vs.85)" data-linktype="relative-path">windowState</a></td>
+<td><p>Sets or gets the initial size of the HTA window.</p></td>
+</tr>
+</tbody>
+</table></div>
+</blockquote>
+<p><strong>Remarks</strong></p>
+<blockquote>
+<p><strong>Warning</strong>&nbsp;&nbsp;HTAs can potentially expose the client machine to malicious script. HTAs, like .exe files have read/write access to the files and system registry on the client machine. Powerful executables can be produced and delivered quickly with a few short script statements. Use of HTAs is not recommended where security or the source of the file is questionable.</p>
+<p>You can create an HTA by saving an existing HTML page with an .hta extension. However, to set application window properties, such as those listed in the Members table, include the <strong>HTA:APPLICATION</strong> tag within the <a href="https://msdn.microsoft.com/en-us/library/ms535252(v=vs.85)" data-linktype="external">head</a> element.</p>
+<p>The <strong>HTA:APPLICATION</strong> element requires a closing tag.</p>
+<div class="codeHeader" id="code-try-0" data-bi-name="code-header"><span class="language"></span>
+		<button type="button" class="action position-relative display-none-print" data-bi-name="copy">
+			<span class="icon margin-right-xxs" aria-hidden="true">
+				<span class="docon docon-edit-copy"></span>
+			</span>
+			<span>Copy</span>
+			<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+				<span class="icon font-size-lg">
+					<span class="docon docon-check-mark"></span>
+				</span>
+			</div>
+		</button>
+	</div><pre class="has-inner-focus"><code data-author-content="&lt;HTA:APPLICATION ... &gt; ... &lt;/HTA:APPLICATION&gt;
+">&lt;HTA:APPLICATION ... &gt; ... &lt;/HTA:APPLICATION&gt;
+</code></pre>
+<p>Because the <strong>HTA:APPLICATION</strong> element is an empty tag, it can also be closed using the following shortcut.</p>
+<div class="codeHeader" id="code-try-1" data-bi-name="code-header"><span class="language"></span>
+		<button type="button" class="action position-relative display-none-print" data-bi-name="copy">
+			<span class="icon margin-right-xxs" aria-hidden="true">
+				<span class="docon docon-edit-copy"></span>
+			</span>
+			<span>Copy</span>
+			<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+				<span class="icon font-size-lg">
+					<span class="docon docon-check-mark"></span>
+				</span>
+			</div>
+		</button>
+	</div><pre class="has-inner-focus"><code data-author-content="&lt;HTA:APPLICATION ...  /&gt;
+">&lt;HTA:APPLICATION ...  /&gt;
+</code></pre>
+<p><strong>Note</strong>&nbsp;&nbsp; When using the shortcut, the forward slash must be preceded by a blank space.</p>
+<p>This element is not rendered.</p>
+<p>This element requires a closing tag.</p>
+</blockquote>
+<p><strong>Example</strong></p>
+<blockquote>
+<p>This example retrieves all the properties exposed by <strong>HTA:APPLICATION</strong>.</p>
+<div class="codeHeader" id="code-try-2" data-bi-name="code-header"><span class="language"></span>
+		<button type="button" class="action position-relative display-none-print" data-bi-name="copy">
+			<span class="icon margin-right-xxs" aria-hidden="true">
+				<span class="docon docon-edit-copy"></span>
+			</span>
+			<span>Copy</span>
+			<div class="successful-copy-alert position-absolute right-0 top-0 left-0 bottom-0 display-flex align-items-center justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+				<span class="icon font-size-lg">
+					<span class="docon docon-check-mark"></span>
+				</span>
+			</div>
+		</button>
+	</div><pre class="has-inner-focus" role="group" aria-label="Horizontally scrollable code" tabindex="0"><code data-author-content="&lt;HTML&gt;
+&lt;HEAD&gt;
+  &lt;TITLE&gt;HTA Demo&lt;/TITLE&gt;
+    &lt;HTA:APPLICATION ID=&quot;oHTA&quot;
+     APPLICATIONNAME=&quot;myApp&quot;
+     BORDER=&quot;thin&quot;
+     BORDERSTYLE=&quot;normal&quot;
+     CAPTION=&quot;yes&quot;
+     ICON=&quot;&quot;
+     MAXIMIZEBUTTON=&quot;yes&quot;
+     MINIMIZEBUTTON=&quot;yes&quot;
+     SHOWINTASKBAR=&quot;no&quot;
+     SINGLEINSTANCE=&quot;no&quot;
+     SYSMENU=&quot;yes&quot;
+     VERSION=&quot;1.0&quot;
+     WINDOWSTATE=&quot;maximize&quot;/&gt;
+
+  &lt;SCRIPT&gt;
+
+  /* This function also retrieves the value of the commandLine property,
+     which cannot be set as an attribute.  */
+   
+  function window.onload()
+  {
+     sTempStr = &quot;applicationName  = &quot; + oHTA.applicationName + &quot;\n&quot; + 
+                &quot;border           = &quot; + oHTA.border          + &quot;\n&quot; +
+                &quot;borderStyle      = &quot; + oHTA.borderStyle     + &quot;\n&quot; + 
+                &quot;caption          = &quot; + oHTA.caption         + &quot;\n&quot; +
+                &quot;commandLine      = &quot; + oHTA.commandLine     + &quot;\n&quot; +
+                &quot;icon             = &quot; + oHTA.icon            + &quot;\n&quot; +
+                &quot;maximizeButton   = &quot; + oHTA.maximizeButton  + &quot;\n&quot; +
+                &quot;minimizeButton   = &quot; + oHTA.minimizeButton  + &quot;\n&quot; + 
+                &quot;showInTaskBar    = &quot; + oHTA.showInTaskbar   + &quot;\n&quot; +
+                &quot;singleInstance   = &quot; + oHTA.singleInstance  + &quot;\n&quot; +  
+                &quot;sysMenu          = &quot; + oHTA.sysMenu         + &quot;\n&quot; + 
+                &quot;version          = &quot; + oHTA.version         + &quot;\n&quot; + 
+                &quot;windowState      = &quot; + oHTA.windowState     + &quot;\n&quot; ;
+          
+     oPre.innerText = sTempStr;       
+  }
+  &lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY SCROLL=&quot;no&quot;&gt;
+  &lt;PRE ID=oPre&gt;  &lt;/PRE&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+">&lt;HTML&gt;
+&lt;HEAD&gt;
+  &lt;TITLE&gt;HTA Demo&lt;/TITLE&gt;
+    &lt;HTA:APPLICATION ID="oHTA"
+     APPLICATIONNAME="myApp"
+     BORDER="thin"
+     BORDERSTYLE="normal"
+     CAPTION="yes"
+     ICON=""
+     MAXIMIZEBUTTON="yes"
+     MINIMIZEBUTTON="yes"
+     SHOWINTASKBAR="no"
+     SINGLEINSTANCE="no"
+     SYSMENU="yes"
+     VERSION="1.0"
+     WINDOWSTATE="maximize"/&gt;
+
+  &lt;SCRIPT&gt;
+
+  /* This function also retrieves the value of the commandLine property,
+     which cannot be set as an attribute.  */
+   
+  function window.onload()
+  {
+     sTempStr = "applicationName  = " + oHTA.applicationName + "\n" + 
+                "border           = " + oHTA.border          + "\n" +
+                "borderStyle      = " + oHTA.borderStyle     + "\n" + 
+                "caption          = " + oHTA.caption         + "\n" +
+                "commandLine      = " + oHTA.commandLine     + "\n" +
+                "icon             = " + oHTA.icon            + "\n" +
+                "maximizeButton   = " + oHTA.maximizeButton  + "\n" +
+                "minimizeButton   = " + oHTA.minimizeButton  + "\n" + 
+                "showInTaskBar    = " + oHTA.showInTaskbar   + "\n" +
+                "singleInstance   = " + oHTA.singleInstance  + "\n" +  
+                "sysMenu          = " + oHTA.sysMenu         + "\n" + 
+                "version          = " + oHTA.version         + "\n" + 
+                "windowState      = " + oHTA.windowState     + "\n" ;
+          
+     oPre.innerText = sTempStr;       
+  }
+  &lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY SCROLL="no"&gt;
+  &lt;PRE ID=oPre&gt;  &lt;/PRE&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</code></pre>
+<p><strong>Code example</strong>: <a href="https://samples.msdn.microsoft.com/workshop/samples/author/hta/hta_allex.hta" data-linktype="external">https://samples.msdn.microsoft.com/workshop/samples/author/hta/hta_allEX.hta</a></p>
+</blockquote>
+<p><strong>See Also</strong></p>
+<blockquote>
+<p><a href="https://learn.microsoft.com/en-us/previous-versions/ms536496(v=vs.85)" data-linktype="relative-path">Introduction to HTML Applications (HTAs)</a></p>
+</blockquote>
+
+							</div>
+
+							<div id="assertive-live-region" role="alert" aria-live="assertive" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<div id="polite-live-region" role="status" aria-live="polite" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<!-- </content> -->
+
+						</main>
+
+
+
+
+						<!-- recommendations section -->
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+							<aside id="ms--additional-resources-mobile" aria-label="Additional resources" class="display-none-desktop display-none-print">
+								<hr class="hr" hidden="">
+								<h2 id="ms--additional-resources-mobile-heading" class="title is-3" hidden="">Additional resources</h2>
+								<section id="right-rail-recommendations-mobile" data-bi-name="recommendations" hidden=""></section>
+								<section id="right-rail-training-mobile" data-bi-name="learning-resources-card" hidden=""></section>
+								<section id="right-rail-events-mobile" data-bi-name="events-card" hidden=""></section>
+								<section id="right-rail-qna-mobile" data-bi-name="qna-link-card" hidden=""></section>
+							</aside>
+
+						<div class="border-top is-visible-interactive has-default-focus margin-top-sm ">
+
+
+
+	<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+	<div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link button button-sm button-clear flex-shrink-0" href="https://learn.microsoft.com/en-us/locale?target=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fprevious-versions%2Fms536495(v%3Dvs.85)" data-bi-name="select-locale" aria-label="Content language selector. Currently set to English (United States).">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text">English (United States)</span></a>
+		<div class="ccpa-privacy-link flex-shrink-0">
+<a href="https://aka.ms/yourcaliforniaprivacychoices" class="button button-sm button-clear" data-mscc-ic="false" data-bi-name="your-privacy-choices">
+	<svg role="img" aria-label="California Consumer Privacy Act (CCPA) Opt-Out Icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 14" xml:space="preserve" height="16" width="43" focusable="false">
+		<title>California Consumer Privacy Act (CCPA) Opt-Out Icon</title>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Your Privacy Choices</span>
+</a>
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu-interactive" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light margin-right-xxs">
+						<span class="theme-selector-icon border display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>
+Light					</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark margin-right-xxs">
+						<span class="border theme-selector-icon display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span class="border theme-selector-icon display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden=""></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Versions</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Blog</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/contribute/" data-bi-name="contributorGuide">Contribute</a></li>
+					<li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Trademarks</a></li>
+		<li>© Microsoft 2024</li>
+	</ul>
+</footer>
+						</div>
+
+					</div>
+
+						<div id="ms--additional-resources" class="right-container column is-4-desktop display-none display-block-desktop" data-bi-name="pageactions" role="complementary" aria-label="Additional resources">
+							<div id="affixed-right-container" class="margin-top-sm-tablet position-sticky" data-bi-name="right-column" style="top: 36px; bottom: 36px;">
+								<h2 id="ms--additional-resources-heading" class="title is-6 margin-top-md" hidden="">Additional resources</h2>
+								<section id="right-rail-events" data-bi-name="events-card" hidden=""></section>
+								<section id="right-rail-training" data-bi-name="learning-resources-card" hidden=""></section>
+								<section id="right-rail-recommendations" data-bi-name="recommendations" hidden=""></section>
+								<nav id="side-doc-outline" class="doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="In this article" hidden="">
+									<h3>In this article</h3>
+								</nav>
+								<section id="right-rail-qna" class="margin-top-xxs" data-bi-name="qna-link-card" hidden=""></section>
+							</div>
+						</div>
+
+				</div>
+				<!--end of div.columns -->
+
+			</section>
+			<!--end of .primary-holder -->
+
+			<!-- interactive container -->
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+			<!-- end of interactive container -->
+		</div>
+
+	</div>
+	<!--end of .mainContainer -->
+
+	<section class="border-top has-default-focus is-hidden-interactive margin-top-sm ">
+
+
+
+	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+	<div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link button button-sm button-clear flex-shrink-0" href="https://learn.microsoft.com/en-us/locale?target=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fprevious-versions%2Fms536495(v%3Dvs.85)" data-bi-name="select-locale" aria-label="Content language selector. Currently set to English (United States).">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text">English (United States)</span></a>
+		<div class="ccpa-privacy-link flex-shrink-0">
+<a href="https://aka.ms/yourcaliforniaprivacychoices" class="button button-sm button-clear" data-mscc-ic="false" data-bi-name="your-privacy-choices">
+	<svg role="img" aria-label="California Consumer Privacy Act (CCPA) Opt-Out Icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 14" xml:space="preserve" height="16" width="43" focusable="false">
+		<title>California Consumer Privacy Act (CCPA) Opt-Out Icon</title>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Your Privacy Choices</span>
+</a>
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light margin-right-xxs">
+						<span class="theme-selector-icon border display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>
+Light					</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark margin-right-xxs">
+						<span class="border theme-selector-icon display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span class="border theme-selector-icon display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden=""></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Versions</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Blog</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/contribute/" data-bi-name="contributorGuide">Contribute</a></li>
+					<li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Trademarks</a></li>
+		<li>© Microsoft 2024</li>
+	</ul>
+</footer>
+	</section>
+
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+
+
+<script src="./HTA-ALL-attributes_files/at.js" async="" defer="" integrity="sha384-1/viVM50hgc33O2gOgkWz3EjiD/Fy/ld1dKYXJRUyjNYVEjSUGcSN+iPiQF7e4cu" crossorigin="anonymous"></script></body></html>
