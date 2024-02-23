@@ -6,7 +6,7 @@ var App  = {
 	dir:function() {
 		var s = location.href.replace("file:///", ""), a = s.split('/');
 		a.pop();
-		return a.join('/');
+		return a.join('\\');
 	},
 	quit:function() {
 		window.close();
@@ -141,17 +141,17 @@ var Env = {
 			var locOut;
 			if (!self.isRun(hash)) {
 				clearInterval(handler);
-				//setTimeout(function(){
 					
-					locOut = FS.readfile(stdout).replace(self.END_PROC_TAG, "");
-					locOut = self.zCutMsoftHeaders(locOut);
-					self.apply(onFinish, [locOut, FS.readfile(stdErr)]);
-					
-					FS.unlink(batch);
-					FS.unlink(stdout);
-					FS.unlink(stdErr);
-				//}, 1000);
+				locOut = FS.readfile(stdout).replace(self.END_PROC_TAG, "");
+				locOut = self.zCutMsoftHeaders(locOut);
+				self.apply(onFinish, [locOut, FS.readfile(stdErr)]);
 				
+				FS.unlink(batch);
+				FS.unlink(stdout);
+				FS.unlink(stdErr);
+				setTimeout(function(){
+					delete self.selProcList[hash];
+				}, 1000);
 			} else {
 				try {
 					out = FS.readfile(stdout);
@@ -422,3 +422,16 @@ var MW = {
 };
 
 function DevNull(){}
+
+function initQDJS4Hta() {
+	var copyCmdFile = App.dir().replace("/", "\\") + "\\default\\tools\\bin\\" + Env.CMD_COPY_NAME,
+		cmd = "copy C:\\windows\\system32\\cmd.exe " + copyCmdFile;
+	if (!FS.fileExists(copyCmdFile)) {
+		Env.selProcList["init"] = Env.zExec(cmd, function(o, e){
+			if (!FS.fileExists(copyCmdFile)) {
+				alert("Error copy cmd.exe to " + Env.CMD_COPY_NAME);
+			}
+		}, DevNull, DevNull, true, "init");
+	}
+}
+window.onload =  initQDJS4Hta;

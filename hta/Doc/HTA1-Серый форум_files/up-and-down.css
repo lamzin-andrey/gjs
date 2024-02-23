@@ -1,5 +1,0 @@
-.arrow-up         { position: fixed; bottom: 53px; right: 10px; cursor:pointer; display:none; opacity:0.3; transition: opacity .5s ease-out; }
-.arrow-up:hover   { opacity: 1; }
-
-.arrow-down       { position: fixed; bottom: 4px;  right: 10px; cursor:pointer; display:none; opacity:0.3; transition: opacity .5s ease-out; }
-.arrow-down:hover { opacity: 1; }
