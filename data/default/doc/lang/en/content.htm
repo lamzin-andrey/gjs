@@ -2195,7 +2195,162 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
         </table>
     </div><!-- end one function doc -->
 
-
+<!-- START FEOF FUNCTIONS -->
+<div id="fopen" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.open</h5> 
+			  </td>
+			  <td class="fd">
+				  <i>FS.open(<span class="dkw">String</span> filename, <span class="dkw">String</span> mode)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Open file `filename` for read or write.</p>
+					<p>Argument `mode`:</p>
+					<p><b>r</b> - open file for read</p>
+					<p><b>w</b> - open file for write. If open existing file, it content will be rewrite and old content will lose.</p>
+					<p><b>a</b> - open file for append data.</p>
+					<p><b>b</b> -  use with <b>r</b>, <b>w</b> or <b>a</b>. Open file in binary mode. In text mode Carriage return and line feed are translated into newline character. The opposite is true when outputting from a file: newline character is translated into carriage return and line feed. In binary mode this translation does not occur.</p>
+					<p><b>+</b> - use with <b>r</b>, <b>w</b> or <b>a</b>. When you use <b>r+</b>, the file opens immediately for reading and writing. <b>w+</b> equivalent <b>r+</b>. <b>a+</b> opens the file immediately for adding and reading. The entry allowed is <b>X+b</b>, where <b>X</b> is <b>r</b>, <b>a</b> or <b>w</b>.</p>
+					<p>Note 1. Outputting text containing characters other than Latin in textarea will only work if the text file is encoded UTF-8.</p>
+					<p>Note 2. Also available as<i>PHP.open(<span class="dkw">String</span> filename, <span class="dkw">String</span> mode)</i> </p>
+					<p>Note 3. It is planned to replace <i>PHP.open</i> with <i>PHP.fopen</i></p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					 <div>Demo:</div>
+					 <div>Select a multi-line UTF-8 text file and read as many lines as you like.</div>
+					 <input type="button" value="Browse" id="bBrowseTextFileFopen" onclick="Demo.onClickFopen()"> 
+					 <input type="button" value="Get line" id="bGetLine" onclick="Demo.onClickFopenReadLine()"> 
+					 <div>
+						<div id="xtStdOut8">
+							<div class="outheader">Lines:</div> 
+							<div id="xtStdOut8Content"> </div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				 </td> 
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Code example:<br>
+					<pre class="codebg code2"><b>var</b> fd = FS.open(<span class="strcolor"> "/tmp/file.txt"</span>,<span class="strcolor"> "r"</span>),
+       s;
+<b>while</b> (!FS.eof(fd)) {
+  s += FS.gets(fd);
+}
+FS.close(fd);
+</pre>
+				</td>
+			</tr>
+		</table>
+    </div>
+    
+    <div id="fgets" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.gets</h5> 
+			  </td>
+			  <td class="fd">
+				  <i><span class="dkw">String</span> FS.gets(<span class="dkw">Number</span> fileDescriptor)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Reads a line from a previously opened file using <i>FS.open</i>. The end of the line is considered to be the character <i>\n</i>.</p>
+					<p>Note 1. Outputting text containing characters other than Latin in textarea will only work if the text file is encoded UTF-8.</p>
+					<p>Note 2. Also available as <i><span class="dkw">String</span> PHP.gets(<span class="dkw">Number</span> fileDescriptor)</i>. </p>
+					<p>Note 3: It is planned to replace <i>PHP.gets</i> with <i>PHP.fgets</i>.</p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					 <div>Demo:</div>
+					 <div>See demo <a href="#fopen">FS.open</a></div>
+				 </td> 
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Code example:<br>
+					<div>See code example <a href="#fopen">FS.open</a></div>
+				</td>
+			</tr>
+		</table>
+    </div>
+    
+    <div id="feof" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.eof</h5> 
+			  </td>
+			  <td class="fd">
+				  <i><span class="dkw">Boolean</span> FS.eof(<span class="dkw">Number</span> fileDescriptor)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Return <b class="kw">true</b> if, after the next call to FS.gets, the end of a file previously opened using <i>FS.open</i> is reached.</p>
+					<p>Note 1: Also available as <i><span class="dkw">Boolean</span> PHP.eof(<span class="dkw">Number</span> fileDescriptor)</i>. </p>
+					<p>Note 2: It is planned to replace <i>PHP.eof</i> with <i>PHP.feof</i>.</p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					 <div>Demo:</div>
+					 <div>See demo <a href="#fopen">FS.open</a></div>
+				 </td> 
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Code example:<br>
+					<div>See code example <a href="#fopen">FS.open</a></div>
+				</td>
+			</tr>
+		</table>
+    </div>
+    
+    <div id="fclose" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.close</h5> 
+			  </td>
+			  <td class="fd">
+				  <i>FS.close(<span class="dkw">Number</span> fileDescriptor)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Closes a file previously opened using <i>FS.open</i>.</p>
+					<p>Note 1: Also available as <i>PHP.close(<span class="dkw">Number</span> fileDescriptor)</i>.</p>
+					<p>Note 2: It is planned to replace <i>PHP.close</i> with <i>PHP.fclose</i>.</p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Demo:</div>
+					<div>Watch demo <a href="#fopen">FS.open</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Code example:<br>
+					<div>See example <a href="#fopen">FS.open</a></div>
+				</td>
+			</tr>
+		</table>
+    </div>
+<!-- END FEOF FUNCTIONS -->
 
 <div id="md5" class="function"><!-- start one function doc -->
         <table cellpadding="0" cellspacing="0">
