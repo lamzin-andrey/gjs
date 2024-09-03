@@ -12,12 +12,20 @@ table.layout td {
 	vertical-align:top;
 }
 .sidebar {
+	font-family: Arialdb;
 	width:300px;
-	background-color:#AABEF8;
+	background-color:#0B33A6/*#AABEF8*/;
+	/*font-size: 16px;*/
 	overflow-y:scroll;
 	color:white;
 	font-weight:bold;
 	border-right: 1px solid blue;
+}
+.sidebar ul{
+	list-style-type: none;
+}
+.sidebar ul li{
+	font-weight: bold;
 }
 .sidebar a{
 	color:white;
