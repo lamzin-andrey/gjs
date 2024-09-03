@@ -1491,7 +1491,7 @@ Note 3: <span class="dkw">FILE_APPEND</span> = 1, which is not the same as the v
                     <h5>FS.isDir</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Boolean</span> FS.is_dir(<span class="dkw">String</span> path)</h5>
+                    <i><span class="dkw">Boolean</span> FS.isDir(<span class="dkw">String</span> path)</h5>
                 </td>
             </tr>
             <tr>
@@ -1521,6 +1521,44 @@ Note 3: <span class="dkw">FILE_APPEND</span> = 1, which is not the same as the v
             </tr>
         </table>
     </div>
+    
+    <!-- START -->
+    <div id="newWnd" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>App.newWindow</h5>
+                </td>
+                <td class="fd">
+                    <i>App.newWindow(<span class="dkw">String</span> path, <span class="dkw">Array</span> args)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Open other Qdjs application in new window. Argument <b>path</b> is a path to QDJS application dir (?).
+                    Argument <b>args</b> is list of arguments for running application.
+                    </p>
+					<p>Note: Also available as Qt.newWindow(<span class="dkw">String</span> path, <span class="dkw">String</span> args).</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>
+						Enter the path to a directory with qdjs app, and click Run button.<br>
+					</div>
+                    <div>
+                        <input type="text" value="/opt/qt-desktop-js/default/doc/examples/simpleTextEditor" id="newWndPath">
+                    </div>
+                    <div>
+						<input type="button" value="Choose Directory" onclick="Demo.newWndChooseDir();">
+						<input type="button" value="Run" onclick="Demo.newWndRun();">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- /END -->
     
     <div id="scn" class="function">
         <table cellpadding="0" cellspacing="0">

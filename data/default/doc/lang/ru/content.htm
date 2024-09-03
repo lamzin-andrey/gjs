@@ -1,5 +1,5 @@
 <h4 id="about">О программе</h4>
-        <p>Qt5 WebView DESKTOP API позволяет создавать в linux xubuntu и windows десктоп-приложения используя javascript, html и css.</p>
+        <p>Qt5 WebView API позволяет создавать в linux xubuntu и windows десктоп-приложения используя javascript, html и css.</p>
         <p>Особенно легко это должно быть web-разработчикам со стажем, знакомым с базовыми функциями языков javascript ES5 и PHP.</p>
         <p>Это прежде всего Qt5 WebView, (в windows Qt4.6.3 WebView), то есть по сути web-браузер, лишенный адресной строки и работающий
 			с файлами на диске пользователя.</p>
@@ -24,8 +24,8 @@
         <p>Здесь несколько слов о том, зачем я это вообще написал и продолжаю писать, когда есть например Apache Cordova.
 			И почему использую старую версию библиотеки Qt, когда есть новая.</p>
 			
-        <p>Я разрабатываю Qt5 WebView Desktop API с целью решить несколько своих проблем.
-			Qt5 WebView Desktop API (и приложения, написанные с его использованием)
+        <p>Я разрабатываю Qt5 WebView API с целью решить несколько своих проблем.
+			Qt5 WebView API (и приложения, написанные с его использованием)
 				предназначены для разработчиков и пользователей, которые их тоже ощущают и согласны с высказываниями, которые я привёл ниже.
 		</p>
         <ol>
@@ -109,7 +109,7 @@ qdjs /путь/к/моей/папке/с/index.html
 				 <p>Я разумный человек и не использую это на том компьютере, на котором работаю с данными других людей.</p>
 				 <p> Я понимаю, что люди, у которых с моим решением 
 				 будут те же проблемы, что у меня были с Apache Cordova обязательно найдутся. Но я рад, что буду не в их числе.
-				 А поскольку я совсем не уникум, должно найтись много разработчиков, которым пользоваться Qt5 WebView DESKTOP API окажется легко и удобно.</p>
+				 А поскольку я совсем не уникум, должно найтись много разработчиков, которым пользоваться Qt5 WebView API окажется легко и удобно.</p>
 			 </li>
 			 
 			 <li>
@@ -119,10 +119,10 @@ qdjs /путь/к/моей/папке/с/index.html
 					но мы вынуждены это делать каждый раз, когда создаем новый проект.
 					Или просто хотим попробовать что-то новое в отдельном проекте. Это ужасно.</p>
 				 <p>Вместе с тем я хочу писать на javascript для десктопа. Особенно для Xubuntu.
-					Используя Qt5 WebView DESKTOP API (я сейчас представил, что я не его создатель) 
+					Используя Qt5 WebView API (я сейчас представил, что я не его создатель) 
 					я должен один раз скачать из интернета архив 40 Мб,
 					потом время от времени скачивать обновление в виде бинарного файла, который весит меньше 1 Мб.
-					Ну а приложения для Qt5 WebView DESKTOP API обычно весят не более, чем средняя web страница.
+					Ну а приложения для Qt5 WebView API обычно весят не более, чем средняя web страница.
 				 </p>
 			 </li>
 			 
@@ -300,7 +300,7 @@ window.onkeyup = onKeyUp;
     }
 }           
         </pre>
-<h4 id="dapi">Desktop API</h4>
+<h4 id="dapi">API</h4>
 <h5 id="winManage">Управление окном приложения</h5>
 <p>Управление окном доступно из javascript кода через объект MW (от MainWindow - главное окно программы). </p>
     <div id="resizeTo" class="function">
@@ -1476,7 +1476,7 @@ window.onkeyup = onKeyUp;
                     <h5>FS.isDir</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Boolean</span> FS.is_dir(<span class="dkw">String</span> path)</h5>
+                    <i><span class="dkw">Boolean</span> FS.isDir(<span class="dkw">String</span> path)</h5>
                 </td>
             </tr>
             <tr>
@@ -1500,6 +1500,45 @@ window.onkeyup = onKeyUp;
                         <input type="button" value="Выбрать файл" onclick="Demo.isDirChooseFile();">
                         <input type="button" value="Выбрать каталог" onclick="Demo.isDirChooseDir();">
                         <input type="button" value="Это каталог?" onclick="Demo.isDir();">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    
+    <!-- START -->
+    <div id="newWnd" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>App.newWindow</h5>
+                </td>
+                <td class="fd">
+                    <i>App.newWindow(<span class="dkw">String</span> path, <span class="dkw">Array</span> args)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Открывает другое Qdjs приложение в новом окне.
+						Аргумент <b>path</b> путь к каталогу QDJS приложения.
+						Аргумент <b>args</b> список аргументов запускаемого приложения.
+                    </p>
+					<p>Примечание: Также доступна как Qt.newWindow(<span class="dkw">String</span> path, <span class="dkw">String</span> args).</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>
+						Введите путь к каталогу с приложением qdjs, и нажмите кнопку &laquo;Запуск&raquo;.<br>
+					</div>
+                    <div>
+                        <input type="text" value="/opt/qt-desktop-js/default/doc/examples/simpleTextEditor" id="newWndPath">
+                    </div>
+                    <div>
+						<input type="button" value="Выбрать каталог" onclick="Demo.newWndChooseDir();">
+						<input type="button" value="Запуск" onclick="Demo.newWndRun();">
                     </div>
                 </td>
             </tr>
@@ -2431,7 +2470,7 @@ FS.close(fd);
 	<a href="https://github.com/lamzin-andrey/gjs/blob/master/data/default/geany/desktopjs.js.tags" target="_blank">desktopjs.js.tags</a>
 </p>
 <p>
-	В каталог с настройками Geany. В Xubintu это каталог /home/username/.config/geany/tags.
+	В каталог с настройками Geany. В Xubuntu это каталог /home/username/.config/geany/tags.
 	В windows 11 это C:\Users\username\AppData\Roaming\geany\tags (для Geany 1.38, версия может быть важна, так как для Geany 0.18 пути были другими).
 </p>
 
@@ -2671,13 +2710,13 @@ window.addEventListener('load',
 
 <p>
 	В методе init мы пока просто устанавливаем иконку окна приложения.
-	Для этого наконец начинаем использовать наше Desktop API.
+	Для этого наконец начинаем использовать наше API.
 	Вызываем метод объекта MW (сокращение от MainWindow) setIconImage 
 	и передаём ему путь к иконке, которую хотим отобразить в окне приложения.
 	Иконку предварительно надо положить в каталог simpleTextEditor/img.
 	Для получения полного пути к файлу икноки мы используем метод объекта App dir(). dir() возвращает путь к каталогу приложения.
 	У нас пока ничего нет для локализации приложения, но мы можем сразу же использовать "заглушку".
-	Позже мы просто реализуем функции - заглушки и всё зарабтает. Итак, добавим внутри метода init ещё строку
+	Позже мы просто реализуем функции - заглушки и всё заработает. Итак, добавим внутри метода init ещё строку
 </p>
 <pre class="codebg">
 	MW.setTitle(L(<span class="st">'Простой редактор текстовых файлов'</span>));
@@ -2754,7 +2793,7 @@ ClassMembers.onClickOpenMenuItem = <span class="kw">function</span>() {
 			<span class="kw">if</span> (fileName &amp;&amp; FS.fileExists(fileName)) {
 				<span class="jcomm">// Запоминаем его адрес на диске</span>
 				<span class="kw">this</span>.currentFileName = fileName;
-				<span class="jcomm">// И загружаем в редактор, используем наше Desktop API для чтения из файла</span>
+				<span class="jcomm">// И загружаем в редактор, используем наше API для чтения из файла</span>
 				<span class="kw">this</span>.textarea.value = FS.readfile(fileName);
 			}
 		} <span class="kw">catch</span> (err) {
@@ -2772,7 +2811,7 @@ ClassMembers.onClickOpenMenuItem = <span class="kw">function</span>() {
 
 <span class="jcomm"> // Обработка сохранения</span>
 ClassMembers.onClickSaveMenuItem = <span class="kw">function</span>() {
-	<span class="jcomm"> // Используем наше Desktop API для записи в файл</span>
+	<span class="jcomm"> // Используем наше API для записи в файл</span>
 	FS.writefile(<span class="kw">this</span>.currentFileName, <span class="kw">this</span>.textarea.value);
 };	
 
@@ -2781,7 +2820,7 @@ ClassMembers.onClickSaveMenuItem = <span class="kw">function</span>() {
 ClassMembers.onClickQuitMenuItem = <span class="kw">function</span>() {
 	<span class="jcomm"> // Если изменений не было</span>
 	<span class="kw">if</span> (!<span class="kw">this</span>.isCurrentFileChange) {
-		<span class="jcomm"> // Используем наше Desktop API для завершения работы приложения</span>
+		<span class="jcomm"> // Используем наше API для завершения работы приложения</span>
 		App.quit();
 		<span class="kw">return</span>;
 	}

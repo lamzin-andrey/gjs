@@ -32,6 +32,14 @@ filesize|PHP.|(String path)|
 filesize|FS.|(String path)|
 mkdir|PHP.|(String path)|
 mkdir|FS.|(String path)|
+open|Number PHP.|(String filename, String mode)|
+open|Number FS.|(String filename, String mode)|
+gets|String PHP.|(Number fileDescriptor)|
+gets|String FS.|(Number fileDescriptor)|
+eof|Boolean PHP.|(Number fileDescriptor)|
+eof|Boolean FS.|(Number fileDescriptor)|
+close| PHP.|(Number fileDescriptor)|
+close| FS.|(Number fileDescriptor)|
 openFileDialog|String Qt.|(String caption, String dir, String filter)|
 openFileDialog|String Env.|(String caption, String dir, String filter)|
 openFilesDialog|Array Qt.|(String caption, String dir, String filter)|
@@ -75,6 +83,5 @@ md5File|String FS.|(String path)|
 md5|String FS.|(String s)|
 md5_file|String PHP.|(String path)|
 md5|String PHP.|(String s)|
-
-
-
+newWindow|String App.|(String path, Array args)|
+newWindow|String Qt.|(String path, Array args)|

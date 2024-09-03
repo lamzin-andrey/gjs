@@ -1,4 +1,4 @@
-//1.0.5
+//1.0.6
 //location this file relative djs.exe: "default/tools/js/j.js"
 window.QtBrige = {
 	/**
@@ -329,6 +329,9 @@ window.App = {
 	},
 	quit:function(){
 		Qt.quit();
+	},
+	newWindow:function(path, args) {
+		Qt.newWindow(path, args);
 	}
 };
 

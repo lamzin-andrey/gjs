@@ -457,7 +457,28 @@ var Demo = {
 		} catch (err) {
 			alert(err);
 		}
-	}/*,
+	},
+	newWndChooseDir:function(){
+		var path = Qt.openDirectoryDialog(L('Select directory with qdjs app'), e('newWndPath').value);
+		if (!path) {
+			alert(L("Need select directory"));
+			return;
+		}
+		e('newWndPath').value = path;
+	},
+	newWndRun:function(){
+		if (
+				!e('newWndPath').value
+				|| !FS.fileExists(e('newWndPath').value)
+				|| !FS.isDir(e('newWndPath').value)
+			)
+		{
+			alert(L("Need select directory"));
+			return;
+		}
+		Qt.newWindow(e('newWndPath').value, []);
+	}
+	/*,
 	foobar:function(){
 		var fh = FS.open("file.txt", "r"),
 			s;
