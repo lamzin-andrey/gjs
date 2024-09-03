@@ -22,212 +22,214 @@ otherwise, you are likely to harm the people who use your applications.
         <h4 id="principes">Why not Qt 6 and not javascript ES6+ and not Apache Cordova</h4>
         <p>Here are a few words about why I wrote this at all and continue to write when there is, for example, Apache Cordova. And why do I use the old version of the Qt library when there is a new one.</p>
 			
-        <p>Я разрабатываю Qt5 WebView Desktop API с целью решить несколько своих проблем.
-			Qt5 WebView Desktop API (и приложения, написанные с его использованием)
-				предназначены для разработчиков и пользователей, которые их тоже ощущают и согласны с высказываниями, которые я привёл ниже.
+        <p>
 		</p>
         <ol>
-			<li><p>Мне не нравится чрезмерная зависимость Xubuntu от наличия Интернета 
-					и практически полное отсутствие обратной совместимости.
-				Я хотел бы иметь возможность сохранить deb пакеты многих программ, когда я работал в 
-				Xubuntu 9.10 и установить их снова в Xubuntu 12.04, а потом в Xubuntu 14.04, 18.04, 22.04 и так далее 
-				(первая цифра в названии версий Xubuntu - это год).
-				<p>Речь не о всех программах (например, web-браузеры точно необходимо обновлять как можно чаще),
-				но некоторые из программ, такие как Kate, Inkscape или KolourPaint (список легко можно продолжить) 
-				по сути не менялись все эти годы
-				(или я использую лишь ту часть их функций, которые не менялись все эти годы).</p>
-				<p>Мне точно хватило бы функционала перечисленных программ тех версий, которые были установлены в Xubuntu 9.10.
-				Но, <i><b>нормально</b></i> установить deb пакеты со старыми версиями невозможно.
-				Иногда возможно распаковать их вручную, вместе со старыми библиотеками 
-				- но всё это не то, отнимает уйму времени и обычно приводит к проблемам с установкой других (новых) приложений.
+			<li><p>
+				I don't like Xubuntu's over-reliance on the Internet and its almost complete lack of backwards compatibility.
+				I would like to be able to save deb packages of many programs when I was working in
+				Xubuntu 9.10 and install them again in Xubuntu 12.04, and then in Xubuntu 14.04, 18.04, 22.04 and so on
+				(the first digit in the Xubuntu version name is the year).
 				</p>
 				<p>
-					Я вынужден скачивать новые версии этих программ, когда перехожу на новую LTS версию.
-					Когда интернет хороший, это вообще не проблема. Но он хороший не всегда.
+					This is not about all programs (for example, web browsers definitely need to be updated as often as possible),
+					but some of the programs, such as Kate, Inkscape or KolourPaint (the list can easily be continued)
+					have essentially not changed over all these years
+					(or I only use that part of their functions that have not changed over all these years).
 				</p>
 				<p>
-					При этом мне нравится именно Xubuntu и я не хочу менять её на что-то другое.
-					Нравится именно другой стороной описанной выше проблемы: если я регулярно раз в 5 лет перехожу на новую LTS,
-					у меня нет проблем с новейшими обновлениями браузеров и новейшими обновлениями безопасности.					
+					I would definitely have enough functionality of the listed programs of the versions that were installed in Xubuntu 9.10.
+					But, <i><b>normally</b></i> it is impossible to install deb packages with old versions.
+					Sometimes it is possible to unpack them manually, together with old libraries
+					- but all this is not it, it takes a lot of time and usually leads to problems with installing other (new) applications.
 				</p>
 				<p>
-					В итоге я захотел иметь возможность максимально просто создавать десктопные приложения для Xubuntu 
-					и не пересобирать их бинарник каждый раз при выходе новой LTS версии.
-					И я этого добился, мои первые небольшие приложения, написанные ещё на 32-разрядной Xubuntu 14.04
-					успешно перекочевали в 64-разрядную Xubuntu 18.04, а в 2022 году убедился, что в Xubuntu 22.04 они тоже работают и мне не нужен интернет, чтобы их установить.
-					Да, конечно мне пришлось пересобрать бинарник Qt5 WebView для 64-разрядной архитектуры, но есть некоторая разница, 
-					делать это раз в 8 лет (и не более, пока не придётся переходить на 128-разрядные ПК) или каждые 4 - 5 лет.
+					I have to download new versions of these programs when I switch to a new LTS version.
+					When the internet is good, this is not a problem at all. But it is not always good.
 				</p>
 				<p>
-					Я хочу написать с помощью Qt5 WebView аналоги тех программ, 
-					которые фактически не менялись в течении последних нескольких лет, 
-					чтобы не скачивать их из Интернета бесконечное число раз.
+					At the same time, I like Xubuntu and I don't want to change it for anything else.
+					I like it because of the other side of the problem described above: if I regularly switch to a new LTS every 5 years,
+					I have no problems with the latest browser updates and the latest security updates.
+				</p>
+				<p>
+					In the end, I wanted to be able to create desktop applications for Xubuntu as easily as possible
+					and not rebuild their binaries every time a new LTS version is released.
+					And I achieved this, my first small applications, written on 32-bit Xubuntu 14.04
+					successfully migrated to 64-bit Xubuntu 18.04, and in 2022 I was convinced that they also work in Xubuntu 22.04 and I don’t need the Internet to install them.
+					Yes, of course, I had to rebuild the Qt5 WebView binary for the 64-bit architecture, but there is some difference,
+					doing it once every 8 years (and no more, until you have to switch to 128-bit PCs) or every 4-5 years.
+				</p>
+				<p>
+					I want to write using Qt5 WebView analogs of those programs,
+					which have not actually changed over the past few years,
+					so as not to download them from the Internet an infinite number of times.
 				</p>
 			 </li>
 			 
 			 <li>
-				 <p>Как и многие жители постсоветского пространства я начинал пользоваться ПК с установленной ОС Windows. 
-				 О Linux я узнал гораздо позже и перейдя на него естественно искал программы, 
-				 максимально похожие на те, к которым я привык в Windows.</p>
-				 <p>Debian и Ubuntu имеют огромное количество программ, но получилось так, что 
-				 лучшие из них завязаны на разные графические оболочки.
-				 Примерно с 2014 года я окончательно выбрал для себя XFCE, но я не хочу отказываться от KolourPaint и Kate.
-				 В них есть функции, которых нет в Gimp, Gpaint и Mousepad.</p>
-				 <p>Поэтому из-за этих двух программок я вынужден каждый раз при обновлении версии Xubuntu скачавать массу библиотек KDE. 
-				 Это совсем не проблема при наличии быстрого Интернета, но это проблема, когда его нет.</p>
-				 <p>Я обязательно напишу их аналоги используя  Qt5 WebView и избавлюсь от этой необходимости.</p>
+				 <p>Like many residents of the post-Soviet space, I started using a PC with Windows installed.
+				I learned about Linux much later and when I switched to it, I naturally looked for programs that were
+				as similar as possible to those I was used to in Windows.</p>
+				<p>Debian and Ubuntu have a huge number of programs, but it turned out that
+				the best of them are tied to different graphical shells.
+				Around 2014, I finally chose XFCE for myself, but I do not want to give up KolourPaint and Kate.
+				They have functions that are not in Gimp, Gpaint and Mousepad.</p>
+				<p>Therefore, because of these two programs, I am forced to download a lot of KDE libraries every time I update the Xubuntu version.
+				This is not a problem at all if you have fast Internet, but it is a problem when you don’t.</p>
+				<p>I will definitely write their analogs using Qt5 WebView and get rid of this need.</p>
 			 </li>
 			 
 			 <li>
-				 <p>Пока я учился в университете, мы писали программы на Pascal и C++, на C# и Java.</p>
-				 <p>Оказалось, что программировать на javascript и создавать интерфейсы на html и css гораздо проще, 
-					чем с помощью перечисленных языков программирования.
-				 Мечталось о "браузере", который наконец сможет полноценно работать с файловой системой ПК, с реестром,
-				 взаимодействовать напрямую с базой данных.</p>
-				 <p>И вот появилась Apache Cordova. Но пустое оконное приложение для linux i386 у меня просто не взлетело.
-					Собралось без ошибок, но не запустилось. Ок, возможно у меня неправильный радиус кривизны рук. Но.
-					Я хочу один раз что-то установить на свой ПК.
-					Потом выполнить
-				 </p>
-				 <pre class="codebg">
-что-то /путь/к/моей/папке/с/index.html
-				 </pre>
-				 <p>И это должно работать так же безотказно, надёжно, как если бы вместо "что-то" я ввёл chrome или firefox.
-				 Ну и да, "что-то" должно уметь работать с файловой системой и запускать консольные программки в фоне.</p>
-				 <p>Заявление немного смелое, но пока я вижу, что Qt5 WebView работает именно так.</p>
-				 <pre class="codebg">
-qdjs /путь/к/моей/папке/с/index.html
-				 </pre>
-				 <p>и никаких проблем. Причем qdjs я ставлю из одного и того же архива с 2014 года. 
-				 Я иногда перекомпилирую бинарник, потому что добавляю в него новые функции, 
-				 но он работает с теми же самыми версиями библиотек, с которыми работал в 2014 году.
-				 </p>
-				 <p>Я понимаю, что это небезопасно. Но я, черт возьми, не боюсь и 
-					даже хочу хотя бы раз убедиться в том, что это небезопасно на собственном опыте.</p>
-				 <p>Я разумный человек и не использую это на том компьютере, на котором работаю с данными других людей.</p>
-				 <p> Я понимаю, что люди, у которых с моим решением 
-				 будут те же проблемы, что у меня были с Apache Cordova обязательно найдутся. Но я рад, что буду не в их числе.
-				 А поскольку я совсем не уникум, должно найтись много разработчиков, которым пользоваться Qt5 WebView DESKTOP API окажется легко и удобно.</p>
-			 </li>
-			 
-			 <li>
-				 <p>Мне не нравится npm. Потому что меня просто убивает необходимость при создании каждого нового 
-					проекта загружать из Интернета безумное количество маленьких скриптов, а если их потом ради интереса сжать,
-					архив весит 50 - 70 мегабайт. Ладно бы это происходило разово, 
-					но мы вынуждены это делать каждый раз, когда создаем новый проект.
-					Или просто хотим попробовать что-то новое в отдельном проекте. Это ужасно.</p>
-				 <p>Вместе с тем я хочу писать на javascript для десктопа. Особенно для Xubuntu.
-					Используя Qt5 WebView DESKTOP API (я сейчас представил, что я не его создатель) 
-					я должен один раз скачать из интернета архив 40 Мб,
-					потом время от времени скачивать обновление в виде бинарного файла, который весит меньше 1 Мб.
-					Ну а приложения для Qt5 WebView DESKTOP API обычно весят не более, чем средняя web страница.
-				 </p>
-			 </li>
-			 
-			 <li>
-				 <p>Qt - кроссплатформенная библиотека. Вместе с тем, с выходом каждой новой версии деплоить 
-						Qt приложения в Windows всё сложнее.
-					Однажды (в 2015 или 2016 году) я написал на заказ windows-приложение используя Qt WebView.
-					Я использовал последнюю стабильную на тот момент версию Qt (не берусь сейчас сказать, какую именно),
-					так как был озабочен пресловутой безопасностью.
-					Проект был небольшой, я, заказчик приложения и несколько клиентов - пользователей.
+				 <p>While I was studying at the university, we wrote programs in Pascal and C++, C# and Java.</p>
+				<p>It turned out that programming in javascript and creating interfaces in html and css is much easier
+				than using the listed programming languages.
+				I dreamed of a "browser" that would finally be able to fully work with the PC file system, with the registry,
+				interact directly with the database.</p>
+				<p>And then Apache Cordova appeared. But an empty window application for Linux i386 just didn't take off for me.
+				It assembled without errors, but didn't start. Ok, maybe my hand curvature radius is wrong. But.
+				I want to install something on my PC once.
+				Then execute
 				</p>
-				 <p>Мы тщательно протестировали продукт перед релизом. У нас всё было ок. 
-					Но, несмотря на небольшое количество пользователей тут же нашлось несколько пользователей, 
-					у которых приложение просто отказалось запускаться.
-					И это несмотря на то, что я успешно тестировал в том числе на только что установленной Windows 10 Insider Preview 
-					на которую ничего, кроме моей программы установлено не было.
-				 </p>
-				 <p>Согласовав с заказчиком я произвел "даунгрейд" версии Qt, использовав Qt 4.6.8, 
-						на которой ранее успешно писал программы для курсовых и диплома и проблема внезапно исчезла - 
-						все пользователи смогли запустить абсолютно тот же код, скомпилированный более ранней версией Qt.
-				 </p>
+				<pre class="codebg">
+				something /path/to/my/folder/from/index.html
+				</pre>
+				<p>And it should work just as reliably and smoothly as if I had entered chrome or firefox instead of "something".
+				And yes, "something" should be able to work with the file system and run console programs in the background.</p>
+				<p>The statement is a bit bold, but so far I see that Qt5 WebView works exactly like that.</p>
+				<pre class="codebg">
+				qdjs /path/to/my/folder/from/index.html
+				</pre>
+				<p>and no problems. Moreover, I have been installing qdjs from the same archive since 2014.
+				I sometimes recompile the binary because I add new features to it,
+				but it works with the same versions of libraries that I worked with in 2014.
+				</p>
+				<p>I understand that it is not safe. But I am not afraid, damn it, and I
+				even want to make sure at least once that it is not safe from my own experience. </p>
+				<p>I am a reasonable person and do not use this on the same computer where I work with other people's data. </p>
+				<p> I understand that people who will have the same problems with my solution
+				as I had with Apache Cordova will definitely be found. But I am glad that I will not be among them.
+				And since I am not unique, there should be many developers who will find it easy and convenient to use the Qt5 WebView DESKTOP API. </p>
 			 </li>
 			 
 			 <li>
-				 <p>Я не боюсь "застрять" на javascript ES5. Я его неплохо знаю и порой предпочитаю добиваться результата 
-				 в виде работающих приложений, а не набивать шишки об незнакомые компоненты популярных фреймвёрков 
-					и недотестированные разработчиками новые возможности.</p>
-				 <p>К тому же я не собираюсь ограничивать себя одним только 
-					программированием для <strike>старого браузера</strike> Qt5 WebView, 
-					описание которого вы возможно собираетесь прочитать. Мне хватает ES6+ на работе и в других местах.</p>
-				 </p>
+				 <p>I don't like npm. Because it just kills me to have to download an insane amount of small scripts from the Internet when creating a new
+				project, and if you then compress them for fun,
+				the archive weighs 50 - 70 megabytes. It would be fine if this happened once,
+				but we have to do this every time we create a new project.
+				Or we just want to try something new in a separate project. It's terrible.
+				</p>
+				<p>At the same time, I want to write javascript for the desktop. Especially for Xubuntu.
+				Using the Qt5 WebView DESKTOP API (I just imagined that I am not its creator)
+				I have to download a 40 MB archive from the Internet once,
+				then from time to time download an update in the form of a binary file, which weighs less than 1 MB.
+				Well, applications for the Qt5 WebView DESKTOP API usually weigh no more than an average web page.
+				</p>
+			 </li>
+			 
+			 <li>
+				 <p>Qt is a cross-platform library. However, with each new version, deploying Qt applications to Windows is becoming more and more difficult.
+				Once (in 2015 or 2016), I wrote a custom Windows application using Qt WebView.
+				I used the latest stable version of Qt at that time (I can't say which one exactly),
+				because I was concerned about the notorious security.
+				The project was small, me, the customer of the application and several clients - users.
+				</p>
+				<p>We thoroughly tested the product before the release. Everything was ok for us.
+				But, despite the small number of users, there were immediately several users for whom the application simply refused to launch.
+				And this despite the fact that I successfully tested it, including on the newly installed Windows 10 Insider Preview
+				on which nothing but my program was installed.
+				</p>
+				<p>After agreeing with the customer, I downgraded the Qt version, using Qt 4.6.8,
+				on which I had previously successfully written programs for coursework and diploma projects, and the problem suddenly disappeared -
+				all users were able to run absolutely the same code, compiled by an earlier version of Qt.
+				</p>
+			 </li>
+			 
+			 <li>
+				 <p>I'm not afraid of "getting stuck" on javascript ES5. I know it well and sometimes I prefer to achieve results
+				in the form of working applications, rather than bump into unfamiliar components of popular frameworks
+				and new features that have not been tested by developers.</p>
+				<p>Besides, I'm not going to limit myself to just
+				programming for the <strike>old browser</strike> Qt5 WebView,
+				the description of which you are probably going to read. ES6+ is enough for me at work and in other places.</p>
+				</p>
 			 </li>
         </ol>
         
         <h4 id="htmlfeat">HTML features</h4>
-        <p>Здесь описаны специфичные для Qt5 WebView элементы html которые вы можете использовать в вашем приложении.</p>
+        <p>Here are described Qt5 WebView specific html elements that you can use in your application.</p>
         <h5 id="windowButtons">meta[name=windowButtons]</h5>
-        <p>Используйте мета-тег с атрибутом name windowButtons для управления кнопками окна вашего приложения.
-        Атрибут content тега содержит строковое представление битовой маски, нули и единицы, которые управляют видимостью кнопок вашего окна.</p>
-        <p>Пример тега:</p>
+        <p>Use the meta tag with the name attribute windowButtons to control the buttons of your application's window.
+The tag's content attribute contains a string representation of a bit mask of zeros and ones that control the visibility of your window's buttons.</p>
+        <p>Example of tag:</p>
         <p class="codebg">
             <span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1110"</span> 
             <span class="tag">&gt;</span>
         </p>
-        <p>Смысл цифр в content (перечислены справа налево, нумеруются с нуля)</p>
+        <p>The meaning of the numbers in content (listed from right to left, numbered from zero)</p>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th>Номер бита</th>
+                <th>Bit number</th>
                 <th>0</th>
                 <th>1</th>
             </tr>
             <tr>
-                <td>0</td>
-                <td>Не показывать кнопку контекстной справки</td>
-                <td>Показывать кнопку контекстной справки</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Не показывать кнопку закрытия окна</td>
-                <td>Показывать кнопку закрытия окна</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Не показывать кнопку максимизации окна</td>
-                <td>Показывать кнопку максимизации окна</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Не показывать кнопку минимизации окна</td>
-                <td>Показывать кнопку минимизации окна</td>
-            </tr>
+				<td>0</td>
+				<td>Don't show context help button</td>
+				<td>Show context help button</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Don't show close button</td>
+				<td>Show close button</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Don't show maximize button</td>
+				<td>Show maximize button</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Don't show minimize button</td>
+				<td>Show minimize button</td>
+			</tr>
         </table>
-        <p>Значение по умолчанию: 1110</p>
+        <p>Default value: 1110</p>
 
-        <h5 id="windowStyle">Атрибуты стиля окна</h5>
-        <p>Задаются также в метатеге windowButtons</p>
+        <h5 id="windowStyle">Window Style Attributes</h5>
+        <p>Set in the windowButtons meta tag</p>
         <table class="contentTable" cellpadding="0" cellspacing="0">
             <tr>
-                <th>Атрибут</th>
-                <th>Значение</th>
-            </tr>
-            <tr>
-                <td>onlyTop</td>
-                <td>Показывать окно на переднем плане</td>
-            </tr>
-            <tr>
-                <td >noFrame</td>
-                <td>Показывать окно без рамки</td>
-            </tr>
-            <tr>
-                <td>fulScreen</td>
-                <td>Показывать окно без рамки и развернутым на весь экран</td>
-            </tr>
-            <tr>
-                <td>width</td>
-                <td>Ширина окна приложения, например width="100", двойные кавычки обязательны</td>
-            </tr>
-            <tr>
-                <td>height</td>
-                <td>Высота окна приложения, например height="100", двойные кавычки обязательны</td>
-            </tr>
-            <tr>
-                <td>fixed</td>
-                <td>Если заданы width или height и fixed окно становится неизменяемого размера</td>
-            </tr>
+				<th>Attribute</th>
+				<th>Value</th>
+			</tr>
+			<tr>
+				<td>onlyTop</td>
+				<td>Show window in foreground</td>
+			</tr>
+			<tr>
+				<td >noFrame</td>
+				<td>Show window without frame</td>
+			</tr>
+			<tr>
+				<td>fulScreen</td>
+				<td>Show window without frame and maximized</td>
+			</tr>
+			<tr>
+				<td>width</td>
+				<td>Application window width, for example width="100", double quotes are required</td>
+			</tr>
+			<tr>
+				<td>height</td>
+				<td>Application window height, for example height="100", double quotes required</td>
+			</tr>
+			<tr>
+				<td>fixed</td>
+				<td>If width or height and fixed are specified, the window becomes unchangeable</td>
+			</tr>
         </table>
-        <p>Пример окна 800 на 600 пискелей, не позволяющего пользователю изменять размер</p>
+        
+        <p>An example of an 800 by 600 pixel window that does not allow the user to resize it</p>
         <p class="codebg">
             <span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1110"</span> 
                 <span class="tagattrn">width</span>=<span class="tagattrv">"800"</span>
@@ -235,14 +237,14 @@ qdjs /путь/к/моей/папке/с/index.html
                 <span class="tagattrn">fixed</span>
             <span class="tag">&gt;</span>
         </p>
-        <h4 id="mainmenu">Главное меню окна программы</h4>
-        <p>Чтобы добавить в ваше окно приложения главное меню программы, 
-        вам надо добавить внутри тега head html код menubar, похожий на пример ниже:</p>
+        <h4 id="mainmenu">Main menu of the program window</h4>
+		<p>To add the main menu of the program to your application window,
+		you need to add the menubar code inside the head html tag, similar to the example below:</p>
         
         <pre class="codebg">
 <span class="tag">&lt;html</span> <span class="tagattrn">lang</span>=<span class="tagattrv">"ru"</span><span class="tag">&gt;</span>
     <span class="tag">&lt;head</span> <span class="tag">&gt;</span>
-    <span class="hcomment">&lt;!-- здесь теги title, meta[windowButtons]... и другие, которые вам нужны --&gt;</span>
+    <span class="hcomment">&lt;!-- here are the title tags, meta[windowButtons]... and others that you need --&gt;</span>
         <span class="tag">&lt;menubar</span> <span class="tagattrn">style</span>=<span class="tagattrv">"display:none"</span><span class="tag">&gt;</span>
             <span class="tag">&lt;menu</span> <span class="tagattrn">title</span>=<span class="tagattrv">"Action"</span><span class="tag">&gt;</span>
                 <span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickExitMenu()"</span> <span class="tag">&gt;</span>Quit Ctrl+Q<span class="tag">&lt;/item&gt;</span>
@@ -253,39 +255,40 @@ qdjs /путь/к/моей/папке/с/index.html
             <span class="tag">&lt;/menu&gt;</span>
         <span class="tag">&lt;/menubar&gt;</span>
     <span class="tag">&lt;/head&gt;</span>
-    <span class="hcomment">&lt;!-- здесь тег body... --&gt;</span>
+    <span class="hcomment">&lt;!-- here is the body tag... --&gt;</span>
 <span class="tag">&lt;/html&gt;</span>
         </pre>
-        <p>Это создаст главное меню окна программы, как на рисунке</p>
+        <p>This will create the main menu of the program window as shown in the picture.</p>
         <p class="tc">
             <img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/menubar.png">
             <div class="tc">
-                <i>Рисунок 1. Главное меню оконного приложения (пример)</i>
+                <i>Figure 1. Main menu of a windowed application (example)</i>
             </div>
         </p>
-        <p>Qt5 WebView парсит тег menubar при запуске и добавляет данные из него в меню окна.
-            Но оно никак не обрабатывает его видимость.
-            Поэтому в примере тегу menubar добавлен стиль display:none; (иначе в вашем окне будут совершенно ненужные строки "Quit Ctrl+Q", "English", "Russian").
-        </p>
-        <p>Обработчики нажатий на пунктах меню должны быть доступны в подключенном к окну js файле.</p>
+        <p>Qt5 WebView parses the menubar tag on startup and adds data from it to the window menu.
+		But it does not handle its visibility in any way.
+		Therefore, in the example, the display:none; style is added to the menubar tag (otherwise, your window will have completely unnecessary lines "Quit Ctrl+Q", "English", "Russian").
+		</p>
+		<p>Handlers for clicking on menu items must be available in the js file attached to the window.</p>
+        
         <p class="codebg">
             <span class="tag">&lt;script</span> <span class="tagattrn">src</span>=<span class="tagattrv">"./js/mainMenuListeners.js"</span>
             <span class="tag">&gt;&lt;/script&gt;</span>
         </p>
-        <p>И в файле определяем обработчики событий кликов мышью на пунктах меню:</p>
+        <p>And in the file we define event handlers for mouse clicks on menu items:</p>
         <pre class="codebg">
 <span class="kw">function</span> onClickExitMenu() {
-    <span class="jcomm">// Закрыть окно</span>
+    <span class="jcomm">// Close window</span>
     Qt.quit();
 }
 
 <span class="kw">function</span> onClickSelectEn() {
-    <span class="jcomm">// Здесь реализуете смену языка интерфейса вашего приложения</span>
+    <span class="jcomm">// Here you implement the change of the interface language of your application</span>
 }
 <span class="kw">function</span> onClickSelectRu() {
-    <span class="jcomm">// Здесь реализуете смену языка интерфейса вашего приложения</span>
+    <span class="jcomm">// Here you implement the change of the interface language of your application</span>
 }
-<span class="jcomm">// Добавляем поддержку хоткея</span>
+<span class="jcomm">// Adding hotkey support</span>
 window.onkeyup = onKeyUp;
 
 <span class="kw">function</span> onKeyUp(evt) {
@@ -299,8 +302,8 @@ window.onkeyup = onKeyUp;
 }           
         </pre>
 <h4 id="dapi">Desktop API</h4>
-<h5 id="winManage">Управление окном приложения</h5>
-<p>Управление окном доступно из javascript кода через объект MW (от MainWindow - главное окно программы). </p>
+<h5 id="winManage">Managing the application window</h5>
+<p>Window control is available from javascript code via the MW object (from MainWindow - the main window of the program).</p>
     <div id="resizeTo" class="function">
         <table cellpadding="0" cellspacing="0">
             <tr>
@@ -313,16 +316,16 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Изменяет размер окна приложения. Координаты левого верхнего угла при этом не изменяются. 
-                    Используйте MW.moveTo() при необходимости их изменить.</p>
-                    <p>Примечание: также доступна как <i>Qt.resizeTo(<span class="dkw">Number</span> width, <span class="dkw">Number</span> height)</i></p>
-                    <p style="display:none">изменить размер окна</p>
+                    <p>Resizes the application window. The coordinates of the upper-left corner are not changed.
+					Use MW.moveTo() if you need to change them.</p>
+					<p>Note: also available as <i>Qt.resizeTo(<span class="dkw">Number</span> width, <span class="dkw">Number</span> height)</i></p>
+					<p style="display:none">resize window</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="Изменить размер этого окна" onclick="MW.resizeTo(800, 600);">
+                    <div>Demo:</div>
+                    <input type="button" value="Change size this window" onclick="MW.resizeTo(800, 600);">
                 </td>
             </tr>
         
@@ -341,15 +344,15 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Разворачивает окно приложения на весь экран.</p>
-                    <p style="display:none">свернуть окно</p>
+                    <p>Expands the application window to full screen.</p>
+					<p style="display:none">minimize window</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="Изменить размер этого окна до 800x600" onclick="MW.resizeTo(800, 600);">
-                    <input type="button" value="Развернуть на весь экран" onclick="MW.maximize();">
+                    <div>Demo:</div>
+                    <input type="button" value="Resize this window to 800x600" onclick="MW.resizeTo(800, 600);">
+					<input type="button" value="Fullscreen" onclick="MW.maximize();">
                 </td>
             </tr>
         
@@ -368,29 +371,30 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Сворачивает окно приложения на панель задач.
-                    </p>
-                    <p>Примечание1 : после первого запуска приложения работает, как ожидается, но после первого 
-                    "свёртывания" и последующего восстановления путём клика на кнопку окна на панели в 
-                    Xubuntu 18.04 функция как-будто бы не работает. Добиться устойчивой работы можно предварительно
-                    вызвав MW.showNormal(); и повторив это через небольшую задержку.</p>
-                    <p>Примечание 2: также доступна как <i>MW.minimize()</i></p>
+					<p>Minimizes the application window to the taskbar.
+					</p>
+					<p>Note 1: after the first launch of the application, it works as expected, but after the first
+						"minimization" and then restoring by clicking on the window button on the panel in
+						Xubuntu 18.04, the function does not seem to work.
+						You can achieve stable operation by first calling MW.showNormal(); and repeating this after a short delay.
+					</p>
+					<p>Note 2: also available as <i>MW.minimize()</i></p>
+				</td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <input type="button" value="Collapse window" onclick="Demo.minimize()">
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="Свернуть окно" onclick="Demo.minimize()">
-                </td>
-            </tr>
-            <tr>
-                <td class="fe" colspan="2">
-                    Пример кода:<br>
+                    Code example:<br>
                     <pre class="codebg">
 <span class="kw">function</span> onClickButtonMinimizeWindow(){
     MW.showNormal();
     MW.minimize();
-    <span class="jcomm">// Для устойчивой работы в Xubuntu 18.04 с XFCE</span>
+    <span class="jcomm">// For stable work in Xubuntu 18.04 with XFCE</span>
     setTimeout(<span class="kw">function</span>() {
         MW.showNormal();
         MW.minimize();
@@ -416,15 +420,15 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Скрывает рамку окна и разворачивает окно на предний план.</p>
-                    <p><i>Примечание: также доступна как Qt.showFullScreen()</i></p>
+                    <p>Hides the window frame and brings the window to the foreground.</p>
+					<p><i>Note: Also available as Qt.showFullScreen()</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="Вернуть рамку" onclick="MW.showNormal();">
-                    <input type="button" value="Развернуть на весь экран скрыв рамку" onclick="MW.showFullScreen();">
+                    <div>Demo:</div>
+					<input type="button" value="Return frame" onclick="MW.showNormal();">
+					<input type="button" value="Expand to full screen hiding frame" onclick="MW.showFullScreen();">
                 </td>
             </tr>
         
@@ -443,15 +447,15 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Показывает рамку окна если оно было скрыто функцией showFullScreen().</p>
-                    <p>Примечание: также доступна как <i>Qt.showNormal()</i></p>
+                    <p>Shows the window frame if it has been hidden by showFullScreen().</p>
+					<p>Note: also available as <i>Qt.showNormal()</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="Вернуть рамку" onclick="MW.showNormal();">
-                    <input type="button" value="Развернуть на весь экран скрыв рамку" onclick="MW.showFullScreen();">
+                    <div>Demo:</div>
+					<input type="button" value="Return frame" onclick="MW.showNormal();">
+					<input type="button" value="Expand to full screen hiding frame" onclick="MW.showFullScreen();">
                 </td>
             </tr>
         
@@ -470,16 +474,16 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Скрывает главное меню окна приложения</p>
-                    <p>Примечание: также доступна как  <i>Qt.hideMainMenu()</i></p>
-                    <p style="display:none">показать меню</p>
+                    <p>Hides the main menu of the application window</p>
+					<p>Note: also available as <i>Qt.hideMainMenu()</i></p>
+					<p style="display:none">show menu</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="Скрыть главное меню" onclick="MW.hideMainMenu();">
-                    <input type="button" value="Показать главное меню" onclick="MW.showMainMenu();">
+					<div>Demo:</div>
+					<input type="button" value="Hide Main Menu" onclick="MW.hideMainMenu();">
+					<input type="button" value="Show Main Menu" onclick="MW.showMainMenu();">
                 </td>
             </tr>
         
@@ -498,17 +502,17 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Показывает главное меню окна приложения, если оно было скрыто вызовом MW.hideMainMenu();</p>
-                    <p>Примечание 1: Если в верстке вашего окна главное меню не задано тегом menubar, функция
-                        естественно не покажет главное меню.</p>
-                    <p>Примечание 2: также доступна как  <i>Qt.showMainMenu()</i></p>
+                    <p>Shows the main menu of the application window if it was hidden by calling MW.hideMainMenu();</p>
+					<p>Note 1: If your window layout does not specify a main menu with the menubar tag, the function
+					will naturally not show the main menu.</p>
+					<p>Note 2: Also available as <i>Qt.showMainMenu()</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="Скрыть главное меню" onclick="MW.hideMainMenu();">
-                    <input type="button" value="Показать главное меню" onclick="MW.showMainMenu();">
+                    <div>Demo:</div>
+					<input type="button" value="Hide Main Menu" onclick="MW.hideMainMenu();">
+					<input type="button" value="Show Main Menu" onclick="MW.showMainMenu();">
                 </td>
             </tr>
         </table>
@@ -526,19 +530,19 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Перемещает окно приложения. Аргументы - это координаты левого верхнего угла окна приложения.</p>
-                    <p>Примечание: также доступна как <i>Qt.moveTo(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y)</i></p>
+                    <p>Moves the application window. The arguments are the coordinates of the upper-left corner of the application window.</p>
+					<p>Note: Also available as <i>Qt.moveTo(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y)</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="Уменьшить окно и разместить его в центре экрана." onclick="Demo.onClickPosOnCenter()">
+                    <div>Demo:</div>
+					<input type="button" value="Minimize the window and place it in the center of the screen." onclick="Demo.onClickPosOnCenter()">
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    Пример кода:<br>
+                    Code example:<br>
                     <pre class="codebg">
 <span class="kw">function</span> onClickButtonPosWindowOnScreenCenter(){
     <span class="kw">var</span> w = <span class="nm">800</span>, h = <span class="nm">600</span>;
@@ -565,21 +569,21 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>    
-                        Устанавливает иконку в окне приложения рядом с заголовком окна.
-                        Аргумент - путь к png файлу изображения размером 32 на 32 пикселя или 24 на 24 пикселя. Примечание:
-                        В Xubuntu 14.04 - 22.04 изображения слева от текста заголовка окна поддерживает тема Kokodi.
-                    </p>
                     <p>
-                        Примечание: также доступна как <i>Qt.setWindowIconImage(<span class="dkw">String</span> pathToPng32x32)</i>
-                    </p>
+						Sets the icon in the application window next to the window title.
+						The argument is a path to a png image file of size 32 by 32 pixels or 24 by 24 pixels. Note:
+						In Xubuntu 14.04 - 24.04, the Kokodi theme supports images to the left of the window title text.
+					</p>
+					<p>
+						Note: also available as <i>Qt.setWindowIconImage(<span class="dkw">String</span> pathToPng32x32)</i>
+					</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <div><input type="button" value="Изменить иконку окна" onclick="MW.setIconImage( Qt.appDir() + '/doc/i/demo.png');"></div>
-                    <div><input type="button" value="Вернуть как было" onclick="MW.setIconImage( Qt.appDir() + '/doc/i/exec.png');"></div>
+					<div>Demo:</div>
+					<div><input type="button" value="Change window icon" onclick="MW.setIconImage( Qt.appDir() + '/doc/i/demo.png');"></div>
+					<div><input type="button" value="Restore as it was" onclick="MW.setIconImage( Qt.appDir() + '/doc/i/exec.png');"></div>
                 </td>
             </tr>
         
@@ -598,15 +602,15 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Закрывает окно приложения и завершает его работу</p>
-                    <p>Примечание: также доступно как <i>App.quit();</i> и <i>Qt.quit();</i></p>
-                    <div style="display:none">Закрыть Выйти Выход</div>
+                    <p>Closes the application window and terminates it</p>
+					<p>Note: Also available as <i>App.quit();</i> and <i>Qt.quit();</i></p>
+					<div style="display:none">Close Quit Exit</div>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <div><input type="button" value="Закрыть это окно" onclick="App.quit();"></div>
+                    <div>Demo:</div>
+					<div><input type="button" value="Close this window" onclick="App.quit();"></div>
                 </td>
             </tr>
         
@@ -625,14 +629,14 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Позволяет изменить заголовок окна</p>
+                    <p>Allows you to change the window title</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <div>Набирайте текст в текстовом поле:</div>
-                    <input type="text" value="" onkeydown="Demo.onkeydown3()" id="inpKD3">
+                    <div>Demo:</div>
+					<div>Type text in the text field:</div>
+					<input type="text" value="" onkeydown="Demo.onkeydown3()" id="inpKD3">
                 </td>
             </tr>
         </table>
@@ -700,17 +704,17 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Запускает другое приложение или shell или batch файл.
-                    </p>
-                    <p>Примечание 1: Если запускаемому приложению передаются аргументы, лучше использовать shell или batch файлы. В противном случае работа запуска не гарантируется.</p>
-                    <p>Примечание 2: В windows чтение stdin и stdout не поддерживается.</p>
-                    <p>Примечание 3: В windows при запуске демо ниже вместо терминала xterm будет запущен Блокнот.</p>
-                    <p>Примечание 4: Для завершения процесса в этом примере используется kill в linux xubuntu и taskkill в windows. Если их нет в системе, закрытие запущенной программы не будет работать.</p>
-                </td>
+					<p>Launches another application or shell or batch file.
+					</p>
+					<p>Note 1: If arguments are passed to the application being launched, it is better to use shell or batch files. Otherwise, the launcher is not guaranteed to work.</p>
+					<p>Note 2: In Windows, reading stdin and stdout is not supported.</p>
+					<p>Note 3: In Windows, when running the demo below, Notepad will be launched instead of the xterm terminal.</p>
+					<p>Note 4: To terminate the process, this example uses kill in Linux xubuntu and taskkill in Windows. If they are not present in the system, closing the running program will not work.</p>
+				</td>
             </tr>
             <tr>
                 <td class="fdf arglist" colspan="2">
-                    Аргументы метода
+                    Method arguments
                 </td>
             </tr>
             <tr>
@@ -718,7 +722,7 @@ window.onkeyup = onKeyUp;
                     <h5 class="argname">String command</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">String</span> command</i>. Команда для запуска, например g++, хterm или notepad.
+                    <i><span class="dkw">String</span> command</i>. The command to run, such as <b>g++</b>, <b>xterm</b>, or <b>notepad</b>.
                 </td>
             </tr>
             <tr>
@@ -727,21 +731,22 @@ window.onkeyup = onKeyUp;
                 </td>
                 <td class="fd">
                     <i><span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>.
-                    Функция, которая будет вызвана, когда выполнение команды завершится. Аргумент stdout содержит весь вывод команды в стандартный поток вывода.
-                    Аргумент stderr содержит весь вывод команды в стандартный поток ошибок. Не работает в windows.
-                    Вызов функции происходит, но stdout и stderr в windows всегда пусты.
+                    Function to be called when the command finishes executing.
+                    The stdout argument contains all the command output 
+                      to the standard output stream.
+					The stderr argument contains all the command output to the standard error stream. Does not work on Windows.
+					The function is called, but stdout and stderr are always empty on Windows.
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Примечание: В windows чтение stdin и stdout не поддерживается.
-                     Можно использовать обходной путь, заключающийся в том,
-                     что ваша программа сначала создаёт командный batch файл с перенаправлением потоков в текстовые файлы.
-                     Запустив этот файл ваша программа может например раз в 500 миллисекунд считывать из файлов, в которые выполняется перенаправление
-                     stdin и stdout, а контролировать, запущен ли процесс путём вызова PHP.isRun(innerProcessId); 
-                     innerProcessId содержится во втором (с индексом 1) элементе массива, который возвращает jexec 
-                     после запуска.
-                     </p>
+                    <p>Note: In Windows, reading stdin and stdout is not supported.
+					You can use a workaround, which consists of
+					your program first creating a batch file with redirected streams to text files.
+					By running this file, your program can, for example, read stdin and stdout from the files to which the redirection is performed every 500 milliseconds, and check whether the process is running by calling PHP.isRun(innerProcessId);
+					innerProcessId is contained in the second (with index 1) element of the array that jexec returns
+					after running.
+					</p>
                 </td>
             </tr>
             <tr>
@@ -750,16 +755,16 @@ window.onkeyup = onKeyUp;
                 </td>
                 <td class="fd">
                     <i><span class="dkw">Function</span> onStdOut(<span class="dkw">String</span> stdout)</i>.
-                    Функция, которая вызвается немедленно, как только вызываемая программа что-то выводит в стандартный поток вывода.
-                    Не работает в windows.
-                    Вызов функции происходит, но stdout и stderr в windows всегда пусты.
+                    A function that is called immediately as soon as the called program outputs something to the standard output stream.
+					Does not work in Windows.
+					The function is called, but stdout and stderr are always empty in Windows.
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Примечание: В windows чтение из stdout не поддерживается.
-                     Можно использовать обходной путь, см. примечание к onFinish
-                     </p>
+                    <p>Note: On windows, reading from stdout is not supported.
+					A workaround can be used, see the note on onFinish
+					</p>
                 </td>
             </tr>
             <tr>
@@ -768,21 +773,21 @@ window.onkeyup = onKeyUp;
                 </td>
                 <td class="fd">
                     <i><span class="dkw">Function</span> onStdErr(<span class="dkw">String</span> stderr)</i>.
-                    Функция, которая вызвается немедленно, как только вызываемая программа что-то выводит в стандартный поток ошибок.
-                    Не работает в windows.
-                    Вызов функции происходит, но stdout и stderr в windows всегда пусты.
+                    A function that is called immediately as soon as the called program outputs something to the standard error stream.
+					Does not work in Windows.
+					The function is called, but stdout and stderr are always empty in Windows.
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Примечание: В windows чтение из stderr не поддерживается.
-                     Можно использовать обходной путь, см. примечание к onFinish
-                     </p>
+                    <p>Note: Reading from stderr is not supported on windows.
+					A workaround can be used, see the note on onFinish
+					</p>
                 </td>
             </tr>
             <tr>
                 <td class="fdf arglist" colspan="2">
-                    Возвращаемое значение
+                    Return value
                 </td>
             </tr>
             <tr>
@@ -790,12 +795,13 @@ window.onkeyup = onKeyUp;
                     <h5 class="argname">Array result</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Array</span> result</i>. В нулевом элементе содержится идентификатор процесса в операционной системе. В элементе с индексом 1 внутренний идентификатор процесса.
+                    <i><span class="dkw">Array</span> result</i>.
+                    Element zero contains the process identifier in the operating system. Element with index 1 contains the internal process identifier.
                 </td>
             </tr>
             <tr>
                 <td class="fdf arglist" colspan="2">
-                    Формат аргументов функции
+                    Function argument format
                 </td>
             </tr>
             <tr>
@@ -803,7 +809,7 @@ window.onkeyup = onKeyUp;
                     <h5 class="argname">Function</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>. Имя функции может быть любым. Она должна быть доступна для вызова в области вызова окна.
+                    <i><span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>. The function name can be anything. It must be callable in the window's calling area.
                 </td>
             </tr>
             <tr>
@@ -816,7 +822,10 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Вы определяете объект. В context передаёте указатель на него, а в m - функцию, определённую в объекте. Это позволяет не засорять глобальную область видимости (см. ООП и всё что мы любим).</p>
+                    <p>
+						You define an object. In context you pass a pointer to it, and in m - a function defined in the object.
+						This allows you not to pollute the global scope (see OOP and everything we love).
+					</p>
                 </td>
             </tr>
             <tr>
@@ -829,14 +838,16 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Вы определяете объект. В нулевом элементе массива передаёте указатель на него, а в первом - функцию, определённую в объекте. Это позволяет не засорять глобальную область видимости (см. ООП и всё что мы любим).</p>
+                    <p>
+						You define an object. In the zeroth element of the array you pass a pointer to it, and in the first element - a function defined in the object. This allows you not to pollute the global scope (see OOP and everything we love).
+					</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="Запустить xterm" onclick="Demo.runXTerm()">
-                    <input type="button" value="Закрыть xterm" onclick="Demo.closeXTerm()">
+					<div>Demo:</div>
+					<input type="button" value="Run xterm" onclick="Demo.runXTerm()">
+					<input type="button" value="Close xterm" onclick="Demo.closeXTerm()">
                     <div>
                         <div id="xtStdOut">
                             <div class="outheader">Stdout:</div>
@@ -851,7 +862,7 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    Пример кода (stdout и stdin в windows не будет работать):<br>
+                    Example code (stdout and stdin will not work in windows):<br>
                     <pre class="codebg">
 <pre class="codebg">
 <span class="kw">function</span> e(id) {
@@ -910,20 +921,20 @@ window.onkeyup = onKeyUp;
                     <h5>Env.isRun</h5>
                 </td>
                 <td class="fd">
-                    <i>Env.isRun(<span class="dkw">Number</span> innerProcId)</h5>
+                    <i>Env.isRun(<span class="dkw">Number</span> innerProcessId)</h5>
                 </td>
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Проверяет, завершён ли уже запущенный процесс. innerProcId это значение элемента массива, который возвращает Env.exec, с индексом 1.</p>
+                    <p>Проверяет, завершён ли уже запущенный процесс. InternalProcessId — это значение элемента массива, который возвращает Env.exec, с индексом 1.</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="Запустить xterm" onclick="Demo.runXTerm2()">
-                    <input type="button" value="Запущен ли xterm?" onclick="Demo.checkXTerm2()">
-                    <input type="button" value="Закрыть xterm" onclick="Demo.closeXTerm2()">
+                    <div>Demo:</div>
+                    <input type="button" value="Run xterm" onclick="Demo.runXTerm2()">
+					<input type="button" value="Is xterm running?" onclick="Demo.checkXTerm2()">
+					<input type="button" value="Close xterm" onclick="Demo.closeXTerm2()">
                     <div>
                         <div id="xtStdOut2">
                             <div class="outheader">Stdout:</div>
@@ -950,14 +961,14 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Возвращает путь к каталогу, в котором находится исполняемый файл приложения</p>
-                    <p>Примечание: Также доступна как <span class="dkw">String</span> Qt.appDir()</p>
+                    <p>Returns the path to the directory where the application executable resides</p>
+					<p>Note: Also available as <span class="dkw">String</span> Qt.appDir()</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <input type="button" value="В каком каталоге лежит эта программа?" onclick="alert(App.dir());">
+                    <div>Demo:</div>
+                    <input type="button" value="In which directory is this program located?" onclick="alert(App.dir());">
                 </td>
             </tr>
         </table>
@@ -975,24 +986,24 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Возвращает аргументы командной строки переданые приложению при запуске.
-                        Полезно например для вьюера (программы просмотра) фотографий.
-                        Например если пользователь настроил Windows чтобы все jpg файлы открывались в вашем вьюере,
-                        вам надо считать аргумент с индексом 1, который и содержит путь к выбранному пользователем файлу.
-                    </p>
-                    <p>
-                        Примечание: Также доступна как <i><span class="dkw">Array</span> Qt.getArgs()</i>
-                    </p>
+                    <p>Returns the command line arguments passed to the application when it was launched.
+						Useful, for example, for a photo viewer.
+						For example, if the user has configured Windows to open all jpg files in your viewer,
+						you need to read the argument with index 1, which contains the path to the file selected by the user.
+					</p>
+					<p>
+						Note: Also available as <i><span class="dkw">Array</span> Qt.getArgs()</i>
+					</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
+                    <div>Demo:</div>
                     <div>
-                        <input type="button" value="Показать аргументы командной строки этой программы" onclick="alert(App.getArgs());">
+                        <input type="button" value="Show command line arguments for this program" onclick="alert(App.getArgs());">
                     </div>
                     <div>
-                        <input type="button" value="Запустить ещё одну копию этой программы и проверить аргументы в ней" onclick="Demo.runCopyWithArg();">
+                        <input type="button" value="Run another copy of this program and check the arguments in it." onclick="Demo.runCopyWithArg();">
                     </div>
                 </td>
             </tr>
@@ -1011,26 +1022,27 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Возвращает символ последней нажатой клавиши (если она алфавитно-цифровая).
-                        Важно, так как Qt5 WebView не позволяет считать символ нажатой клавиши в событиях keydown и keyup
-                         через свойство key.
-                        В этом случае вы можете использовать вызов MW.getLastKeyChar() чтобы получить его. 
-                        В демо ниже в левом окне пытаемся получить символ клавиши, декодируя свойство javascript
-                        keyboardEvent.keyIdentifier.
-                        В Xubuntu 18.04 и Qt 5.2.1 это более-менее корректно работает только при латинской раскладке клавиатуры.
-                        В Windows и Qt 4.6.8 это работает и с латинской и с русской раскладками,
-                        но вам пришлось бы самим мониторить состояние Caps Lock и Shift.
-                        В правом окне вы видите результат вызова MW.getLastKeyChar()
-                     </p>
-                     <p>
-                         Примечание: <i><span class="dkw">String</span> Qt.getLastKeyChar()</i>
-                     </p>
+                    <p>Returns the character of the last key pressed (if it is alphanumeric).
+					Important, because Qt5 WebView does not allow reading the character of the pressed key in the keydown and keyup events
+					via the key property.
+					In this case, you can use the MW.getLastKeyChar() call to get it.
+
+					In the demo below, in the left window, we try to get the key character by decoding the javascript property
+					keyboardEvent.keyIdentifier.
+					In Xubuntu 18.04 and Qt 5.2.1, this works more or less correctly only with the Latin keyboard layout.
+					In Windows and Qt 4.6.8, this works with both Latin and Russian layouts,
+					but you would have to monitor the state of Caps Lock and Shift yourself.
+					In the right window you see the result of calling MW.getLastKeyChar()
+					</p>
+					<p>
+					Note: <i><span class="dkw">String</span> Qt.getLastKeyChar()</i>
+					</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <div>Набирайте текст в текстовом поле:</div>
+                    <div>Demo:</div>
+                    <div>Type text in the text field:</div>
                     <input type="text" value="" onkeydown="Demo.onkeydown1(window.event)" id="inpKD1">
                     <div>
                         <div id="xtStdOut3">
@@ -1058,21 +1070,21 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Возвращает код последней нажатой клавиши. Важно, так как Qt5 WebView не позволяет корректно считать код нажатой клавиши в событиях keydown и keyup через свойство keyCode.
-                        В этом случае вы можете использовать вызов MW.getLastKeyCode() чтобы получить его.
-                        В демо ниже в левом окне пытаемся получить код клавиши, используя свойство keyboardEvent.keyCode.
-                        В правом окне вы видите результат вызова MW.getLastKeyCode().
-                        Оно далеко не всегда совпадает с кодом javasript, но оно гораздо реже равно 0, что немаловажно.
-                    </p>
-                    <p>
-                        Примечание: также доступна как <i><span class="dkw">Number</span> Qt.getLastKeyCode()</i>
-                    </p>
+                    <p>Returns the code of the last pressed key. Important, because Qt5 WebView does not allow to correctly read the code of the pressed key in the keydown and keyup events via the keyCode property.
+					In this case, you can use the MW.getLastKeyCode() call to get it.
+					In the demo below, in the left window, we try to get the key code using the keyboardEvent.keyCode property.
+					In the right window, you see the result of the MW.getLastKeyCode() call.
+					It does not always match the javascript code, but it is much less often equal to 0, which is important.
+					</p>
+					<p>
+					Note: also available as <i><span class="dkw">Number</span> Qt.getLastKeyCode()</i>
+					</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <div>Набирайте текст в текстовом поле:</div>
+                    <div>Demo:</div>
+                    <div>Type text in the text field:</div>
                     <input type="text" value="" onkeydown="Demo.onkeydown2(window.event)" id="inpKD2">
                     <div>
                         <div id="xtStdOut4">
@@ -1100,24 +1112,24 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Открывает системный диалог выбора файла для чтения. Возвращает путь к выбранному файлу.
-                        Если файл не выбран, вернёт пустую строку.</p>
-                    <p>
-                        Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
-                    </p>
+                    <p>Opens the system dialog for selecting a file to read. Returns the path to the selected file.
+					If no file is selected, returns an empty string.</p>
+					<p>
+					Note: Also available as <i><span class="dkw">String</span> Qt.openFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+					</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <div>Выберите текстовый или javascript файл и вы увидите его размер в байтах.</div>
-                    <input type="button" value="Выбор файла" onclick="Demo.filesize('*.txt *.js')">
+                    <div>Demo:</div>
+                    <div>Select a text or javascript file and you will see its size in bytes.</div>
+                    <input type="button" value="Select file" onclick="Demo.filesize('*.txt *.js')">
                     
                 </td>
             </tr>
             <tr>
                 <td class="fdf arglist" colspan="2">
-                    Возвращаемое значение
+                    Return value
                 </td>
             </tr>
             <tr>
@@ -1125,13 +1137,13 @@ window.onkeyup = onKeyUp;
                     <h5 class="argname">String filename</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">String</span> filename</i>. Возвращает путь к выбранному файлу.
-                        Если файл не выбран, вернёт пустую строку.
+                    <i><span class="dkw">String</span> filename</i>. Returns the path to the selected file.
+                        If no file is selected, returns an empty string.
                 </td>
             </tr>
             <tr>
                 <td class="fdf arglist" colspan="2">
-                    Аргументы метода
+                    Method arguments
                 </td>
             </tr>
             <tr>
@@ -1140,7 +1152,7 @@ window.onkeyup = onKeyUp;
                 </td>
                 <td class="fd">
                     <i><span class="dkw">String</span> caption</i>.
-                     Текст в заголовке диалога выбора файлов
+                     Text in the title of the file selection dialog
                 </td>
             </tr>
             <tr>
@@ -1149,7 +1161,7 @@ window.onkeyup = onKeyUp;
                 </td>
                 <td class="fd">
                     <i><span class="dkw">String</span> dir</i>.
-                     Путь к каталогу, файлы которого покажутся при открытии диалога.
+                     Path to the directory whose files will be shown when the dialog is opened.
                 </td>
             </tr>
             <tr>
@@ -1158,11 +1170,12 @@ window.onkeyup = onKeyUp;
                 </td>
                 <td class="fd">
                     <i><span class="dkw">String</span> filter</i>.
-                     Расширения файлов, которые будут отображаться в диалоге.
-                     Например <span class="st">"*.txt *.js"</span> укажет методу, что надо отображать только файлы с расширением txt и js.
-                     Если надо отобразить только например исполняемые файлы windows, фильтр выглядел бы
-                     <span class="st">"*.exe"</span>.
-                     Расширения в строке фильтров разделяются одним пробелом.
+                     File extensions that will be displayed in the dialog.
+						For example, <span class="st">"*.txt *.js"</span> will tell the method to display only files with
+						 the txt and js extensions.
+						If you only need to display, for example, Windows executable files, the filter would look like
+						<span class="st">"*.exe"</span>.
+						Extensions in the filter line are separated by a single space.
                 </td>
             </tr>
         </table>
@@ -1180,27 +1193,29 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Открывает системный диалог выбора файла для сохранения.
-                        Возвращает массив путей к выбранным файлам.
-                        Если ни один файл не выбран, вернёт пустой массив.
-                        Аргументы метода полностью аналогичны аргументам Env.openFileDialog;
-                        Возвращаемое значение метода полностью аналогично Env.openFileDialog.
-                    </p>
-                    <p>
-                        Примечание: Доступна также как <i><span class="dkw">String</span> Qt.saveFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
-                    </p>
+                    <p>Opens the system dialog for selecting a file to save.
+						Returns an array of paths to the selected files.
+						If no file is selected, it returns an empty array.
+						The arguments of the method are completely analogous to the arguments of Env.openFileDialog;
+						The return value of the method is completely analogous to Env.openFileDialog.
+					</p>
+					<p>
+						Note: Also available as <i><span class="dkw">String</span> Qt.saveFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+					</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <div>Нажмите на кнопку &laquo;Загрузить из файла&raquo;, выберите текстовый или javascript файл и отредактируйте текст:</div>
+                    <div>Demo:</div>
+                    <div>
+						Click on the "Load from file" button, select a text or javascript file and edit the text:
+					</div>
                     <div>
                         <textarea id="inpKD5" style="width:99%" rows="10"></textarea>
                     </div>
                     <div>
-                        <input type="button" value="Загрузить из файла" onclick="Demo.onClickLoadFile();">
-                        <input type="button" value="Сохранить" onclick="Demo.onClickSaveFileWithDialog();">
+                        <input type="button" value="Load from file" onclick="Demo.onClickLoadFile();">
+						<input type="button" value="Save" onclick="Demo.onClickSaveFileWithDialog();">
                     </div>
                 </td>
             </tr>
@@ -1220,18 +1235,18 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Открывает системный диалог выбора файлов для чтения. Возвращает массив путей к выбранным файлам.
-                        Если ни один файл не выбран, вернёт пустой массив. Аргументы метода полностью аналогичны аргументам Env.openFileDialog;</p>
-                    <p>
-                        Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openFilesDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
-                    </p>
+                    <p>Opens the system dialog for selecting files to read. Returns an array of paths to the selected files.
+					If no file is selected, returns an empty array. The arguments of the method are completely analogous to the arguments of Env.openFileDialog;</p>
+					<p>
+					Note: Also available as <i><span class="dkw">String</span> Qt.openFilesDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+					</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <div>Выберите текстовые или javascript файлы и вы увидите их размер в байтах.</div>
-                    <input type="button" value="Выбор файлов" onclick="Demo.filessize('*.txt *.js')">
+                    <div>Demo:</div>
+					<div>Select text or javascript files and you will see their size in bytes.</div>
+					<input type="button" value="Select files" onclick="Demo.filessize('*.txt *.js')">
                     
                 </td>
             </tr>
