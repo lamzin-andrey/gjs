@@ -1252,7 +1252,7 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf arglist" colspan="2">
-                    Возвращаемое значение
+                    Return value
                 </td>
             </tr>
             <tr>
@@ -1260,8 +1260,8 @@ window.onkeyup = onKeyUp;
                     <h5 class="argname">Array filenames</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">Array</span> filenames</i>. Возвращает массив строк - путей к выбранным файлам.
-                        Если ни один файл не выбран, вернёт пустой массив.
+                    <i><span class="dkw">Array</span> filenames</i>. Returns an array of strings - paths to the selected files.
+If no files are selected, returns an empty array.
                 </td>
             </tr>
         </table>
@@ -1279,26 +1279,27 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Открывает системный диалог выбора каталога. Возвращает строку с путём к выбранному каталогу.
-                        Если каталог не выбран, вернёт пустую строку.
-                        Аргументы метода полностью аналогичны первым двум аргументам Env.openFileDialog. 
-                        Возвращаемое значение метода полностью аналогично Env.openFileDialog.
-                    </p>
-                    <p>
-                        Примечание: Доступна также как <i><span class="dkw">String</span> Qt.openDirectoryDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir)</i>
-                    </p>
+                    <p>Opens the system directory selection dialog. Returns a string with the path to the selected directory.
+						If no directory is selected, it will return an empty string.
+						The method arguments are completely analogous to the first two arguments of Env.openFileDialog.
+
+						The return value of the method is completely analogous to Env.openFileDialog.
+					</p>
+					<p>
+						Note: Also available as <i><span class="dkw">String</span> Qt.openDirectoryDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir)</i>
+					</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <div>Выберите каталог</div>
-                    <input type="button" value="Выбор каталога" onclick="alert('Вы выбрали каталог ' + Env.openDirectoryDialog(L('Выбор каталога'), L('')));">
+                    <div>Demo:</div>
+                    <div>Select catalog</div>
+                    <input type="button" value="Selecting a catalog" onclick="alert('You have selected a catalog ' + Env.openDirectoryDialog(L('Selecting a catalog'), L('')));">
                 </td>
             </tr>
             <tr>
                 <td class="fdf arglist" colspan="2">
-                    Возвращаемое значение
+                    Return value
                 </td>
             </tr>
             <tr>
@@ -1306,13 +1307,14 @@ window.onkeyup = onKeyUp;
                     <h5 class="argname">String filename</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">String</span> filename</i> filename. Возвращает путь к выбранному файлу. Если файл не выбран, вернёт пустую строку.
+                    <i><span class="dkw">String</span> filename</i> filename.
+                    Returns the path to the selected file. If no file is selected, returns an empty string.
                 </td>
             </tr>
         </table>
     </div>
     
-<h4 id="files" class="stopHere">Файлы</h4>
+<h4 id="files" class="stopHere">Files</h4>
     <div id="fgc" class="function">
         <table cellpadding="0" cellspacing="0">
             <tr>
@@ -1325,13 +1327,13 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p> Возвращает содержимое текстового файла. При использовании стоит помнить о том, что размер оперативной памяти на устройстве пользователя ограничен.
-                        То есть не надо читать из файла имеющего размер в 1  гигабайт используя эту функцию (хотя многие современные ПК гигабайт пожалуй проглотят, но, я думаю мысль ясна).
-                    </p>
-                    <p>
-                        Примечание. Доступна также как <i><span class="dkw">String</span> PHP.file_get_contents(<span class="dkw">String</span> path)</i>
-                    </p>
-                    <p style="display:none"> чтение содержимого файла содержимое файла прочитать файл</p>
+                    <p> Returns the contents of a text file. When using it, remember that the size of the RAM on the user's device is limited.
+					That is, you do not need to read from a file that is 1 gigabyte in size using this function (although many modern PCs will probably swallow a gigabyte, but I think the idea is clear).
+					</p>
+					<p>
+					Note. Also available as <i><span class="dkw">String</span> PHP.file_get_contents(<span class="dkw">String</span> path)</i>
+					</p>
+					<p style="display:none"> reading file contents file contents read file</p>
                 </td>
             </tr>
         </table>
@@ -1348,39 +1350,38 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p> Записывает содержимое строки data в текстовый файл path. При использовании стоит помнить о том, что размер оперативной памяти на устройстве пользователя ограничен.
-                        То есть не надо разом писать в файл текст, имеющий размер 1 гигабайт используя эту функцию (хотя многие современные ПК гигабайт пожалуй проглотят, но, я думаю мысль ясна).
-                        Возвращает число записанных байт.
-                    </p>
-                    <p>
-                        Примечание 1: Доступна также как <i><span class="dkw">Number</span> PHP.file_put_contents(<span class="dkw">String</span> path, <span class="dkw">String</span> data, <span class="dkw">Number</span> flags)</i>
-                    </p>
-                    <p>
-                        Примечание 2: flags на данный момент поддерживает одно только значение <span class="dkw">FILE_APPEND</span>.
-                    </p>
-                    <p>
-                        Примечание 3: <span class="dkw">FILE_APPEND</span> = 1, что не равно значению этой константы в PHP. В планах привести это в соответствие в новых версиях.
-                    </p>
-                    <p style="display:none"> записать запись</p>
+<p> Writes the contents of the string data to the text file path. When using it, remember that the size of the RAM on the user's device is limited.
+That is, you do not need to write a text file of 1 gigabyte in size at once using this function (although many modern PCs will probably swallow a gigabyte, but I think you get the idea).
+Returns the number of bytes written.
+</p>
+<p>
+Note 1: Also available as <i><span class="dkw">Number</span> PHP.file_put_contents(<span class="dkw">String</span> path, <span class="dkw">String</span> data, <span class="dkw">Number</span> flags)</i>
+</p>
+<p>
+Note 2: flags currently only supports one value <span class="dkw">FILE_APPEND</span>. </p>
+<p>
+Note 3: <span class="dkw">FILE_APPEND</span> = 1, which is not the same as the value of this constant in PHP. Plans are in place to bring this into line in future versions.
+</p>
+<p style="display:none"> write a record</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
-                    <div>Нажмите на кнопку &laquo;Загрузить из файла&raquo;, выберите текстовый или javascript файл и отредактируйте текст:</div>
+                    <div>Demo:</div>
+                    <div>Click on the button &laquo;Load from file&raquo;, select a text or javascript file and edit the text:</div>
                     <div>
                         <textarea id="inpKD51" style="width:99%" rows="10"></textarea>
                     </div>
                     <div>
-                        <input type="button" value="Загрузить из файла" onclick="Demo.onClickLoadFile('1');">
-                        <input type="button" value="Сохранить" onclick="Demo.onClickSaveFile('1');">
+                        <input type="button" value="Load from file" onclick="Demo.onClickLoadFile('1');">
+                        <input type="button" value="Save" onclick="Demo.onClickSaveFile('1');">
                     </div>
                 </td>
             </tr>
             
             <tr>
                 <td class="fe" colspan="2">
-                    Пример кода:<br>
+                    Code example:<br>
                     <pre class="codebg">
 <pre class="codebg">
 <span class="kw">function</span> e(id) {
@@ -1388,17 +1389,17 @@ window.onkeyup = onKeyUp;
 }
 <span class="kw">var</span> ReadAndWriteExample = {
     onClickLoadFile: <span class="kw">function</span>(){
-        <span class="kw">this</span>.currentTextFile = Qt.openFileDialog(<span class="st">'Выберите текстовый файл с расширением txt или js'</span>, <span class="st">''</span>, <span class="st">'*.txt *.js'</span>);
+        <span class="kw">this</span>.currentTextFile = Qt.openFileDialog(<span class="st">'Select a text file with the extension txt or js'</span>, <span class="st">''</span>, <span class="st">'*.txt *.js'</span>);
         e(<span class="st">'inpKD5'</span>).value = PHP.file_get_contents(<span class="kw">this</span>.currentTextFile);
     },
 
     onClickSaveFile: <span class="kw">function</span>(){
         <span class="kw">if</span> (!<span class="kw">this</span>.currentTextFile) {
-            alert(<span class="st">'Надо сначала выбрать текстовый файл'</span>);
+            alert(<span class="st">'You must first select a text file.'</span>);
             <span class="kw">return</span>;
         }
         <span class="kw">var</span> nB = PHP.file_put_contents(<span class="kw">this</span>.currentTextFile, e(<span class="st">'inpKD5'</span>).value);
-        alert(<span class="st">'Записано байт: '</span> + nB);
+        alert(<span class="st">'Bytes written: '</span> + nB);
     }
 }</pre></td>
             </tr>
@@ -1418,34 +1419,34 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Вернёт true если файл, путь к которому передан в аргументе path, существует.</p>
+                    <p>Returns <b>true</b> if the file whose path is passed in the <b>path</b> argument exists..</p>
                     <p>
-                        Примечание 1: Доступна также как <i><span class="dkw">Boolean</span> PHP.file_exists(<span class="dkw">String</span> path)</i>
+                        Note 1: Also available as <i><span class="dkw">Boolean</span> PHP.file_exists(<span class="dkw">String</span> path)</i>
                     </p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
+                    <div>Demo:</div>
                     
                     <div>
-                        Проверьте, существует ли файл <b><span id="qdjsExeFilePath"></span></b>
+                        Check if the file exists <b><span id="qdjsExeFilePath"></span></b>
                     </div>
                     <div>
-                        <input type="button" value="Проверить!" onclick="Demo.checkQdjsExists();">
+                        <input type="button" value="Check!" onclick="Demo.checkQdjsExists();">
                     </div>
                     <div>
-                        (Должен вернуть true)
+                        (must return <b>true</b>)
                     </div>
                     
                     <div style="margin-top:10px;">
-                        Проверьте, существует ли файл <b><span id="qdjsExeFileCopyPath"></span></b>
+                        Check if the file exists <b><span id="qdjsExeFileCopyPath"></span></b>
                     </div>
                     <div>
-                        <input type="button" value="Проверить!" onclick="Demo.checkQdjsCopyExists();">
+                        <input type="button" value="Check!" onclick="Demo.checkQdjsCopyExists();">
                     </div>
                     <div>
-                        (Должен вернуть false, конечно если вы его не создали)
+                        (Should return <b>false</b>, unless you created it of course)
                     </div>
                 </td>
             </tr>
@@ -1465,18 +1466,18 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Вернёт true если удалось удалить файл, путь к которому передан в аргументе path.</p>
-                    <p>Примечание. Также доступна как <span class="dkw">Boolean</span> PHP.unlink(<span class="dkw">String</span> path).</p>
+                    <p>Returns true if the file whose path is passed in the path argument was successfully deleted.</p>
+					<p>Note: Also available as <span class="dkw">Boolean</span> PHP.unlink(<span class="dkw">String</span> path).</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
+                    <div>Demo:</div>
                     <div>
-                        Удалить файл <b><span id="tempFolder1">/TEMPAPTH/</span>t.txt</b>
+                        Remove file <b><span id="tempFolder1">/TEMPAPTH/</span>t.txt</b>
                     </div>
                     <div>
-                        <input type="button" value="Удалить!" onclick="alert(Demo.unlink());">
+                        <input type="button" value="Remove!" onclick="alert(Demo.unlink());">
                     </div>
                 </td>
             </tr>
@@ -1495,25 +1496,26 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Вернёт true если файл, путь к которому передан в аргументе path каталог.</p>
-                    <p>Примечание. Также доступна как <span class="dkw">Boolean</span> PHP.is_dir(<span class="dkw">String</span> path).</p>
+                    <p>Returns <b>true</b> if the file whose path is passed in the path argument is a directory.</p>
+					<p>Note: Also available as <span class="dkw">Boolean</span> PHP.is_dir(<span class="dkw">String</span> path).</p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
+                    <div>Demo:</div>
                     <div>
-                        Введите путь к файлу или каталогу, или выберите существующий с помощью кнопок ниже.<br>
-                        Затем отредактируйте путь, чтобы он указывал на несуществующий каталог или на файл 
-                        и нажмите на кнопку &laquo;Это каталог?&raquo;
-                    </div>
+						Enter the path to a file or directory, or select an existing one using the buttons below.<br>
+						Then edit the path to point to a non-existent directory or file
+
+						and click the &ldquo;Is this a directory?&rdquo; button
+					</div>
                     <div>
                         <input type="text" value="" id="isDirPath">
                     </div>
                     <div>
-                        <input type="button" value="Выбрать файл" onclick="Demo.isDirChooseFile();">
-                        <input type="button" value="Выбрать каталог" onclick="Demo.isDirChooseDir();">
-                        <input type="button" value="Это каталог?" onclick="Demo.isDir();">
+                        <input type="button" value="Choose File" onclick="Demo.isDirChooseFile();">
+						<input type="button" value="Choose Directory" onclick="Demo.isDirChooseDir();">
+						<input type="button" value="Is this a directory?" onclick="Demo.isDir();">
                     </div>
                 </td>
             </tr>
@@ -1532,15 +1534,15 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Возвращает список файлов в каталоге.</p>
-                    <p>Примечание. Также доступна как <span class="dkw">Array</span> PHP.scandir(<span class="dkw">String</span> path).</i></p>
+                    <p>Returns a list of files in a directory.</p>
+					<p>Note: Also available as <span class="dkw">Array</span> PHP.scandir(<span class="dkw">String</span> path).</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
+                    <div>Demo:</div>
                     <div>&nbsp;</div>
-                    <input type="button" value="Выбрать каталог" onclick="Demo.scandir()">
+                    <input type="button" value="Select a catalog" onclick="Demo.scandir()">
                     <div>
                         <div id="xtStdOut5">
                             <div class="outheader">Catalogs and files:</div>
@@ -1553,7 +1555,7 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    Пример кода:<br>
+                    Code example:<br>
                     <pre class="codebg">
 <pre class="codebg">
 <span class="kw">function</span> e(id) {
@@ -1561,7 +1563,7 @@ window.onkeyup = onKeyUp;
 }
 <span class="kw">var</span> ReadDirectoryContentExample = {
     scandir: <span class="kw">function</span>(){
-        <span class="kw">var</span> s = Qt.openDirectoryDialog(<span class="st">'Выберите каталог'</span>, <span class="st">''</span>, <span class="st">''</span>);
+        <span class="kw">var</span> s = Qt.openDirectoryDialog(<span class="st">'Select a catalog'</span>, <span class="st">''</span>, <span class="st">''</span>);
             ls = FS.scandir(s), i, icon = <span class="st">'exec.png'</span>, width = <span class="nm">24</span>, file;
     ls.sort();
     e(<span class="st">'xtStdOut5Content'</span>).innerHTML = '';
@@ -1801,15 +1803,15 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Возвращает размер файла в байтах.</p>
-                    <p>Примечание. Также доступна как <i><span class="dkw">Number</span> PHP.filesize(<span class="dkw">String</span> path).</i></p>
+                    <p>Returns the file size in bytes.</p>
+					<p>Note: Also available as <i><span class="dkw">Number</span> PHP.filesize(<span class="dkw">String</span> path).</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо:</div>
+                    <div>Demo:</div>
                     <div>&nbsp;</div>
-                    <input type="button" value="Выбрать файл" onclick="Demo.filesize()">
+                    <input type="button" value="Select file" onclick="Demo.filesize()">
                 </td>
             </tr>
         </table>
@@ -1827,24 +1829,22 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Сохраняет изображение в формате png. В качестве аргументов принимает путь к сохраняемому изображению, строку с данными изображения в base64 и степень качества изображения 0 - 9.</p>
-                    <p>Код примера вы можете видеть в каталоге C:\qdjs\default\doc\j\src\simpleDrawApp. </p>
-                    <p>Примечание 1. В windows при использовании Image для отображения на HTML5 Canvas необходимо указывать в атрибуте <span class="dkw">src</span> 
-                        путь к изображению, которое находится в том же каталоге, в котором находится ваш index.html
-                        , иначе при попытке получить данные изображения вызовом canvas.toDataURL() возникает ошибка SECURITY_ERR: DOM Exception 18
-                    </p>
-                    <p>Примечание 2. Пример использует возможности html5 canvas 2d, полное описание работы с ними выходит за рамки этого 
-                        руководства, более подробно о возможностях html5 canvas можно прочитать на сайтах
-                        MDN (Mozilla Developer Network) или MSDN (Microsoft Developer Network).
-                    </p>
-                    <p>Примечание 3. Также доступна как <i>Qt.savePng(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str,  <span class="dkw">Number</span> iQuality).</i></p>
+                    <p>Saves an image in png format. Accepts the path to the saved image, a string with image data in base64, and an image quality level of 0 - 9 as arguments.</p>
+					<p>You can see the example code in the C:\qdjs\default\doc\j\src\simpleDrawApp directory. </p>
+					<p>Note 1. In Windows, when using Image to display on HTML5 Canvas, you must specify in the <span class="dkw">src</span> attribute
+					the path to the image, which is located in the same directory where your index.html is located,
+					otherwise, when trying to get image data by calling canvas.toDataURL(), the error SECURITY_ERR: DOM Exception 18 occurs
+					</p>
+					<p>Note 2. The example uses the capabilities of html5 canvas 2d, a full description of how to work with them is beyond the scope of this
+					guide, more details about the capabilities of html5 canvas can be found on the websites
+					MDN (Mozilla Developer Network) or MSDN (Microsoft Developer Network). </p> <p>Note 3: Also available as <i>Qt.savePng(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str, <span class="dkw">Number</span> iQuality).</i></p>
                 </td>
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    <div>Демо, вы можете выбрать изображение на вашем ПК, разместить на нем "водяной знак" и сохранить вместе с ним:</div>
+                    <div>Demo, you can select an image on your PC, place a "watermark" on it and save it with it:</div>
                     <div>&nbsp;</div>
-                    <div class="simpleDrawApp"><!-- Потом отсюда вытащить в отдельное приложение -->
+                    <div class="simpleDrawApp">
                         <div class="canvasPlacer">
                             <canvas id="pngCanvas" width="480" height="240"></canvas>
                         </div>
@@ -1883,20 +1883,20 @@ window.onkeyup = onKeyUp;
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                    </div><!-- Конец Потом отсюда вытащить в отдельное приложение -->
+                    </div>
                 </td>
             </tr>
             
             <tr>
                 <td class="fe" colspan="2">
-                    Пример кода:<br>
+                    Code example:<br>
                     <pre class="codebg">
 <pre class="codebg">
-<span class="jcomm">// Пусть есть элемент canvas с изображением, которое нужно сохранить и id="appCanvas"</span>
+<span class="jcomm">// Let's say there is a canvas element with an image that needs to be saved and id="appCanvas"</span>
 <span class="kw">var</span> imageData = document.getElementById(<span class="st">'appCanvas'</span>).toDataURL(<span class="st">'image/png'</span>, <span class="nm">1</span>);
 FS.savePng(<span class="st">'/home/andrey/image.png'</span>, imageData, <span class="nm">9</span>);
 
-<span class="jcomm">// Неочевидный момент. Это фрагмент кода C:\qdjs\default\doc\j\src\simpleDrawApp</span>
+<span class="jcomm">// A non-obvious point. This is a code fragment C:\qdjs\default\doc\j\src\simpleDrawApp</span>
 WaterMarkApp.<span class="kw">prototype</span>.onClickBrowseImage = <span class="kw">function</span>() {
     <span class="kw">var</span> file = jqlOpenFileDialog(<span class="st">'Select png image'</span>, <span class="st">'*.png'</span>),
         o = SE2D.app,
@@ -1904,9 +1904,9 @@ WaterMarkApp.<span class="kw">prototype</span>.onClickBrowseImage = <span class=
         tmpDir,
         cmd,
         dt = new <span class="kw">Date</span>();
-    <span class="jcomm">// Копируем файл в каталог нашего приложения, иначе</span>
-    <span class="jcomm">// при попытке получить данные измененного изображения с canvas</span>
-    <span class="jcomm">// возникнет ошибка Error: SECURITY_ERR: DOM Exception 18</span>
+    <span class="jcomm">// Copy the file to our application directory, otherwise</span>
+	<span class="jcomm">// when trying to get the modified image data from canvas</span>
+	<span class="jcomm">// an error will occur Error: SECURITY_ERR: DOM Exception 18</span>
     
     <span class="kw">if</span> (file && FS.fileExists(file)) {
         tmpFile = App.dir() + <span class="st">'/tmp'</span>;
@@ -1915,11 +1915,11 @@ WaterMarkApp.<span class="kw">prototype</span>.onClickBrowseImage = <span class=
         this.execBatch(copyCmd, (<span class="st">' "'</span> + file + <span class="st">'" "'</span> + tmpFile + <span class="st">'"'</span>), [o, o.onFinishCopy], [o, o.onStdoutCopy], [o, o.onStderrCopy]);
     }
 }
-<span class="jcomm">// И только скопировав в каталог приложения выводим на canvas</span>
+<span class="jcomm">// And only after copying it to the application directory, we display it on canvas</span>
 WaterMarkApp.<span class="kw">prototype</span>.onFinishCopy = <span class="kw">function</span>(stdout, stderr) {
     <span class="kw">var</span> o = SE2D.app;
     <span class="kw">this</span>.img = new <span class="kw">Image</span>();
-    <span class="jcomm">// this.img.setAttribute('crossOrigin', 'anonymous'); могло бы помочь, но не помогло</span>
+    <span class="jcomm">// this.img.setAttribute('crossOrigin', 'anonymous'); it could have helped, but it didn't</span>
     <span class="kw">this</span>.img.onload = <span class="kw">function</span>() {
         o.onLoadSelectedImage();
         <span class="kw">delete</span> o.img;
@@ -1946,18 +1946,18 @@ WaterMarkApp.<span class="kw">prototype</span>.onFinishCopy = <span class="kw">f
             </tr>
             <tr>
                 <td class="fdf" colspan="2">
-                    <p>Сохраняет изображение в формате jpeg. В качестве аргументов принимает путь к сохраняемому изображению, строку с данными изображения в base64 и степень качества изображения 0 - 100.</p>
-                    <p>Примечание1. При разработке в windows смотрите более полный пример в описании savePng, так как проблема с SECURITY_ERR: DOM Exception 18 также актуальна.</p>
-                    <p>Примечание 2. Также доступна как <i>Qt.saveJpeg(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str,  <span class="dkw">Number</span> iQuality).</i></p>
+                    <p>Saves an image in jpeg format. Accepts as arguments the path to the saved image, a string with the image data in base64, and the image quality level from 0 to 100.</p>
+					<p>Note 1. When developing in Windows, see the more complete example in the savePng description, as the problem with SECURITY_ERR: DOM Exception 18 is also relevant.</p>
+					<p>Note 2. Also available as <i>Qt.saveJpeg(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str, <span class="dkw">Number</span> iQuality).</i></p>
                 </td>
             </tr>
             
             <tr>
                 <td class="fe" colspan="2">
-                    Пример кода:<br>
+                    Code Example:<br>
                     
 <pre class="codebg">
-<span class="jcomm">// Пусть есть элемент canvas с изображением, которое нужно сохранить и id="appCanvas"</span>
+<span class="jcomm">// Let's say there is a canvas element with an image that needs to be saved and id="appCanvas"</span>
 <span class="kw">var</span> imageData = document.getElementById(<span class="st">'appCanvas'</span>).toDataURL(<span class="st">'image/png'</span>, <span class="nm">1</span>);
 FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span class="nm">100</span>);
 </pre></td>
@@ -1992,7 +1992,7 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
             </tr>
             <tr>
                 <td class="fe" colspan="2">
-                    Пример кода:<br>
+                    Code example:<br>
                     <pre class="codebg">
 <pre class="codebg">
 <span class="kw">function</span> e(id) {
@@ -2418,14 +2418,19 @@ FS.close(fd);
 Установите на свой ПК или ноутбук Qt5 Desktop WebView API.
 <div>
 <div>
-	<a href="https://andryuxa.ru/portfolio/desktop/qt_javascript_desktop/" target="_blank">Скачать Qt5 Desktop WebView API для Linux Xubuntu 18.04 - 22.04</a>
+	<a href="https://andryuxa.ru/portfolio/desktop/qt_javascript_desktop/" target="_blank">
+		Download Qt5 Desktop WebView API for Linux Xubuntu 18.04 - 22.04
+	</a>
 </div>
-<a href="https://andryuxa.ru/portfolio/desktop/qt_javascript_desktop/" target="_blank">Скачать Qt5 Desktop WebView API для Windows</a>
+<a href="https://andryuxa.ru/portfolio/desktop/qt_javascript_desktop/" target="_blank">Download Qt5 Desktop WebView API for Windows</a>
 </div>
-<p>Запустите программу QtJavascriptDesktop (у вас откроется окно с этой справкой и все демо-примеры в документации должны работать), чтобы убедиться, что установка прошла корректно.
+<p>
+	Run the QtJavascriptDesktop program
+	(this will open a window with this help and all the demo examples in the documentation should work)
+	to make sure the installation was correct.
 </p>
 <p>
-	Установите редактор кода Geany. В xubuntu это можно сделать командой
+	Install the Geany code editor. In xubuntu, this can be done with the command
 </p>
 <pre class="codebg">
 <span class="kw">sudo apt-get install</span> geany
@@ -2434,125 +2439,129 @@ FS.close(fd);
 	<a href="https://geany.org" target="_blank">Скачать Geany для Windows</a>
 </p>
 <p>
-	Скопируйте содержимое файла 
+	Copy the contents of the file
 	<a href="https://github.com/lamzin-andrey/gjs/blob/master/data/default/geany/desktopjs.js.tags" target="_blank">desktopjs.js.tags</a>
 </p>
 <p>
-	В каталог с настройками Geany. В Xubintu это каталог /home/username/.config/geany/tags.
-	В windows 11 это C:\Users\username\AppData\Roaming\geany\tags (для Geany 1.38, версия может быть важна, так как для Geany 0.18 пути были другими).
+	Into the directory with Geany settings. In Xubntu, this is the directory /home/username/.config/geany/tags.
+	In windows 11 it is C:\Users\username\AppData\Roaming\geany\tags (for Geany 1.38.
+The version may be important, since for Geany 0.18 the paths were different).
 </p>
 
 
-<h5 id="filesCreate">Создание файлов приложения</h5>
+<h5 id="filesCreate">Creating application files</h5>
 <ol>
-	<li>Создайте новый каталог, 
-		например /home/username/myapps/simpleTextEditor в Xubuntu или
-		 D:\myapps\simpleTextEditor в Windows и перейдите в созданный каталог.</li>
+	<li>Create a new directory,
+		for example /home/username/myapps/simpleTextEditor on Xubuntu or
+		D:\myapps\simpleTextEditor on Windows and navigate to the created directory.</li>
 	<li>
 		<ul>
 			<li>
 			<p>
-				В Xubuntu вызовите контекстное меню рабочего стола (правая кнопка мыши) и выбирите "Создать кнопку запуска".
+				In Xubuntu, open the desktop context menu (right mouse button) and select "Create Launcher".
 			</p>
-			<p>Заполните поля диалога, как показано на рисунке:
+			<p>
+				Fill in the dialog fields as shown in the picture:
 				<p class="tc">
 					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0001.png">
 				</p>
 				<p class="tc">
-					<i>Диалог создания кнопки запуска в Xubuntu 18.04, тема оформления Kokodi, значки oxygen, так что это не KDE, но также красиво )</i>
+					<i>Create launcher dialog in Xubuntu 18.04, Kokodi theme, oxygen icons, so it's not KDE, but still nice )</i>
 				</p>
 				<p>
-					Обратите внимание на строку команды. Она выглядит так:
+					Pay attention to the command line. It looks like this:
 <pre class="codebg">
 qdjs /home/username/myapps/simpleTextEditor
 </pre>
-то есть мы вызываем веб вью qdjs и передаём ей аргументом путь к каталогу, в котором буду лежать файлы вашего будущего desktop приложения.
+that is, we call the qdjs web view and pass it as an argument the path to the directory in which the files of your future desktop application will be located.
 				</p>
 <p>
-	Значок для меню приложения вы можете выбрать один из стандартных для активной темы оформления (я люблю использовать oxygen, это заставляет 
-	неопытных убунтоводов думать, что я использую kubuntu а не xubuntu, но что поделать, xubuntu нравится мне своей производительностью, а в oxygen значки классные) ), а можете нарисовать своё изображение, если умеете. Формат png прекрасно подойдёт.
+	You can choose one of the standard icons for the active theme for the application menu (I like to use oxygen, it makes inexperienced Ubuntu users think that I use kubuntu and not xubuntu, but what can I do, I like xubuntu for its performance, and oxygen has cool icons) ), or you can draw your own image if you can. The png format is perfect.
 </p>
-<p>Дважды кликаем на созданном значке. Xubuntu при первом клике предложит сделать файл исполняемым, соглашаемся (вы-ж-программист), запускаем, и смотрим, что получилось.</p>
-<p>Получиться должно как на картинке</p>
+<p>
+	Double-click on the created icon. Xubuntu will prompt you to make the file executable on the first click, agree (you're a programmer), run it, and see what happens.
+</p>
+<p>It should look like in the picture.</p>
 <p class="tc">
 	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0002.png"
 </p>
 <p class="tc">
-	<i>Вид окна вашего приложения, когда файлов приложения ещё нет.</i>
+	<i>What your application window looks like when there are no application files yet.</i>
 </p>
-<p>При желании скопируйте кнопку запуска в каталог вашего приложения, лично я так и сделал.</p>
+<p>If you want, copy the launch button to your application directory, I personally did this.</p>
 			</li>
 			<li> 
-				<p>В windows в созданном каталоге выберите в контекстном меню Проводника пункт "Создать ярлык"</p>
+				<p>In Windows, in the created directory, select "Create shortcut" in the Explorer context menu</p>
 				
 				
-				<p>Заполните поля диалога, как показано на рисунке:</p>
+				<p>Fill in the dialog fields as shown in the picture:</p>
 				<p class="tc">
 					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0001.png">
 				</p>
 				<p class="tc">
-					<i>Диалог создания ярлыка в Windows 11. Красиво, но XP мне нравилась больше )</i>
+					<i>Dialog for creating a shortcut in Windows 11. Nice, but I liked XP better)</i>
 				</p>
 				
-				<p>Нажав на кнопку "Обзор..." вы можете выбрать файл qdjs.exe (в ранних версиях он называется hw.exe). 
-					Если вы не изменяли параметры во время установки, он находится по адресу C:\qdjs\hw.exe
+				<p>By clicking the "Browse..." button you can select the qdjs.exe file (in earlier versions it is called hw.exe).
+				If you did not change the parameters during installation, it is located at C:\qdjs\hw.exe
 				</p>
 				<p class="tc">
 					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0002.png">
 				</p>
 				<p class="tc">
-					<i>Путь к файлу hw.exe</i>
+					<i>Path to hw.exe file</i>
 				</p>
 				
-				<p>После выбора файла дописываете в строку команды путь к каталогу, в котором будут находитсья файлы вашей программы:
+				<p>After selecting the file, add to the command line the path to the directory where your program files will be located:
 				</p>
 				<p class="tc">
 					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0003.png">
 				</p>
 				<p class="tc">
-					<i>Указываем Qt5 WebView где находятся файлы нашего приложения</i>
+					<i>We indicate to Qt5 WebView where our application files are located</i>
 				</p>
 				
 				<p>
-					Обратите внимание на строку команды. Она выглядит примерно так:
+					Pay attention to the command line. It looks something like this:
 <pre class="codebg">
 C:\qdjs\hw.exe D:\myappps\simpleTextEditor
 </pre>
-то есть мы вызываем веб вью Qt 5 (В windows мы на самом деле мы всё ещё вызываем WebView Qt 4.6) 
-и передаём ей аргументом путь к каталогу, в котором буду лежать файлы вашего будущего desktop приложения.
+that is, we call the Qt 5 web view (In Windows, we actually still call WebView Qt 4.6)
+and pass it as an argument the path to the directory in which the files of your future desktop application will be located.
 </p>
 
-<p>И вводим имя ярлыка:</p>
+<p>And enter the name of the shortcut:</p>
 
 <p class="tc">
 	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0004.png">
 </p>
 <p class="tc">
-	<i>Вводим имя ярлыка и завершаем</i>
+	<i>Enter the name of the shortcut and finish</i>
 </p>
 
 <p>
-	Значок для меню приложения вы можете изменить после его создания, выбрав в свойствах ярлыка одну из иконок windows.
-	
-	Вы также можете нарисовать своё изображение, если умеете. Формат png прекрасно подойдёт.
-	Сохранить его в формате ico можно например с помощью программы Gimp.
+	You can change the icon for the application menu after creating it by selecting one of the windows icons in the shortcut properties.
+	You can also draw your own image if you know how. The png format is perfect.
+	You can save it in ico format, for example, using the Gimp program.
 </p>
-<p>Дважды кликаем на созданном значке и смотрим, что получилось.</p>
-<p>Получиться должно как на картинке</p>
+<p>Double-click on the created icon and see what happens.</p>
+<p>It should look like in the picture</p>
 <p class="tc">
 	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0005.png"
 </p>
 <p class="tc">
-	<i>Вид окна вашего приложения, когда файлов приложения ещё нет.</i>
+	<i>What your application window looks like when there are no application files yet.</i>
 </p>
 			</li>
 		</ul>
 	</li
 	>
 	<li>
-		<p>Создайте index.html вашего приложения.
+		<p>Create index.html for your application.
 		</p>
-		<p>Мы будем двигаться от простого к сложному, поэтому сначала создадим окно фиксированного размера, а поддержку ресайза добавим в следующем, более продвинутом примере:</p>
+		<p>
+			We'll move from simple to complex, so we'll first create a fixed-size window, and add resizing support in the next, more advanced example:
+		</p>
         
 <pre class="codebg">
 <span class="tag">&lt;DOCTYPE html&gt;</span>
@@ -2561,7 +2570,7 @@ C:\qdjs\hw.exe D:\myappps\simpleTextEditor
 		<span class="tag">&lt;link</span> <span class="tagattrn">rel</span>=<span class="tagattrv">"stylesheet"</span> <span class="tagattrn">type</span>=<span class="tagattrv">"text/css"</span> <span class="tagattrn">href</span>=<span class="tagattrv">"./css/editor.css"</span><span class="tag">&gt;</span>
 		<span class="tag">&lt;meta</span> <span class="tagattrn">charset</span>=<span class="tagattrv">"UTF-8"</span><span class="tag">&gt;</span>
 		<span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1010"</span> <span class="tagattrn">width</span>=<span class="tagattrv">"800"</span> <span class="tagattrn">height</span>=<span class="tagattrv">"600"</span> <span class="tagattrn">fixed</span><span class="tag">&gt;</span>
-		<span class="tag">&lt;title&gt;</span>Простой редактор текстовых файлов<span class="tag">&lt;/title&gt;</span>
+		<span class="tag">&lt;title&gt;</span>Simple text file editor<span class="tag">&lt;/title&gt;</span>
 	<span class="tag">&lt;/head&gt;</span>
 	<span class="tag">&lt;body&gt;</span>
 		<span class="tag">&lt;div</span> <span class="tagattrn">class</span>=<span class="tagattrv">"textplacer"</span><span class="tag">&gt;</span>
@@ -2572,31 +2581,31 @@ C:\qdjs\hw.exe D:\myappps\simpleTextEditor
 	<span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span>
 </pre>
-<p>Закончив, запустите вашу кнопку запуска или ярлык windows, если вы в windows.
-Вы должны увидеть окно, как на следующем рисунке:</p>
+<p>Once done, launch your start button or windows shortcut if you are in windows.
+You should see a window like the following image:</p>
 <p class="tc">
 	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0003.png">
 </p>
 <p class="tc">
-	<i>Qt5 Web View загрузило вёрстку вашего приложения.</i>
+	<i>Qt5 Web View has loaded your application's markup.</i>
 </p>
 <p>
-	Глядя в html примера нетрудно догадаться, что в каталоге simpleTextEditor надо создать ещё подкаталоги js и css,
-		а в них положить файлы simpleTextEditor.js и editor.css.
-	Можно считать, что все минимально необходимые файлы приложения созданы, можно приступать к программированию.
+	Looking at the html example, it is easy to guess that in the simpleTextEditor directory, you need to create more subdirectories js and css, and put the simpleTextEditor.js and editor.css files in them. We can assume that all the minimum necessary application files have been created, and we can start programming.
 </p>
-<p>В windows правда есть проблема: Qt 4.6 WebView не понимает относительные ссылки на файлы,
-	поэтому пока можете указать абсолютные пути (для нашего примера 
+<p>
+	There is a problem in Windows though: Qt 4.6 WebView does not understand relative links to files, so for now you can specify absolute paths (for our example
 	D:/myappps/simpleTextEditor/js/simpleTextEditor.js вместо ./js/simpleTextEditor.js и 
 	D:/myappps/simpleTextEditor/css/editor.css вместо ./css/editor.css).</p>
-<p>Позже мы научимся обходить это ограничение, а если 
-у вас уже есть какой-то опыт в программировании вы можете попробовать понять, как это сделано в данной справке,
- посмотрев в файлы C:\qdjs\default\index.html и C:\qdjs\default\index.tpl.html, там достаточно простой код.</p>
+<p>
+		Later we will learn how to bypass this limitation, and if
+		you already have some experience in programming, you can try to understand how this is done in this help,
+		by looking at the files C:\qdjs\default\index.html and C:\qdjs\default\index.tpl.html, there is quite simple code there.
+ </p>
 	</li>
 </ol>
 
-<h5 id="steView">Внешний вид редактора</h5>
-<p>За внешний вид в html приложениях css отвечает чуть более, чем полностью.</p>
+<h5 id="steView">Editor appearance</h5>
+<p>CSS is responsible for the appearance of HTML applications a little more than completely.</p>
 <pre class="codebg">
 <span class="tag">body</span> {
 	<span class="tagattrn">margin</span>: <span class="nm">0px;</span>
@@ -2624,34 +2633,32 @@ C:\qdjs\hw.exe D:\myappps\simpleTextEditor
 }
 </pre>
 
-Если вы не знаете css, обратитесь на сайты или к литературе для понимания этого кода.
-Если же вы его знаете (а Qt5 WebView ориентировано прежде всего на людей, которые с html + js + css уже знакомы) у вас не должно возникнуть проблем с пониманием.
-Должен сказать, я уверен, что и люди мало знакомые с html должны оценить простоту стилизации внешнего вида html(5) приложений.
+<h5 id="steView">Editor appearance</h5>
+<p>CSS is responsible for the appearance of HTML applications a little more than completely.</p>
 
 <p class="tc">
 	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0004.png">
 </p>
 <p class="tc">
-	<i>Вид вашего приложения после стилизации.</i>
+	<i>This is what your app will look like after styling.</i>
 </p>
 
 <p>
-Однако, мы хотим ещё избавиться от неинтересной иконки приложения в левом вержнем углу, а для этого нам понадобится 
-редактировать наш javascript файл.
+	However, we also want to get rid of the uninteresting application icon in the upper left corner, and for this we will need to edit our javascript file.
 </p>
 <pre class="codebg">
-<span class="jcomm">// Главный "класс" нашего приложения</span>
+<span class="jcomm">// Main "class" our application</span>
 <span class="kw">function</span> SimpleTextEditor() {}
 <span class="kw">var</span> ClassMemebers = SimpleTextEditor.<span class="kw">prototype</span>;
-<span class="jcomm">// Пока будет содержать всего один метод</span>
+<span class="jcomm">// For now it will contain only one method.</span>
 ClassMemebers.init = <span class="kw">function</span>() {
 	MW.setIconImage(App.dir() + <span class="st">'/img/icon48.png'</span>);
 };
-<span class="jcomm">// Конец определения класса</span>
+<span class="jcomm">// End of class definition</span>
 
-<span class="jcomm">// Создадим экземпляр класса</span>
+<span class="jcomm">// Let's create an instance of the class</span>
 window.editor = <span class="kw">new</span> SimpleTextEditor();
-<span class="jcomm">// Подписываемся на событие загрузки страницы в WebView и вызываем метод init нашего класса</span>
+<span class="jcomm">// Subscribe to the page load event in WebView and call the init method of our class</span>
 window.addEventListener('load', 
 	<span class="kw">function</span>() {
 		editor.init();
@@ -2661,52 +2668,51 @@ window.addEventListener('load',
 </pre>
 
 <p>
-	Здесь мы объявляем главный класс нашего приложения SimpleTextEditor. Это javascript ES5, в нём нет классов на уровне языка, но есть прототипы функций, 
-	использование которых фактически даёт возможность создавать экземпляры классов, использовать наследование и
-	всё, что мы любим.
-	Подробнее об ООП в Javascript ES5 можно прочитать например в книге <a href="https://www.ozon.ru/product/javascript-shablony-141734022/?reviewsVariantMode=2&sh=i3WrZyAJ9Q">Стояна Стефанова JavaScript Шаблоны</a>
-	Далее я больше не буду останавливаться на том, что в javascript ES6 нет классов, буду излагать так, как будто они там есть.
+	Here we declare the main class of our SimpleTextEditor application. This is JavaScript ES5, it does not have classes at the language level, but it does have function prototypes,
+	the use of which actually makes it possible to create instances of classes, use inheritance and
+	everything we love.
+	You can read more about OOP in JavaScript ES5, for example, in the book <a href="https://www.ozon.ru/product/javascript-shablony-141734022/?reviewsVariantMode=2&sh=i3WrZyAJ9Q">JavaScript Templates by Stoyan Stefanov</a>
+	Further, I will no longer dwell on the fact that there are no classes in JavaScript ES6, I will present it as if they are there.
 </p>
 
 <p>
-	Итак, мы объявили глвный класс нашего приложения SimpleTextEditor, в нём определили пока всего один метод init.
-	Затем мы создали экземпляр класса в переменной window.editor.
-	И далее мы подписались на событие загрузки html страницы и в момент окончания загрузки вызываем метод init.
-	Так как все файлы нашего web приложения сразу на диске пользователя, а не в Интернете, 
-	нам нет нобходимости подписываться на событие DOMContentLoaded, правда здорово?
+	So, we declared the main class of our application SimpleTextEditor, in it we defined only one method init.
+	Then we created an instance of the class in the variable window.editor.
+	And then we subscribed to the event of loading the html page and at the moment of finishing loading we call the method init.
+	Since all the files of our web application are immediately on the user's disk, and not on the Internet,
+	we do not need to subscribe to the DOMContentLoaded event, isn't it great?
 </p>
 
 <p>
-	В методе init мы пока просто устанавливаем иконку окна приложения.
-	Для этого наконец начинаем использовать наше Desktop API.
-	Вызываем метод объекта MW (сокращение от MainWindow) setIconImage 
-	и передаём ему путь к иконке, которую хотим отобразить в окне приложения.
-	Иконку предварительно надо положить в каталог simpleTextEditor/img.
-	Для получения полного пути к файлу икноки мы используем метод объекта App dir(). dir() возвращает путь к каталогу приложения.
-	У нас пока ничего нет для локализации приложения, но мы можем сразу же использовать "заглушку".
-	Позже мы просто реализуем функции - заглушки и всё зарабтает. Итак, добавим внутри метода init ещё строку
+	In the init method, we just set the application window icon for now.
+	For this, we finally start using our Desktop API.
+	We call the MW object (short for MainWindow) setIconImage method
+	and pass it the path to the icon we want to display in the application window.
+	The icon must first be placed in the simpleTextEditor/img directory.
+	To get the full path to the icon file, we use the App object dir() method. dir() returns the path to the application directory.
+	We don't have anything for localizing the application yet, but we can immediately use a "stub".
+	Later, we will simply implement stub functions and everything will work. So, let's add another line inside the init method
 </p>
 <pre class="codebg">
-	MW.setTitle(L(<span class="st">'Простой редактор текстовых файлов'</span>));
+	MW.setTitle(L(<span class="st">'Simple text file editor'</span>));
 </pre>
 
 <p>
-	И определим функцию L, которая впоследствии будет переводить интерфейс нашего приложения на тот язык, который выбрал пользователь.
+	And we will define the function L, which will subsequently translate the interface of our application into the language chosen by the user.
 </p>
 <pre class="codebg">
-<span class="st"> // Пока просто возвращает тот же текст, который её передали, поддержку языков реализуем позже</span>
+<span class="st"> // For now it simply returns the same text that was passed to it, we will implement language support later.</span>
 <span class="kw">function</span> L(s) {
 	<span class="kw">return</span> s;
 }
 </pre>
-<p>Теперь, после того как мы добавим поддержку языков, наше приложение сможет перевести заголовок окна. Мы исползуем метод объекта 
-MW.setTitle чтобы изменить заголовок окна.</p>
+<p>Now that we have added language support, our application will be able to translate the window title. We use the MW.setTitle object method to change the window title.</p>
 
-<h5 id="steMenu">Главное меню окна</h5>
+<h5 id="steMenu">Main window menu</h5>
 <p>
-	Не знаю как вы, а я привык, чтобы у текстовых редакторов было главное меню. 
-	Без него наш простой редактор текстовых файлов даже смотрится как-то не так.
-	Для того, чтобы меню появилось, открываем наш файл indtx.html, находим тег head и пишем в нём:
+	I don't know about you, but I'm used to text editors having a main menu.
+	Without it, our simple text file editor doesn't even look right.
+	To make the menu appear, open our indtx.html file, find the head tag and write in it:
 </p>
 <pre class="codebg">
 	<span class="tag">&lt;menubar</span> <span class="tagattrn">class</span>=<span class="tagattrv">"d-none"</span><span class="tag">&gt;</span>
@@ -2720,17 +2726,17 @@ MW.setTitle чтобы изменить заголовок окна.</p>
 </pre>
 
 
-<p>Запустив приложение вы должны увидеть появившуюся строку главного меню:</p>
+<p>Once you launch the application, you should see the main menu bar appear:</p>
 <p class="tc">
 	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0005.png">
 </p>
 <p class="tc">
-	<i>Строка главного меню.</i>
+	<i>Main menu bar.</i>
 </p>
 
-<p>Меню появилось, но при выборе его свойств ничего не происходит. Исправим это.</p>
+<p>The menu appeared, but when I select its properties, nothing happens. Let's fix this.</p>
 
-<h5 id="steReleaseMenu">Обработка нажатия на пунктах меню</h5>
+<h5 id="steReleaseMenu">Handling clicks on menu items</h5>
 
 <pre class="codebg">
 <span class="kw">function</span> onClickOpenMenuItem() {
@@ -2744,32 +2750,34 @@ MW.setTitle чтобы изменить заголовок окна.</p>
 }
 </pre>
 
-<p>Функции - обработчики событий выбора пункта меню должны быть определены глобально. Что я и сделал, 
-но основную логику мы конечно перенесем внутрь нашего класса. Определим методы класса SimpleTextEditor onClickOpenMenuItem, onClickSaveMenuItem, onClickQuitMenuItem</p>
+<p>
+The functions - event handlers for selecting a menu item must be defined globally. Which is what I did,
+but we will of course move the main logic inside our class. We will define the methods of the SimpleTextEditor class onClickOpenMenuItem, onClickSaveMenuItem, onClickQuitMenuItem
+</p>
 
 
 <pre class="codebg">
 	
 ClassMembers.onClickOpenMenuItem = <span class="kw">function</span>() {
-	<span class="jcomm"> // Если редактируемый файл не изменен</span>
+	<span class="jcomm"> // If the file being edited is not modified</span>
 	<span class="kw">if</span> (!<span class="kw">this</span>.isCurrentFileChange) {
 		<span class="kw">try</span> {
-			<span class="jcomm">// Откроем диалог выбора файлов и укажем расширения файлов, которые хотим видеть в диалоге</span>
-			<span class="jcomm">//</span> <span class="kw">TODO</span> <span class="jcomm">Второй аругмент - путь к последнему открытому каталогу, но это сделаем позже</span>
-			<span class="kw">var</span> fileName = Env.openFileDialog(L(<span class="st">'Выберите текстовый файл'</span>), <span class="st">''</span>, <span class="st">'*.txt *.js *.cpp *.html'</span>);
-			<span class="jcomm">// Если файл был выбран и существует</span>
+			<span class="jcomm">// Let's open the file selection dialog and specify the file extensions we want to see in the dialog.</span>
+			<span class="jcomm">//</span> <span class="kw">TODO</span> <span class="jcomm">The second argument is the path to the last opened directory, but we'll do that later.</span>
+			<span class="kw">var</span> fileName = Env.openFileDialog(L(<span class="st">'Select a text file'</span>), <span class="st">''</span>, <span class="st">'*.txt *.js *.cpp *.html'</span>);
+			<span class="jcomm">// If the file was selected and exists</span>
 			<span class="kw">if</span> (fileName &amp;&amp; FS.fileExists(fileName)) {
-				<span class="jcomm">// Запоминаем его адрес на диске</span>
+				<span class="jcomm">// We remember its address on the disk</span>
 				<span class="kw">this</span>.currentFileName = fileName;
-				<span class="jcomm">// И загружаем в редактор, используем наше Desktop API для чтения из файла</span>
+				<span class="jcomm">// And we load it into the editor, use our API to read from the file</span>
 				<span class="kw">this</span>.textarea.value = FS.readfile(fileName);
 			}
 		} <span class="kw">catch</span> (err) {
 			alert(err);
 		}
 	} <span class="kw">else</span> {
-		<span class="jcomm"> // Иначе предлагаем сохранить ранее измененный файл</span>
-		<span class="kw">if</span> (confirm(L(<span class="st">'Файл'</span>) + <span class="st">' '</span> + <span class="kw">this.</span>currentFileName + <span class="st">' '</span> + L(<span class="st">'изменен. Сохранить изменения перед открытием файла?'</span>))) {
+		<span class="jcomm"> // Otherwise, we suggest saving the previously modified file.</span>
+		<span class="kw">if</span> (confirm(L(<span class="st">'File'</span>) + <span class="st">' '</span> + <span class="kw">this.</span>currentFileName + <span class="st">' '</span> + L(<span class="st">'has been modified. Save changes before opening the file?'</span>))) {
 			FS.writefile(<span class="kw">this</span>.currentFileName, <span class="kw">this</span>.textarea.value);
 			<span class="kw">this</span>.isCurrentFileChange = <span class="kw">false</span>;
 			<span class="kw">this</span>.onClickOpenMenuItem();
@@ -2777,23 +2785,23 @@ ClassMembers.onClickOpenMenuItem = <span class="kw">function</span>() {
 	}
 };
 
-<span class="jcomm"> // Обработка сохранения</span>
+<span class="jcomm"> // Processing save</span>
 ClassMembers.onClickSaveMenuItem = <span class="kw">function</span>() {
-	<span class="jcomm"> // Используем наше Desktop API для записи в файл</span>
+	<span class="jcomm"> // Using our API to write to a file</span>
 	FS.writefile(<span class="kw">this</span>.currentFileName, <span class="kw">this</span>.textarea.value);
 };	
 
 
-<span class="jcomm"> // Обработка выхода</span>
+<span class="jcomm"> // Output processing</span>
 ClassMembers.onClickQuitMenuItem = <span class="kw">function</span>() {
-	<span class="jcomm"> // Если изменений не было</span>
+	<span class="jcomm"> // If there were no changes</span>
 	<span class="kw">if</span> (!<span class="kw">this</span>.isCurrentFileChange) {
-		<span class="jcomm"> // Используем наше Desktop API для завершения работы приложения</span>
+		<span class="jcomm"> // We use our API to terminate the application</span>
 		App.quit();
 		<span class="kw">return</span>;
 	}
-	<span class="jcomm"> // Иначе сначала сохраняем измененный файл, если пользователь с этим согласен</span>
-	<span class="kw">if</span> (confirm(L(<span class="st">'Файл'</span>) + <span class="st">' '</span> + <span class="kw">this</span>.currentFileName + <span class="st">' '</span> + L(<span class="st">'изменен. Сохранить изменения перед выходом?'</span>))) {
+	<span class="jcomm"> // Otherwise, we first save the modified file if the user agrees with this</span>
+	<span class="kw">if</span> (confirm(L(<span class="st">'File'</span>) + <span class="st">' '</span> + <span class="kw">this</span>.currentFileName + <span class="st">' '</span> + L(<span class="st">'has been modified. Save changes before exiting?'</span>))) {
 		FS.writefile(<span class="kw">this</span>.currentFileName, <span class="kw">this</span>.textarea.value);
 		<span class="kw">this</span>.isCurrentFileChange = <span class="kw">false</span>;
 		<span class="kw">this</span>.onClickQuitMenuItem();
@@ -2803,7 +2811,7 @@ ClassMembers.onClickQuitMenuItem = <span class="kw">function</span>() {
 </pre>
 
 <p>
-	Чтобы всё это заработало, добавим в наш метод init ещё несколько строк.
+	To make all this work, let's add a few more lines to our init method.
 </p>
 <pre class="codebg">
 <span class="kw">this</span>.isCurrentFileChange = <span class="kw">false</span>;
@@ -2812,7 +2820,7 @@ ClassMembers.onClickQuitMenuItem = <span class="kw">function</span>() {
 </pre>
 
 <p>
-И отпределим метод setEventListeners
+And define the setEventListeners method
 </p>
 <pre class="codebg">
 ClassMembers.setEventListeners = <span class="kw">function</span>() {
@@ -2824,7 +2832,7 @@ ClassMembers.setEventListeners = <span class="kw">function</span>() {
 </pre>
 
 <p>
-В обработчике ввода пока просто фиксируем факт изменения текста
+In the input handler, we simply record the fact that the text has changed.
 </p>
 
 <pre class="codebg">
@@ -2834,17 +2842,22 @@ ClassMembers.onInput = <span class="kw">function</span>(event) {
 </pre>
 
 <p>
-В нём можно и нужно сделать ещё многое. Например наш простой текстовый редактор не понимает "правильно" клавишу Tab.
-Также нам надо оживить строку статуса, чтобы отображать, в какой строке и какой позиции строки находится текстовый курсор.
-Но для первого примера я решил ограничиться этим небольшим функционалом.
+There is much more that can and should be done in it. For example, our simple text editor does not understand the Tab key "correctly".
+We also need to animate the status bar to display in which line and at what position in the line the text cursor is located.
+But for the first example, I decided to limit myself to this small functionality.
 </p>
 
 <p>
-В целом наш редактор оставляет большое поле для доработок. Например, я прописал в пунктах меню хоткеи, 
-но не реализовал пока их обработку. Нет пункта меню для создания нового файла или пересохранения файла под другим именем.
-Всё это достаточно легко сделать, но прямо сейчас что-то лень, к тому же первый пример получится слишком объёмным.
-Я считаю, что рассказал достаточно, чтобы желающие могли начать свою разработку.
-Список доступных методов API можно видеть слева, примеры использования некоторых из них есть в данном примере.
+In general, our editor leaves a lot of room for improvement. For example, I have written hotkeys in the menu items,
+but have not yet implemented their processing. There is no menu item for creating a new file or resaving a file under a different name.
+All this is quite easy to do, but right now I am a bit lazy, and besides, the first example will be too voluminous.
+I think I have told enough so that those who want to can start their own development.
+The list of available API methods can be seen on the left, examples of using some of them are in this example.
 </p>
 
-<p>Буду рад, если этим API будет пользоваться кто-то ещё, кроме меня.</p>
+<p>I will be glad if someone else uses this API besides me.</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
