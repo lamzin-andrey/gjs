@@ -1,0 +1,42 @@
+body {
+	padding:0px;
+	margin:0px;
+	overflow-y:hidden;
+	font-family:Liberation Sans, Geneva, Arial;
+}
+table.layout {
+	height:100%;
+	width:100%;
+}
+table.layout td {
+	vertical-align:top;
+}
+.sidebar {
+	font-family: Arialdb;
+	width:300px;
+	background-color:#0B33A6/*#AABEF8*/;
+	/*font-size: 16px;*/
+	overflow-y:scroll;
+	color:white;
+	font-weight:bold;
+	border-right: 1px solid blue;
+}
+.sidebar ul{
+	list-style-type: none;
+}
+.sidebar ul li{
+	font-weight: bold;
+}
+.sidebar a{
+	color:white;
+}
+.content {
+	/*float:left;*/
+	/*width:75%;*/
+	background-color:#FFFFFF;
+	overflow:scroll;
+	padding-left: 4px;
+}
+.tc {
+	text-align:center;
+}

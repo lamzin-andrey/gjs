@@ -1,0 +1,38 @@
+.simpleDrawApp {
+	border: 2px black solid;
+	width: 480px;
+	height: 339px;
+	background-color:gray;
+}
+.simpleDrawApp  .toolbar {
+	background-color: #EFE9D6;
+}
+
+.inputLineWrapper input[type=number] {
+	width:52px;
+}
+
+.sizeLabel {
+	min-width:50px;
+	display:inline-block;
+}
+.watermarkBox {
+	width:200px;
+}
+.browseImage {
+	margin-top: 15px;
+}
+.browseButtonPlacer {
+}
+
+/** Utils */
+.float-left {
+	float: left;
+}
+.clearfix {
+	clear:both;
+}
+
+.text-right {
+	text-align: right;
+}

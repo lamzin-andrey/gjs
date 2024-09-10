@@ -1,0 +1,2901 @@
+<h4 id="about">About</h4>
+        <p>The Qt5 WebView DESKTOP API allows you to create desktop applications on linux xubuntu and windows using javascript, html and css.</p>
+        <p>This should be especially easy for experienced web developers who are familiar with the basic functions of the ES5 javascript and PHP languages.</p>
+        <p>This is primarily Qt5 WebView, (in windows Qt4.6.3 WebView), that is, in fact, a web browser devoid of an address bar and working with files on the user's disk.</p>
+        <p>In addition, the program provides a javascript API that allows you to run programs
+			Linux Xubuntu and Windows operating systems interact with the file system
+			and some other features of operating systems, such as using system dialogs.
+		</p>
+        <p>This allows you to create your desktop application just as easily as if you were creating a web page. </p>
+        <p>This is intended primarily for developers who need to quickly write some kind of GUI utility from time to time,
+intended primarily for personal use.</p>
+        <p>Development of programs for a wide range of users is possible,
+but you must be aware that older versions of Qt contain vulnerabilities.
+If you choose to distribute applications written with this API, you must first
+rebuild the executable that implements the api with the current version of Qt -
+otherwise, you are likely to harm the people who use your applications.
+		</p>
+		<p>
+			Source code  <a href="https://github.com/lamzin-andrey/gjs/">in github</a>
+		</p>
+        
+        <h4 id="principes">Why not Qt 6 and not javascript ES6+ and not Apache Cordova</h4>
+        <p>Here are a few words about why I wrote this at all and continue to write when there is, for example, Apache Cordova. And why do I use the old version of the Qt library when there is a new one.</p>
+			
+        <p>
+		</p>
+        <ol>
+			<li><p>
+				I don't like Xubuntu's over-reliance on the Internet and its almost complete lack of backwards compatibility.
+				I would like to be able to save deb packages of many programs when I was working in
+				Xubuntu 9.10 and install them again in Xubuntu 12.04, and then in Xubuntu 14.04, 18.04, 22.04 and so on
+				(the first digit in the Xubuntu version name is the year).
+				</p>
+				<p>
+					This is not about all programs (for example, web browsers definitely need to be updated as often as possible),
+					but some of the programs, such as Kate, Inkscape or KolourPaint (the list can easily be continued)
+					have essentially not changed over all these years
+					(or I only use that part of their functions that have not changed over all these years).
+				</p>
+				<p>
+					I would definitely have enough functionality of the listed programs of the versions that were installed in Xubuntu 9.10.
+					But, <i><b>normally</b></i> it is impossible to install deb packages with old versions.
+					Sometimes it is possible to unpack them manually, together with old libraries
+					- but all this is not it, it takes a lot of time and usually leads to problems with installing other (new) applications.
+				</p>
+				<p>
+					I have to download new versions of these programs when I switch to a new LTS version.
+					When the internet is good, this is not a problem at all. But it is not always good.
+				</p>
+				<p>
+					At the same time, I like Xubuntu and I don't want to change it for anything else.
+					I like it because of the other side of the problem described above: if I regularly switch to a new LTS every 5 years,
+					I have no problems with the latest browser updates and the latest security updates.
+				</p>
+				<p>
+					In the end, I wanted to be able to create desktop applications for Xubuntu as easily as possible
+					and not rebuild their binaries every time a new LTS version is released.
+					And I achieved this, my first small applications, written on 32-bit Xubuntu 14.04
+					successfully migrated to 64-bit Xubuntu 18.04, and in 2022 I was convinced that they also work in Xubuntu 22.04 and I don’t need the Internet to install them.
+					Yes, of course, I had to rebuild the Qt5 WebView binary for the 64-bit architecture, but there is some difference,
+					doing it once every 8 years (and no more, until you have to switch to 128-bit PCs) or every 4-5 years.
+				</p>
+				<p>
+					I want to write using Qt5 WebView analogs of those programs,
+					which have not actually changed over the past few years,
+					so as not to download them from the Internet an infinite number of times.
+				</p>
+			 </li>
+			 
+			 <li>
+				 <p>Like many residents of the post-Soviet space, I started using a PC with Windows installed.
+				I learned about Linux much later and when I switched to it, I naturally looked for programs that were
+				as similar as possible to those I was used to in Windows.</p>
+				<p>Debian and Ubuntu have a huge number of programs, but it turned out that
+				the best of them are tied to different graphical shells.
+				Around 2014, I finally chose XFCE for myself, but I do not want to give up KolourPaint and Kate.
+				They have functions that are not in Gimp, Gpaint and Mousepad.</p>
+				<p>Therefore, because of these two programs, I am forced to download a lot of KDE libraries every time I update the Xubuntu version.
+				This is not a problem at all if you have fast Internet, but it is a problem when you don’t.</p>
+				<p>I will definitely write their analogs using Qt5 WebView and get rid of this need.</p>
+			 </li>
+			 
+			 <li>
+				 <p>While I was studying at the university, we wrote programs in Pascal and C++, C# and Java.</p>
+				<p>It turned out that programming in javascript and creating interfaces in html and css is much easier
+				than using the listed programming languages.
+				I dreamed of a "browser" that would finally be able to fully work with the PC file system, with the registry,
+				interact directly with the database.</p>
+				<p>And then Apache Cordova appeared. But an empty window application for Linux i386 just didn't take off for me.
+				It assembled without errors, but didn't start. Ok, maybe my hand curvature radius is wrong. But.
+				I want to install something on my PC once.
+				Then execute
+				</p>
+				<pre class="codebg">
+				something /path/to/my/folder/from/index.html
+				</pre>
+				<p>And it should work just as reliably and smoothly as if I had entered chrome or firefox instead of "something".
+				And yes, "something" should be able to work with the file system and run console programs in the background.</p>
+				<p>The statement is a bit bold, but so far I see that Qt5 WebView works exactly like that.</p>
+				<pre class="codebg">
+				qdjs /path/to/my/folder/from/index.html
+				</pre>
+				<p>and no problems. Moreover, I have been installing qdjs from the same archive since 2014.
+				I sometimes recompile the binary because I add new features to it,
+				but it works with the same versions of libraries that I worked with in 2014.
+				</p>
+				<p>I understand that it is not safe. But I am not afraid, damn it, and I
+				even want to make sure at least once that it is not safe from my own experience. </p>
+				<p>I am a reasonable person and do not use this on the same computer where I work with other people's data. </p>
+				<p> I understand that people who will have the same problems with my solution
+				as I had with Apache Cordova will definitely be found. But I am glad that I will not be among them.
+				And since I am not unique, there should be many developers who will find it easy and convenient to use the Qt5 WebView DESKTOP API. </p>
+			 </li>
+			 
+			 <li>
+				 <p>I don't like npm. Because it just kills me to have to download an insane amount of small scripts from the Internet when creating a new
+				project, and if you then compress them for fun,
+				the archive weighs 50 - 70 megabytes. It would be fine if this happened once,
+				but we have to do this every time we create a new project.
+				Or we just want to try something new in a separate project. It's terrible.
+				</p>
+				<p>At the same time, I want to write javascript for the desktop. Especially for Xubuntu.
+				Using the Qt5 WebView DESKTOP API (I just imagined that I am not its creator)
+				I have to download a 40 MB archive from the Internet once,
+				then from time to time download an update in the form of a binary file, which weighs less than 1 MB.
+				Well, applications for the Qt5 WebView DESKTOP API usually weigh no more than an average web page.
+				</p>
+			 </li>
+			 
+			 <li>
+				 <p>Qt is a cross-platform library. However, with each new version, deploying Qt applications to Windows is becoming more and more difficult.
+				Once (in 2015 or 2016), I wrote a custom Windows application using Qt WebView.
+				I used the latest stable version of Qt at that time (I can't say which one exactly),
+				because I was concerned about the notorious security.
+				The project was small, me, the customer of the application and several clients - users.
+				</p>
+				<p>We thoroughly tested the product before the release. Everything was ok for us.
+				But, despite the small number of users, there were immediately several users for whom the application simply refused to launch.
+				And this despite the fact that I successfully tested it, including on the newly installed Windows 10 Insider Preview
+				on which nothing but my program was installed.
+				</p>
+				<p>After agreeing with the customer, I downgraded the Qt version, using Qt 4.6.8,
+				on which I had previously successfully written programs for coursework and diploma projects, and the problem suddenly disappeared -
+				all users were able to run absolutely the same code, compiled by an earlier version of Qt.
+				</p>
+			 </li>
+			 
+			 <li>
+				 <p>I'm not afraid of "getting stuck" on javascript ES5. I know it well and sometimes I prefer to achieve results
+				in the form of working applications, rather than bump into unfamiliar components of popular frameworks
+				and new features that have not been tested by developers.</p>
+				<p>Besides, I'm not going to limit myself to just
+				programming for the <strike>old browser</strike> Qt5 WebView,
+				the description of which you are probably going to read. ES6+ is enough for me at work and in other places.</p>
+				</p>
+			 </li>
+        </ol>
+        
+        <h4 id="htmlfeat">HTML features</h4>
+        <p>Here are described Qt5 WebView specific html elements that you can use in your application.</p>
+        <h5 id="windowButtons">meta[name=windowButtons]</h5>
+        <p>Use the meta tag with the name attribute windowButtons to control the buttons of your application's window.
+The tag's content attribute contains a string representation of a bit mask of zeros and ones that control the visibility of your window's buttons.</p>
+        <p>Example of tag:</p>
+        <p class="codebg">
+            <span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1110"</span> 
+            <span class="tag">&gt;</span>
+        </p>
+        <p>The meaning of the numbers in content (listed from right to left, numbered from zero)</p>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>Bit number</th>
+                <th>0</th>
+                <th>1</th>
+            </tr>
+            <tr>
+				<td>0</td>
+				<td>Don't show context help button</td>
+				<td>Show context help button</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Don't show close button</td>
+				<td>Show close button</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Don't show maximize button</td>
+				<td>Show maximize button</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Don't show minimize button</td>
+				<td>Show minimize button</td>
+			</tr>
+        </table>
+        <p>Default value: 1110</p>
+
+        <h5 id="windowStyle">Window Style Attributes</h5>
+        <p>Set in the windowButtons meta tag</p>
+        <table class="contentTable" cellpadding="0" cellspacing="0">
+            <tr>
+				<th>Attribute</th>
+				<th>Value</th>
+			</tr>
+			<tr>
+				<td>onlyTop</td>
+				<td>Show window in foreground</td>
+			</tr>
+			<tr>
+				<td >noFrame</td>
+				<td>Show window without frame</td>
+			</tr>
+			<tr>
+				<td>fulScreen</td>
+				<td>Show window without frame and maximized</td>
+			</tr>
+			<tr>
+				<td>width</td>
+				<td>Application window width, for example width="100", double quotes are required</td>
+			</tr>
+			<tr>
+				<td>height</td>
+				<td>Application window height, for example height="100", double quotes required</td>
+			</tr>
+			<tr>
+				<td>fixed</td>
+				<td>If width or height and fixed are specified, the window becomes unchangeable</td>
+			</tr>
+        </table>
+        
+        <p>An example of an 800 by 600 pixel window that does not allow the user to resize it</p>
+        <p class="codebg">
+            <span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1110"</span> 
+                <span class="tagattrn">width</span>=<span class="tagattrv">"800"</span>
+                <span class="tagattrn">height</span>=<span class="tagattrv">"600"</span>
+                <span class="tagattrn">fixed</span>
+            <span class="tag">&gt;</span>
+        </p>
+        <h4 id="mainmenu">Main menu of the program window</h4>
+		<p>To add the main menu of the program to your application window,
+		you need to add the menubar code inside the head html tag, similar to the example below:</p>
+        
+        <pre class="codebg">
+<span class="tag">&lt;html</span> <span class="tagattrn">lang</span>=<span class="tagattrv">"ru"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;head</span> <span class="tag">&gt;</span>
+    <span class="hcomment">&lt;!-- here are the title tags, meta[windowButtons]... and others that you need --&gt;</span>
+        <span class="tag">&lt;menubar</span> <span class="tagattrn">style</span>=<span class="tagattrv">"display:none"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;menu</span> <span class="tagattrn">title</span>=<span class="tagattrv">"Action"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickExitMenu()"</span> <span class="tag">&gt;</span>Quit Ctrl+Q<span class="tag">&lt;/item&gt;</span>
+            <span class="tag">&lt;/menu&gt;</span>
+            <span class="tag">&lt;menu</span> <span class="tagattrn">title</span>=<span class="tagattrv">"Language"</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickSelectEn()"</span> <span class="tag">&gt;</span>English<span class="tag">&lt;/item&gt;</span>
+                <span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickSelectRu()"</span> <span class="tag">&gt;</span>Russian<span class="tag">&lt;/item&gt;</span>
+            <span class="tag">&lt;/menu&gt;</span>
+        <span class="tag">&lt;/menubar&gt;</span>
+    <span class="tag">&lt;/head&gt;</span>
+    <span class="hcomment">&lt;!-- here is the body tag... --&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+        </pre>
+        <p>This will create the main menu of the program window as shown in the picture.</p>
+        <p class="tc">
+            <img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/menubar.png">
+            <div class="tc">
+                <i>Figure 1. Main menu of a windowed application (example)</i>
+            </div>
+        </p>
+        <p>Qt5 WebView parses the menubar tag on startup and adds data from it to the window menu.
+		But it does not handle its visibility in any way.
+		Therefore, in the example, the display:none; style is added to the menubar tag (otherwise, your window will have completely unnecessary lines "Quit Ctrl+Q", "English", "Russian").
+		</p>
+		<p>Handlers for clicking on menu items must be available in the js file attached to the window.</p>
+        
+        <p class="codebg">
+            <span class="tag">&lt;script</span> <span class="tagattrn">src</span>=<span class="tagattrv">"./js/mainMenuListeners.js"</span>
+            <span class="tag">&gt;&lt;/script&gt;</span>
+        </p>
+        <p>And in the file we define event handlers for mouse clicks on menu items:</p>
+        <pre class="codebg">
+<span class="kw">function</span> onClickExitMenu() {
+    <span class="jcomm">// Close window</span>
+    Qt.quit();
+}
+
+<span class="kw">function</span> onClickSelectEn() {
+    <span class="jcomm">// Here you implement the change of the interface language of your application</span>
+}
+<span class="kw">function</span> onClickSelectRu() {
+    <span class="jcomm">// Here you implement the change of the interface language of your application</span>
+}
+<span class="jcomm">// Adding hotkey support</span>
+window.onkeyup = onKeyUp;
+
+<span class="kw">function</span> onKeyUp(evt) {
+    <span class="kw">if</span> (evt.ctrlKey) {
+        <span class="kw">switch</span>(evt.keyCode) {
+            <span class="kw">case</span> <span class="nm">81</span>:    <span class="jcomm">// "Q"</span>
+            onClickExitMenu();
+            <span class="kw">break</span>;
+        }
+    }
+}           
+        </pre>
+<h4 id="dapi">Desktop API</h4>
+<h5 id="winManage">Managing the application window</h5>
+<p>Window control is available from javascript code via the MW object (from MainWindow - the main window of the program).</p>
+    <div id="resizeTo" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.resizeTo</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.resizeTo(<span class="dkw">Number</span> width, <span class="dkw">Number</span> height)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Resizes the application window. The coordinates of the upper-left corner are not changed.
+					Use MW.moveTo() if you need to change them.</p>
+					<p>Note: also available as <i>Qt.resizeTo(<span class="dkw">Number</span> width, <span class="dkw">Number</span> height)</i></p>
+					<p style="display:none">resize window</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <input type="button" value="Change size this window" onclick="MW.resizeTo(800, 600);">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="maximize" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.maximize</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.maximize()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Expands the application window to full screen.</p>
+					<p style="display:none">minimize window</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <input type="button" value="Resize this window to 800x600" onclick="MW.resizeTo(800, 600);">
+					<input type="button" value="Fullscreen" onclick="MW.maximize();">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="minimize" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.minimize</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.minimize()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+					<p>Minimizes the application window to the taskbar.
+					</p>
+					<p>Note 1: after the first launch of the application, it works as expected, but after the first
+						"minimization" and then restoring by clicking on the window button on the panel in
+						Xubuntu 18.04, the function does not seem to work.
+						You can achieve stable operation by first calling MW.showNormal(); and repeating this after a short delay.
+					</p>
+					<p>Note 2: also available as <i>MW.minimize()</i></p>
+				</td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <input type="button" value="Collapse window" onclick="Demo.minimize()">
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<span class="kw">function</span> onClickButtonMinimizeWindow(){
+    MW.showNormal();
+    MW.minimize();
+    <span class="jcomm">// For stable work in Xubuntu 18.04 with XFCE</span>
+    setTimeout(<span class="kw">function</span>() {
+        MW.showNormal();
+        MW.minimize();
+    }, <span class="nm">100</span>);
+}
+</pre>
+                    
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="sfs" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.showFullScreen</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.showFullScreen()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Hides the window frame and brings the window to the foreground.</p>
+					<p><i>Note: Also available as Qt.showFullScreen()</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+					<input type="button" value="Return frame" onclick="MW.showNormal();">
+					<input type="button" value="Expand to full screen hiding frame" onclick="MW.showFullScreen();">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="sNormal" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.showNormal</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.showNormal()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Shows the window frame if it has been hidden by showFullScreen().</p>
+					<p>Note: also available as <i>Qt.showNormal()</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+					<input type="button" value="Return frame" onclick="MW.showNormal();">
+					<input type="button" value="Expand to full screen hiding frame" onclick="MW.showFullScreen();">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="hideMainMenu" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.hideMainMenu</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.hideMainMenu()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Hides the main menu of the application window</p>
+					<p>Note: also available as <i>Qt.hideMainMenu()</i></p>
+					<p style="display:none">show menu</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+					<div>Demo:</div>
+					<input type="button" value="Hide Main Menu" onclick="MW.hideMainMenu();">
+					<input type="button" value="Show Main Menu" onclick="MW.showMainMenu();">
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="showMainMenu" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.showMainMenu</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.showMainMenu()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Shows the main menu of the application window if it was hidden by calling MW.hideMainMenu();</p>
+					<p>Note 1: If your window layout does not specify a main menu with the menubar tag, the function
+					will naturally not show the main menu.</p>
+					<p>Note 2: Also available as <i>Qt.showMainMenu()</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+					<input type="button" value="Hide Main Menu" onclick="MW.hideMainMenu();">
+					<input type="button" value="Show Main Menu" onclick="MW.showMainMenu();">
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="moveTo" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.moveTo</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.moveTo(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Moves the application window. The arguments are the coordinates of the upper-left corner of the application window.</p>
+					<p>Note: Also available as <i>Qt.moveTo(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y)</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+					<input type="button" value="Minimize the window and place it in the center of the screen." onclick="Demo.onClickPosOnCenter()">
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<span class="kw">function</span> onClickButtonPosWindowOnScreenCenter(){
+    <span class="kw">var</span> w = <span class="nm">800</span>, h = <span class="nm">600</span>;
+    MW.moveTo( (screen.width - w) / <span class="nm">2</span>, (screen.height - h) / <span class="nm">2</span>);
+    MW.resizeTo(w, h);
+}
+</pre>
+                    
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="swi" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.setIconImage</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.setIconImage(<span class="dkw">String</span> pathToPng32x32)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>
+						Sets the icon in the application window next to the window title.
+						The argument is a path to a png image file of size 32 by 32 pixels or 24 by 24 pixels. Note:
+						In Xubuntu 14.04 - 24.04, the Kokodi theme supports images to the left of the window title text.
+					</p>
+					<p>
+						Note: also available as <i>Qt.setWindowIconImage(<span class="dkw">String</span> pathToPng32x32)</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+					<div>Demo:</div>
+					<div><input type="button" value="Change window icon" onclick="MW.setIconImage( Qt.appDir() + '/doc/i/demo.png');"></div>
+					<div><input type="button" value="Restore as it was" onclick="MW.setIconImage( Qt.appDir() + '/doc/i/exec.png');"></div>
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="quit" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.close</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.close()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Closes the application window and terminates it</p>
+					<p>Note: Also available as <i>App.quit();</i> and <i>Qt.quit();</i></p>
+					<div style="display:none">Close Quit Exit</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+					<div><input type="button" value="Close this window" onclick="App.quit();"></div>
+                </td>
+            </tr>
+        
+        </table>
+    </div>
+    
+    <div id="setTitle" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Qt.setTitle</h5>
+                </td>
+                <td class="fd">
+                    <i>Qt.setTitle(<span class="dkw">String</span> title)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Allows you to change the window title</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+					<div>Type text in the text field:</div>
+					<input type="text" value="" onkeydown="Demo.onkeydown3()" id="inpKD3">
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="renameMenuItem" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.renameMenuItem</h5>
+                </td>
+                <td class="fd">
+                    <i>MW.renameMenuItem(<span class="dkw">Number</span> x, <span class="dkw">Number</span> y, <span class="dkw">String</span> text)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Set main menu item text</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>Type text in input and it apply main menu item Help -> About :</div>
+                    <input type="text" value="About" onkeydown="Demo.onkeydown4()" id="inpKD4">
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> ChangeContextMenuTextExample = {
+    onkeydown: <span class="kw">function</span>(){
+        <span class="kw">var</span> trg = e(<span class="st">'inpKD4'</span>),
+             o = <span class="kw">this</span>;
+        setTimeout(<span class="kw">function</span>() {
+            MW.renameMenuItem(<span class="nm">2</span>, <span class="nm">0</span>, trg.value);
+                <span class="jcomm">// Here 2 - position of the main menu item on X axios, begin from 0</span>
+                <span class="jcomm">// Here 0 - position of the main menu item on Y axios, begin from 0.</span>
+        }, <span class="nm">10</span>);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    
+<h4 id="env">Взаимодействие с окружением</h4>
+    <div id="ejexec" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.exec</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> Env.exec(<span class="dkw">String</span> command, <span class="dkw">Function|Array|Object</span> onFinish, <span class="dkw">Function|Array|Object</span> onStdOut, <span class="dkw">Function|Array|Object</span> onStdErr)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+					<p>Launches another application or shell or batch file.
+					</p>
+					<p>Note 1: If arguments are passed to the application being launched, it is better to use shell or batch files. Otherwise, the launcher is not guaranteed to work.</p>
+					<p>Note 2: In Windows, reading stdin and stdout is not supported.</p>
+					<p>Note 3: In Windows, when running the demo below, Notepad will be launched instead of the xterm terminal.</p>
+					<p>Note 4: To terminate the process, this example uses kill in Linux xubuntu and taskkill in Windows. If they are not present in the system, closing the running program will not work.</p>
+				</td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Method arguments
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String command</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> command</i>. The command to run, such as <b>g++</b>, <b>xterm</b>, or <b>notepad</b>.
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Function|Object|Array onFinish</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>.
+                    Function to be called when the command finishes executing.
+                    The stdout argument contains all the command output 
+                      to the standard output stream.
+					The stderr argument contains all the command output to the standard error stream. Does not work on Windows.
+					The function is called, but stdout and stderr are always empty on Windows.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Note: In Windows, reading stdin and stdout is not supported.
+					You can use a workaround, which consists of
+					your program first creating a batch file with redirected streams to text files.
+					By running this file, your program can, for example, read stdin and stdout from the files to which the redirection is performed every 500 milliseconds, and check whether the process is running by calling PHP.isRun(innerProcessId);
+					innerProcessId is contained in the second (with index 1) element of the array that jexec returns
+					after running.
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Function|Object|Array onStdOut</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Function</span> onStdOut(<span class="dkw">String</span> stdout)</i>.
+                    A function that is called immediately as soon as the called program outputs something to the standard output stream.
+					Does not work in Windows.
+					The function is called, but stdout and stderr are always empty in Windows.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Note: On windows, reading from stdout is not supported.
+					A workaround can be used, see the note on onFinish
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Function|Object|Array onStdErr</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Function</span> onStdErr(<span class="dkw">String</span> stderr)</i>.
+                    A function that is called immediately as soon as the called program outputs something to the standard error stream.
+					Does not work in Windows.
+					The function is called, but stdout and stderr are always empty in Windows.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Note: Reading from stderr is not supported on windows.
+					A workaround can be used, see the note on onFinish
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Return value
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Array result</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> result</i>.
+                    Element zero contains the process identifier in the operating system. Element with index 1 contains the internal process identifier.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Function argument format
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Function</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>. The function name can be anything. It must be callable in the window's calling area.
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Object</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Object</span> {context: <span class="dkw">Object</span>, m: <span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>}.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>
+						You define an object. In context you pass a pointer to it, and in m - a function defined in the object.
+						This allows you not to pollute the global scope (see OOP and everything we love).
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Array</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> [<span class="dkw">Object</span>, <span class="dkw">Function</span> onFinish(<span class="dkw">String</span> stdout, <span class="dkw">String</span> stderr)</i>].
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>
+						You define an object. In the zeroth element of the array you pass a pointer to it, and in the first element - a function defined in the object. This allows you not to pollute the global scope (see OOP and everything we love).
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+					<div>Demo:</div>
+					<input type="button" value="Run xterm" onclick="Demo.runXTerm()">
+					<input type="button" value="Close xterm" onclick="Demo.closeXTerm()">
+                    <div>
+                        <div id="xtStdOut">
+                            <div class="outheader">Stdout:</div>
+                        </div>
+                        <div id="xtStdErr">
+                            <div class="outheader">Stderr:</div>
+                        </div>    
+                        <div class="clear"></div>
+                    </div>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Example code (stdout and stdin will not work in windows):<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> RunProgrammExample = {
+    runXTerm: <span class="kw">function</span>(){
+        <span class="kw">var</span> o = <span class="kw">this</span>,
+            cmd = <span class="st">'xterm'</span>;
+        <span class="kw">if</span> (!PHP.file_exists(<span class="st">'/usr'</span>)) {
+            cmd = <span class="st">'notepad'</span>;
+        }
+        <span class="kw">this</span>.xtId = Env.exec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
+        
+    },
+    closeXTerm: <span class="kw">function</span>(){
+        <span class="kw">var</span> o = <span class="kw">this</span>, cmd = <span class="st">'kill '</span> + <span class="kw">this</span>.xtId[<span class="nm">0</span>];
+        
+        <span class="kw">if</span> (!PHP.file_exists(<span class="st">'/usr'</span>)) {
+            cmd = <span class="st">'TASKKILL /PID '</span> + <span class="kw">this</span>.xtId[<span class="nm">0</span>] + <span class="st">' /T'</span>;
+        }
+        
+        <span class="kw">this</span>.xtId = Env.exec(cmd, [o, o.onFinishXT], [o, o.onStdOutXT], [o, o.onStdErrXT]);
+    },
+    
+    onFinishXT: <span class="kw">function</span>(stdout, stderr) {
+        e(<span class="st">'xtStdOut'</span>).innerHTML += <span class="st">'&lt;div&gt;'</span> + stdout + <span class="st">'&lt;/div&gt;'</span>;
+        e(<span class="st">'xtStdErr'</span>).innerHTML += <span class="st">'&lt;div&gt;'</span> + stderr + <span class="st">'&lt;/div&gt;'</span>;
+    },
+    
+    onStdOutXT: <span class="kw">function</span>(stdout) {
+        <span class="jcomm">// e('xtStdOut').innerHTML += '&lt;div&gt;' + stdout + '&lt;/div&gt;';</span>
+    },
+    
+    onStdErrXT: <span class="kw">function</span>(stdout) {
+        <span class="jcomm">// e('xtStdErr').innerHTML += '&lt;div&gt;' + stdout + '&lt;/div&gt;';</span>
+    }
+}
+<span class="kw">function</span> onClickRunXTerm() {
+    RunProgrammExample.runXTerm();
+}
+<span class="kw">function</span> onClickStopXTerm() {
+    RunProgrammExample.stopXTerm();
+}</pre>
+                    
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+    
+    <div id="isRun" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.isRun</h5>
+                </td>
+                <td class="fd">
+                    <i>Env.isRun(<span class="dkw">Number</span> innerProcessId)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Проверяет, завершён ли уже запущенный процесс. InternalProcessId — это значение элемента массива, который возвращает Env.exec, с индексом 1.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <input type="button" value="Run xterm" onclick="Demo.runXTerm2()">
+					<input type="button" value="Is xterm running?" onclick="Demo.checkXTerm2()">
+					<input type="button" value="Close xterm" onclick="Demo.closeXTerm2()">
+                    <div>
+                        <div id="xtStdOut2">
+                            <div class="outheader">Stdout:</div>
+                        </div>
+                        <div id="xtStdErr2">
+                            <div class="outheader">Stderr:</div>
+                        </div>    
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="appDir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>App.dir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> App.dir()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Returns the path to the directory where the application executable resides</p>
+					<p>Note: Also available as <span class="dkw">String</span> Qt.appDir()</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <input type="button" value="In which directory is this program located?" onclick="alert(App.dir());">
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="getArgs" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>App.getArgs</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> App.getArgs()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Returns the command line arguments passed to the application when it was launched.
+						Useful, for example, for a photo viewer.
+						For example, if the user has configured Windows to open all jpg files in your viewer,
+						you need to read the argument with index 1, which contains the path to the file selected by the user.
+					</p>
+					<p>
+						Note: Also available as <i><span class="dkw">Array</span> Qt.getArgs()</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>
+                        <input type="button" value="Show command line arguments for this program" onclick="alert(App.getArgs());">
+                    </div>
+                    <div>
+                        <input type="button" value="Run another copy of this program and check the arguments in it." onclick="Demo.runCopyWithArg();">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="getLastKeyChar" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.getLastKeyChar</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> MW.getLastKeyChar()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Returns the character of the last key pressed (if it is alphanumeric).
+					Important, because Qt5 WebView does not allow reading the character of the pressed key in the keydown and keyup events
+					via the key property.
+					In this case, you can use the MW.getLastKeyChar() call to get it.
+
+					In the demo below, in the left window, we try to get the key character by decoding the javascript property
+					keyboardEvent.keyIdentifier.
+					In Xubuntu 18.04 and Qt 5.2.1, this works more or less correctly only with the Latin keyboard layout.
+					In Windows and Qt 4.6.8, this works with both Latin and Russian layouts,
+					but you would have to monitor the state of Caps Lock and Shift yourself.
+					In the right window you see the result of calling MW.getLastKeyChar()
+					</p>
+					<p>
+					Note: <i><span class="dkw">String</span> Qt.getLastKeyChar()</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>Type text in the text field:</div>
+                    <input type="text" value="" onkeydown="Demo.onkeydown1(window.event)" id="inpKD1">
+                    <div>
+                        <div id="xtStdOut3">
+                            <div class="outheader">JS key char:</div>
+                        </div>
+                        <div id="xtStdErr3">
+                            <div class="outheader">Qt key char:</div>
+                        </div>    
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="getLastKeyCode" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>MW.getLastKeyCode</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Number</span> MW.getLastKeyCode()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Returns the code of the last pressed key. Important, because Qt5 WebView does not allow to correctly read the code of the pressed key in the keydown and keyup events via the keyCode property.
+					In this case, you can use the MW.getLastKeyCode() call to get it.
+					In the demo below, in the left window, we try to get the key code using the keyboardEvent.keyCode property.
+					In the right window, you see the result of the MW.getLastKeyCode() call.
+					It does not always match the javascript code, but it is much less often equal to 0, which is important.
+					</p>
+					<p>
+					Note: also available as <i><span class="dkw">Number</span> Qt.getLastKeyCode()</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>Type text in the text field:</div>
+                    <input type="text" value="" onkeydown="Demo.onkeydown2(window.event)" id="inpKD2">
+                    <div>
+                        <div id="xtStdOut4">
+                            <div class="outheader">JS event.keyCode:</div>
+                        </div>
+                        <div id="xtStdErr4">
+                            <div class="outheader">Qt key code:</div>
+                        </div>    
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="openFileDialog" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.openFileDialog</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.openFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Opens the system dialog for selecting a file to read. Returns the path to the selected file.
+					If no file is selected, returns an empty string.</p>
+					<p>
+					Note: Also available as <i><span class="dkw">String</span> Qt.openFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>Select a text or javascript file and you will see its size in bytes.</div>
+                    <input type="button" value="Select file" onclick="Demo.filesize('*.txt *.js')">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Return value
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String filename</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> filename</i>. Returns the path to the selected file.
+                        If no file is selected, returns an empty string.
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Method arguments
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String caption</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> caption</i>.
+                     Text in the title of the file selection dialog
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String dir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> dir</i>.
+                     Path to the directory whose files will be shown when the dialog is opened.
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String filter</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> filter</i>.
+                     File extensions that will be displayed in the dialog.
+						For example, <span class="st">"*.txt *.js"</span> will tell the method to display only files with
+						 the txt and js extensions.
+						If you only need to display, for example, Windows executable files, the filter would look like
+						<span class="st">"*.exe"</span>.
+						Extensions in the filter line are separated by a single space.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="saveFileDialog" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.saveFileDialog</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.saveFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Opens the system dialog for selecting a file to save.
+						Returns an array of paths to the selected files.
+						If no file is selected, it returns an empty array.
+						The arguments of the method are completely analogous to the arguments of Env.openFileDialog;
+						The return value of the method is completely analogous to Env.openFileDialog.
+					</p>
+					<p>
+						Note: Also available as <i><span class="dkw">String</span> Qt.saveFileDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>
+						Click on the "Load from file" button, select a text or javascript file and edit the text:
+					</div>
+                    <div>
+                        <textarea id="inpKD5" style="width:99%" rows="10"></textarea>
+                    </div>
+                    <div>
+                        <input type="button" value="Load from file" onclick="Demo.onClickLoadFile();">
+						<input type="button" value="Save" onclick="Demo.onClickSaveFileWithDialog();">
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    
+    <div id="openFilesDialog" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.openFilesDialog</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.openFilesDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Opens the system dialog for selecting files to read. Returns an array of paths to the selected files.
+					If no file is selected, returns an empty array. The arguments of the method are completely analogous to the arguments of Env.openFileDialog;</p>
+					<p>
+					Note: Also available as <i><span class="dkw">String</span> Qt.openFilesDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir, <span class="dkw">String</span> filter)</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+					<div>Select text or javascript files and you will see their size in bytes.</div>
+					<input type="button" value="Select files" onclick="Demo.filessize('*.txt *.js')">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Return value
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Array filenames</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> filenames</i>. Returns an array of strings - paths to the selected files.
+If no files are selected, returns an empty array.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="openDirectoryDialog" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.openDirectoryDialog</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.openDirectoryDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Opens the system directory selection dialog. Returns a string with the path to the selected directory.
+						If no directory is selected, it will return an empty string.
+						The method arguments are completely analogous to the first two arguments of Env.openFileDialog.
+
+						The return value of the method is completely analogous to Env.openFileDialog.
+					</p>
+					<p>
+						Note: Also available as <i><span class="dkw">String</span> Qt.openDirectoryDialog(<span class="dkw">String</span> caption, <span class="dkw">String</span> dir)</i>
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>Select catalog</div>
+                    <input type="button" value="Selecting a catalog" onclick="alert('You have selected a catalog ' + Env.openDirectoryDialog(L('Selecting a catalog'), L('')));">
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Return value
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String filename</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> filename</i> filename.
+                    Returns the path to the selected file. If no file is selected, returns an empty string.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+<h4 id="files" class="stopHere">Files</h4>
+    <div id="fgc" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.readfile</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> FS.readfile(<span class="dkw">String</span> path)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p> Returns the contents of a text file. When using it, remember that the size of the RAM on the user's device is limited.
+					That is, you do not need to read from a file that is 1 gigabyte in size using this function (although many modern PCs will probably swallow a gigabyte, but I think the idea is clear).
+					</p>
+					<p>
+					Note. Also available as <i><span class="dkw">String</span> PHP.file_get_contents(<span class="dkw">String</span> path)</i>
+					</p>
+					<p style="display:none"> reading file contents file contents read file</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="fpc" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.writefile</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Number</span> FS.writefile(<span class="dkw">String</span> path, <span class="dkw">String</span> data, <span class="dkw">Number</span> flags)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+<p> Writes the contents of the string data to the text file path. When using it, remember that the size of the RAM on the user's device is limited.
+That is, you do not need to write a text file of 1 gigabyte in size at once using this function (although many modern PCs will probably swallow a gigabyte, but I think you get the idea).
+Returns the number of bytes written.
+</p>
+<p>
+Note 1: Also available as <i><span class="dkw">Number</span> PHP.file_put_contents(<span class="dkw">String</span> path, <span class="dkw">String</span> data, <span class="dkw">Number</span> flags)</i>
+</p>
+<p>
+Note 2: flags currently only supports one value <span class="dkw">FILE_APPEND</span>. </p>
+<p>
+Note 3: <span class="dkw">FILE_APPEND</span> = 1, which is not the same as the value of this constant in PHP. Plans are in place to bring this into line in future versions.
+</p>
+<p style="display:none"> write a record</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>Click on the button &laquo;Load from file&raquo;, select a text or javascript file and edit the text:</div>
+                    <div>
+                        <textarea id="inpKD51" style="width:99%" rows="10"></textarea>
+                    </div>
+                    <div>
+                        <input type="button" value="Load from file" onclick="Demo.onClickLoadFile('1');">
+                        <input type="button" value="Save" onclick="Demo.onClickSaveFile('1');">
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> ReadAndWriteExample = {
+    onClickLoadFile: <span class="kw">function</span>(){
+        <span class="kw">this</span>.currentTextFile = Qt.openFileDialog(<span class="st">'Select a text file with the extension txt or js'</span>, <span class="st">''</span>, <span class="st">'*.txt *.js'</span>);
+        e(<span class="st">'inpKD5'</span>).value = PHP.file_get_contents(<span class="kw">this</span>.currentTextFile);
+    },
+
+    onClickSaveFile: <span class="kw">function</span>(){
+        <span class="kw">if</span> (!<span class="kw">this</span>.currentTextFile) {
+            alert(<span class="st">'You must first select a text file.'</span>);
+            <span class="kw">return</span>;
+        }
+        <span class="kw">var</span> nB = PHP.file_put_contents(<span class="kw">this</span>.currentTextFile, e(<span class="st">'inpKD5'</span>).value);
+        alert(<span class="st">'Bytes written: '</span> + nB);
+    }
+}</pre></td>
+            </tr>
+            
+        </table>
+    </div>
+    
+    <div id="fex" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.fileExists</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Boolean</span> FS.fileExists(<span class="dkw">String</span> path)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Returns <b>true</b> if the file whose path is passed in the <b>path</b> argument exists..</p>
+                    <p>
+                        Note 1: Also available as <i><span class="dkw">Boolean</span> PHP.file_exists(<span class="dkw">String</span> path)</i>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    
+                    <div>
+                        Check if the file exists <b><span id="qdjsExeFilePath"></span></b>
+                    </div>
+                    <div>
+                        <input type="button" value="Check!" onclick="Demo.checkQdjsExists();">
+                    </div>
+                    <div>
+                        (must return <b>true</b>)
+                    </div>
+                    
+                    <div style="margin-top:10px;">
+                        Check if the file exists <b><span id="qdjsExeFileCopyPath"></span></b>
+                    </div>
+                    <div>
+                        <input type="button" value="Check!" onclick="Demo.checkQdjsCopyExists();">
+                    </div>
+                    <div>
+                        (Should return <b>false</b>, unless you created it of course)
+                    </div>
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+    
+    <div id="unlink" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.unlink</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Boolean</span> FS.unlink(<span class="dkw">String</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Returns true if the file whose path is passed in the path argument was successfully deleted.</p>
+					<p>Note: Also available as <span class="dkw">Boolean</span> PHP.unlink(<span class="dkw">String</span> path).</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>
+                        Remove file <b><span id="tempFolder1">/TEMPAPTH/</span>t.txt</b>
+                    </div>
+                    <div>
+                        <input type="button" value="Remove!" onclick="alert(Demo.unlink());">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="idir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.isDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Boolean</span> FS.isDir(<span class="dkw">String</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Returns <b>true</b> if the file whose path is passed in the path argument is a directory.</p>
+					<p>Note: Also available as <span class="dkw">Boolean</span> PHP.is_dir(<span class="dkw">String</span> path).</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>
+						Enter the path to a file or directory, or select an existing one using the buttons below.<br>
+						Then edit the path to point to a non-existent directory or file
+
+						and click the &ldquo;Is this a directory?&rdquo; button
+					</div>
+                    <div>
+                        <input type="text" value="" id="isDirPath">
+                    </div>
+                    <div>
+                        <input type="button" value="Choose File" onclick="Demo.isDirChooseFile();">
+						<input type="button" value="Choose Directory" onclick="Demo.isDirChooseDir();">
+						<input type="button" value="Is this a directory?" onclick="Demo.isDir();">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- START -->
+    <div id="newWnd" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>App.newWindow</h5>
+                </td>
+                <td class="fd">
+                    <i>App.newWindow(<span class="dkw">String</span> path, <span class="dkw">Array</span> args)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Open other Qdjs application in new window. Argument <b>path</b> is a path to QDJS application dir (?).
+                    Argument <b>args</b> is list of arguments for running application.
+                    </p>
+					<p>Note: Also available as Qt.newWindow(<span class="dkw">String</span> path, <span class="dkw">String</span> args).</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>
+						Enter the path to a directory with qdjs app, and click Run button.<br>
+					</div>
+                    <div>
+                        <input type="text" value="/opt/qt-desktop-js/default/doc/examples/simpleTextEditor" id="newWndPath">
+                    </div>
+                    <div>
+						<input type="button" value="Choose Directory" onclick="Demo.newWndChooseDir();">
+						<input type="button" value="Run" onclick="Demo.newWndRun();">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- /END -->
+    
+    <div id="scn" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.scandir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> FS.scandir(<span class="dkw">String</span> path)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Returns a list of files in a directory.</p>
+					<p>Note: Also available as <span class="dkw">Array</span> PHP.scandir(<span class="dkw">String</span> path).</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>&nbsp;</div>
+                    <input type="button" value="Select a catalog" onclick="Demo.scandir()">
+                    <div>
+                        <div id="xtStdOut5">
+                            <div class="outheader">Catalogs and files:</div>
+                            <div id="xtStdOut5Content">
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> ReadDirectoryContentExample = {
+    scandir: <span class="kw">function</span>(){
+        <span class="kw">var</span> s = Qt.openDirectoryDialog(<span class="st">'Select a catalog'</span>, <span class="st">''</span>, <span class="st">''</span>);
+            ls = FS.scandir(s), i, icon = <span class="st">'exec.png'</span>, width = <span class="nm">24</span>, file;
+    ls.sort();
+    e(<span class="st">'xtStdOut5Content'</span>).innerHTML = '';
+    <span class="kw">for</span> (i = 0; i &lt; ls.length; i++) {
+        icon = <span class="st">'exec.png'</span>;
+        <span class="kw">if</span> (FS.isDir(s + <span class="st">'/'</span> + ls[i])) {
+            icon = <span class="st">'folder'</span> + width + <span class="st">'.png'</span>;
+        }
+        file = <span class="st">'&lt;div&gt;&lt;img class="filielistitem" width="'</span> + width
+            + <span class="st">'" height="'</span>
+            + width + <span class="st">'" src="'</span> + Qt.appDir() 
+            + <span class="st">'/doc/i/'</span> + icon 
+            + <span class="st">'"&gt; &lt;span class="filelistitemtext"&gt;'&lt;/span&gt;'</span> + ls[i] + 
+            <span class="st">'&lt;/span&gt;&lt;/div&gt;'</span>;
+        
+        e(<span class="st">'xtStdOut5Content'</span>).innerHTML += file;
+    }
+}</pre></td>
+            </tr>
+            
+        </table>
+    </div>
+    
+    <div id="pdir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.partDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> FS.partDir(<span class="dkw">String</span> path, <span class="dkw">Number</span> partSize, <span class="dkw">Boolean</span> fromFirst = <span class="dkw">false</span>)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p> Method for read part of file list of large catalog content.
+					   Every call FS.partDir return "partSize" files from catalog "path".
+					   Parameter fromFirst = true break pointer on first file in catalog "path".
+					   If on call FS.partDir argument "path" will different with previous call, than also pointer will set on first file from catalog "path".
+					   If reading catalog done,  return string "EOF" in last item of returned array.
+					</p>
+					<p> 
+						Returned Array containts of strings like
+						<pre class="codebg">size/mtime/owner/grp/TEname/path</pre>
+					</p>
+					<p> 
+						Decode similar string to fast object you can with method FS.partDirItem();
+						Description of the returned object you can see in description <a href="#pdi">FS.partDirItem</a>.
+						Semantic the string item:
+					</p>
+					<p> 						
+						size - filesize in bytes (hex).
+					</p>
+					<p> 						
+						mtime - Last modify file time. It a seconds from 01/01/1970 (hex).
+					</p>
+					<p> 						
+						owner - Owner of the file.
+					</p>
+					<p> 						
+						grp - Group of the file. Empty if equivalent with owner
+					</p>
+					<p> 						
+						TEname. Here T - is a type, E - executable flag for linux. "name" is a short filename, e. g. "notepad.exe".
+					</p>
+					<p> 						
+						T = 0. Is a catalog.
+					</p>
+					<p> 						
+						T = 1. Is a file.
+					</p>
+					<p> 						
+						T = 2. Symbol link to a catalog.
+					</p>
+					<p> 						
+						T = 3. Symbol link to a file.
+					</p>
+					<p> 						
+						Е = 0. File is not executable (Linux).
+					</p>
+					<p> 						
+						Е = 1. File is executable (Linux).
+					</p>
+					<p> 						
+						path - full filename, from filesystem root. For example "C:/WINDOWS/explorer.exe".
+					</p>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>Select a directory and read files. Quantity files set in input field.</div>
+                    <input type="button" value="Выбрать каталог" id="bBrowsePartDir" onclick="Demo.browseForPartDir()">
+                    <input type="text" value="2" id="inpPartDir" style="width:100px">
+                    <input type="checkbox"  id="chPartDirReset"> <label for="chPartDirReset">From begin of catalog</label>
+                    <div>
+                        <div id="xtStdOut6">
+                            <div class="outheader">Catalogs and files:</div>
+                            <div id="xtStdOut6Content">
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">var</span> ReadNFilesFromDirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> ls = FS.partDir(<span class="st">'C:/WINDOWS/system32'</span>, <span class="nm">10</span>, <span class="kw">true</span>), i, fileItem;
+        <span class="kw">for</span> (i = <span class="nm">0</span>; i < ls.length; i++) {
+			fileItem = FS.partDirItem(ls[i]);
+			if (fileItem == <span class="st">"EOF"</span>) {
+				<span class="kw">break</span>; <span class="jcomm">// all files was read</span>
+			}
+			alert(fileItem.size);      <span class="jcomm">// bytes, decimical</span>
+			alert(fileItem.mtime);     <span class="jcomm">// last modify file time, seconds from 01.01.1970, decimical</span>
+			alert(fileItem.owner);     <span class="jcomm">// owner of file</span>
+			alert(fileItem.group);     <span class="jcomm">// group of file</span>
+			alert(fileItem.type);      <span class="jcomm">// type code</span>
+			alert(fileItem.isDir);     <span class="jcomm">// true if is catalog</span>
+			alert(fileItem.isSymlink); <span class="jcomm">// true if is symlink</span>
+			alert(fileItem.isExec);    <span class="jcomm">// 1 if is executable file</span>
+			alert(fileItem.name);      <span class="jcomm">// short filename. For example, notepad.exe</span>
+			alert(fileItem.path);      <span class="jcomm">// Full filename. For example, C:\Windows\explorer.exe</span>
+			alert(fileItem.src);       <span class="jcomm">// Source string item of Array returned FS.partDir</span>
+	}
+	ls = FS.partDir(<span class="st">'C:/WINDOWS/system32'</span>, <span class="nm">10</span>);<span class="jcomm"> // And get next 10 files...</span>
+    }
+}</pre>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="pdi" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.partDirItem</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Object</span> or <span class="dkw">String</span> FS.partDirItem(<span class="dkw">String</span> encodedFileInfo)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p> Method for encoding string from array, which returned FS.partDir() in fast for work object.
+					</p>
+					<p> 
+						May return a string "EOF". It mean, all files from catalog was reading.
+						But early it return the obkect containts from fields:
+					</p>
+					<p> 						
+						size - filesize in bytes (decimical).
+					</p>
+					<p> 						
+						mtime - Last modify file time. Seconds from 01/01/1970. (decimical).
+					</p>
+					<p> 						
+						owner - Owner of the file.
+					</p>
+					<p> 						
+						group - Group of the file. Empty if equivalent with owner.
+					</p>
+					<p> 						
+						type - it type of file. See "T" in description FS.partDir. Flags isDir and isSymlink make it field secondary.
+					</p>
+					<p> 						
+						isDir - true if this is catalog.
+					</p>
+					<p> 						
+						isSymlink - true if this is symlink.
+					</p>
+					<p> 						
+						isExec - 1 if this is executable file.
+					</p>
+					<p> 						
+						name short filename, e. g. "notepad.exe".
+					</p>
+					<p> 						
+						path - full filename, from filesystem root, include filename. For example "C:/WINDOWS/explorer.exe".
+					</p>
+					<p> 						
+						src - source encoded fileinfo.
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">var</span> ReadNFilesFromDirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> ls = FS.partDir(<span class="st">'C:/WINDOWS/system32'</span>, <span class="nm">10</span>, <span class="kw">true</span>), i, fileItem;
+        <span class="kw">for</span> (i = <span class="nm">0</span>; i < ls.length; i++) {
+			fileItem = FS.partDirItem(ls[i]);
+			if (fileItem == <span class="st">"EOF"</span>) {
+				<span class="kw">break</span>; <span class="jcomm">// all files was read</span>
+			}
+			alert(fileItem.size);      <span class="jcomm">// bytes, decimical</span>
+			alert(fileItem.mtime);     <span class="jcomm">// last modify file time, seconds from 01.01.1970, decimical</span>
+			alert(fileItem.owner);     <span class="jcomm">// owner of file</span>
+			alert(fileItem.group);     <span class="jcomm">// group of file</span>
+			alert(fileItem.type);      <span class="jcomm">// type code</span>
+			alert(fileItem.isDir);     <span class="jcomm">// true if is catalog</span>
+			alert(fileItem.isSymlink); <span class="jcomm">// true if is symlink</span>
+			alert(fileItem.isExec);    <span class="jcomm">// 1 if is executable file</span>
+			alert(fileItem.name);      <span class="jcomm">// short filename. For example, notepad.exe</span>
+			alert(fileItem.path);      <span class="jcomm">// Full filename. For example, C:\Windows\explorer.exe</span>
+			alert(fileItem.src);       <span class="jcomm">// Source string item of Array returned FS.partDir</span>
+	}
+	ls = FS.partDir(<span class="st">'C:/WINDOWS/system32'</span>, <span class="nm">10</span>);<span class="jcomm"> // And get next 10 files...</span>
+    }
+}</pre>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="fsz" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.filesize</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Number</span> FS.filesize(<span class="dkw">String</span> path)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Returns the file size in bytes.</p>
+					<p>Note: Also available as <i><span class="dkw">Number</span> PHP.filesize(<span class="dkw">String</span> path).</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>&nbsp;</div>
+                    <input type="button" value="Select file" onclick="Demo.filesize()">
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="spng" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.savePng</h5>
+                </td>
+                <td class="fd">
+                    <i>FS.savePng(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str,  <span class="dkw">Number</span> iQuality)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Saves an image in png format. Accepts the path to the saved image, a string with image data in base64, and an image quality level of 0 - 9 as arguments.</p>
+					<p>You can see the example code in the C:\qdjs\default\doc\j\src\simpleDrawApp directory. </p>
+					<p>Note 1. In Windows, when using Image to display on HTML5 Canvas, you must specify in the <span class="dkw">src</span> attribute
+					the path to the image, which is located in the same directory where your index.html is located,
+					otherwise, when trying to get image data by calling canvas.toDataURL(), the error SECURITY_ERR: DOM Exception 18 occurs
+					</p>
+					<p>Note 2. The example uses the capabilities of html5 canvas 2d, a full description of how to work with them is beyond the scope of this
+					guide, more details about the capabilities of html5 canvas can be found on the websites
+					MDN (Mozilla Developer Network) or MSDN (Microsoft Developer Network). </p> <p>Note 3: Also available as <i>Qt.savePng(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str, <span class="dkw">Number</span> iQuality).</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo, you can select an image on your PC, place a "watermark" on it and save it with it:</div>
+                    <div>&nbsp;</div>
+                    <div class="simpleDrawApp">
+                        <div class="canvasPlacer">
+                            <canvas id="pngCanvas" width="480" height="240"></canvas>
+                        </div>
+                        <div class="toolbar">
+                            <fieldset class="watermarkBox float-left">
+                                <legend id="hwatermarkPositionLegend">Watermark position</legend>
+                                <div class="inputLine">
+                                    <span class="inputLineWrapper">
+                                        <label>x: </label>
+                                        <input type="number" id="iX" value="0">
+                                    </span>
+                                    <span class="inputLineWrapper">
+                                        <label class="sizeLabel">width: </label>
+                                        <input type="number" id="iW" value="48">
+                                    </span>
+                                </div>
+                                <div class="inputLine">
+                                    <span class="inputLineWrapper">
+                                        <label>y: </label>
+                                        <input type="number" id="iY" value="0">
+                                    </span>
+                                    <span class="inputLineWrapper">
+                                        <label class="sizeLabel">height: </label>
+                                        <input type="number" id="iH" value="48">
+                                    </span>
+                                </div>
+                            </fieldset>
+                            <div class="inputLine float-left browseButtonPlacer">
+                                <div>
+                                    <input type="button" id="browseImage" class="browseImage" value="Choose Image">
+                                </div>
+                                <div>
+                                    <input type="button" id="saveImage" class="saveImage" value="Save Image">
+                                </div>
+                                
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="jcomm">// Let's say there is a canvas element with an image that needs to be saved and id="appCanvas"</span>
+<span class="kw">var</span> imageData = document.getElementById(<span class="st">'appCanvas'</span>).toDataURL(<span class="st">'image/png'</span>, <span class="nm">1</span>);
+FS.savePng(<span class="st">'/home/andrey/image.png'</span>, imageData, <span class="nm">9</span>);
+
+<span class="jcomm">// A non-obvious point. This is a code fragment C:\qdjs\default\doc\j\src\simpleDrawApp</span>
+WaterMarkApp.<span class="kw">prototype</span>.onClickBrowseImage = <span class="kw">function</span>() {
+    <span class="kw">var</span> file = jqlOpenFileDialog(<span class="st">'Select png image'</span>, <span class="st">'*.png'</span>),
+        o = SE2D.app,
+        tmpFile,
+        tmpDir,
+        cmd,
+        dt = new <span class="kw">Date</span>();
+    <span class="jcomm">// Copy the file to our application directory, otherwise</span>
+	<span class="jcomm">// when trying to get the modified image data from canvas</span>
+	<span class="jcomm">// an error will occur Error: SECURITY_ERR: DOM Exception 18</span>
+    
+    <span class="kw">if</span> (file && FS.fileExists(file)) {
+        tmpFile = App.dir() + <span class="st">'/tmp'</span>;
+        tmpDir = tmpFile;
+        this.tmpFile = tmpFile = tmpDir + <span class="st">'/tmp'</span> + (dt.getTime()) + <span class="st">'.png'</span>;
+        this.execBatch(copyCmd, (<span class="st">' "'</span> + file + <span class="st">'" "'</span> + tmpFile + <span class="st">'"'</span>), [o, o.onFinishCopy], [o, o.onStdoutCopy], [o, o.onStderrCopy]);
+    }
+}
+<span class="jcomm">// And only after copying it to the application directory, we display it on canvas</span>
+WaterMarkApp.<span class="kw">prototype</span>.onFinishCopy = <span class="kw">function</span>(stdout, stderr) {
+    <span class="kw">var</span> o = SE2D.app;
+    <span class="kw">this</span>.img = new <span class="kw">Image</span>();
+    <span class="jcomm">// this.img.setAttribute('crossOrigin', 'anonymous'); it could have helped, but it didn't</span>
+    <span class="kw">this</span>.img.onload = <span class="kw">function</span>() {
+        o.onLoadSelectedImage();
+        <span class="kw">delete</span> o.img;
+        FS.unlink(o.tmpFile);
+        o.execBatch(<span class="st">'rm'</span>, <span class="st">'"'</span> + App.dir()  + <span class="st">'/tmp/*.png"'</span>, o.onStdoutCopy, o.onStdoutCopy, o.onStdoutCopy);
+    }
+    this.img.src = this.tmpFile;
+}
+</pre></td>
+            </tr>
+            
+        </table>
+    </div>
+    
+    <div id="sjpg" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.saveJpeg</h5>
+                </td>
+                <td class="fd">
+                    <i>FS.saveJpeg(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str,  <span class="dkw">Number</span> iQuality)</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Saves an image in jpeg format. Accepts as arguments the path to the saved image, a string with the image data in base64, and the image quality level from 0 to 100.</p>
+					<p>Note 1. When developing in Windows, see the more complete example in the savePng description, as the problem with SECURITY_ERR: DOM Exception 18 is also relevant.</p>
+					<p>Note 2. Also available as <i>Qt.saveJpeg(<span class="dkw">String</span> path, <span class="dkw">String</span> base64Str, <span class="dkw">Number</span> iQuality).</i></p>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="fe" colspan="2">
+                    Code Example:<br>
+                    
+<pre class="codebg">
+<span class="jcomm">// Let's say there is a canvas element with an image that needs to be saved and id="appCanvas"</span>
+<span class="kw">var</span> imageData = document.getElementById(<span class="st">'appCanvas'</span>).toDataURL(<span class="st">'image/png'</span>, <span class="nm">1</span>);
+FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span class="nm">100</span>);
+</pre></td>
+            </tr>
+            
+        </table>
+    </div>
+    
+    <div id="mkdir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.mkdir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Boolean</span> FS.mkdir(<span class="dkw">String</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Create directory.</p>
+                    <p>Note 1. Also callable as <i>PHP.mkdir(<span class="dkw">String</span> path).</i></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>Eneter a directory name. If it wil created, you will see "true":</div>
+                    <input type="text" value="/home/user/one/two/three" id="inpMkdir">
+                    <input type="button" value="Create catalog" id="bMkdir" onclick="Demo.onClickCreateDir()">
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    Code example:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+<div id="swd" class="function"><!-- start one function doc -->
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.startWatchDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Boolean</span> FS.startWatchDir(<span class="dkw">String</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Start watching a directory. If in directory will created, modify or deleted a file, you can get it information, use call method FS.getModifyListInDir. In the linux xubuntu use kernel interface inotify.</p>
+                    <p>Return true if start inotifyd was success.</p>
+                    <p>Note 1. Watching first catalog level only.</p>
+                    <p>Note 2. Window not support this method.</p>
+                    <p>Note 3. Method do not check input argument. You can check, then catalog is exists before call.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2" id="swddemo">
+                    <div>Demo:</div>
+                    <div>Enter directory name, which we will watching.</div>
+                    <input type="button" value="Select catalog" onclick="Demo.onClickStartWatchSelectDir();">
+                    <input type="text" value="" id="inpStartWatchDir" readonly>
+                    <input type="button" value="Start watching" id="bStartWatchDir" onclick="Demo.onClickStartWatchDir()">
+                    <input type="button" value="Stop watching" id="bStopWatchDir" onclick="Demo.onClickStopWatchDir()">
+                    
+                    <div>
+                        <div id="xtStdOut7">
+                            <div class="outheader">Catalogs and files:</div>
+                            <div id="xtStdOut7Content">
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    
+                </td>
+            </tr>
+            <!-- tr class="codeExample">
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr-->
+        </table>
+    </div><!-- end one function doc -->
+    
+    
+    <div id="stwd" class="function"><!-- start one function doc -->
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.stopWatchDir</h5>
+                </td>
+                <td class="fd">
+                    <i>FS.stopWatchDir()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Method stop watching catalog (see startWatchDir). In linux use kernel interface inotify.</p>
+                    <p>Note 1. Not support in Windows.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <div>See demo <a href="#swddemo">FS.startWatchDir()</a></div>
+                    
+                </td>
+            </tr>
+            <!-- tr class="codeExample">
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr-->
+        </table>
+    </div><!-- end one function doc -->
+
+<div id="inotls" class="function"><!-- start one function doc -->
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.getModifyListInDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> FS.getModifyListInDir()</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Return list files and catalogs, changed in catalog after call startWatchDir. In linux use kernel interface inotify.</p>
+                    <p>Note 1. Watching only first level in catalog.</p>
+                    <p>Note 2. Windows not supported.</p>
+                    <p>Note 3. Every filename return with prefix containts of two char. First char define, file was created, modify or update. Second char define, is a file or a catalog.</p>
+                    <p>First char of prefix - event type: <i>'c'</i> - created,  <i>'m'</i> - modify,  <i>'d'</i> - delete.</p>
+                    <p>Second char of prefix - file or catalog: <i>'d'</i> - catalog,  <i>'f'</i> - file.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2" id="swddemo">
+                    <div>Demo:</div>
+                    <div>See demo <a href="#swddemo">FS.startWatchDir()</a></div>
+                    
+                </td>
+            </tr>
+            <!-- tr class="codeExample">
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr-->
+        </table>
+    </div><!-- end one function doc -->
+
+
+
+<div id="md5f" class="function"><!-- start one function doc -->
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.md5File</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> FS.md5File(<span class="dkw">String</span> path)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Return md5 sum for file, path which is the argument.</p>
+                    <p>Note 1. Also available as PHP.md5_file().</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2" id="swddemo">
+                    <div>Demo:</div>
+                    <input type="button" value="Select file" onclick="Demo.onClickSelectFileForMd5();">
+                    <input type="text" value="" id="inpFileForMd5" readonly>
+                </td>
+            </tr>
+            <!-- tr class="codeExample">
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr-->
+        </table>
+    </div><!-- end one function doc -->
+
+<!-- START FEOF FUNCTIONS -->
+<div id="fopen" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.open</h5> 
+			  </td>
+			  <td class="fd">
+				  <i>FS.open(<span class="dkw">String</span> filename, <span class="dkw">String</span> mode)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Open file `filename` for read or write.</p>
+					<p>Argument `mode`:</p>
+					<p><b>r</b> - open file for read</p>
+					<p><b>w</b> - open file for write. If open existing file, it content will be rewrite and old content will lose.</p>
+					<p><b>a</b> - open file for append data.</p>
+					<p><b>b</b> -  use with <b>r</b>, <b>w</b> or <b>a</b>. Open file in binary mode. In text mode Carriage return and line feed are translated into newline character. The opposite is true when outputting from a file: newline character is translated into carriage return and line feed. In binary mode this translation does not occur.</p>
+					<p><b>+</b> - use with <b>r</b>, <b>w</b> or <b>a</b>. When you use <b>r+</b>, the file opens immediately for reading and writing. <b>w+</b> equivalent <b>r+</b>. <b>a+</b> opens the file immediately for adding and reading. The entry allowed is <b>X+b</b>, where <b>X</b> is <b>r</b>, <b>a</b> or <b>w</b>.</p>
+					<p>Note 1. Outputting text containing characters other than Latin in textarea will only work if the text file is encoded UTF-8.</p>
+					<p>Note 2. Also available as<i>PHP.open(<span class="dkw">String</span> filename, <span class="dkw">String</span> mode)</i> </p>
+					<p>Note 3. It is planned to replace <i>PHP.open</i> with <i>PHP.fopen</i></p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					 <div>Demo:</div>
+					 <div>Select a multi-line UTF-8 text file and read as many lines as you like.</div>
+					 <input type="button" value="Browse" id="bBrowseTextFileFopen" onclick="Demo.onClickFopen()"> 
+					 <input type="button" value="Get line" id="bGetLine" onclick="Demo.onClickFopenReadLine()"> 
+					 <div>
+						<div id="xtStdOut8">
+							<div class="outheader">Lines:</div> 
+							<div id="xtStdOut8Content"> </div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				 </td> 
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Code example:<br>
+					<pre class="codebg code2"><b>var</b> fd = FS.open(<span class="strcolor"> "/tmp/file.txt"</span>,<span class="strcolor"> "r"</span>),
+       s;
+<b>while</b> (!FS.eof(fd)) {
+  s += FS.gets(fd);
+}
+FS.close(fd);
+</pre>
+				</td>
+			</tr>
+		</table>
+    </div>
+    
+    <div id="fgets" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.gets</h5> 
+			  </td>
+			  <td class="fd">
+				  <i><span class="dkw">String</span> FS.gets(<span class="dkw">Number</span> fileDescriptor)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Reads a line from a previously opened file using <i>FS.open</i>. The end of the line is considered to be the character <i>\n</i>.</p>
+					<p>Note 1. Outputting text containing characters other than Latin in textarea will only work if the text file is encoded UTF-8.</p>
+					<p>Note 2. Also available as <i><span class="dkw">String</span> PHP.gets(<span class="dkw">Number</span> fileDescriptor)</i>. </p>
+					<p>Note 3: It is planned to replace <i>PHP.gets</i> with <i>PHP.fgets</i>.</p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					 <div>Demo:</div>
+					 <div>See demo <a href="#fopen">FS.open</a></div>
+				 </td> 
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Code example:<br>
+					<div>See code example <a href="#fopen">FS.open</a></div>
+				</td>
+			</tr>
+		</table>
+    </div>
+    
+    <div id="feof" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.eof</h5> 
+			  </td>
+			  <td class="fd">
+				  <i><span class="dkw">Boolean</span> FS.eof(<span class="dkw">Number</span> fileDescriptor)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Return <b class="kw">true</b> if, after the next call to FS.gets, the end of a file previously opened using <i>FS.open</i> is reached.</p>
+					<p>Note 1: Also available as <i><span class="dkw">Boolean</span> PHP.eof(<span class="dkw">Number</span> fileDescriptor)</i>. </p>
+					<p>Note 2: It is planned to replace <i>PHP.eof</i> with <i>PHP.feof</i>.</p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					 <div>Demo:</div>
+					 <div>See demo <a href="#fopen">FS.open</a></div>
+				 </td> 
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Code example:<br>
+					<div>See code example <a href="#fopen">FS.open</a></div>
+				</td>
+			</tr>
+		</table>
+    </div>
+    
+    <div id="fclose" class="function">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			  <td class="fname">
+				<h5>FS.close</h5> 
+			  </td>
+			  <td class="fd">
+				  <i>FS.close(<span class="dkw">Number</span> fileDescriptor)</i>
+			  </td>
+			</tr>
+			  
+			<tr>
+				<td class="fdf" colspan="2">
+					<p>Closes a file previously opened using <i>FS.open</i>.</p>
+					<p>Note 1: Also available as <i>PHP.close(<span class="dkw">Number</span> fileDescriptor)</i>.</p>
+					<p>Note 2: It is planned to replace <i>PHP.close</i> with <i>PHP.fclose</i>.</p>
+				</td>
+			</tr>
+			  
+			<tr>
+				<td class="fe" colspan="2">
+					<div>Demo:</div>
+					<div>Watch demo <a href="#fopen">FS.open</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="fe" colspan="2"> Code example:<br>
+					<div>See example <a href="#fopen">FS.open</a></div>
+				</td>
+			</tr>
+		</table>
+    </div>
+<!-- END FEOF FUNCTIONS -->
+
+<div id="md5" class="function"><!-- start one function doc -->
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>FS.md5</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> FS.md5(<span class="dkw">String</span> s)</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Return md5 sum from argument s</p>
+                    <p>Note 1. Also access as PHP.md5().</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2" id="swddemo">
+                    <div>Demo:</div>
+                    <label for="inpMd5">Enter a string</label>
+                    <input type="text" value="" id="inpMd5" >
+                    <input type="button" value="Get md5" onclick="Demo.onClickDemoMd5();">
+                </td>
+            </tr>
+            <!-- tr class="codeExample">
+                <td class="fe" colspan="2">
+                    Пример кода:<br>
+                    <pre class="codebg">
+<pre class="codebg">
+<span class="kw">function</span> e(id) {
+    <span class="kw">return</span> document.getElementById(id);
+}
+<span class="kw">var</span> MkdirExample = {
+    onclick: <span class="kw">function</span>(){
+        <span class="kw">var</span> result = FS.mkdir(e(<span class="st">'inpMkdir'</span>).value);
+        alert(result);
+    }
+}
+</pre>
+                    
+                </td>
+            </tr-->
+        </table>
+    </div><!-- end one function doc -->
+        
+<h4 id="sampleEditor">Desktop application example - text file editor</h4>
+Расмотрим простое приложение, редактор текстовых файлов.
+<h5 id="getReady">Подготовка к работе</h5>
+Установите на свой ПК или ноутбук Qt5 Desktop WebView API.
+<div>
+<div>
+	<a href="https://andryuxa.ru/portfolio/desktop/qt_javascript_desktop/" target="_blank">
+		Download Qt5 Desktop WebView API for Linux Xubuntu 18.04 - 22.04
+	</a>
+</div>
+<a href="https://andryuxa.ru/portfolio/desktop/qt_javascript_desktop/" target="_blank">Download Qt5 Desktop WebView API for Windows</a>
+</div>
+<p>
+	Run the QtJavascriptDesktop program
+	(this will open a window with this help and all the demo examples in the documentation should work)
+	to make sure the installation was correct.
+</p>
+<p>
+	Install the Geany code editor. In xubuntu, this can be done with the command
+</p>
+<pre class="codebg">
+<span class="kw">sudo apt-get install</span> geany
+</pre>
+<p>
+	<a href="https://geany.org" target="_blank">Скачать Geany для Windows</a>
+</p>
+<p>
+	Copy the contents of the file
+	<a href="https://github.com/lamzin-andrey/gjs/blob/master/data/default/geany/desktopjs.js.tags" target="_blank">desktopjs.js.tags</a>
+</p>
+<p>
+	Into the directory with Geany settings. In Xubntu, this is the directory /home/username/.config/geany/tags.
+	In windows 11 it is C:\Users\username\AppData\Roaming\geany\tags (for Geany 1.38.
+The version may be important, since for Geany 0.18 the paths were different).
+</p>
+
+
+<h5 id="filesCreate">Creating application files</h5>
+<ol>
+	<li>Create a new directory,
+		for example /home/username/myapps/simpleTextEditor on Xubuntu or
+		D:\myapps\simpleTextEditor on Windows and navigate to the created directory.</li>
+	<li>
+		<ul>
+			<li>
+			<p>
+				In Xubuntu, open the desktop context menu (right mouse button) and select "Create Launcher".
+			</p>
+			<p>
+				Fill in the dialog fields as shown in the picture:
+				<p class="tc">
+					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0001.png">
+				</p>
+				<p class="tc">
+					<i>Create launcher dialog in Xubuntu 18.04, Kokodi theme, oxygen icons, so it's not KDE, but still nice )</i>
+				</p>
+				<p>
+					Pay attention to the command line. It looks like this:
+<pre class="codebg">
+qdjs /home/username/myapps/simpleTextEditor
+</pre>
+that is, we call the qdjs web view and pass it as an argument the path to the directory in which the files of your future desktop application will be located.
+				</p>
+<p>
+	You can choose one of the standard icons for the active theme for the application menu (I like to use oxygen, it makes inexperienced Ubuntu users think that I use kubuntu and not xubuntu, but what can I do, I like xubuntu for its performance, and oxygen has cool icons) ), or you can draw your own image if you can. The png format is perfect.
+</p>
+<p>
+	Double-click on the created icon. Xubuntu will prompt you to make the file executable on the first click, agree (you're a programmer), run it, and see what happens.
+</p>
+<p>It should look like in the picture.</p>
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0002.png"
+</p>
+<p class="tc">
+	<i>What your application window looks like when there are no application files yet.</i>
+</p>
+<p>If you want, copy the launch button to your application directory, I personally did this.</p>
+			</li>
+			<li> 
+				<p>In Windows, in the created directory, select "Create shortcut" in the Explorer context menu</p>
+				
+				
+				<p>Fill in the dialog fields as shown in the picture:</p>
+				<p class="tc">
+					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0001.png">
+				</p>
+				<p class="tc">
+					<i>Dialog for creating a shortcut in Windows 11. Nice, but I liked XP better)</i>
+				</p>
+				
+				<p>By clicking the "Browse..." button you can select the qdjs.exe file (in earlier versions it is called hw.exe).
+				If you did not change the parameters during installation, it is located at C:\qdjs\hw.exe
+				</p>
+				<p class="tc">
+					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0002.png">
+				</p>
+				<p class="tc">
+					<i>Path to hw.exe file</i>
+				</p>
+				
+				<p>After selecting the file, add to the command line the path to the directory where your program files will be located:
+				</p>
+				<p class="tc">
+					<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0003.png">
+				</p>
+				<p class="tc">
+					<i>We indicate to Qt5 WebView where our application files are located</i>
+				</p>
+				
+				<p>
+					Pay attention to the command line. It looks something like this:
+<pre class="codebg">
+C:\qdjs\hw.exe D:\myappps\simpleTextEditor
+</pre>
+that is, we call the Qt 5 web view (In Windows, we actually still call WebView Qt 4.6)
+and pass it as an argument the path to the directory in which the files of your future desktop application will be located.
+</p>
+
+<p>And enter the name of the shortcut:</p>
+
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0004.png">
+</p>
+<p class="tc">
+	<i>Enter the name of the shortcut and finish</i>
+</p>
+
+<p>
+	You can change the icon for the application menu after creating it by selecting one of the windows icons in the shortcut properties.
+	You can also draw your own image if you know how. The png format is perfect.
+	You can save it in ico format, for example, using the Gimp program.
+</p>
+<p>Double-click on the created icon and see what happens.</p>
+<p>It should look like in the picture</p>
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/0005.png"
+</p>
+<p class="tc">
+	<i>What your application window looks like when there are no application files yet.</i>
+</p>
+			</li>
+		</ul>
+	</li
+	>
+	<li>
+		<p>Create index.html for your application.
+		</p>
+		<p>
+			We'll move from simple to complex, so we'll first create a fixed-size window, and add resizing support in the next, more advanced example:
+		</p>
+        
+<pre class="codebg">
+<span class="tag">&lt;DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="tagattrn">lang</span>=<span class="tagattrv">"ru"</span><span class="tag">&gt;</span>
+	<span class="tag">&lt;head&gt;</span>
+		<span class="tag">&lt;link</span> <span class="tagattrn">rel</span>=<span class="tagattrv">"stylesheet"</span> <span class="tagattrn">type</span>=<span class="tagattrv">"text/css"</span> <span class="tagattrn">href</span>=<span class="tagattrv">"./css/editor.css"</span><span class="tag">&gt;</span>
+		<span class="tag">&lt;meta</span> <span class="tagattrn">charset</span>=<span class="tagattrv">"UTF-8"</span><span class="tag">&gt;</span>
+		<span class="tag">&lt;meta</span> <span class="tagattrn">name</span>=<span class="tagattrv">"windowButtons"</span> <span class="tagattrn">content</span>=<span class="tagattrv">"1010"</span> <span class="tagattrn">width</span>=<span class="tagattrv">"800"</span> <span class="tagattrn">height</span>=<span class="tagattrv">"600"</span> <span class="tagattrn">fixed</span><span class="tag">&gt;</span>
+		<span class="tag">&lt;title&gt;</span>Simple text file editor<span class="tag">&lt;/title&gt;</span>
+	<span class="tag">&lt;/head&gt;</span>
+	<span class="tag">&lt;body&gt;</span>
+		<span class="tag">&lt;div</span> <span class="tagattrn">class</span>=<span class="tagattrv">"textplacer"</span><span class="tag">&gt;</span>
+			<span class="tag">&lt;textarea</span> <span class="tagattrn">id</span>=<span class="tagattrv">"edit1"</span> <span class="tagattrn">class</span>=<span class="tagattrv">"mainTextEdit"</span> <span class="tagattrn">rows</span>=<span class="tagattrv">"1"</span><span class="tag">&gt;</span><span class="tag">&lt;/textarea&gt;</span>
+		<span class="tag">&lt;/div&gt;</span>
+		<span class="tag">&lt;div</span> <span class="tagattrn">class</span>=<span class="tagattrv">"statusBar"</span>&gt;</span>&amp;nbsp;0:0<span class="tag">&lt;/div&gt;</span>
+		<span class="tag">&lt;script</span> <span class="tagattrn">src</span>=<span class="tagattrv">"./js/simpleTextEditor.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+	<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</pre>
+<p>Once done, launch your start button or windows shortcut if you are in windows.
+You should see a window like the following image:</p>
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0003.png">
+</p>
+<p class="tc">
+	<i>Qt5 Web View has loaded your application's markup.</i>
+</p>
+<p>
+	Looking at the html example, it is easy to guess that in the simpleTextEditor directory, you need to create more subdirectories js and css, and put the simpleTextEditor.js and editor.css files in them. We can assume that all the minimum necessary application files have been created, and we can start programming.
+</p>
+<p>
+	There is a problem in Windows though: Qt 4.6 WebView does not understand relative links to files, so for now you can specify absolute paths (for our example
+	D:/myappps/simpleTextEditor/js/simpleTextEditor.js вместо ./js/simpleTextEditor.js и 
+	D:/myappps/simpleTextEditor/css/editor.css вместо ./css/editor.css).</p>
+<p>
+		Later we will learn how to bypass this limitation, and if
+		you already have some experience in programming, you can try to understand how this is done in this help,
+		by looking at the files C:\qdjs\default\index.html and C:\qdjs\default\index.tpl.html, there is quite simple code there.
+ </p>
+	</li>
+</ol>
+
+<h5 id="steView">Editor appearance</h5>
+<p>CSS is responsible for the appearance of HTML applications a little more than completely.</p>
+<pre class="codebg">
+<span class="tag">body</span> {
+	<span class="tagattrn">margin</span>: <span class="nm">0px;</span>
+	<span class="tagattrn">padding</span>: <span class="nm">0px;</span>
+}
+
+<span class="tag">.textplacer</span> {
+	<span class="tagattrn">width</span>: <span class="nm">100%</span>;
+	<span class="tagattrn">height</span>: <span class="nm">560px</span>;
+}
+
+<span class="tag">.textplacer textarea</span>{
+	<span class="tagattrn">width</span>: <span class="nm">100%</span>;
+	<span class="tagattrn">height</span>: <span class="nm">560px</span>;
+	<span class="tagattrn">border</span>: <span class="st">gray solid 1px</span>;
+	<span class="tagattrn">resize</span>: <span class="st">none</span>;
+}
+
+<span class="tag">.statusBar</span> {
+	<span class="tagattrn">width</span>: <span class="nm">100%</span>;
+	<span class="tagattrn">height</span>: <span class="nm">40px</span>;
+	<span class="tagattrn">text-align</span>: <span class="st">right</span>;
+	<span class="tagattrn">background-color</span>: <span class="st">#EFE9D6</span>;
+	<span class="tagattrn">font-family</span>: <span class="st">MS Sans Serif,Courier new,Liberation Sans, Geneva, Arial</span>;
+}
+</pre>
+
+<h5 id="steView">Editor appearance</h5>
+<p>CSS is responsible for the appearance of HTML applications a little more than completely.</p>
+
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0004.png">
+</p>
+<p class="tc">
+	<i>This is what your app will look like after styling.</i>
+</p>
+
+<p>
+	However, we also want to get rid of the uninteresting application icon in the upper left corner, and for this we will need to edit our javascript file.
+</p>
+<pre class="codebg">
+<span class="jcomm">// Main "class" our application</span>
+<span class="kw">function</span> SimpleTextEditor() {}
+<span class="kw">var</span> ClassMemebers = SimpleTextEditor.<span class="kw">prototype</span>;
+<span class="jcomm">// For now it will contain only one method.</span>
+ClassMemebers.init = <span class="kw">function</span>() {
+	MW.setIconImage(App.dir() + <span class="st">'/img/icon48.png'</span>);
+};
+<span class="jcomm">// End of class definition</span>
+
+<span class="jcomm">// Let's create an instance of the class</span>
+window.editor = <span class="kw">new</span> SimpleTextEditor();
+<span class="jcomm">// Subscribe to the page load event in WebView and call the init method of our class</span>
+window.addEventListener('load', 
+	<span class="kw">function</span>() {
+		editor.init();
+	},
+	<span class="kw">false</span>
+);
+</pre>
+
+<p>
+	Here we declare the main class of our SimpleTextEditor application. This is JavaScript ES5, it does not have classes at the language level, but it does have function prototypes,
+	the use of which actually makes it possible to create instances of classes, use inheritance and
+	everything we love.
+	You can read more about OOP in JavaScript ES5, for example, in the book <a href="https://www.ozon.ru/product/javascript-shablony-141734022/?reviewsVariantMode=2&sh=i3WrZyAJ9Q">JavaScript Templates by Stoyan Stefanov</a>
+	Further, I will no longer dwell on the fact that there are no classes in JavaScript ES6, I will present it as if they are there.
+</p>
+
+<p>
+	So, we declared the main class of our application SimpleTextEditor, in it we defined only one method init.
+	Then we created an instance of the class in the variable window.editor.
+	And then we subscribed to the event of loading the html page and at the moment of finishing loading we call the method init.
+	Since all the files of our web application are immediately on the user's disk, and not on the Internet,
+	we do not need to subscribe to the DOMContentLoaded event, isn't it great?
+</p>
+
+<p>
+	In the init method, we just set the application window icon for now.
+	For this, we finally start using our Desktop API.
+	We call the MW object (short for MainWindow) setIconImage method
+	and pass it the path to the icon we want to display in the application window.
+	The icon must first be placed in the simpleTextEditor/img directory.
+	To get the full path to the icon file, we use the App object dir() method. dir() returns the path to the application directory.
+	We don't have anything for localizing the application yet, but we can immediately use a "stub".
+	Later, we will simply implement stub functions and everything will work. So, let's add another line inside the init method
+</p>
+<pre class="codebg">
+	MW.setTitle(L(<span class="st">'Simple text file editor'</span>));
+</pre>
+
+<p>
+	And we will define the function L, which will subsequently translate the interface of our application into the language chosen by the user.
+</p>
+<pre class="codebg">
+<span class="st"> // For now it simply returns the same text that was passed to it, we will implement language support later.</span>
+<span class="kw">function</span> L(s) {
+	<span class="kw">return</span> s;
+}
+</pre>
+<p>Now that we have added language support, our application will be able to translate the window title. We use the MW.setTitle object method to change the window title.</p>
+
+<h5 id="steMenu">Main window menu</h5>
+<p>
+	I don't know about you, but I'm used to text editors having a main menu.
+	Without it, our simple text file editor doesn't even look right.
+	To make the menu appear, open our indtx.html file, find the head tag and write in it:
+</p>
+<pre class="codebg">
+	<span class="tag">&lt;menubar</span> <span class="tagattrn">class</span>=<span class="tagattrv">"d-none"</span><span class="tag">&gt;</span>
+		<span class="tag">&lt;menu</span> <span class="tagattrn">title</span>=<span class="tagattrv">"File"</span><span class="tag">&gt;</span>
+			<span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickOpenMenuItem()"</span> <span class="tag">&gt;</span>Open Ctrl+O<span class="tag">&lt;/item&gt;</span>
+			<span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickSaveMenuItem()"</span> <span class="tag">&gt;</span>Save Ctrl+S<span class="tag">&lt;/item&gt;</span>
+			<span class="tag">&lt;item</span> <span class="tagattrn">onselect</span>=<span class="tagattrv">"onClickExitMenuItem()"</span> <span class="tag">&gt;</span>Exit Ctrl+Q<span class="tag">&lt;/item&gt;</span>
+		<span class="tag">&lt;/menu&gt;</span>
+		
+	<span class="tag">&lt;/menubar&gt;</span>
+</pre>
+
+
+<p>Once you launch the application, you should see the main menu bar appear:</p>
+<p class="tc">
+	<img src="F:/dev-11-2014/qt/DTOxp/release/default/doc/i/samples/x/0005.png">
+</p>
+<p class="tc">
+	<i>Main menu bar.</i>
+</p>
+
+<p>The menu appeared, but when I select its properties, nothing happens. Let's fix this.</p>
+
+<h5 id="steReleaseMenu">Handling clicks on menu items</h5>
+
+<pre class="codebg">
+<span class="kw">function</span> onClickOpenMenuItem() {
+	editor.onClickOpenMenuItem();
+}
+<span class="kw">function</span> onClickSaveMenuItem() {
+	editor.onClickSaveMenuItem();
+}
+<span class="kw">function</span> onClickExitMenuItem() {
+	editor.onClickExitMenuItem();
+}
+</pre>
+
+<p>
+The functions - event handlers for selecting a menu item must be defined globally. Which is what I did,
+but we will of course move the main logic inside our class. We will define the methods of the SimpleTextEditor class onClickOpenMenuItem, onClickSaveMenuItem, onClickQuitMenuItem
+</p>
+
+
+<pre class="codebg">
+	
+ClassMembers.onClickOpenMenuItem = <span class="kw">function</span>() {
+	<span class="jcomm"> // If the file being edited is not modified</span>
+	<span class="kw">if</span> (!<span class="kw">this</span>.isCurrentFileChange) {
+		<span class="kw">try</span> {
+			<span class="jcomm">// Let's open the file selection dialog and specify the file extensions we want to see in the dialog.</span>
+			<span class="jcomm">//</span> <span class="kw">TODO</span> <span class="jcomm">The second argument is the path to the last opened directory, but we'll do that later.</span>
+			<span class="kw">var</span> fileName = Env.openFileDialog(L(<span class="st">'Select a text file'</span>), <span class="st">''</span>, <span class="st">'*.txt *.js *.cpp *.html'</span>);
+			<span class="jcomm">// If the file was selected and exists</span>
+			<span class="kw">if</span> (fileName &amp;&amp; FS.fileExists(fileName)) {
+				<span class="jcomm">// We remember its address on the disk</span>
+				<span class="kw">this</span>.currentFileName = fileName;
+				<span class="jcomm">// And we load it into the editor, use our API to read from the file</span>
+				<span class="kw">this</span>.textarea.value = FS.readfile(fileName);
+			}
+		} <span class="kw">catch</span> (err) {
+			alert(err);
+		}
+	} <span class="kw">else</span> {
+		<span class="jcomm"> // Otherwise, we suggest saving the previously modified file.</span>
+		<span class="kw">if</span> (confirm(L(<span class="st">'File'</span>) + <span class="st">' '</span> + <span class="kw">this.</span>currentFileName + <span class="st">' '</span> + L(<span class="st">'has been modified. Save changes before opening the file?'</span>))) {
+			FS.writefile(<span class="kw">this</span>.currentFileName, <span class="kw">this</span>.textarea.value);
+			<span class="kw">this</span>.isCurrentFileChange = <span class="kw">false</span>;
+			<span class="kw">this</span>.onClickOpenMenuItem();
+		}
+	}
+};
+
+<span class="jcomm"> // Processing save</span>
+ClassMembers.onClickSaveMenuItem = <span class="kw">function</span>() {
+	<span class="jcomm"> // Using our API to write to a file</span>
+	FS.writefile(<span class="kw">this</span>.currentFileName, <span class="kw">this</span>.textarea.value);
+};	
+
+
+<span class="jcomm"> // Output processing</span>
+ClassMembers.onClickQuitMenuItem = <span class="kw">function</span>() {
+	<span class="jcomm"> // If there were no changes</span>
+	<span class="kw">if</span> (!<span class="kw">this</span>.isCurrentFileChange) {
+		<span class="jcomm"> // We use our API to terminate the application</span>
+		App.quit();
+		<span class="kw">return</span>;
+	}
+	<span class="jcomm"> // Otherwise, we first save the modified file if the user agrees with this</span>
+	<span class="kw">if</span> (confirm(L(<span class="st">'File'</span>) + <span class="st">' '</span> + <span class="kw">this</span>.currentFileName + <span class="st">' '</span> + L(<span class="st">'has been modified. Save changes before exiting?'</span>))) {
+		FS.writefile(<span class="kw">this</span>.currentFileName, <span class="kw">this</span>.textarea.value);
+		<span class="kw">this</span>.isCurrentFileChange = <span class="kw">false</span>;
+		<span class="kw">this</span>.onClickQuitMenuItem();
+	}
+};
+
+</pre>
+
+<p>
+	To make all this work, let's add a few more lines to our init method.
+</p>
+<pre class="codebg">
+<span class="kw">this</span>.isCurrentFileChange = <span class="kw">false</span>;
+<span class="kw">this</span>.textarea = document.getElementById(<span class="st">'edit1'</span>);
+<span class="kw">this</span>.setEventListeners();
+</pre>
+
+<p>
+And define the setEventListeners method
+</p>
+<pre class="codebg">
+ClassMembers.setEventListeners = <span class="kw">function</span>() {
+	<span class="kw">var</span> o = <span class="kw">this</span>;
+	<span class="kw">this</span>.textarea.oninput = <span class="kw">function</span>(event) {
+		o.onInput(event);
+	}
+}
+</pre>
+
+<p>
+In the input handler, we simply record the fact that the text has changed.
+</p>
+
+<pre class="codebg">
+ClassMembers.onInput = <span class="kw">function</span>(event) {
+	<span class="kw">this</span>.isCurrentFileChange = <span class="kw">true</span>;
+};
+</pre>
+
+<p>
+There is much more that can and should be done in it. For example, our simple text editor does not understand the Tab key "correctly".
+We also need to animate the status bar to display in which line and at what position in the line the text cursor is located.
+But for the first example, I decided to limit myself to this small functionality.
+</p>
+
+<p>
+In general, our editor leaves a lot of room for improvement. For example, I have written hotkeys in the menu items,
+but have not yet implemented their processing. There is no menu item for creating a new file or resaving a file under a different name.
+All this is quite easy to do, but right now I am a bit lazy, and besides, the first example will be too voluminous.
+I think I have told enough so that those who want to can start their own development.
+The list of available API methods can be seen on the left, examples of using some of them are in this example.
+</p>
+
+<p>I will be glad if someone else uses this API besides me.</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

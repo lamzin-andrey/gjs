@@ -1,0 +1,117 @@
+.function, .function table td, .function table th {
+    border: 1px solid #E6EFFF;
+}
+
+.function table {
+	border: 0px;
+}
+
+.function table td, .function table th {
+	padding:2px;
+	vertical-align:middle;
+}
+
+.function table td h5, .function table th h5 {
+	display: inline-block;
+	vertical-align:middle;
+	text-align:center;
+	padding-left: 6px;
+	padding-right: 6px;
+	font-size:17px;
+	color:green;
+}
+
+.function table td.fd {
+	padding-left:10px;
+	width:80%;
+	text-align:left;
+	border-color: green;
+}
+
+.function table td.fdf {
+	text-align:left;
+}
+
+.function table td.fname {
+	text-align:center;
+	border-color: green;
+}
+.function table td.fe {
+	padding-left:23px;
+}
+
+
+.function table td.fdf p {
+	border-left: 5px solid #F9CC00;
+	margin-left:8px;
+	padding-left:10px;
+}
+
+.dkw {
+	color: #4E97FF;
+}
+.function table {
+	width:100%;
+}
+
+.function table td.fname {
+	width:20%;
+}
+	
+.function{
+	margin-bottom:34px;
+}
+
+#xtStdErr, #xtStdErr2, #xtStdErr3, #xtStdErr4, #xtStdOut5 {
+	color: #AA0000;
+	float:left;
+}
+
+#xtStdOut, #xtStdOut2, #xtStdOut3, #xtStdOut4,#xtStdOut5 {
+	color: #0000AA;
+	float:left;
+}
+#xtStdErr,#xtStdOut,#xtStdErr2,#xtStdOut2,#xtStdErr3,#xtStdOut3,#xtStdErr4,#xtStdOut4 {
+	width: 200px;
+	border: 1px solid gray;
+	height: 200px;
+	overflow-y:scroll;
+}
+#xtStdOut5,#xtStdOut6,#xtStdOut7,#xtStdOut8 {
+	width: 200px;
+	border: 1px solid gray;
+}
+#xtStdOut5Content,#xtStdOut6Content,#xtStdOut7Content,#xtStdOut8Content {
+	width: 200px;
+	border: 1px solid gray;
+	height: 200px;
+	overflow-y:scroll;
+}
+
+
+
+.outheader {
+	background-color: #E0DBC6;
+	text-align:center;
+	color: black;
+}
+
+.arglist {
+	background-color: #0F0B83;
+	color: white;
+	font-weight: bold;
+}
+.argname {
+	color: blue!important;
+}
+.filelistitem {
+	display:inline-block;
+	vertical-align:bottom;
+	line-height:24px;
+}
+.filelistitemtext {
+	display:inline-block;
+	vertical-align:top;
+	line-height:24px;
+	height:24px;
+}

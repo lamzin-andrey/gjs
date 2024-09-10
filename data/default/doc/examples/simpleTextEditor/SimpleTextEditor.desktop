@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SimpleTextEditor
+Comment=Демонстрация возможностей Qt5 WebView Desktop API
+Exec=qdjs /opt/qt-desktop-js/default/doc/examples/simpleTextEditor
+Icon=accessories-text-editor
+Path=/opt/qt-desktop-js/default/doc/examples/simpleTextEditor
+Terminal=false
+StartupNotify=false
