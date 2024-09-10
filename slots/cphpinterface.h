@@ -7,8 +7,10 @@
 #include <QByteArray>
 #include <QFile>
 #include <QDirIterator>
+#include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QDateTime>
 #include <QRegExp>
 #include <QList>
 #include <QWebFrame>

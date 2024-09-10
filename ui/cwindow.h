@@ -18,6 +18,8 @@
 #include <QImage>
 #include <QByteArray>
 #include <QTextStream>
+#include <QClipboard>
+
 #include "../lib/utils.h"
 #include "../lib/binfile.h"
 #include "../slots/cphpinterface.h"
@@ -67,11 +69,12 @@ public:
 
     //главное меню окна
     void _setMainMenu();
-    void _setMenuItems(QMenu* menu, QList<CXml*> items);
+    void _setMenuItems(QMenu* menu, QList<CXml*> items, int x = 0);
     QString _transliteApp(QString key);
     CJSON* _localeJSON;
     void _initLocale();
     void _saveImageFromByteArray(QByteArray ba, QString path, QString ext, int quality);
+    QList<CAction*> mainMenuActions;
  private slots:
     void onLoad(bool success);
     void onMainMenuAction(QString title, QString action);
@@ -101,6 +104,10 @@ public:
     QString readFileAsBinaryString(QString filename, long offset = 0, long limit = -1);
     void copyFile(QString src, QString dest, long srcOffset = 0, long srcLimit = -1);
     void setWindowIconImage(QString s);
+    QString readClipboard();
+    void writeClipboard(QString s);
+    void renameMenuItem(int x, int y, QString s);
+    void newWindow(QString path, QStringList args);
 
  signals:
     void loadComplete();
