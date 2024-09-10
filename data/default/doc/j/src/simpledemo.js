@@ -6,14 +6,17 @@ var Demo = {
 	init:function(){
 		e('qdjsExeFilePath').innerHTML = Qt.appDir() + '/index.html';
 		e('qdjsExeFileCopyPath').innerHTML = Qt.appDir() + '/index.html.copy';
-		
+		this.setPlatformDepPaths();		
+		AppEnv.init([this, this.onOldUserData], [this, this.onLastUserData]);
+	},
+	setPlatformDepPaths:function() {
 		var sep = '/',
 			tempFile;
 		if (!PHP.file_exists('/usr/bin')) {
 			sep = '\\';
 		}
 		e('tempFolder1').innerHTML = OS.getTempDir() + sep;
-		AppEnv.init([this, this.onOldUserData], [this, this.onLastUserData]);
+		e("newWndPath").value = App.dir() + "/doc/examples/simpleTextEditor";
 	},
 	onOldUserData:function() {
 		this.onUserData();

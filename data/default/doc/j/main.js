@@ -97,6 +97,7 @@ function onClickChangeLang(lang) {
 	e('sidebarWrapper').innerHTML = s;
 	try {
 		Search.init();
+		Demo.setPlatformDepPaths();
 	} catch(err) {
 		alert(err);
 	}
