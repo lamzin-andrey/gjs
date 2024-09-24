@@ -27,7 +27,6 @@ var Demo = {
 	onUserData:function() {
 		var s = e('inpMkdir').value;
 		e('inpMkdir').value = s.replace('/user/', '/' + USER + '/');
-		
 	},
 	onClickPosOnCenter: function(){
 		var w = 800, h = 600;

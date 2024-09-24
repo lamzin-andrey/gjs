@@ -1,6 +1,9 @@
 function main() {
 	try {
 		var lang = Settings.get('curretLang');
+		if (lang != 'ru' && lang != 'en') {
+			lang = 'ru';
+		}
 		if (lang == 'ru' || lang == 'en') {
 			onClickChangeLang(lang);
 		}
@@ -14,8 +17,9 @@ function main() {
 	window.onresize = onResize;
 	window.onkeyup = onKeyUp;
 	onResize();
-	Demo.init();
+	
 	try {
+		Demo.init();
 		Search.init();
 	} catch(err) {
 		alert(err);
