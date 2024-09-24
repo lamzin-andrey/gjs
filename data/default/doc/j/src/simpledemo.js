@@ -11,12 +11,24 @@ var Demo = {
 	},
 	setPlatformDepPaths:function() {
 		var sep = '/',
-			tempFile;
+			tempFile,
+			target = "F:/dev-11-2014/qt/qdjs/release/default",
+			arialCss = App.dir() +  "/../lib/web/arial.css",
+			c;
 		if (!PHP.file_exists('/usr/bin')) {
 			sep = '\\';
 		}
 		e('tempFolder1').innerHTML = OS.getTempDir() + sep;
 		e("newWndPath").value = App.dir() + "/doc/examples/simpleTextEditor";
+		
+		if (PHP.file_exists(arialCss)) {
+			c = PHP.file_get_contents(arialCss);
+			c = c.replace(target, App.dir());
+			c = c.replace(target, App.dir());
+			PHP.file_put_contents(arialCss, c);
+		} else {
+			alert("File `" + arialCss + "` not found");
+		}
 	},
 	onOldUserData:function() {
 		this.onUserData();
@@ -27,7 +39,6 @@ var Demo = {
 	onUserData:function() {
 		var s = e('inpMkdir').value;
 		e('inpMkdir').value = s.replace('/user/', '/' + USER + '/');
-		
 	},
 	onClickPosOnCenter: function(){
 		var w = 800, h = 600;
@@ -342,7 +353,7 @@ var Demo = {
 			alert("SWD Ex: " + err);
 		}
 		if (!r) {
-			alert("Fail start watch a directory " + this.watchDirTarget);
+			alert("Not supported in windows", this.watchDirTarget);
 			return;
 		}
 		if(this.watchDirIvalId) {

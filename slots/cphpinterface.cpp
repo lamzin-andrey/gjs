@@ -123,7 +123,7 @@ QStringList CPhpInterface::partDir(QString path, unsigned int sz, bool reset) {
         aItem.push_back(item);
         item = fi.filePath();
         aItem.push_back(item);
-        item = aItem.join('/');
+        item = aItem.join(QString('/'));
         ls.append(item);
         // ls.append(this->qDirIterator->next().replace(path + "/", "") );
         i++;
@@ -345,11 +345,13 @@ QString CPhpInterface::md5_file(QString filename)
     QFile f(filename);
     if (f.open(QFile::ReadOnly)) {
         QCryptographicHash hash(QCryptographicHash::Md5);
-        if (hash.addData(&f)) {
-            QString r = QString(hash.result().toHex());
-            f.close();
-            return r;
-        }
+        QByteArray ba = f.readAll();
+        //QByteArray ba2 = *ba;
+        f.close();
+        hash.addData(ba);
+        QString r = QString(hash.result().toHex());
+        return r;
+
     }
 
     return "";

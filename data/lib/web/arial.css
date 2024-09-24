@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'arial';
-  src: url('/opt/qt-desktop-js/lib/web/fonts/arial.ttf') format('truetype');
+  src: url('F:/dev-11-2014/qt/qdjs/release/default/../lib/web/fonts/arial.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'arial bold';
-  src: url('/opt/qt-desktop-js/lib/web/fonts/arialbd.ttf') format('truetype');
+  src: url('F:/dev-11-2014/qt/qdjs/release/default/../lib/web/fonts/arialbd.ttf') format('truetype');
 }

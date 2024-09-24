@@ -1,6 +1,9 @@
 function main() {
 	try {
 		var lang = Settings.get('curretLang');
+		if (lang != 'ru' && lang != 'en') {
+			lang = 'ru';
+		}
 		if (lang == 'ru' || lang == 'en') {
 			onClickChangeLang(lang);
 		}

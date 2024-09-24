@@ -1,4 +1,4 @@
-//1.0.6
+//1.0.6win32
 //location this file relative djs.exe: "default/tools/js/j.js"
 window.QtBrige = {
 	/**
@@ -246,6 +246,7 @@ window.FS = {
 		if (this.fileExists("/bin")) {
 			this.writefile("/opt/qt-desktop-js/default/tools/inotifyd.sh", "#!/bin/bash\n/opt/qt-desktop-js/default/tools/inotifyd.run " + directory + " 2>&1\n");
 		} else {
+			return false;
 			// TODO когда будет решение для windows, что-то напишу.
 		}
 		this.watchDIrectoryProc = Env.exec("/opt/qt-desktop-js/default/tools/inotifyd.sh", function(){}, function(){}, function(){});
@@ -257,6 +258,9 @@ window.FS = {
 		return false;
 	},
 	stopWatchDir:function() {
+		if (!this.fileExists("/bin")) {
+			return;
+		}
 		if (this.watchDIrectoryProc && this.watchDIrectoryProc.length > 1) {
 			if (PHP.isRun(this.watchDIrectoryProc[1])) {
 				Env.exec("killall inotifyd.run", function(){}, function(){}, function(){});

@@ -12,7 +12,7 @@ function DevNull(){}
  * */
 window.AppEnv = {
 	init:function(aCallback, aPreCallback) {
-		var i;
+		var i, wd;
 		this.config = {};
 		this.readLastSettings();
 		if (this.config && this.config.USER && aPreCallback && (aPreCallback[1] instanceof Function)) {
@@ -22,7 +22,21 @@ window.AppEnv = {
 			aPreCallback[1].apply(aPreCallback[0]);
 		}
 		this.aCallback = aCallback;
-		jexec(App.dir() + '/j/vendor/objects/env/data/user.sh', [this, this.onUserData], DevNull, DevNull);
+		wd = App.dir() + '/doc/j/vendor/objects/env/data';
+		PHP.unlink(wd + "/userdata.txt");
+		jexec(App.dir() + '/doc/j/vendor/objects/env/data/user.bat ' + wd, [this, this.onUserData], DevNull, DevNull);
+		this.initIval = setInterval(function(){
+			AppEnv.onTimeoutInit();
+		}, 500);
+	},
+	onTimeoutInit:function() {
+		var wd = App.dir() + '/doc/j/vendor/objects/env/data/userdata.txt', c;
+		if (PHP.file_exists(wd)) {
+			clearInterval(this.initIval);
+			c = PHP.file_get_contents(wd);
+			PHP.unlink(wd + "/userdata.txt");
+			this.onUserData(c, "");
+		}
 	},
 	onUserData:function(stdout, stderr) {
 		var userSection, xfceSection, kdeSection, mintSection, 
@@ -64,14 +78,14 @@ window.AppEnv = {
 		
 		
 		envObject.USER = window.USER;
-		envObject.IS_KDE = window.IS_KDE;
-		envObject.IS_KDE5 = window.IS_KDE5;
-		envObject.IS_XFCE = window.IS_XFCE;
-		envObject.IS_UNITY = window.IS_UNITY;
-		envObject.IS_MINT = window.IS_MINT;
-		envObject.USER_KDE_AUTORUN_FOLDER = window.USER_KDE_AUTORUN_FOLDER;
-		envObject.XFCE_ICON_THEME = window.XFCE_ICON_THEME;
-		envObject.QDJS_VERSION = window.QDJS_VERSION;
+		envObject.IS_KDE = false;//window.IS_KDE;
+		envObject.IS_KDE5 = false; // window.IS_KDE5;
+		envObject.IS_XFCE = false; //window.IS_XFCE;
+		envObject.IS_UNITY = false; //window.IS_UNITY;
+		envObject.IS_MINT = false; //window.IS_MINT;
+		envObject.USER_KDE_AUTORUN_FOLDER = '';//window.USER_KDE_AUTORUN_FOLDER;
+		envObject.XFCE_ICON_THEME = '';//window.XFCE_ICON_THEME;
+		envObject.QDJS_VERSION = 'TODO';// window.QDJS_VERSION;
 		PHP.file_put_contents(Qt.appDir() + '/env.json', JSON.stringify(envObject));
 		
 		

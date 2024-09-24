@@ -1,0 +1,8 @@
+user
+Temp
+isXfce
+isKde
+isMint
+xfceThemeName
+qdjsVersion
+3.1.9
