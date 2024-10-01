@@ -90,6 +90,8 @@ function onClickChangeLang(lang) {
 	}
 	e('contentArea').innerHTML = s;
 	
+	window.jaqedLang = ('en' == lang ? langEn : langRu);
+	
 	s = FS.readfile(App.dir() + '/doc/lang/' + lang + '/navbar.htm');
 	while (s.indexOf(t) != -1) {
 		if (t == root) {

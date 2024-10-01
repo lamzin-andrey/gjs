@@ -1,7 +1,7 @@
 window.jaqedLang = window.jaqedLang || {};
 function L(s) {
-	if (jaqedLang && jaqedLang[s]) {
-		return jaqedLang[s];
+	if (window.jaqedLang && window.jaqedLang[s]) {
+		return window.jaqedLang[s];
 	}
 	return s;
 }

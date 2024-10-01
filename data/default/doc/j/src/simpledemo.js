@@ -1,7 +1,4 @@
-// Пока здесь
-function L(s) {
-	return s;
-}
+window.SP = ' ';
 var Demo = {
 	init:function(){
 		e('qdjsExeFilePath').innerHTML = Qt.appDir() + '/index.html';
@@ -20,6 +17,7 @@ var Demo = {
 		}
 		e('tempFolder1').innerHTML = OS.getTempDir() + sep;
 		e("newWndPath").value = App.dir() + "/doc/examples/simpleTextEditor";
+		e("inpMkdir").value = "/home/" + window.USER + "/one/two/three";
 		
 		if (PHP.file_exists(arialCss)) {
 			c = PHP.file_get_contents(arialCss);
@@ -32,8 +30,10 @@ var Demo = {
 	},
 	onOldUserData:function() {
 		this.onUserData();
+		this.setPlatformDepPaths();
 	},
 	onLastUserData:function() {
+		this.setPlatformDepPaths();
 		this.onUserData();
 	},
 	onUserData:function() {
@@ -193,16 +193,16 @@ var Demo = {
 	},
 	onClickSaveFileWithDialog:function(){
 		if (!this.currentTextFile) {
-			alert(L('Надо сначала выбрать текстовый файл'));
+			alert(L('Need choose a text file'));
 			return;
 		}
 		var sPath = Env.saveFileDialog('Выберите файл для сохранения', this.currentTextFile, '*.txt *.js');
 		if (!sPath) {
-			alert(L('Надо выбрать файл для сохранения'));
+			alert(L('Need choose a text file'));
 			return;
 		}
 		var nB = FS.writefile(sPath, e('inpKD5').value);
-		alert('Записано байт: ' + nB);
+		alert(L('Записано байт:') + SP + nB);
 	},
 	checkQdjsExists:function(){
 		alert(PHP.file_exists(Qt.appDir() + '/index.html'));
@@ -236,7 +236,7 @@ var Demo = {
 		alert(PHP.is_dir(s));
 	},
 	scandir:function() {
-		var s = Qt.openDirectoryDialog(L('Выберите каталог'), ''),
+		var s = Qt.openDirectoryDialog(L('Choose a directory'), ''),
 			ls = FS.scandir(s), i, icon = 'exec.png', width = 24, file;
 		ls.sort();
 		e('xtStdOut5Content').innerHTML = '';
@@ -252,11 +252,11 @@ var Demo = {
 	},
 	filesize:function(filter){
 		filter = filter ? filter : '*.*';
-		var s = Qt.openFileDialog(L('Выберите файл'), '', filter);
+		var s = Qt.openFileDialog(L('Choose a file'), '', filter);
 		if (FS.fileExists(s)) {
-			alert(L('Размер файла ') + FS.filesize(s) + ' ' + L('байт'));
+			alert(L('Size of file') + SP + FS.filesize(s) + ' ' + L('bytes'));
 		} else {
-			alert(L('Надо выбрать файл'));
+			alert(L('Need chooose file'));
 		}
 	},
 	filessize:function(filter){
