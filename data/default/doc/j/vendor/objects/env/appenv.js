@@ -22,7 +22,7 @@ window.AppEnv = {
 			aPreCallback[1].apply(aPreCallback[0]);
 		}
 		this.aCallback = aCallback;
-		jexec(App.dir() + '/j/vendor/objects/env/data/user.sh', [this, this.onUserData], DevNull, DevNull);
+		jexec(App.dir() + '/doc/j/vendor/objects/env/data/user.sh', [this, this.onUserData], DevNull, DevNull);
 	},
 	onUserData:function(stdout, stderr) {
 		var userSection, xfceSection, kdeSection, mintSection, 

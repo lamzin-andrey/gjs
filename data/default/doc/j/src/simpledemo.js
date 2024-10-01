@@ -1,7 +1,4 @@
-// Пока здесь
-function L(s) {
-	return s;
-}
+window.SP = ' ';
 var Demo = {
 	init:function(){
 		e('qdjsExeFilePath').innerHTML = Qt.appDir() + '/index.html';
@@ -17,11 +14,14 @@ var Demo = {
 		}
 		e('tempFolder1').innerHTML = OS.getTempDir() + sep;
 		e("newWndPath").value = App.dir() + "/doc/examples/simpleTextEditor";
+		e("inpMkdir").value = "/home/" + window.USER + "/one/two/three";
 	},
 	onOldUserData:function() {
+		this.setPlatformDepPaths();
 		this.onUserData();
 	},
 	onLastUserData:function() {
+		this.setPlatformDepPaths();
 		this.onUserData();
 	},
 	onUserData:function() {
@@ -224,7 +224,7 @@ var Demo = {
 		alert(PHP.is_dir(s));
 	},
 	scandir:function() {
-		var s = Qt.openDirectoryDialog(L('Выберите каталог'), ''),
+		var s = Qt.openDirectoryDialog(L('Choose a directory'), ''),
 			ls = FS.scandir(s), i, icon = 'exec.png', width = 24, file;
 		ls.sort();
 		e('xtStdOut5Content').innerHTML = '';
@@ -240,11 +240,11 @@ var Demo = {
 	},
 	filesize:function(filter){
 		filter = filter ? filter : '*.*';
-		var s = Qt.openFileDialog(L('Выберите файл'), '', filter);
+		var s = Qt.openFileDialog(L('Choose a file'), '', filter);
 		if (FS.fileExists(s)) {
-			alert(L('Размер файла ') + FS.filesize(s) + ' ' + L('байт'));
+			alert(L('Size of file') + SP + FS.filesize(s) + ' ' + L('bytes'));
 		} else {
-			alert(L('Надо выбрать файл'));
+			alert(L('Need choose a file'));
 		}
 	},
 	filessize:function(filter){
@@ -274,7 +274,7 @@ var Demo = {
 		alert(FS.mkdir(e('inpMkdir').value));
 	},
 	browseForPartDir:function() {
-		var s = Qt.openDirectoryDialog(L('Выберите каталог'), ''),
+		var s = Qt.openDirectoryDialog(L('Choose a directory'), ''),
 			ls, i, icon = 'exec.png', width = 24, file, o = this, fileInfo, title;
 		ls = FS.partDir(s, e('inpPartDir').value, e('chPartDirReset').checked);
 		ls.sort(function(a, b) {

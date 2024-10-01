@@ -82,6 +82,9 @@ function onClickChangeLang(lang) {
 		path = root + '/doc/lang/' + lang + '/content.htm',
 		t = 'F:/dev-11-2014/qt/DTOxp/release/default', 
 		s;
+	window.jaqedLang = ('en' == lang ? langEn : langRu);
+	
+	
 	s = FS.readfile(path);
 	while (s.indexOf(t) != -1) {
 		if (t == root) {
