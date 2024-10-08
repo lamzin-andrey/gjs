@@ -1,2 +1,2 @@
 #!/bin/bash
-cp  "/home/andrey/09.png" "/opt/qt-desktop-js/default/tmp/tmp1652864718202.png"
+cp  "F:/_ack8.png" "F:/dev-11-2014/qt/qdjs/release/default/tmp/tmp1728388871476.png"

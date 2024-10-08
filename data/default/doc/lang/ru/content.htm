@@ -1289,14 +1289,96 @@ window.onkeyup = onKeyUp;
             </tr>
             <tr>
                 <td class="fname">
-                    <h5 class="argname">String filename</h5>
+                    <h5 class="argname">String путь к каталогу</h5>
                 </td>
                 <td class="fd">
-                    <i><span class="dkw">String</span> filename</i> filename. Возвращает путь к выбранному файлу. Если файл не выбран, вернёт пустую строку.
+                    <i><span class="dkw">String</span> catalogPath</i>
                 </td>
             </tr>
         </table>
     </div>
+    
+    
+    <div id="getTempDir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.getTempDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.getTempDir()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Возвращает путь к временной папке. Особенно полезно в windows.</p>
+                    <p>Примечание: Доступна также как <i><span class="dkw">String</span> OS.getTempDir()</i> и <i><span class="dkw">String</span> OS.getTempFolderPath()</i>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="путь к временному каталогу" onclick="alert(OS.getTempDir())">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Возвращаемое значение
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String путь к каталогу</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> catalogPath</i>.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    
+    <div id="getHomeDir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.getHomeDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.getHomeDir()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Возвращает путь к домашней папке пользователя. Особенно полезно в windows.</p>
+                    <p>Примечание: Доступна также как <i><span class="dkw">String</span> OS.getHomeDir()</i> и <i><span class="dkw">String</span> OS.getHomeFolderPath()</i>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="путь к домашнему каталогу" onclick="alert(Env.getHomeDir())">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Возвращаемое значение
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Array filenames</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> filenames</i>. Возвращает массив строк - путей к выбранным файлам.
+                        Если ни один файл не выбран, вернёт пустой массив.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
     
 <h4 id="files" class="stopHere">Файлы</h4>
     <div id="fgc" class="function">

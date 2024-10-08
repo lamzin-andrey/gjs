@@ -1,1 +1,1 @@
-copy  "F:\colors.PNG" "C:\qdjs\default\tmp\tmp1652966127676.png"
+copy  "F:\colors.PNG" "F:\dev-11-2014\qt\qdjs\release\default\tmp\tmp1728390122576.png"

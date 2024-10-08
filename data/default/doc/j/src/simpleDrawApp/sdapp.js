@@ -102,7 +102,9 @@ WaterMarkApp.prototype.execBatch = function(cmd, args, onFinish, onStdout, onStd
 		batchFile = 'shell.sh',
 		sep = '/',
 		head = '#!/bin/bash\n';
-	if (!FS.fileExists('/tmp')) {
+	
+	
+	if (!PHP.file_exists('/boot')) {
 		switch (cmd) {
 			case 'cp':
 				cmd = 'copy';

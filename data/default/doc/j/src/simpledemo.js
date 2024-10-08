@@ -18,6 +18,12 @@ var Demo = {
 		e('tempFolder1').innerHTML = OS.getTempDir() + sep;
 		e("newWndPath").value = App.dir() + "/doc/examples/simpleTextEditor";
 		e("inpMkdir").value = "/home/" + window.USER + "/one/two/three";
+		if (!FS.fileExists("/boot")) {
+			c = OS.getTempDir().charAt(0);
+			if (c != '/') {
+				e("inpMkdir").value = c + ":" + OS.getHomeFolderPath() + "\\one\\two\\tree";
+			}
+		}
 		
 		if (PHP.file_exists(arialCss)) {
 			c = PHP.file_get_contents(arialCss);
@@ -179,30 +185,30 @@ var Demo = {
 	},
 	onClickLoadFile:function(suff){
 		suff = suff ? suff : '';
-		this.currentTextFile = Env.openFileDialog('Выберите текстовый файл с расширением txt или js', '', '*.txt *.js');
+		this.currentTextFile = Env.openFileDialog(L('Select text file with extension "txt" or "js"'), '', '*.txt *.js');
 		e('inpKD5' + suff).value = FS.readfile(this.currentTextFile);
 	},
 	onClickSaveFile:function(suff){
 		suff = suff ? suff : '';
 		if (!this.currentTextFile) {
-			alert('Надо сначала выбрать текстовый файл');
+			alert(L('Need choose a text file'));
 			return;
 		}
 		var nB = FS.writefile(this.currentTextFile, e('inpKD5' + suff).value);
-		alert('Записано байт: ' + nB);
+		alert(L('Bytes written:') + nB);
 	},
 	onClickSaveFileWithDialog:function(){
 		if (!this.currentTextFile) {
 			alert(L('Need choose a text file'));
 			return;
 		}
-		var sPath = Env.saveFileDialog('Выберите файл для сохранения', this.currentTextFile, '*.txt *.js');
+		var sPath = Env.saveFileDialog(L('Select file for save'), this.currentTextFile, '*.txt *.js');
 		if (!sPath) {
 			alert(L('Need choose a text file'));
 			return;
 		}
 		var nB = FS.writefile(sPath, e('inpKD5').value);
-		alert(L('Записано байт:') + SP + nB);
+		alert(L('Bytes written:') + SP + nB);
 	},
 	checkQdjsExists:function(){
 		alert(PHP.file_exists(Qt.appDir() + '/index.html'));
@@ -221,15 +227,15 @@ var Demo = {
 		return FS.unlink(tempFile);
 	},
 	isDirChooseFile:function() {
-		e('isDirPath').value = Qt.openFileDialog('Выберите файл', '', '*.*');
+		e('isDirPath').value = Qt.openFileDialog(L('Choose a file'), '', '*.*');
 	},
 	isDirChooseDir:function() {
-		e('isDirPath').value = Qt.openDirectoryDialog('Выберите каталог', '');
+		e('isDirPath').value = Qt.openDirectoryDialog(L('Choose a directory'), '');
 	},
 	isDir:function() {
 		var s = e('isDirPath').value;
 		if (!s || !PHP.file_exists(s)) {
-			alert('Файл не выбран или не существует');
+			alert(L('File not selected or not exists'));
 			return;
 		}
 		
@@ -261,7 +267,7 @@ var Demo = {
 	},
 	filessize:function(filter){
 		filter = filter ? filter : '*.*';
-		var a = Qt.openFilesDialog(L('Выберите файлы'), '', filter),
+		var a = Qt.openFilesDialog(L('Choose a files'), '', filter),
 			i, s, sum = 0;
 		for (i = 0; i < a.length; i++) {
 			s = a[i];
@@ -270,9 +276,9 @@ var Demo = {
 			}
 		}
 		if (a.length > 0) {
-			alert(L('Размер файлов в сумме ') + sum + ' ' + L('байт'));
+			alert(L('Summary size of files') + SP + sum + ' ' + L('bytes'));
 		} else {
-			alert(L('Надо выбрать файл'));
+			alert(L('Need choose a file'));
 		}
 	},
 	onkeydown4:function(evt) {
@@ -283,10 +289,11 @@ var Demo = {
 		}, 10);
 	},
 	onClickCreateDir:function() {
-		alert(FS.mkdir(e('inpMkdir').value));
+		FS.mkdir(e('inpMkdir').value);
+		alert(FS.fileExists(e('inpMkdir').value));
 	},
 	browseForPartDir:function() {
-		var s = Qt.openDirectoryDialog(L('Выберите каталог'), ''),
+		var s = Qt.openDirectoryDialog(L('Choose a directory'), ''),
 			ls, i, icon = 'exec.png', width = 24, file, o = this, fileInfo, title;
 		ls = FS.partDir(s, e('inpPartDir').value, e('chPartDirReset').checked);
 		ls.sort(function(a, b) {
@@ -453,7 +460,7 @@ var Demo = {
 		
 	},
 	onClickFopen:function(){
-		var filename = Env.openFileDialog("Выберите файл для чтения в кодировке UTF-8", "", "*.txt *.cpp *.c *.js *.pl *.sql");
+		var filename = Env.openFileDialog(L("Choose a text file for reading, encoding UTF-8"), "", "*.txt *.cpp *.c *.js *.pl *.sql");
 		try {
 			window.fopenFH = FS.open(filename, "r");
 		} catch (err) {

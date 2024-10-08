@@ -321,6 +321,12 @@ window.Env = {
 	},
 	isRun: function(innerProcId) {
 		return PHP.isRun(innerProcId);
+	},
+	getTempDir:function() {
+		return OS.getTempDir();
+	},
+	getHomeDir:function() {
+		return OS.getHomeDir();
 	}
 };
 
