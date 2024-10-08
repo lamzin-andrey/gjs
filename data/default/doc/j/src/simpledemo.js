@@ -167,13 +167,13 @@ var Demo = {
 	},
 	onClickLoadFile:function(suff){
 		suff = suff ? suff : '';
-		this.currentTextFile = Env.openFileDialog('Выберите текстовый файл с расширением txt или js', '', '*.txt *.js');
+		this.currentTextFile = Env.openFileDialog(L('Select text file with extension "txt" or "js"'), '', '*.txt *.js');
 		e('inpKD5' + suff).value = FS.readfile(this.currentTextFile);
 	},
 	onClickSaveFile:function(suff){
 		suff = suff ? suff : '';
 		if (!this.currentTextFile) {
-			alert('Надо сначала выбрать текстовый файл');
+			alert(L('Надо сначала выбрать текстовый файл'));
 			return;
 		}
 		var nB = FS.writefile(this.currentTextFile, e('inpKD5' + suff).value);
