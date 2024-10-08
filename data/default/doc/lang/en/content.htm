@@ -1315,6 +1315,86 @@ If no files are selected, returns an empty array.
         </table>
     </div>
     
+    
+    <div id="getTempDir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.getTempDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.getTempDir()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Return path to temporary folder.</p>
+                    <p>Note: Also available as <i><span class="dkw">String</span> OS.getTempDir()</i> and <i><span class="dkw">String</span> OS.getTempFolderPath()</i>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <input type="button" value="Path to temp folder" onclick="alert(OS.getTempDir())">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Return value
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String catalog path</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> catalogPath</i>.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    
+    <div id="getHomeDir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.getHomeDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.getHomeDir()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Return path to home catalog.</p>
+                    <p>Note: Also available as <i><span class="dkw">String</span> OS.getHomeDir()</i> and <i><span class="dkw">String</span> OS.getHomeFolderPath()</i>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Demo:</div>
+                    <input type="button" value="Path to home folder" onclick="alert(Env.getHomeDir())">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Return value
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String catalog path.</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span>catalogPath</i>.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
 <h4 id="files" class="stopHere">Files</h4>
     <div id="fgc" class="function">
         <table cellpadding="0" cellspacing="0">
@@ -1424,6 +1504,14 @@ Note 3: <span class="dkw">FILE_APPEND</span> = 1, which is not the same as the v
                     <p>
                         Note 1: Also available as <i><span class="dkw">Boolean</span> PHP.file_exists(<span class="dkw">String</span> path)</i>
                     </p>
+                    <p>
+						Note 2: A bug in this method was found in Windows.
+						Calling <i>FS.fileExists("/home/test")</i> will return <b>true</b> if <i>qdjs.exe</i>
+						is located in any directory on the disk that contains the directory <i>home\test</i>.
+						For example, let <i>qdjs.exe</i> be located at <i>F:\qdjs\qdjs.exe</i>.
+						If the path <i>F:\home\test</i> exists, then calling <i>FS.fileExists("/home/test")</i> will return <b>true</b>.
+						The bug may appear when porting programs from xubuntu to Windows.
+					</p>
                 </td>
             </tr>
             <tr>
@@ -2019,6 +2107,13 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
                 <td class="fdf" colspan="2">
                     <p>Create directory.</p>
                     <p>Note 1. Also callable as <i>PHP.mkdir(<span class="dkw">String</span> path).</i></p>
+                    <p>Note 2.
+						A bug in this method was found in Windows. Calling <i>FS.mkdir("/home/temp")</i> will create a directory
+						in the root of the disk where qdjs.exe is located and the method will return <b>true</b>.
+						For example, if qdjs.exe is located in the directory <i>F:\qdjs\release</i> calling
+						<i>FS.mkdir("/home/temp")</i> will create the directory <i>F:\home\temp</i>.
+						The bug may appear when porting programs from xubuntu to Windows.
+					</p>
                 </td>
             </tr>
             <tr>

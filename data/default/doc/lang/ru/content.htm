@@ -1298,6 +1298,87 @@ window.onkeyup = onKeyUp;
         </table>
     </div>
     
+    
+<div id="getTempDir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.getTempDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.getTempDir()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Возвращает путь к временной папке. Особенно полезно в windows.</p>
+                    <p>Примечание: Доступна также как <i><span class="dkw">String</span> OS.getTempDir()</i> и <i><span class="dkw">String</span> OS.getTempFolderPath()</i>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="путь к временному каталогу" onclick="alert(OS.getTempDir())">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Возвращаемое значение
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">String путь к каталогу</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> catalogPath</i>.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    
+    <div id="getHomeDir" class="function">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="fname">
+                    <h5>Env.getHomeDir</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">String</span> Env.getHomeDir()</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf" colspan="2">
+                    <p>Возвращает путь к домашней папке пользователя. Особенно полезно в windows.</p>
+                    <p>Примечание: Доступна также как <i><span class="dkw">String</span> OS.getHomeDir()</i> и <i><span class="dkw">String</span> OS.getHomeFolderPath()</i>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="fe" colspan="2">
+                    <div>Демо:</div>
+                    <input type="button" value="путь к домашнему каталогу" onclick="alert(OS.getHomeDir())">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="fdf arglist" colspan="2">
+                    Возвращаемое значение
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">
+                    <h5 class="argname">Array filenames</h5>
+                </td>
+                <td class="fd">
+                    <i><span class="dkw">Array</span> filenames</i>. Возвращает массив строк - путей к выбранным файлам.
+                        Если ни один файл не выбран, вернёт пустой массив.
+                </td>
+            </tr>
+        </table>
+    </div>
+    
 <h4 id="files" class="stopHere">Файлы</h4>
     <div id="fgc" class="function">
         <table cellpadding="0" cellspacing="0">
@@ -1407,6 +1488,14 @@ window.onkeyup = onKeyUp;
                     <p>Вернёт true если файл, путь к которому передан в аргументе path, существует.</p>
                     <p>
                         Примечание 1: Доступна также как <i><span class="dkw">Boolean</span> PHP.file_exists(<span class="dkw">String</span> path)</i>
+                    </p>
+                    <p>
+						Примечание 2: В windows обнаружен баг этого метода.
+						Вызов <i>FS.fileExists("/home/test")</i> вернет <b>true</b> если <i>qdjs.exe</i>
+						расположен в любом каталоге диска, в котором есть каталог <i>home\test</i>.
+						Например, пусть <i>qdjs.exe</i> расположен по адресу <i>F:\qdjs\qdjs.exe</i>.
+						Если существует путь <i>F:\home\test</i> то вызов <i>FS.fileExists("/home/test")</i> вернет <b>true</b>.
+						Баг может проявляться при портировании программ с xubuntu в windows.
                     </p>
                 </td>
             </tr>
@@ -2008,6 +2097,13 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
                 <td class="fdf" colspan="2">
                     <p>Создаёт каталог.</p>
                     <p>Примечание 1. Также доступна как <i>PHP.mkdir(<span class="dkw">String</span> path).</i></p>
+                    <p>Примечание 2. 
+                      В windows обнаружен баг этого метода. Вызов <i>FS.mkdir("/home/temp")</i> создаст каталог 
+                       в корне того диска,  на котором расположен qdjs.exe и метод вернет <b>true</b>. 
+                       Например, если qdjs.exe расположен в каталоге <i>F:\qdjs\release</i> вызов 
+                       <i>FS.mkdir("/home/temp")</i> создаст каталог <i>F:\home\temp</i>.
+                       Баг может проявляться при портировнии программ с xubuntu в windows.
+                    </p>
                 </td>
             </tr>
             <tr>

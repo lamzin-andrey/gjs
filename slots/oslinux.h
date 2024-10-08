@@ -34,6 +34,8 @@ public slots:
     void onCProcessFinish(QString evaluateJavaScript, unsigned int resId);
     QString getTempFolderPath();
     QString getTempDir();
+    QString getHomeDir();
+	QString getHomeFolderPath();
 
 private:
     CWebView *webView;

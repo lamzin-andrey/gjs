@@ -1,4 +1,4 @@
-//1.0.6
+//1.0.7
 //location this file relative djs.exe: "default/tools/js/j.js"
 window.QtBrige = {
 	/**
@@ -317,6 +317,12 @@ window.Env = {
 	},
 	isRun: function(innerProcId) {
 		return PHP.isRun(innerProcId);
+	},
+	getHomeDir:function(){
+		return OS.getHomeDir();
+	},
+	getTempDir:function(){
+		return OS.getTempDir();
 	}
 };
 

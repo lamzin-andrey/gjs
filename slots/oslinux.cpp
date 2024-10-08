@@ -39,3 +39,15 @@ QString OSLinux::getTempDir() {
 
     return getTempFolderPath();
 }
+
+
+QString OSLinux::getHomeFolderPath() {
+
+    QByteArray ba = qgetenv("$HOME");
+    return QString(ba);
+}
+
+QString OSLinux::getHomeDir() {
+
+    return getHomeFolderPath();
+}
