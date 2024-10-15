@@ -16,7 +16,7 @@ CPhpInterface::CPhpInterface(QWidget *parent, CWebView *webView) :
 }
 
 int CPhpInterface::file_put_contents(QString path, QString data, int flag) {
-    bool append = flag == 1;
+    bool append = (flag == 1 || flag == 8);
     return lib.writetextfile(path, data, append);
 }
 

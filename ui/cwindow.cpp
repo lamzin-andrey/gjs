@@ -1,8 +1,9 @@
 #include "cwindow.h"
 
-CWindow::CWindow(QString appDir, CMetadata metadata, QWidget *parent):QMainWindow(parent)
+CWindow::CWindow(QString appDir, CMetadata metadata, QString version, QWidget *parent):QMainWindow(parent)
 {
     this->metadata = metadata;
+    this->version = version;
     Qt::WindowFlags flags = 0;
     if (metadata.max && metadata.min && metadata.close && !metadata.question) {
         ;
@@ -539,8 +540,12 @@ void CWindow::renameMenuItem(int x, int y, QString s)
 void CWindow::newWindow(QString path, QStringList args)
 {
     CMetadata data(path, args);
-    CWindow *w = new CWindow(path, data);
+    CWindow *w = new CWindow(path, data, this->version);
     w->show();
+}
+
+QString CWindow::getWVersion() {
+    return this->version;
 }
 
 

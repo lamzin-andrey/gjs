@@ -5,9 +5,10 @@
 
 int main(int argc, char *argv[])
 {
+    string version = string("3.1.14");
 
     if (argc > 1 && string(argv[1]) == "--version") {
-        cout << "3.1.11\n";
+        cout << version << "\n";
         return 0;
     }
 
@@ -18,7 +19,7 @@ int main(int argc, char *argv[])
     }
     //TODO class for анализ ваших всяких вещей, типа какие иконки у окна показывать
     CMetadata data(path, argc, argv);
-    CWindow w(path, data);
+    CWindow w(path, data, QString(version.c_str()));
     //w.show();
     
     return a.exec();

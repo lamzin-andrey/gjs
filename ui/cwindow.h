@@ -35,7 +35,7 @@ class CWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    CWindow(QString appDir, CMetadata metadata, QWidget *parent = 0);
+    CWindow(QString appDir, CMetadata metadata, QString version, QWidget *parent = 0);
     ~CWindow();
     void loadImages(bool flag);
     void stop();
@@ -53,6 +53,7 @@ public:
     CWebView * wv;
     bool loading;
     QString lastUrl;
+    QString version;
     unsigned int counttry;
     Utils lib;
     bool writeresult;
@@ -106,6 +107,7 @@ public:
     void writeClipboard(QString s);
     void renameMenuItem(int x, int y, QString s);
     void newWindow(QString path, QStringList args);
+    QString getWVersion();
 
  signals:
     void loadComplete();
