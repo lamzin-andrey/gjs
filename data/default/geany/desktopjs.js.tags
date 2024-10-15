@@ -85,3 +85,5 @@ md5_file|String PHP.|(String path)|
 md5|String PHP.|(String s)|
 newWindow|String App.|(String path, Array args)|
 newWindow|String Qt.|(String path, Array args)|
+getTempDir|String Env.|()|
+getHomeDir|String Env.|()|

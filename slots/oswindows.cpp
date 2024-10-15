@@ -47,7 +47,7 @@ QString OS:: getTempFolderPath() {
 }
 
 
-QString OS:: getHomeFolderPath() {
+QString OS:: getDocFolderPath() {
 
     // return QApplication::applicationDirPath() + "/tmp";
 
@@ -66,6 +66,6 @@ QString OS:: getTempDir() {
     return getTempFolderPath();
 }
 
-QString OS:: getHomeDir() {
-    return getHomeFolderPath();
+QString OS:: getDocDir() {
+    return getDocFolderPath();
 }

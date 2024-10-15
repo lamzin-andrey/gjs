@@ -1502,6 +1502,14 @@ Note 3: <span class="dkw">FILE_APPEND</span> = 1, which is not the same as the v
                     <p>
                         Note 1: Also available as <i><span class="dkw">Boolean</span> PHP.file_exists(<span class="dkw">String</span> path)</i>
                     </p>
+                    <p>
+						Note 2: A bug in this method was found in Windows.
+						Calling <i>FS.fileExists("/home/test")</i> will return <b>true</b> if <i>qdjs.exe</i>
+						is located in any directory on the disk that contains the <i>home\test</i> directory.
+						For example, let <i>qdjs.exe</i> be located at <i>F:\qdjs\qdjs.exe</i>.
+						If the path <i>F:\home\test</i> exists, then calling <i>FS.fileExists("/home/test")</i> will return <b>true</bb>.
+						The bug may appear when porting programs from xubuntu to Windows.
+					</p>
                 </td>
             </tr>
             <tr>
@@ -2097,6 +2105,13 @@ FS.saveJpeg(<span class="st">'/home/andrey/image.png'</span>, imageData, <span c
                 <td class="fdf" colspan="2">
                     <p>Create directory.</p>
                     <p>Note 1. Also callable as <i>PHP.mkdir(<span class="dkw">String</span> path).</i></p>
+                    <p>
+						Note 2: A bug in this method was found in Windows. Calling <i>FS.mkdir("/home/temp")</i> will create a directory
+						in the root of the disk where qdjs.exe is located and the method will return <b>true</b>.
+						For example, if qdjs.exe is located in the directory <i>F:\qdjs\release</i> calling
+						<i>FS.mkdir("/home/temp")</i> will create the directory <i>F:\home\temp</i>.
+						The bug may appear when porting programs from xubuntu to windows.
+					</p>
                 </td>
             </tr>
             <tr>

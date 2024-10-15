@@ -65,7 +65,7 @@ function onClickExitMenu() {
 }
 
 function onClickAbout() {
-	alert('Version 3.1.1 pre-release');
+	alert(Qt.getWVersion());
 }
 
 function onClickSelectEn() {
