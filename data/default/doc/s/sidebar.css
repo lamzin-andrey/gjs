@@ -1,0 +1,26 @@
+input[type=text] {
+	height:32px;
+	width:100%;
+}
+
+ul {
+	margin:2px;
+	padding:2px;
+}
+
+.subsections4 {
+	list-style-type: none;
+	margin-left:4px;
+	padding-left:4px;
+}
+
+.sections li {
+	margin-top:10px;
+}
+
+.subsections li {
+	margin-top:auto;
+}
+.sidebar {
+	font-family: Geneva, Arial!important;
+}

@@ -1,20 +1,89 @@
 appDir|Qt.|()|
+dir|App.|()|
 setLineDelimeter(|Qt.|(String delimiter)|
 getLineDelimeter(|Qt.|()|
-moveTo(|Qt.|(Number x, Number y)|
+moveTo|Qt.|(Number x, Number y)|
+moveTo|MW.|(Number x, Number y)|
 resizeTo(|Qt.|(Number x, Number y)|
-quit(|Qt.|()|
-exec|PHP.|(String cmd, String onFinallyExecuteFunctionName, String onStdoutFunctionName, String onStderrFunctionName)|
+resizeTo(|MW.|(Number x, Number y)|
+quit|Qt.|()|
+quit|App.|()|
+showFullScreen|Qt.|()|
+showFullScreen|MW.|()|
+showNormal|Qt.|()|
+showNormal|MW.|()|
+jexec|global|(String cmd, Function onFinallyExecute, Function onStdout, Function onStderr)|
+Env.exec|global|(String cmd, Function onFinallyExecute, Function onStdout, Function onStderr)|
 file_put_contents|PHP.|(String path, String data, int flag = 0)|
+writefile|FS.|(String path, String data, int flag = 0)|
 file_get_contents|PHP.|(String path)|
+readfile|FS.|(String path)|
 file_exists|PHP.|(String path)|
+fileExists|FS.|(String path)|
+unlink|PHP.|(String path)|
+unlink|FS.|(String path)|
 is_dir|PHP.|(String path)|
+isDir|FS.|(String path)|
+isRun|PHP.|(Number innerProcId)|
+Env.isRun|PHP.|(Number innerProcId)|
 scandir|PHP.|(String path)|
+scandir|FS.|(String path)|
 filesize|PHP.|(String path)|
+filesize|FS.|(String path)|
+mkdir|PHP.|(String path)|
+mkdir|FS.|(String path)|
+open|Number PHP.|(String filename, String mode)|
+open|Number FS.|(String filename, String mode)|
+gets|String PHP.|(Number fileDescriptor)|
+gets|String FS.|(Number fileDescriptor)|
+eof|Boolean PHP.|(Number fileDescriptor)|
+eof|Boolean FS.|(Number fileDescriptor)|
+close| PHP.|(Number fileDescriptor)|
+close| FS.|(Number fileDescriptor)|
 openFileDialog|String Qt.|(String caption, String dir, String filter)|
-String openDirectoryDialog|String  Qt.|(String caption, String dir, String filter)|
-String saveFileDialog|String  Qt.|(String caption, String dir, String filter)|
-Number ShellExecute OS.|(String operation, String pathToFile, String arguments, String directory, Boolean showCmdLine)
-
-
-
+openFileDialog|String Env.|(String caption, String dir, String filter)|
+openFilesDialog|Array Qt.|(String caption, String dir, String filter)|
+openFilesDialog|Array Env.|(String caption, String dir, String filter)|
+openDirectoryDialog|String  Qt.|(String caption, String dir, String filter)|
+openDirectoryDialog|String  Env.|(String caption, String dir)|
+saveFileDialog|String  Qt.|(String caption, String dir, String filter)|
+saveFileDialog|String  Env.|(String caption, String dir, String filter)|
+savePng|Qt.|(String path, String base64Str,  Number iQuality)|
+savePng|FS.|(String path, String base64Str,  Number iQuality)|
+saveJpeg|Qt.|(String path, String base64Str,  Number iQuality)|
+saveJpeg|FS.|(String path, String base64Str,  Number iQuality)|
+minimize|Qt.|()|
+minimize|MW.|()|
+maximize|Qt.|()|
+maximize|MW.|()|
+hideMainMenu|Qt.|()|
+hideMainMenu|MW.|()|
+showMainMenu|Qt.|()|
+showMainMenu|MW.|()|
+getArgs|Array Qt.|()|
+getArgs|Array App.|()|
+getLastKeyCode|Number Qt.|()|
+getLastKeyCode|Number MW.|()|
+getLastKeyChar|String Qt.|()|
+getLastKeyChar|String MW.|()|
+setTitle|Qt.|(String s)|
+setTitle|MW.|(String s)|
+readFileAsBinaryString|String  Qt.|(String file, Number indexA = 0, Number indexB = -1)|
+copyFile|String  Qt.|(String file, String dest, Number indexA = 0, Number indexB = -1)|
+setWindowIconImage|Qt.|(String pathToPng24x24)|
+setIconImage|MW.|(String pathToPng24x24)|
+renameMenuItem|Qt.|(Number x, Number y,  String text)|
+renameMenuItem|MW.|(Number x, Number y,  String text)|
+partDir|Array FS.|(String path, Number size,  Boolean fromStart = false)|
+partDirItem|Object or String FS.|(String encodedFileInfo)|
+startWatchDir|Boolean FS.|(String path)|
+getModifyListInDir|Array FS.|()|
+stopWatchDir|void FS.|()|
+md5File|String FS.|(String path)|
+md5|String FS.|(String s)|
+md5_file|String PHP.|(String path)|
+md5|String PHP.|(String s)|
+newWindow|String App.|(String path, Array args)|
+newWindow|String Qt.|(String path, Array args)|
+getTempDir|String Env.|()|
+getHomeDir|String Env.|()|

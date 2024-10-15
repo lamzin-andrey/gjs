@@ -18,6 +18,8 @@
 #include <QImage>
 #include <QByteArray>
 #include <QTextStream>
+#include <QClipboard>
+
 #include "../lib/utils.h"
 #include "../lib/binfile.h"
 #include "../slots/cphpinterface.h"
@@ -35,7 +37,7 @@ class CWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    CWindow(QString appDir, CMetadata metadata, QWidget *parent = 0);
+    CWindow(QString appDir, CMetadata metadata, QString version, QWidget *parent = 0);
     ~CWindow();
     void loadImages(bool flag);
     void stop();
@@ -49,6 +51,7 @@ public:
 
     QString html;
  private:
+    QString version;
     QMenuBar *menubar;
     CWebView * wv;
     bool loading;
@@ -67,11 +70,12 @@ public:
 
     //главное меню окна
     void _setMainMenu();
-    void _setMenuItems(QMenu* menu, QList<CXml*> items);
+    void _setMenuItems(QMenu* menu, QList<CXml*> items, int x = 0);
     QString _transliteApp(QString key);
     CJSON* _localeJSON;
     void _initLocale();
     void _saveImageFromByteArray(QByteArray ba, QString path, QString ext, int quality);
+    QList<CAction*> mainMenuActions;
  private slots:
     void onLoad(bool success);
     void onMainMenuAction(QString title, QString action);
@@ -101,6 +105,11 @@ public:
     QString readFileAsBinaryString(QString filename, long offset = 0, long limit = -1);
     void copyFile(QString src, QString dest, long srcOffset = 0, long srcLimit = -1);
     void setWindowIconImage(QString s);
+    QString readClipboard();
+    void writeClipboard(QString s);
+    void renameMenuItem(int x, int y, QString s);
+    void newWindow(QString path, QStringList args);
+    QString getWVersion();
 
  signals:
     void loadComplete();

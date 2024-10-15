@@ -40,14 +40,6 @@ Qt.exec(String cmd, Function onFinish, Function onStdOut = null, Function onStdE
 Позволяют запустить внешнюю программу и мониторить процесс, onFinish принимает два аргумента, stdin  и stdout, вызывается по окончании работы приложения.
 onStdOut и onStdErr вызываются непосредственно при выводе запущенной программы.
 
-String Qt.openFileDialog(String caption, String dir, String filter);
-Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
-
-String Qt.saveFileDialog(String caption, String dir, String filter);
-Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
-
-String openDirectoryDialog(String caption, String dir);
-Пример строки filter в linux "*.cpp *.txt" то есть допустимые расширени файлов разделяются пробелами
 
 
 <h5>PHP</h5>
@@ -71,12 +63,6 @@ Number PHP.filesize(String path);
 <h6>Файловая система</h6>
 Array PHP.scandir(String path);
 
-
-<h5>OS</h5>
-Os.ShellExecute(String operation, String pathToFile, String arguments, String directory, Boolean showCmdLine);
-Аналог winAPI функции 
- в OS Linux значение operation не играет никакой роли, так как функция может использоваться только для запуска исполняемых файлов
- в OS Windows @see значения аргументов аналогичной winAPI функции
 
 </body>
 

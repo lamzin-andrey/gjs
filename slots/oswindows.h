@@ -20,6 +20,8 @@ public slots:
   int ShellExecuteQ(QString operation, QString path, QString params, QString directory, bool showCmdLine = false);
   QString getTempFolderPath();
   QString getTempDir();
+  QString getDocDir();
+  QString getDocFolderPath();
 private:
   CWebView *webView;
 };

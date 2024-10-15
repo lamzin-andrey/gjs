@@ -5,14 +5,22 @@
 
 int main(int argc, char *argv[])
 {
+    string version = "3.1.10";
+    if (argc > 1) {
+        string s = string(argv[1]);
+        if ("--version" == s) {
+            cout << version << '\n';
+            return 0;
+        }
+    }
+
+
     QApplication a(argc, argv);
     QString path = QApplication::applicationDirPath() + "/default";
-    if (argc > 1) {
-        path = QString(argv[1]);
-    }
-    //TODO class for анализ ваших всяких вещей, типа какие иконки у окна показывать
+
+
     CMetadata data(path, argc, argv);
-    CWindow w(path, data);
+    CWindow w(path, data, QString(version.c_str()));
     //w.show();
     
     return a.exec();

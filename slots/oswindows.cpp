@@ -47,6 +47,25 @@ QString OS:: getTempFolderPath() {
 }
 
 
+QString OS:: getDocFolderPath() {
+
+    // return QApplication::applicationDirPath() + "/tmp";
+
+    int sz = 255;
+    char* buf[sz];
+    for (int i = 0; i < sz; i++) {
+        buf[i] = 0;
+    }
+    GetEnvironmentVariableA((LPSTR)"HOMEPATH", (LPSTR)buf, sz);
+    string s((char*)buf);
+    QString qs = QString::fromStdString(s);
+    return qs;
+}
+
 QString OS:: getTempDir() {
     return getTempFolderPath();
+}
+
+QString OS:: getDocDir() {
+    return getDocFolderPath();
 }

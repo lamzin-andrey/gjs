@@ -10,6 +10,7 @@ class CMetadata
 {
 public:
     CMetadata(QString file = "", int argc = 0, char** argv = 0);
+    CMetadata(QString file, QStringList args);
     QString sTitle;
     /** window buttons */
     bool min;
@@ -44,6 +45,7 @@ private:
     void _setWinButtons(QStringList aMeta);
     int _parseNumAttr(int pos, QString s);
     void _initArgv(int argc, char** argv);
+    void _initalize(QString file);
 
 };
 

@@ -5,6 +5,16 @@ QString CMetadata::PIPE = "_;__PIPE__;_";
 CMetadata::CMetadata(QString file, int argc, char** argv)
 {
     this->_initArgv(argc, argv);
+    this->_initalize(file);
+}
+
+CMetadata::CMetadata(QString file, QStringList args)
+{
+    this->args = args;
+    this->_initalize(file);
+}
+
+void CMetadata::_initalize(QString file) {
     file = file + "/index.html";
     QString s = lib.readtextfile(file, true);
     QStringList arr = s.split('\n');

@@ -1,0 +1,23 @@
+.codebg {
+	background-color: #E2E2E2;
+	padding: 4px 0px;
+}
+pre.codebg {
+	font-size: 16px;
+	font-family:Liberation Sans, Geneva, Arial;
+}
+.tag {
+	color:green;
+	font-weight: bold;
+}
+.tagattrn {
+	color:blue;
+	font-weight: bold;
+}
+.tagattrv {
+	color:#CD8415;
+}
+.hcomment {
+	color:green;
+	font-style: italic;
+}

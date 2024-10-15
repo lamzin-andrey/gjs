@@ -7,14 +7,19 @@
 #include <QByteArray>
 #include <QFile>
 #include <QDirIterator>
+#include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QDateTime>
 #include <QRegExp>
 #include <QList>
 #include <QWebFrame>
+#include <QCryptographicHash>
 #include <string>
+#include <stdio.h>
 
 #include "../lib/utils.h"
+#include "../lib/utilsstd.h"
 #include "../logic/process/cprocess.h"
 #include "../ui/cwebview.h"
 
@@ -25,6 +30,7 @@ public:
     explicit CPhpInterface(QWidget *parent = 0, CWebView *webView = 0);
 private:
     Utils lib;
+    UtilsStd libStd;
     //php exec procs
 
     bool procIsInit;
@@ -34,6 +40,15 @@ private:
     CProcess * _cproc;
     QList<CProcess *> cprocList;
     unsigned int cprocId;
+
+    // files work
+    QList<FILE *> fileHandlersList;
+    unsigned int fileHandlerState[255];
+    FILE *getFreeFile(QString filename, QString mode, bool &success, unsigned int &idx);
+
+    QString qDirIteratorLastPath;
+    bool qDirIteratorIsInit;
+    QDirIterator *qDirIterator;
     
 signals:
     
@@ -45,6 +60,7 @@ public slots:
     bool is_dir(QString path);
     qint64  filesize(QString path);
     bool unlink(QString path);
+    bool mkdir(QString path);
 
     //exec
     unsigned int execCProcess(QString command, QString onFinish, QString onOutput = "", QString onError = "");
@@ -61,6 +77,29 @@ public slots:
 
     //file system
     QString _scandir(QString path);
+
+    int  open(QString filename, QString mode);
+    bool close(unsigned int fileId);
+    QString gets(unsigned int fileId);
+    bool puts(unsigned int fileId, QString s);
+    bool eof(unsigned int fileId);
+    /*QString fgetc(unsigned int fileId);
+    bool fputc(unsigned int fileId, QString s);
+    bool fputc(unsigned int fileId, char c);
+    bool fseek(unsigned int fileId, unsigned int pos, unsigned int mode);
+    unsigned int fgetb(unsigned int fileId);
+    bool fgetbytes(unsigned int fileId, QList<unsigned int> buffer);*/
+
+    void replaceInFile(QString filename, QString search, QString replace, QString outfile);
+
+    // partDir
+    QStringList partDir(QString path, unsigned int sz, bool reset = false);
+    // end partDir
+
+    // hashes
+    QString md5(QString s);
+    QString md5_file(QString filename);
+
 };
 
 #endif // CPHPINTERFACE_H
