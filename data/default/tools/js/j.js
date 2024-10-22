@@ -1,4 +1,4 @@
-//1.0.7
+//1.0.8
 //location this file relative djs.exe: "default/tools/js/j.js"
 window.QtBrige = {
 	/**
@@ -157,7 +157,7 @@ function __jqtSetXdgOpenForLinks() {
 				evt.preventDefault();
 				var link = this.getAttribute('href');
 				if (!isWindows) {
-					cmd = '#!/bin/bash\nxdg-open ' + link;
+					cmd = '#!/bin/bash\nxdg-open ' + link + "\n";
 					FS.writefile(App.dir() + "/tmp/shell.sh", cmd);
 					Env.exec(App.dir() + "/tmp/shell.sh", Null, Null, Null);
 				} else {
