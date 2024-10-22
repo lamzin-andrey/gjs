@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Qt4.6 WebView Desktop API"
-#define MyAppVersion "3.1.10"
+#define MyAppVersion "3.1.14"
 #define MyAppPublisher "Andrey Lamzin"
 #define MyAppURL "https://andryuxa.ru/portfolio/desktop/qt_javascript_desktop/"
 #define MyAppExeName "qdjs.exe"

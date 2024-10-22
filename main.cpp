@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[])
 {
-    string version = "3.1.10";
+    string version = "3.1.14";
     if (argc > 1) {
         string s = string(argv[1]);
         if ("--version" == s) {
