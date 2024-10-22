@@ -144,6 +144,7 @@ function __jqtSetXdgOpenForLinks() {
 		lnk,
 		ctx,
 		isWindows = false,
+		cmd,
 		Null = new Function();
 	if (OS.getTempFolderPath()[1] == ':') {
 		isWindows = true;
@@ -156,7 +157,9 @@ function __jqtSetXdgOpenForLinks() {
 				evt.preventDefault();
 				var link = this.getAttribute('href');
 				if (!isWindows) {
-					PHP.exec('xdg-open ' + link, Null, Null, Null);
+					cmd = '#!/bin/bash\nxdg-open ' + link;
+					FS.writefile(App.dir() + "/tmp/shell.sh", cmd);
+					Env.exec(App.dir() + "/tmp/shell.sh", Null, Null, Null);
 				} else {
 					try {
 						OS.ShellExecuteQ('open', link, '', '', false);

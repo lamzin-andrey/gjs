@@ -21,6 +21,7 @@ function main() {
 	try {
 		Demo.init();
 		Search.init();
+		__jqtSetXdgOpenForLinks();
 	} catch(err) {
 		alert(err);
 	}
@@ -105,6 +106,7 @@ function onClickChangeLang(lang) {
 	try {
 		Search.init();
 		Demo.setPlatformDepPaths();
+		__jqtSetXdgOpenForLinks();
 	} catch(err) {
 		alert(err);
 	}
