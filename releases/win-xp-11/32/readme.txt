@@ -1,4 +1,2 @@
-﻿Архив hw.7z содержит более новый исполняемый файл, он может быть запущен вместе с библиотеками из desktop-js.7z
-Документация в архиве обновляется не всегда, скачать актуальную можно 
-с https://github.com/lamzin-andrey/gjs/tree/master/data/default/doc
-
+Installer was sucessfull created for Windows XP - 10
+with isetup-5.4.2.exe
