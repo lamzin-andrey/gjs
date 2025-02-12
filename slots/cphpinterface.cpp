@@ -261,7 +261,7 @@ QString CPhpInterface::gets(unsigned int fileId) {
     fgets(cStr, sz - 2, fileHandlersList.at(fileId));
     string str(cStr);
 
-    return QString::fromStdString(str);
+    return QString::fromUtf8(str.c_str());
 }
 
 

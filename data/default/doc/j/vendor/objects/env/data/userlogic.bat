@@ -12,5 +12,3 @@ echo isMint
 ;lsb_release -a
 echo xfceThemeName
 ;xfconf-query -lvc xsettings -p /Net/IconThemeName
-;echo qdjsVersion
-;qdjs --version

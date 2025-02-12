@@ -132,7 +132,7 @@ var Demo = {
 	},
 	runCopyWithArg: function() {
 		var o = this,
-			qdjsPath = Qt.appDir().replace('default', '') + 'hw',
+			qdjsPath = Qt.appDir().replace('default', '') + 'qdjs',
 			nixHeader = '#! /bin/bash',
 			ext = PHP.file_exists('/usr') ? 'sh' : 'bat',
 			header = PHP.file_exists('/usr') ? nixHeader : '',

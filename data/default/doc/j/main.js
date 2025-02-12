@@ -103,6 +103,7 @@ function onClickChangeLang(lang) {
 	try {
 		Search.init();
 		Demo.setPlatformDepPaths();
+		__jqtCreateLocalizator();
 	} catch(err) {
 		alert(err);
 	}

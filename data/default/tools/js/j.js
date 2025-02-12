@@ -1,4 +1,4 @@
-//1.0.6win32
+//1.0.7win32
 //location this file relative djs.exe: "default/tools/js/j.js"
 window.QtBrige = {
 	/**

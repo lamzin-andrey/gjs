@@ -8,7 +8,7 @@ function DevNull(){}
 	envObject.IS_MINT = window.IS_MINT;
 	envObject.USER_KDE_AUTORUN_FOLDER = window.USER_AUTORUN_FOLDER;
 	envObject.XFCE_ICON_THEME = window.XFCE_ICON_THEME;
-	envObject.QDJS_VERSION = window.QDJS_VERSION;
+	envObject.QDJS_VERSION = Qt.getWVersion();
  * */
 window.AppEnv = {
 	init:function(aCallback, aPreCallback) {
@@ -73,7 +73,7 @@ window.AppEnv = {
 		}
 		window.XFCE_ICON_THEME = (xfceThemeSection.replace('/Net/IconThemeName', '')).trim();
 		window.XFCE_ICON_THEME = window.XFCE_ICON_THEME.split('\n')[0];
-		window.QDJS_VERSION = qdjsSection.trim();
+		window.QDJS_VERSION = Qt.getWVersion();
 		USER_KDE_AUTORUN_FOLDER = USER_KDE_AUTORUN_FOLDER.replace('[user]', USER);
 		
 		
@@ -85,7 +85,7 @@ window.AppEnv = {
 		envObject.IS_MINT = false; //window.IS_MINT;
 		envObject.USER_KDE_AUTORUN_FOLDER = '';//window.USER_KDE_AUTORUN_FOLDER;
 		envObject.XFCE_ICON_THEME = '';//window.XFCE_ICON_THEME;
-		envObject.QDJS_VERSION = 'TODO';// window.QDJS_VERSION;
+		envObject.QDJS_VERSION = Qt.getWVersion();// window.QDJS_VERSION;
 		PHP.file_put_contents(Qt.appDir() + '/env.json', JSON.stringify(envObject));
 		
 		
